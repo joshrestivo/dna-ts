@@ -29,6 +29,7 @@
 		C07EFBC41DA6105300EC6AF2 /* StreetAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBC31DA6105300EC6AF2 /* StreetAlertViewController.swift */; };
 		C07EFBC71DA6106300EC6AF2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBC61DA6106300EC6AF2 /* SettingsViewController.swift */; };
 		C07EFBC91DA6371000EC6AF2 /* BaseCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBC81DA6371000EC6AF2 /* BaseCenterViewController.swift */; };
+		C07EFBCB1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBCA1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift */; };
 		C0A0944F1DA49B5A0036A792 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A0944E1DA49B5A0036A792 /* HomeViewController.swift */; };
 		C0A094631DA509E30036A792 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A094621DA509E30036A792 /* SWRevealViewController.m */; };
 		C0A094651DA50EC40036A792 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A094641DA50EC40036A792 /* BaseViewController.swift */; };
@@ -75,6 +76,7 @@
 		C07EFBC31DA6105300EC6AF2 /* StreetAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAlertViewController.swift; sourceTree = "<group>"; };
 		C07EFBC61DA6106300EC6AF2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C07EFBC81DA6371000EC6AF2 /* BaseCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCenterViewController.swift; sourceTree = "<group>"; };
+		C07EFBCA1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0A0944E1DA49B5A0036A792 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C0A094601DA509E30036A792 /* DNAMobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DNAMobile-Bridging-Header.h"; sourceTree = "<group>"; };
 		C0A094611DA509E30036A792 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				C07EFBBC1DA60C7000EC6AF2 /* Xibs */,
 				C07EFBBB1DA60C6300EC6AF2 /* Storyboards */,
 				C07EFBB71DA602D800EC6AF2 /* MenuTableViewCell.swift */,
+				C07EFBCA1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				C00AA18D1DA3F4F8000F7819 /* AppDelegate.swift in Sources */,
 				C07EFBB51DA602BB00EC6AF2 /* UIView.swift in Sources */,
 				C07EFBB01DA602BB00EC6AF2 /* String.swift in Sources */,
+				C07EFBCB1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift in Sources */,
 				C07EFBB41DA602BB00EC6AF2 /* UITableViewExtension.swift in Sources */,
 				C07EFBB61DA602BB00EC6AF2 /* UIViewController.swift in Sources */,
 				C07EFBB11DA602BB00EC6AF2 /* UIColor.swift in Sources */,
