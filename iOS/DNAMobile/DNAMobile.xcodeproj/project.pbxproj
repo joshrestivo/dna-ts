@@ -15,6 +15,8 @@
 		C00AA1971DA3F4F8000F7819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C00AA1961DA3F4F8000F7819 /* Assets.xcassets */; };
 		C00AA19A1DA3F4F8000F7819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00AA1981DA3F4F8000F7819 /* LaunchScreen.storyboard */; };
 		C00AA1A51DA3F4F8000F7819 /* DNAMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AA1A41DA3F4F8000F7819 /* DNAMobileTests.swift */; };
+		C03F1A461DA75D3900B35DB2 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F1A451DA75D3900B35DB2 /* ApiClient.swift */; };
+		C03F1A491DA782BA00B35DB2 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F1A481DA782BA00B35DB2 /* New.swift */; };
 		C07EFBB01DA602BB00EC6AF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBA81DA602BB00EC6AF2 /* String.swift */; };
 		C07EFBB11DA602BB00EC6AF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBA91DA602BB00EC6AF2 /* UIColor.swift */; };
 		C07EFBB21DA602BB00EC6AF2 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBAA1DA602BB00EC6AF2 /* UIImage.swift */; };
@@ -62,6 +64,8 @@
 		C00AA1A01DA3F4F8000F7819 /* DNAMobileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DNAMobileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA1A41DA3F4F8000F7819 /* DNAMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAMobileTests.swift; sourceTree = "<group>"; };
 		C00AA1A61DA3F4F8000F7819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C03F1A451DA75D3900B35DB2 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		C03F1A481DA782BA00B35DB2 /* New.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		C07EFBA81DA602BB00EC6AF2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C07EFBA91DA602BB00EC6AF2 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C07EFBAA1DA602BB00EC6AF2 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -170,6 +174,14 @@
 			path = DNAMobileTests;
 			sourceTree = "<group>";
 		};
+		C03F1A431DA7592200B35DB2 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C03F1A451DA75D3900B35DB2 /* ApiClient.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		C07EFBA71DA602BB00EC6AF2 /* Extentsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +210,7 @@
 		C07EFBB91DA6091700EC6AF2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C03F1A481DA782BA00B35DB2 /* New.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -205,6 +218,7 @@
 		C07EFBBA1DA60C4800EC6AF2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C03F1A431DA7592200B35DB2 /* API */,
 				C0A0945B1DA509960036A792 /* Libs */,
 				C07EFBA71DA602BB00EC6AF2 /* Extentsion */,
 			);
@@ -472,11 +486,13 @@
 				C07EFBB81DA602D800EC6AF2 /* MenuTableViewCell.swift in Sources */,
 				C00AA1951DA3F4F8000F7819 /* DNAMobile.xcdatamodeld in Sources */,
 				C07EFBC71DA6106300EC6AF2 /* SettingsViewController.swift in Sources */,
+				C03F1A491DA782BA00B35DB2 /* New.swift in Sources */,
 				C00AA18D1DA3F4F8000F7819 /* AppDelegate.swift in Sources */,
 				C07EFBB51DA602BB00EC6AF2 /* UIView.swift in Sources */,
 				C07EFBB01DA602BB00EC6AF2 /* String.swift in Sources */,
 				C07EFBCB1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift in Sources */,
 				C07EFBB41DA602BB00EC6AF2 /* UITableViewExtension.swift in Sources */,
+				C03F1A461DA75D3900B35DB2 /* ApiClient.swift in Sources */,
 				C07EFBB61DA602BB00EC6AF2 /* UIViewController.swift in Sources */,
 				C07EFBB11DA602BB00EC6AF2 /* UIColor.swift in Sources */,
 				C07EFBB31DA602BB00EC6AF2 /* UIImageView.swift in Sources */,

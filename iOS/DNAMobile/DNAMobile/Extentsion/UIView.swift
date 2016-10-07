@@ -11,4 +11,9 @@ extension UIView {
     class func loadNib() -> Self {
         return loadNib(self)
     }
+    
+    func setRadiusConer() -> () {
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 1.0
+    }
 }
