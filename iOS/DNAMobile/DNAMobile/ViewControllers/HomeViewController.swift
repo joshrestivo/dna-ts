@@ -14,7 +14,7 @@ class HomeViewController: BaseCenterViewController {
     @IBOutlet weak var newCollectionView: UICollectionView!
     
     @IBOutlet weak var requestServiceBtn: UIButton!
-    @IBOutlet weak var contentLbl: UILabel!
+    @IBOutlet weak var contentLbl: MarginLabel!
     
     
     var news:[New]?
@@ -64,12 +64,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let new = news![indexPath.row]
             cell.titleLbl.text = new.title
             cell.contentLbl.text = new.content
-            cell.newImgView.downloadedFrom(link: new.imageUrl)
-            cell.contentView.layer.borderColor = UIColor.gray.cgColor
-            cell.contentView.layer.borderWidth = 1.0
-//            cell.contentView.layer.cli
+            if indexPath.row > 2 {
+                cell.newImgView.downloadedFrom(link: new.imageUrl)    
+            }
         }
-        
+       
         return cell
     }
     

@@ -15,4 +15,10 @@ class NewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var contentLbl: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.contentView.layer.borderColor = UIColor.gray.cgColor
+        self.contentView.layer.borderWidth = 1.0
+    }
 }
