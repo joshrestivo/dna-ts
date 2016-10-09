@@ -12,12 +12,12 @@ class MenuViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let menuItems = [MenuItem(title: "Home",imageName: ""),
-                     MenuItem(title: "Upcoming Events",imageName: ""),
-                     MenuItem(title: "Request Service",imageName: ""),
-                     MenuItem(title: "Location Info",imageName: ""),
-                     MenuItem(title: "Street Alerts",imageName: ""),
-                     MenuItem(title: "Settings",imageName: "")]
+    let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt"),
+                     MenuItem(title: "Upcoming Events",imageName: "ic_event_36pt"),
+                     MenuItem(title: "Request Service",imageName: "ic_assignment_36pt"),
+                     MenuItem(title: "Location Info",imageName: "ic_info_outline_36pt"),
+                     MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt"),
+                     MenuItem(title: "Settings",imageName: "ic_settings_36pt")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,11 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellID") as! MenuTableViewCell
         let item = menuItems[indexPath.row]
         cell.titleLabel.text = item.title
+        
+//        let image = UIImage(named: item.imageName)?.withRenderingMode(.alwaysTemplate)
+//        button.tintColor = UIColor.redColor()
+        cell.iconImageView.image =  UIImage(named: item.imageName)?.withRenderingMode(.alwaysTemplate)
+//        cell.iconImageView.tintColor = 
 
         return cell
       
