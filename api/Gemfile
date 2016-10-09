@@ -20,8 +20,8 @@ gem 'fastimage'
 gem 'twitter_oauth'
 
 #group :development do #UNCOMMENT when deploy to production
-#  gem 'faker'
-#  gem 'thin', '~> 1.6.4'
+  gem 'faker'
+  gem 'thin', '~> 1.6.4'
 #end
 
 group :production do
