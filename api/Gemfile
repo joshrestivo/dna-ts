@@ -19,10 +19,10 @@ gem 'link_thumbnailer'
 gem 'fastimage'
 gem 'twitter_oauth'
 
-group :development do #UNCOMMENT when deploy to production
-  gem 'faker'
-  gem 'thin', '~> 1.6.4'
-end
+#group :development do #UNCOMMENT when deploy to production
+#  gem 'faker'
+#  gem 'thin', '~> 1.6.4'
+#end
 
 group :production do
   gem 'unicorn'
