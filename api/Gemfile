@@ -1,0 +1,29 @@
+source 'https://rubygems.org'
+
+gem 'grape'
+gem 'rspec'
+gem 'json'
+gem 'rake'
+gem "activerecord", "< 5.0.0"
+gem 'sinatra-activerecord'
+gem 'rack-jsonp-middleware'
+gem 'aws-sdk-v1'
+gem 'tux'
+gem 'pg'
+gem 'octokit'
+gem 'pushmeup'
+gem 'dragonfly', '~> 1.0.7'
+gem 'video_info'
+gem 'ohembedr'
+gem 'link_thumbnailer'
+gem 'fastimage'
+gem 'twitter_oauth'
+
+group :development do #UNCOMMENT when deploy to production
+  gem 'faker'
+  gem 'thin', '~> 1.6.4'
+end
+
+group :production do
+  gem 'unicorn'
+end
