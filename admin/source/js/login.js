@@ -11,11 +11,14 @@ app.controller('loginController', function ($scope, $http) {
         }
 
         showLoadingImage("div.login-container");
-        $http.get(SERVICE_URL + '/api/admin/login')
+        $http.get(SERVICE_BASE_URL + 'login')
             .success(function (result) {
                 hideLoading("div.login-container");
                 if (result.Success) {
-                    
+                	var return_url = getUrlParameter("return_url");
+                    if (return_url != ""){
+                    	window.location.herf = return_url;
+                    }
                 } else {
                     if (result.Data.indexOf("SYSTEM_ERROR=>") === 0) {
                         $scope.errorMessage = SERVER_ERROR_MSG;
@@ -26,5 +29,5 @@ app.controller('loginController', function ($scope, $http) {
                     $("#user_name").focus();
                 }
             });
-    }
+    };
 });
