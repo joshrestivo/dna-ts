@@ -6,7 +6,7 @@ page '/*.txt', layout: false
 set :js_dir, 'js'
 set :css_dir, 'css'
 
-page '*', :layout => :main
+page '*', :layout => :template
 
 # Build-specific configuration
 configure :build do
