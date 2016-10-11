@@ -6,6 +6,8 @@ page '/*.txt', layout: false
 set :js_dir, 'js'
 set :css_dir, 'css'
 
+page '*', :layout => :main
+
 # Build-specific configuration
 configure :build do
   # Minify CSS on build
