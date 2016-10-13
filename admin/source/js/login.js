@@ -22,12 +22,15 @@ app.controller('loginController', function ($scope, $http) {
                 } else {
                     if (result.Data.indexOf("SYSTEM_ERROR=>") === 0) {
                         $scope.errorMessage = SERVER_ERROR_MSG;
-                    } else {
-                        
+                    } else if (result.Data == "INVALID_SESSION"){
+                        gotoLoginPage();
                     }
 
                     $("#user_name").focus();
                 }
-            });
+            }
+            .error(function(){
+            	$scope.errorMessage = SERVER_ERROR_MSG;
+            }));
     };
 });

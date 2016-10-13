@@ -9,6 +9,31 @@
 /* Begin PBXBuildFile section */
 		0B090E224A2364ECD725CB71 /* Pods_DNAMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0942B3003774CEE81F26F70F /* Pods_DNAMobileTests.framework */; };
 		4AFA458A91B8002248F23DDD /* Pods_DNAMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5737BD37B8FBA6E3473D0495 /* Pods_DNAMobile.framework */; };
+		AA8FCB4C1DAE9E0B00B86633 /* BaseKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB4B1DAE9E0B00B86633 /* BaseKeyboardViewController.swift */; };
+		AA8FCB4F1DAE9FC000B86633 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB4E1DAE9FC000B86633 /* New.swift */; };
+		AA8FCB511DAEA04800B86633 /* BuildingLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB501DAEA04800B86633 /* BuildingLocation.swift */; };
+		AA8FCB531DAEA29800B86633 /* ConstantHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB521DAEA29800B86633 /* ConstantHelper.swift */; };
+		AA8FCB581DAEB48500B86633 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB571DAEB48500B86633 /* AsyncImageView.m */; };
+		AA8FCB751DAEB88F00B86633 /* UIImageView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB741DAEB88F00B86633 /* UIImageView+Size.m */; };
+		AAB2E7521DAF6AB00090EBC9 /* icon-nav-left.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */; };
+		AAB2E7531DAF6AB10090EBC9 /* icon-nav-right.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */; };
+		AAB2E7671DAF6F200090EBC9 /* Lato.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7561DAF6F200090EBC9 /* Lato.ttf */; };
+		AAB2E7681DAF6F200090EBC9 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */; };
+		AAB2E7691DAF6F200090EBC9 /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */; };
+		AAB2E76A1DAF6F200090EBC9 /* Muli-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E75A1DAF6F200090EBC9 /* Muli-ExtraLight.ttf */; };
+		AAB2E76B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E75B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf */; };
+		AAB2E76C1DAF6F200090EBC9 /* Muli-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E75C1DAF6F200090EBC9 /* Muli-Italic.ttf */; };
+		AAB2E76D1DAF6F200090EBC9 /* Muli-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E75D1DAF6F200090EBC9 /* Muli-Light.ttf */; };
+		AAB2E76E1DAF6F200090EBC9 /* Muli-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E75E1DAF6F200090EBC9 /* Muli-LightItalic.ttf */; };
+		AAB2E76F1DAF6F200090EBC9 /* Muli-Semi-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E75F1DAF6F200090EBC9 /* Muli-Semi-BoldItalic.ttf */; };
+		AAB2E7701DAF6F200090EBC9 /* Muli-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7601DAF6F200090EBC9 /* Muli-SemiBold.ttf */; };
+		AAB2E7711DAF6F200090EBC9 /* Muli.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7611DAF6F200090EBC9 /* Muli.ttf */; };
+		AAB2E7721DAF6F200090EBC9 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7621DAF6F200090EBC9 /* SIL Open Font License.txt */; };
+		AAB2E7731DAF6F200090EBC9 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7641DAF6F200090EBC9 /* Raleway-Bold.ttf */; };
+		AAB2E7741DAF6F200090EBC9 /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */; };
+		AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */; };
+		AAB2E7781DAF767C0090EBC9 /* LocationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */; };
+		AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */; };
 		C00AA18D1DA3F4F8000F7819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */; };
 		C00AA1921DA3F4F8000F7819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00AA1901DA3F4F8000F7819 /* Main.storyboard */; };
 		C00AA1951DA3F4F8000F7819 /* DNAMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C00AA1931DA3F4F8000F7819 /* DNAMobile.xcdatamodeld */; };
@@ -16,7 +41,6 @@
 		C00AA19A1DA3F4F8000F7819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00AA1981DA3F4F8000F7819 /* LaunchScreen.storyboard */; };
 		C00AA1A51DA3F4F8000F7819 /* DNAMobileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AA1A41DA3F4F8000F7819 /* DNAMobileTests.swift */; };
 		C03F1A461DA75D3900B35DB2 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F1A451DA75D3900B35DB2 /* ApiClient.swift */; };
-		C03F1A491DA782BA00B35DB2 /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03F1A481DA782BA00B35DB2 /* New.swift */; };
 		C07EFBB01DA602BB00EC6AF2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBA81DA602BB00EC6AF2 /* String.swift */; };
 		C07EFBB11DA602BB00EC6AF2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBA91DA602BB00EC6AF2 /* UIColor.swift */; };
 		C07EFBB21DA602BB00EC6AF2 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07EFBAA1DA602BB00EC6AF2 /* UIImage.swift */; };
@@ -55,6 +79,33 @@
 		39BBAF12E10AAFFA32810120 /* Pods-DNAMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNAMobile.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNAMobile/Pods-DNAMobile.release.xcconfig"; sourceTree = "<group>"; };
 		5737BD37B8FBA6E3473D0495 /* Pods_DNAMobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DNAMobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B59CF2598DAFE6D12AD668 /* Pods-DNAMobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNAMobileTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DNAMobileTests/Pods-DNAMobileTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA8FCB4B1DAE9E0B00B86633 /* BaseKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseKeyboardViewController.swift; sourceTree = "<group>"; };
+		AA8FCB4E1DAE9FC000B86633 /* New.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
+		AA8FCB501DAEA04800B86633 /* BuildingLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingLocation.swift; sourceTree = "<group>"; };
+		AA8FCB521DAEA29800B86633 /* ConstantHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHelper.swift; sourceTree = "<group>"; };
+		AA8FCB561DAEB48500B86633 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		AA8FCB571DAEB48500B86633 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		AA8FCB731DAEB88F00B86633 /* UIImageView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Size.h"; sourceTree = "<group>"; };
+		AA8FCB741DAEB88F00B86633 /* UIImageView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Size.m"; sourceTree = "<group>"; };
+		AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-nav-left.png"; sourceTree = "<group>"; };
+		AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-nav-right.png"; sourceTree = "<group>"; };
+		AAB2E7561DAF6F200090EBC9 /* Lato.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lato.ttf; sourceTree = "<group>"; };
+		AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
+		AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-BoldItalic.ttf"; sourceTree = "<group>"; };
+		AAB2E75A1DAF6F200090EBC9 /* Muli-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLight.ttf"; sourceTree = "<group>"; };
+		AAB2E75B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		AAB2E75C1DAF6F200090EBC9 /* Muli-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Italic.ttf"; sourceTree = "<group>"; };
+		AAB2E75D1DAF6F200090EBC9 /* Muli-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Light.ttf"; sourceTree = "<group>"; };
+		AAB2E75E1DAF6F200090EBC9 /* Muli-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-LightItalic.ttf"; sourceTree = "<group>"; };
+		AAB2E75F1DAF6F200090EBC9 /* Muli-Semi-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Semi-BoldItalic.ttf"; sourceTree = "<group>"; };
+		AAB2E7601DAF6F200090EBC9 /* Muli-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-SemiBold.ttf"; sourceTree = "<group>"; };
+		AAB2E7611DAF6F200090EBC9 /* Muli.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Muli.ttf; sourceTree = "<group>"; };
+		AAB2E7621DAF6F200090EBC9 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		AAB2E7641DAF6F200090EBC9 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
+		AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInfoCell.swift; sourceTree = "<group>"; };
+		AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-right-arrow.png"; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* DNAMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNAMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C00AA1911DA3F4F8000F7819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,7 +117,6 @@
 		C00AA1A41DA3F4F8000F7819 /* DNAMobileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAMobileTests.swift; sourceTree = "<group>"; };
 		C00AA1A61DA3F4F8000F7819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C03F1A451DA75D3900B35DB2 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
-		C03F1A481DA782BA00B35DB2 /* New.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
 		C07EFBA81DA602BB00EC6AF2 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C07EFBA91DA602BB00EC6AF2 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C07EFBAA1DA602BB00EC6AF2 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -132,6 +182,98 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA8FCB4D1DAE9FC000B86633 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA8FCB501DAEA04800B86633 /* BuildingLocation.swift */,
+				AA8FCB4E1DAE9FC000B86633 /* New.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA8FCB551DAEB48500B86633 /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				AA8FCB561DAEB48500B86633 /* AsyncImageView.h */,
+				AA8FCB571DAEB48500B86633 /* AsyncImageView.m */,
+			);
+			path = AsyncImageView;
+			sourceTree = "<group>";
+		};
+		AA8FCB721DAEB88F00B86633 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AA8FCB731DAEB88F00B86633 /* UIImageView+Size.h */,
+				AA8FCB741DAEB88F00B86633 /* UIImageView+Size.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AAB2E74E1DAF6AB00090EBC9 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2E7541DAF6F200090EBC9 /* Fonts */,
+				AAB2E74F1DAF6AB00090EBC9 /* Images */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		AAB2E74F1DAF6AB00090EBC9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */,
+				AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */,
+				AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		AAB2E7541DAF6F200090EBC9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2E7551DAF6F200090EBC9 /* Lato */,
+				AAB2E7571DAF6F200090EBC9 /* Muli */,
+				AAB2E7631DAF6F200090EBC9 /* Raleway */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		AAB2E7551DAF6F200090EBC9 /* Lato */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2E7561DAF6F200090EBC9 /* Lato.ttf */,
+			);
+			path = Lato;
+			sourceTree = "<group>";
+		};
+		AAB2E7571DAF6F200090EBC9 /* Muli */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */,
+				AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */,
+				AAB2E75A1DAF6F200090EBC9 /* Muli-ExtraLight.ttf */,
+				AAB2E75B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf */,
+				AAB2E75C1DAF6F200090EBC9 /* Muli-Italic.ttf */,
+				AAB2E75D1DAF6F200090EBC9 /* Muli-Light.ttf */,
+				AAB2E75E1DAF6F200090EBC9 /* Muli-LightItalic.ttf */,
+				AAB2E75F1DAF6F200090EBC9 /* Muli-Semi-BoldItalic.ttf */,
+				AAB2E7601DAF6F200090EBC9 /* Muli-SemiBold.ttf */,
+				AAB2E7611DAF6F200090EBC9 /* Muli.ttf */,
+				AAB2E7621DAF6F200090EBC9 /* SIL Open Font License.txt */,
+			);
+			path = Muli;
+			sourceTree = "<group>";
+		};
+		AAB2E7631DAF6F200090EBC9 /* Raleway */ = {
+			isa = PBXGroup;
+			children = (
+				AAB2E7641DAF6F200090EBC9 /* Raleway-Bold.ttf */,
+				AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */,
+				AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */,
+			);
+			path = Raleway;
+			sourceTree = "<group>";
+		};
 		C00AA1801DA3F4F8000F7819 = {
 			isa = PBXGroup;
 			children = (
@@ -155,11 +297,13 @@
 		C00AA18B1DA3F4F8000F7819 /* DNAMobile */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2E74E1DAF6AB00090EBC9 /* Assets */,
+				AA8FCB4D1DAE9FC000B86633 /* Models */,
 				C07EFBBA1DA60C4800EC6AF2 /* Shared */,
-				C07EFBB91DA6091700EC6AF2 /* Models */,
 				C07EFBAF1DA602BB00EC6AF2 /* Views */,
 				C0A0944D1DA49B5A0036A792 /* ViewControllers */,
 				C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */,
+				AA8FCB521DAEA29800B86633 /* ConstantHelper.swift */,
 				C00AA1961DA3F4F8000F7819 /* Assets.xcassets */,
 				C00AA19B1DA3F4F8000F7819 /* Info.plist */,
 				C00AA1931DA3F4F8000F7819 /* DNAMobile.xcdatamodeld */,
@@ -205,17 +349,10 @@
 				C07EFBBC1DA60C7000EC6AF2 /* Xibs */,
 				C07EFBBB1DA60C6300EC6AF2 /* Storyboards */,
 				C07EFBB71DA602D800EC6AF2 /* MenuTableViewCell.swift */,
+				AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */,
 				C07EFBCA1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		C07EFBB91DA6091700EC6AF2 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C03F1A481DA782BA00B35DB2 /* New.swift */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		C07EFBBA1DA60C4800EC6AF2 /* Shared */ = {
@@ -255,6 +392,7 @@
 		C0A0944D1DA49B5A0036A792 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA8FCB4B1DAE9E0B00B86633 /* BaseKeyboardViewController.swift */,
 				C0A094641DA50EC40036A792 /* BaseViewController.swift */,
 				C07EFBC81DA6371000EC6AF2 /* BaseCenterViewController.swift */,
 				C0A094661DA50ED90036A792 /* MenuViewController.swift */,
@@ -271,6 +409,8 @@
 		C0A0945B1DA509960036A792 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				AA8FCB721DAEB88F00B86633 /* Utils */,
+				AA8FCB551DAEB48500B86633 /* AsyncImageView */,
 				C0A0945C1DA509960036A792 /* SWRevealViewController */,
 			);
 			path = Libs;
@@ -378,9 +518,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB2E7741DAF6F200090EBC9 /* Raleway-Italic.ttf in Resources */,
+				AAB2E76F1DAF6F200090EBC9 /* Muli-Semi-BoldItalic.ttf in Resources */,
+				AAB2E7731DAF6F200090EBC9 /* Raleway-Bold.ttf in Resources */,
+				AAB2E76C1DAF6F200090EBC9 /* Muli-Italic.ttf in Resources */,
+				AAB2E7671DAF6F200090EBC9 /* Lato.ttf in Resources */,
 				C00AA19A1DA3F4F8000F7819 /* LaunchScreen.storyboard in Resources */,
+				AAB2E7691DAF6F200090EBC9 /* Muli-BoldItalic.ttf in Resources */,
+				AAB2E7721DAF6F200090EBC9 /* SIL Open Font License.txt in Resources */,
 				C00AA1971DA3F4F8000F7819 /* Assets.xcassets in Resources */,
+				AAB2E76A1DAF6F200090EBC9 /* Muli-ExtraLight.ttf in Resources */,
 				C00AA1921DA3F4F8000F7819 /* Main.storyboard in Resources */,
+				AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */,
+				AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */,
+				AAB2E7531DAF6AB10090EBC9 /* icon-nav-right.png in Resources */,
+				AAB2E7701DAF6F200090EBC9 /* Muli-SemiBold.ttf in Resources */,
+				AAB2E76B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf in Resources */,
+				AAB2E7711DAF6F200090EBC9 /* Muli.ttf in Resources */,
+				AAB2E7681DAF6F200090EBC9 /* Muli-Bold.ttf in Resources */,
+				AAB2E76D1DAF6F200090EBC9 /* Muli-Light.ttf in Resources */,
+				AAB2E7521DAF6AB00090EBC9 /* icon-nav-left.png in Resources */,
+				AAB2E76E1DAF6F200090EBC9 /* Muli-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +579,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3CB1F60F455D68DBA5D18074 /* [CP] Copy Pods Resources */ = {
@@ -481,7 +639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,30 +649,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8FCB531DAEA29800B86633 /* ConstantHelper.swift in Sources */,
 				C0A094651DA50EC40036A792 /* BaseViewController.swift in Sources */,
 				C0A094671DA50ED90036A792 /* MenuViewController.swift in Sources */,
 				C07EFBC41DA6105300EC6AF2 /* StreetAlertViewController.swift in Sources */,
 				C07EFBB81DA602D800EC6AF2 /* MenuTableViewCell.swift in Sources */,
+				AA8FCB511DAEA04800B86633 /* BuildingLocation.swift in Sources */,
 				C00AA1951DA3F4F8000F7819 /* DNAMobile.xcdatamodeld in Sources */,
 				C07EFBC71DA6106300EC6AF2 /* SettingsViewController.swift in Sources */,
-				C03F1A491DA782BA00B35DB2 /* New.swift in Sources */,
 				C00AA18D1DA3F4F8000F7819 /* AppDelegate.swift in Sources */,
 				C07EFBB51DA602BB00EC6AF2 /* UIView.swift in Sources */,
 				C07EFBB01DA602BB00EC6AF2 /* String.swift in Sources */,
 				C07EFBCB1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift in Sources */,
+				AA8FCB751DAEB88F00B86633 /* UIImageView+Size.m in Sources */,
 				C07EFBB41DA602BB00EC6AF2 /* UITableViewExtension.swift in Sources */,
 				C03F1A461DA75D3900B35DB2 /* ApiClient.swift in Sources */,
 				C07EFBB61DA602BB00EC6AF2 /* UIViewController.swift in Sources */,
 				C07EFBB11DA602BB00EC6AF2 /* UIColor.swift in Sources */,
 				C07EFBB31DA602BB00EC6AF2 /* UIImageView.swift in Sources */,
+				AAB2E7781DAF767C0090EBC9 /* LocationInfoCell.swift in Sources */,
 				C07EFBBE1DA60FDF00EC6AF2 /* UpcomingEventViewController.swift in Sources */,
+				AA8FCB4F1DAE9FC000B86633 /* New.swift in Sources */,
 				C07EFBB21DA602BB00EC6AF2 /* UIImage.swift in Sources */,
 				C099D5321DA88F1E003422B2 /* MarginLabel.swift in Sources */,
 				C0A0944F1DA49B5A0036A792 /* HomeViewController.swift in Sources */,
+				AA8FCB4C1DAE9E0B00B86633 /* BaseKeyboardViewController.swift in Sources */,
 				C07EFBC91DA6371000EC6AF2 /* BaseCenterViewController.swift in Sources */,
 				C07EFBC01DA6101D00EC6AF2 /* RequestServiceViewController.swift in Sources */,
 				C0A094631DA509E30036A792 /* SWRevealViewController.m in Sources */,
 				C07EFBC21DA6104600EC6AF2 /* LocationInfoViewController.swift in Sources */,
+				AA8FCB581DAEB48500B86633 /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
