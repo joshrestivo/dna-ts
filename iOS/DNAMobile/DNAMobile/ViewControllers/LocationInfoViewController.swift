@@ -47,8 +47,11 @@ class LocationInfoViewController: BaseViewController, UITableViewDataSource, UIT
         _ = self.data[(indexPath as NSIndexPath).row]
     }
     
-    func backToHome(sender: AnyObject) {
-        
+    func backToHome(_ id:AnyObject) {
+        let upcomingVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerID") as! HomeViewController
+        let revealVC = self.revealViewController()
+        let navUpcomingVC = UINavigationController(rootViewController: upcomingVC)
+        revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
     }
     
     func initScreen(){
@@ -65,13 +68,14 @@ class LocationInfoViewController: BaseViewController, UITableViewDataSource, UIT
     
     func registerNavbarButton(){
         let leftNavImage = UIImage(named: "icon-nav-left")
+        
         let button = UIButton()
         button.setBackgroundImage(leftNavImage, for: UIControlState.normal)
-        button.addTarget(self, action: "backToHome:", for: UIControlEvents.touchUpInside)
-        let folderName = UIBarButtonItem()
-        folderName.title = "Back"
+        button.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        button.addTarget(self, action: #selector(LocationInfoViewController.backToHome(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItems = [barButton, folderName]
+        self.navigationItem.leftBarButtonItem = barButton
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
     func getDataSource(){    

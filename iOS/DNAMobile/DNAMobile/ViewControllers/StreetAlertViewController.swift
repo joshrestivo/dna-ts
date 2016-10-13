@@ -47,13 +47,16 @@ class StreetAlertViewController: BaseCenterViewController , UITableViewDataSourc
         _ = self.data[(indexPath as NSIndexPath).row]
     }
     
-    func backToHome(sender: AnyObject) {
-        
+    func backToHome(_ id:AnyObject) {
+        let upcomingVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerID") as! HomeViewController
+        let revealVC = self.revealViewController()
+        let navUpcomingVC = UINavigationController(rootViewController: upcomingVC)
+        revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
     }
     
     func initScreen(){
         self.navigationController!.navigationBar.isTranslucent = false
-        self.navigationItem.title = "Street alert"
+        self.navigationItem.title = "Street Alert"
         self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
         self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
         self.navigationController!.navigationBar.tintColor = UIColor.white
@@ -67,11 +70,11 @@ class StreetAlertViewController: BaseCenterViewController , UITableViewDataSourc
         let leftNavImage = UIImage(named: "icon-nav-left")
         let button = UIButton()
         button.setBackgroundImage(leftNavImage, for: UIControlState.normal)
-        button.addTarget(self, action: "backToHome:", for: UIControlEvents.touchUpInside)
-        let folderName = UIBarButtonItem()
-        folderName.title = "Back"
+        button.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        button.addTarget(self, action: #selector(StreetAlertViewController.backToHome(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItems = [barButton, folderName]
+        self.navigationItem.leftBarButtonItem = barButton
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
     func getDataSource(){
