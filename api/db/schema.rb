@@ -100,9 +100,6 @@ ActiveRecord::Schema.define(version: 20160910200000) do
     t.string   "state"
     t.string   "country_code"
     t.string   "street_alerts_rss_feed_url"
-    t.string   "news_rss_feed_url"
-    t.string   "google_calendar_id"
-    t.string   "google_calendar_apikey"
     t.boolean  "has_upcomming_events"
     t.boolean  "has_request_service"
     t.boolean  "has_location_info"
@@ -111,6 +108,16 @@ ActiveRecord::Schema.define(version: 20160910200000) do
     t.string   "updated_by"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "news_feeds", id: :bigserial, force: :cascade do |t|
+    t.integer  "location_id", limit: 8
+    t.string   "rss_url"
+    t.string   "identity"
+    t.string   "created_by"
+    t.string   "updated_by"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", id: :bigserial, force: :cascade do |t|
