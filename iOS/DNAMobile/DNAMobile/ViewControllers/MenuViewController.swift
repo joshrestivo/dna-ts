@@ -19,18 +19,18 @@ class MenuViewController: BaseViewController {
                      MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt"),
                      MenuItem(title: "Settings",imageName: "ic_settings_36pt")]
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        
     }
 
-    @IBAction func menuTap(_ sender: AnyObject) {
-        self.revealViewController().revealToggle(animated: true)
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func menuTap(_ sender: AnyObject) {
+        self.revealViewController().revealToggle(animated: true)
     }
 }
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
