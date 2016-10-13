@@ -40,9 +40,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
         return menuItems.count;
     }
     
-
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellID") as! MenuTableViewCell
@@ -80,7 +77,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
 
             break
         case 3:
-            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "LocationInfoViewControllerID") as! LocationInfoViewController
+            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "vcLocationInfo") as! LocationInfoViewController
             let revealVC = self.revealViewController()
             let navUpcomingVC = UINavigationController(rootViewController: pusVC)
             revealVC?.pushFrontViewController(navUpcomingVC, animated: true)

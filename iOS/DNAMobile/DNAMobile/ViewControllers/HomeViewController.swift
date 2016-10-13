@@ -12,37 +12,40 @@ import MBProgressHUD
 class HomeViewController: BaseCenterViewController {
 
     @IBOutlet weak var newCollectionView: UICollectionView!
-    
     @IBOutlet weak var requestServiceBtn: UIButton!
     @IBOutlet weak var contentLbl: MarginLabel!
-    
-    
     var news:[New]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Home view controller"
         requestServiceBtn.setRadiusConer()
         contentLbl.setRadiusConer()
-        //get new 
+        initScreen()
         MBProgressHUD.showAdded(to: self.newCollectionView, animated: true)
         ApiClient.sharedInstance.getNews { ( news) in
             if news != nil {
                 self.news  = news
                 self.newCollectionView.reloadData()
-//                print("--- \(news!)")
             }
+            
             DispatchQueue.main.async {
                 MBProgressHUD.hide(for: self.newCollectionView, animated: true)
             }
-            
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func initScreen(){
+        self.navigationItem.title = "DNA"
+        self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
+        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
+        self.navigationController!.navigationBar.tintColor = UIColor.white
     }
 }
+
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     //MARK: CollectionViewDelegate , Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{

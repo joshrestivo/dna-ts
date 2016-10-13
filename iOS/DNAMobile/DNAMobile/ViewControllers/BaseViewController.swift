@@ -12,13 +12,13 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let defaultColor = UIColor(red: 197.0 / 255.0, green: 0.0 / 255.0, blue: 25.0 / 255.0, alpha: 1.0)
-        self.navigationController?.navigationItem.leftBarButtonItem?.tintColor = defaultColor
-        self.navigationItem.leftBarButtonItem?.tintColor = defaultColor
-        self.navigationController?.navigationBar.tintColor = defaultColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :defaultColor]
+        //Left
+        self.navigationController?.navigationItem.leftBarButtonItem?.tintColor = ConstantHelper.redColor
+        self.navigationItem.leftBarButtonItem?.tintColor = ConstantHelper.redColor
+        
+        //right
+        self.navigationController?.navigationBar.tintColor = ConstantHelper.whiteColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :ConstantHelper.whiteColor]
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +26,6 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     public func addLeftBarButtonWithImage(buttonImage: UIImage, action: Selector?) {
         let leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: action)
         navigationItem.leftBarButtonItem = leftButton;
