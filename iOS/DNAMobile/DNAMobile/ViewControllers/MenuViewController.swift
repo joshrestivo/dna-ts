@@ -83,7 +83,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
             revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
             break
         case 4:
-            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "StreetAlertViewControllerID") as! StreetAlertViewController
+            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "vcStreetAlertView") as! StreetAlertViewController
             let revealVC = self.revealViewController()
             let navVC = UINavigationController(rootViewController: pusVC)
             revealVC?.pushFrontViewController(navVC, animated: true)

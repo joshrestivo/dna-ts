@@ -47,7 +47,6 @@ class HomeViewController: BaseCenterViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    //MARK: CollectionViewDelegate , Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if collectionView == newCollectionView {
             if self.news != nil {
@@ -56,9 +55,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 return 0
             }
         }
+        
         return 10
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
