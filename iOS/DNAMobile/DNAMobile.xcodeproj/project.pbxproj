@@ -33,6 +33,7 @@
 		AAB2E7741DAF6F200090EBC9 /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */; };
 		AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */; };
 		AAB2E7781DAF767C0090EBC9 /* LocationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */; };
+		AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */; };
 		C00AA18D1DA3F4F8000F7819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */; };
 		C00AA1921DA3F4F8000F7819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00AA1901DA3F4F8000F7819 /* Main.storyboard */; };
 		C00AA1951DA3F4F8000F7819 /* DNAMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C00AA1931DA3F4F8000F7819 /* DNAMobile.xcdatamodeld */; };
@@ -104,6 +105,7 @@
 		AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
 		AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInfoCell.swift; sourceTree = "<group>"; };
+		AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-right-arrow.png"; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* DNAMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNAMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C00AA1911DA3F4F8000F7819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		AAB2E74F1DAF6AB00090EBC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */,
 				AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */,
 				AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */,
 			);
@@ -527,6 +530,7 @@
 				AAB2E76A1DAF6F200090EBC9 /* Muli-ExtraLight.ttf in Resources */,
 				C00AA1921DA3F4F8000F7819 /* Main.storyboard in Resources */,
 				AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */,
+				AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */,
 				AAB2E7531DAF6AB10090EBC9 /* icon-nav-right.png in Resources */,
 				AAB2E7701DAF6F200090EBC9 /* Muli-SemiBold.ttf in Resources */,
 				AAB2E76B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf in Resources */,

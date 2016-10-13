@@ -523,6 +523,12 @@
                                                     <color key="textColor" red="0.34901960784313724" green="0.34901960784313724" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-right-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="3Zr-hE-f3r" userLabel="img Arrow">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="6ei-nq-d2g"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Cz1-c4-bh4"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cN-dp-v74" userLabel="View line">
                                                     <color key="backgroundColor" red="0.8666666666666667" green="0.8666666666666667" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -531,6 +537,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="3Zr-hE-f3r" firstAttribute="centerY" secondItem="Azu-cP-C25" secondAttribute="centerY" id="0Q5-xQ-TLs"/>
                                                 <constraint firstItem="4dB-rg-OeD" firstAttribute="trailing" secondItem="OxR-LR-hUl" secondAttribute="trailing" id="48M-bm-j5E"/>
                                                 <constraint firstItem="4dB-rg-OeD" firstAttribute="leading" secondItem="OxR-LR-hUl" secondAttribute="trailing" constant="6" id="5sH-b4-5ZD"/>
                                                 <constraint firstAttribute="trailing" secondItem="4dB-rg-OeD" secondAttribute="trailing" constant="30" id="5vb-1i-tUS"/>
@@ -555,6 +562,7 @@
                                                 <constraint firstItem="4dB-rg-OeD" firstAttribute="leading" secondItem="Azu-cP-C25" secondAttribute="leadingMargin" constant="30" id="lWc-bd-SkQ"/>
                                                 <constraint firstItem="4dB-rg-OeD" firstAttribute="top" secondItem="OxR-LR-hUl" secondAttribute="bottom" id="t8j-vW-1bM"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9cN-dp-v74" secondAttribute="bottom" constant="-8" id="u7N-fc-bS6"/>
+                                                <constraint firstAttribute="trailing" secondItem="3Zr-hE-f3r" secondAttribute="trailing" constant="10" id="vRS-Mk-Kvz"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
@@ -610,6 +618,7 @@
         <image name="facebook" width="234" height="232"/>
         <image name="ic_add_alert" width="24" height="24"/>
         <image name="ic_close_36pt" width="36" height="36"/>
+        <image name="icon-right-arrow.png" width="24" height="24"/>
         <image name="twitter" width="256" height="256"/>
     </resources>
     <color key="tintColor" red="0.77158717109999997" green="0.0" blue="0.09696237664" alpha="1" colorSpace="calibratedRGB"/>
