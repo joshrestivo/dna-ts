@@ -59,7 +59,21 @@ module Townsquare
           end
           JSONResult.new(true, nil)
         end
-                
+       
+        get 'alert_types' do
+          JSONResult.new(true, AlertType.select("name").all().map {|item| item["name"]})
+        end
+
+        params do
+          requires :types, type: Array[String]
+        end
+        post 'alert_types/save' do
+          params[:types].each do |type|
+            AlertType.where(:name => type).first_or_create
+          end
+          JSONResult.new(true, nil)
+        end
+         
       end
     end
   end

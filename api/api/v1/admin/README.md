@@ -73,3 +73,29 @@ POST: <HOST>/api/1.0/admin/resource/del
 - {success=true, data=null}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
 
+### 6. Get all alert types
+POST: <HOST>/api/1.0/admin/alert_types  
+**Response:**
+- {success=true, data=Alert types string collection}
+- {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
+
+### 7. Update alert types
+POST: <HOST>/api/1.0/admin/alert_types/save  
+**Parameters:**
+```csharp
+{
+  "types":[
+    "Crime & Safety",
+    "Roads & Trails",
+    "Social Events",
+    "Govt. & Oversight Events",
+    "Elections",
+    "General Alerts",
+    "Laws & Regulations"
+  ]
+}
+```
+**Response:**
+- {success=true, data=null}
+- {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
+
