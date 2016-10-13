@@ -13,6 +13,7 @@ class CreateDb < ActiveRecord::Migration
     end
 
     create_table :users do |t|
+      t.string  :uuid
       t.string  :name
       t.string  :username
       t.string  :password

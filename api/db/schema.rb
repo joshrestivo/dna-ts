@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20160910200000) do
   end
 
   create_table "users", id: :bigserial, force: :cascade do |t|
+    t.string   "uuid"
     t.string   "name"
     t.string   "username"
     t.string   "password"

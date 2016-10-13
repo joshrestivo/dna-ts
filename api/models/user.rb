@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  before_create do
+    self.uuid = SecureRandom.uuid
+  end
+
   def as_json(*)        
     {
       :name           => name,
