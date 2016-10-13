@@ -34,6 +34,10 @@
 		AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */; };
 		AAB2E7781DAF767C0090EBC9 /* LocationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */; };
 		AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */; };
+		AAB2E77C1DAFE3920090EBC9 /* StreetAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E77B1DAFE3920090EBC9 /* StreetAlertCell.swift */; };
+		AAB2E77E1DAFE5220090EBC9 /* StreetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E77D1DAFE5220090EBC9 /* StreetAlert.swift */; };
+		AAB2E7811DAFFCBE0090EBC9 /* UpComingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7801DAFFCBE0090EBC9 /* UpComingEvents.swift */; };
+		AAB2E7831DAFFCF70090EBC9 /* UpComingEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7821DAFFCF70090EBC9 /* UpComingEventsCell.swift */; };
 		C00AA18D1DA3F4F8000F7819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */; };
 		C00AA1921DA3F4F8000F7819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00AA1901DA3F4F8000F7819 /* Main.storyboard */; };
 		C00AA1951DA3F4F8000F7819 /* DNAMobile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C00AA1931DA3F4F8000F7819 /* DNAMobile.xcdatamodeld */; };
@@ -106,6 +110,10 @@
 		AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInfoCell.swift; sourceTree = "<group>"; };
 		AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-right-arrow.png"; sourceTree = "<group>"; };
+		AAB2E77B1DAFE3920090EBC9 /* StreetAlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAlertCell.swift; sourceTree = "<group>"; };
+		AAB2E77D1DAFE5220090EBC9 /* StreetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAlert.swift; sourceTree = "<group>"; };
+		AAB2E7801DAFFCBE0090EBC9 /* UpComingEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpComingEvents.swift; sourceTree = "<group>"; };
+		AAB2E7821DAFFCF70090EBC9 /* UpComingEventsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpComingEventsCell.swift; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* DNAMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNAMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA18C1DA3F4F8000F7819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C00AA1911DA3F4F8000F7819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,6 +193,8 @@
 		AA8FCB4D1DAE9FC000B86633 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AAB2E7801DAFFCBE0090EBC9 /* UpComingEvents.swift */,
+				AAB2E77D1DAFE5220090EBC9 /* StreetAlert.swift */,
 				AA8FCB501DAEA04800B86633 /* BuildingLocation.swift */,
 				AA8FCB4E1DAE9FC000B86633 /* New.swift */,
 			);
@@ -350,7 +360,9 @@
 				C07EFBBB1DA60C6300EC6AF2 /* Storyboards */,
 				C07EFBB71DA602D800EC6AF2 /* MenuTableViewCell.swift */,
 				AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */,
+				AAB2E77B1DAFE3920090EBC9 /* StreetAlertCell.swift */,
 				C07EFBCA1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift */,
+				AAB2E7821DAFFCF70090EBC9 /* UpComingEventsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -663,7 +675,9 @@
 				C07EFBCB1DA6A6AC00EC6AF2 /* NewCollectionViewCell.swift in Sources */,
 				AA8FCB751DAEB88F00B86633 /* UIImageView+Size.m in Sources */,
 				C07EFBB41DA602BB00EC6AF2 /* UITableViewExtension.swift in Sources */,
+				AAB2E77C1DAFE3920090EBC9 /* StreetAlertCell.swift in Sources */,
 				C03F1A461DA75D3900B35DB2 /* ApiClient.swift in Sources */,
+				AAB2E7831DAFFCF70090EBC9 /* UpComingEventsCell.swift in Sources */,
 				C07EFBB61DA602BB00EC6AF2 /* UIViewController.swift in Sources */,
 				C07EFBB11DA602BB00EC6AF2 /* UIColor.swift in Sources */,
 				C07EFBB31DA602BB00EC6AF2 /* UIImageView.swift in Sources */,
@@ -671,10 +685,12 @@
 				C07EFBBE1DA60FDF00EC6AF2 /* UpcomingEventViewController.swift in Sources */,
 				AA8FCB4F1DAE9FC000B86633 /* New.swift in Sources */,
 				C07EFBB21DA602BB00EC6AF2 /* UIImage.swift in Sources */,
+				AAB2E7811DAFFCBE0090EBC9 /* UpComingEvents.swift in Sources */,
 				C099D5321DA88F1E003422B2 /* MarginLabel.swift in Sources */,
 				C0A0944F1DA49B5A0036A792 /* HomeViewController.swift in Sources */,
 				AA8FCB4C1DAE9E0B00B86633 /* BaseKeyboardViewController.swift in Sources */,
 				C07EFBC91DA6371000EC6AF2 /* BaseCenterViewController.swift in Sources */,
+				AAB2E77E1DAFE5220090EBC9 /* StreetAlert.swift in Sources */,
 				C07EFBC01DA6101D00EC6AF2 /* RequestServiceViewController.swift in Sources */,
 				C0A094631DA509E30036A792 /* SWRevealViewController.m in Sources */,
 				C07EFBC21DA6104600EC6AF2 /* LocationInfoViewController.swift in Sources */,

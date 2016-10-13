@@ -8,28 +8,39 @@
 
 import UIKit
 
-class RequestServiceViewController: BaseCenterViewController {
+class RequestServiceViewController: BaseCenterViewController, UIWebViewDelegate {
 
+    @IBOutlet weak var webviewer: UIWebView!
+    
     override func viewDidLoad() {
+        initScreen()
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func webViewDidStartLoad(_ webView: UIWebView)
+    {
+        //howLoading("")
     }
-    */
-
+    
+    func webViewDidFinishLoad(_ webView: UIWebView)
+    {
+       // self.hideLoading()
+    }
+    
+    func initScreen(){
+        self.navigationController!.navigationBar.isTranslucent = false
+        self.navigationItem.title = "Request Services"
+        self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
+        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
+        self.navigationController!.navigationBar.tintColor = UIColor.white
+        
+        webviewer.delegate = self
+        let urlPath = URL(string: "http://vnexpress.net")
+        let requestObj = URLRequest(url: urlPath!)
+        webviewer.loadRequest(requestObj)
+    }
 }

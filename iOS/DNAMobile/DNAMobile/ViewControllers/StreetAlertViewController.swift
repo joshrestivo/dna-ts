@@ -105,5 +105,4 @@ class StreetAlertViewController: BaseCenterViewController , UITableViewDataSourc
         data.append(location12)
         self.userTableView.reloadData()
     }
-
 }
