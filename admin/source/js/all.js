@@ -55,7 +55,7 @@ if (cookie == null &&
 	!current_url.endsWith(host + "/index.html") &&
 	current_url.indexOf(host + "?") == -1 &&
 	current_url.indexOf(host + "/index.html?") == -1){
-	gotoLoginPage();
+	//gotoLoginPage();
 }
 
 // Define global variables

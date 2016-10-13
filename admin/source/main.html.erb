@@ -1,0 +1,36 @@
+<div id="locations" class="location" ng-controller="locationController">
+	<div class="locations-table">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Longitute</th>
+					<th>Latitude</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="location in locations">
+                        <td ng-bind="location.Name"></td>
+                        <td ng-bind="location.City"></td>
+                        <td ng-bind="location.State +' '+ item.PhoneNumber"></td>
+                        <td ng-bind="location.Longitute"></td>
+                        <td ng-bind="location.Latitute"></td>     
+                    </tr>
+			</tbody>
+		 </table>
+		 <div class="paginations">
+            <div class="col-md-6">
+                <uib-pagination boundary-links="true" total-items="TotalItems" ng-change="pageChanged(currentPage)" max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            </div>
+            <div class="col-md-6 total">
+                <span>Total:</span>
+                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      
+	</div>
+</div>
+<script language="javascript" src="js/locations.js"></script>
+
+	

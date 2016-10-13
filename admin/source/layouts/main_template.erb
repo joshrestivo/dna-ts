@@ -45,9 +45,45 @@
     <div class="col-md-4">
       <p class="text-center title">ADMINISTRATION TOOL</p>
     </div>
+    <div class="col-md-4">
+      <div class="user">
+        <span id="login_user"></span>
+      </div>
+    </div>
   </div>
   <div class="site-body">
-    <%= yield %>
+  	<div class="main">
+  		<div class="left-side">
+	    	<nav>
+	    		<ul class="nav">
+	    			<li>
+	    				<a href="#">
+	    					<span>Location</span>
+	    				</a>	    				
+	    			</li>
+	    			<li>
+	    				<a href="#">
+	    					<span>Alert Type</span>
+	    				</a>	
+    				</li>    
+    				<li>
+	    				<a href="#">
+	    					<span>Bulletins</span>
+	    				</a>	
+    				</li>   
+    				<li>
+	    				<a href="#">
+	    					<span>Client Resource</span>
+	    				</a>	
+    				</li>   				
+	    		</ul>
+	    	</nav>
+    	</div>
+	    <div class="right-site">
+	    	<%= yield %>
+	    </div>
+	</div>
+  		
   </div>
   <div class="footer">
   </div>

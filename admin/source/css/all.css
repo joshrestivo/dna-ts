@@ -1,6 +1,12 @@
 .header{
 	height:80px;
 	border-bottom: solid 2px #f24537;
+	background-color: white;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	z-index: 100;
 }
 
 .header .col-md-4{
@@ -18,6 +24,9 @@
 	height:78px;
 	float:left;
 }
+.site-body{
+	margin-top:80px;
+}
 .user {
 	float:right;
 	margin-right: 20px;
@@ -26,4 +35,44 @@
 .login-container{
 	width: 400px;
 	margin: 30px auto 0;	
+}
+.main {
+	height: auto;
+}
+.main .left-side {
+	transition: 0.3s all linear;  
+    position: fixed;
+    left: 0;
+    top: 80px;
+    height: 100%;
+    overflow: auto;
+	background: #2c3e50;
+	width: 250px;
+}
+.main .left-side ul li {
+	border-bottom: 1px solid white;
+	color: white;
+}
+.main .left-side ul li a {
+	padding: 15px;
+}
+.main .right-site {
+	min-height: 100%;
+    padding: 0 !important;
+    position: relative;
+    margin-left:250px;
+}
+.location {
+	padding: 20px;
+}
+.location .locations-table .paginations {
+	overflow: auto;
+}
+.location .locations-table .paginations .total{ 
+	float: right;
+	text-align:right;
+}
+
+table th{
+	text-align: center
 }
