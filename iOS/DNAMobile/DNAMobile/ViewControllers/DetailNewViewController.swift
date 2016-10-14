@@ -10,10 +10,13 @@ import UIKit
 
 class DetailNewViewController: BaseViewController {
 
+    @IBOutlet weak var webview: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //TODO: will modify later
+        webview.loadRequest(URLRequest(url: URL(string:"http://www.saintlouisdna.org/september-happy-hour-at-busch/")!))
     }
 
     override func didReceiveMemoryWarning() {

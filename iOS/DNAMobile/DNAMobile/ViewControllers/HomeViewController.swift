@@ -89,5 +89,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
 //        return 1
 //    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "pushToNewDetail", sender: nil)
+    }
 }
 
