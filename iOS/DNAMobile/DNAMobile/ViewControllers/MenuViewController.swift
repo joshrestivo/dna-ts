@@ -19,18 +19,18 @@ class MenuViewController: BaseViewController {
                      MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt"),
                      MenuItem(title: "Settings",imageName: "ic_settings_36pt")]
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        
     }
 
-    @IBAction func menuTap(_ sender: AnyObject) {
-        self.revealViewController().revealToggle(animated: true)
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func menuTap(_ sender: AnyObject) {
+        self.revealViewController().revealToggle(animated: true)
     }
 }
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
@@ -39,9 +39,6 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return menuItems.count;
     }
-    
-
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -80,13 +77,13 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
 
             break
         case 3:
-            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "LocationInfoViewControllerID") as! LocationInfoViewController
+            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "vcLocationInfo") as! LocationInfoViewController
             let revealVC = self.revealViewController()
             let navUpcomingVC = UINavigationController(rootViewController: pusVC)
             revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
             break
         case 4:
-            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "StreetAlertViewControllerID") as! StreetAlertViewController
+            let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "vcStreetAlertView") as! StreetAlertViewController
             let revealVC = self.revealViewController()
             let navVC = UINavigationController(rootViewController: pusVC)
             revealVC?.pushFrontViewController(navVC, animated: true)

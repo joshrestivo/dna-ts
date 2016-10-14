@@ -20,12 +20,7 @@ app.controller('loginController', function ($scope, $http) {
                     	window.location.herf = return_url;
                     }
                 } else {
-                    if (result.Data.indexOf("SYSTEM_ERROR=>") === 0) {
-                        $scope.errorMessage = SERVER_ERROR_MSG;
-                    } else if (result.Data == "INVALID_SESSION"){
-                        gotoLoginPage();
-                    }
-
+                	processCommonExeption(result.Data, $scope);
                     $("#user_name").focus();
                 }
             }

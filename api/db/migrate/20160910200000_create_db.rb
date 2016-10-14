@@ -13,6 +13,7 @@ class CreateDb < ActiveRecord::Migration
     end
 
     create_table :users do |t|
+      t.string  :uuid
       t.string  :name
       t.string  :username
       t.string  :password
@@ -31,13 +32,20 @@ class CreateDb < ActiveRecord::Migration
       t.string  :state
       t.string  :country_code
       t.string  :street_alerts_rss_feed_url
-      t.string  :news_rss_feed_url
-      t.string  :google_calendar_id
-      t.string  :google_calendar_apikey
       t.boolean :has_upcomming_events
       t.boolean :has_request_service
       t.boolean :has_location_info
       t.boolean :has_street_alerts      
+      t.string  :created_by
+      t.string  :updated_by
+
+      t.timestamps null:false
+    end
+
+    create_table :news_feeds do |t|
+      t.integer :location_id
+      t.string  :rss_url
+      t.string  :identity
       t.string  :created_by
       t.string  :updated_by
 
@@ -118,6 +126,8 @@ class CreateDb < ActiveRecord::Migration
     execute "ALTER TABLE bulletins ALTER COLUMN location_id SET DATA TYPE bigint"    
     execute "ALTER TABLE alert_types ALTER COLUMN id SET DATA TYPE bigint"    
     execute "ALTER TABLE devices ALTER COLUMN id SET DATA TYPE bigint"    
+    execute "ALTER TABLE news_feeds ALTER COLUMN id SET DATA TYPE bigint"    
+    execute "ALTER TABLE news_feeds ALTER COLUMN location_id SET DATA TYPE bigint"    
 
     require File.expand_path('../../seeds.rb', __FILE__)
   end
