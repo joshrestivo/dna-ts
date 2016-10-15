@@ -31,6 +31,9 @@
 [2. Get all alert types](#2-get-all-alert-types)  
 [3. Get all countries](#3-get-all-countries)  
 
+###****Notes**
+When using the API from mobile client (or partners), remember to add a key 'Secret-Key' in the HTTP Header of the HTTP request. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
+
 ####**1. Get client UI resources**
 GET: <HOST>/api/1.0/admin/resources/{countryCode}  
 ######**Response:**

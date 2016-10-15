@@ -4,6 +4,10 @@ module Townsquare
       resource '' do
        
         get 'countries' do
+          if !authenticate?
+            return JSONResult.new(true, "INVALID_SESSION")
+          end
+          
           JSONResult.new(true, Country.all)
         end
 
@@ -11,11 +15,19 @@ module Townsquare
           requires :country_code, type:String, desc: "Country code"
         end
         get 'resources/:country_code' do
+          if !authenticate?
+            return JSONResult.new(true, "INVALID_SESSION")
+          end
+
           resources = ClientResource.where(:country_code => params[:country_code])
           JSONResult.new(true, resources)
         end
        
         get 'alert_types' do
+          if !authenticate?
+            return JSONResult.new(true, "INVALID_SESSION")
+          end
+
           JSONResult.new(true, AlertType.select("name").all().map {|item| item["name"]})
         end
 

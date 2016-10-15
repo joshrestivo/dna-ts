@@ -33,7 +33,11 @@ module Townsquare
           requires :unique_name, type:String, desc: "Unique name of the UI component"
           requires :display_text, type:String, desc: "Display of the UI component"
         end
-        post 'resource/save' do     
+        post 'resource/save' do
+          if !is_admin_authenticate?
+            return JSONResult.new(true, "INVALID_SESSION")
+          end
+          
           resource = ClientResource.where(:country_code => params[:country_code], :unique_name => params[:unique_name]).first_or_create     
           resource.display_text = params[:display_text]
           resource.save
@@ -45,6 +49,10 @@ module Townsquare
           requires :unique_name, type:String, desc: "Unique name of the UI component"
         end
         post 'resource/del' do
+          if !is_admin_authenticate?
+            return JSONResult.new(true, "INVALID_SESSION")
+          end
+          
           resource = ClientResource.find_by(:country_code => params[:country_code], :unique_name => params[:unique_name])
           if resource
             resource.destroy
@@ -56,6 +64,10 @@ module Townsquare
           requires :types, type: Array[String]
         end
         post 'alert_types/save' do
+          if !is_admin_authenticate?
+            return JSONResult.new(true, "INVALID_SESSION")
+          end
+          
           params[:types].each do |type|
             AlertType.where(:name => type).first_or_create
           end

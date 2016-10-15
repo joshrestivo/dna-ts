@@ -1,8 +1,7 @@
 module Townsquare
-
   module API
-
     class V1 < Grape::API
+      
       version '1.0', using: :path
       default_format :json
       format :json
@@ -32,9 +31,34 @@ module Townsquare
           nil
         end
 
-        def admin_authenticate!
-          puts login_admin_user
-          current_user || error!('Unauthorized. Invalid or expired cookie.', 401) 
+        def login_user
+          secret_key = headers['Secret-Key']
+          if secret_key != '' && secret_key != nil
+            if secret_key != 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
+              customer = Customer.find_by(:secret_key => secret_key)
+              if customer
+                return customer.name
+              else
+                return nil
+              end
+            end
+            
+            return "SYSTEM"             
+          end
+          
+          nil
+        end
+        
+        def admin_authenticate?
+          login_admin_user != nil 
+        end
+
+        def user_authenticate?
+          login_user != nil
+        end
+        
+        def authenticate?
+          admin_authenticate? || user_authenticate?
         end
         
         def set_admin_auth(user)
@@ -51,11 +75,9 @@ module Townsquare
             path: '/',
             expires: Time.now - (20 * 365 * 60 * 60 * 24)
           }
-        end        
+        end
       end
       
     end
-
   end
-
 end
