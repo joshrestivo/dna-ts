@@ -39,18 +39,21 @@ GET: <HOST>/api/1.0/admin/resources/{countryCode}
 ######**Response:**
 - {success=true, data=[ClientResource](#clientresource) collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**2. Get all alert types**
 POST: <HOST>/api/1.0/admin/alert_types  
 ######**Response:**
 - {success=true, data=Alert types string collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**3. Get all countries**
 POST: <HOST>/api/1.0/admin/countries  
 ######**Response:**
 - {success=true, data=[Country](#country) object collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 #**For administration tool**
 [1. Login](#1-login)  
@@ -91,6 +94,7 @@ POST: <HOST>/api/1.0/admin/resource/save
 ######**Response:**
 - {success=true, data=[ClientResource](#clientresource) collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**4. Delete client UI resource**
 POST: <HOST>/api/1.0/admin/resource/del  
@@ -104,6 +108,7 @@ POST: <HOST>/api/1.0/admin/resource/del
 ######**Response:**
 - {success=true, data=null}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**5. Update alert types**
 POST: <HOST>/api/1.0/admin/alert_types/save  
@@ -124,4 +129,5 @@ POST: <HOST>/api/1.0/admin/alert_types/save
 ######**Response:**
 - {success=true, data=null}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 

@@ -50,6 +50,7 @@ function processCommonExeption(errorCode, $scope){
 	if (errorCode.indexOf("SYSTEM_ERROR") === 0) {
         $scope.errorMessage = SERVER_ERROR_MSG;
     } else if (errorCode == "INVALID_SESSION"){
+    	alert(SESSION_EXPIRE_MSG);
         gotoLoginPage();
     }
 }
@@ -63,9 +64,10 @@ if (cookie == null &&
 	!current_url.endsWith(host + "/index.html") &&
 	current_url.indexOf(host + "?") == -1 &&
 	current_url.indexOf(host + "/index.html?") == -1){
-	//gotoLoginPage();
+	gotoLoginPage();
 }
 
 // Define global variables
 SERVICE_BASE_URL = "http://localhost:9002/api/1.0/admin";
 SERVER_ERROR_MSG = "Server is error. Please contact site administrator for support.";
+SESSION_EXPIRE_MSG = "Your session is expired. Please login and try again.";
