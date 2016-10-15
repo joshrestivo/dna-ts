@@ -28,8 +28,8 @@
 ```
 #**API Reference**
 [1. Get client UI resources](#1-get-client-ui-resources)  
-[2. Get all alert types](#2-get-all-alert-types)
-[3. Get all countries](#3-get-all-countries)
+[2. Get all alert types](#2-get-all-alert-types)  
+[3. Get all countries](#3-get-all-countries)  
 
 ####**1. Get client UI resources**
 GET: <HOST>/api/1.0/admin/resources/{countryCode}  
@@ -50,11 +50,11 @@ POST: <HOST>/api/1.0/admin/countries
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 
 #**For administration tool**
-[1. Login](#1-login)
-[2. Logout](#2-logout)
-[3. Create/update client UI resource](#3-createupdate-client-ui-resource)
-[4. Delete client UI resource](#4-delete-client-ui-resource)
-[5. Update alert types](#5-update-alert-types)
+[1. Login](#1-login)  
+[2. Logout](#2-logout)  
+[3. Create/update client UI resource](#3-createupdate-client-ui-resource)  
+[4. Delete client UI resource](#4-delete-client-ui-resource)  
+[5. Update alert types](#5-update-alert-types)  
 
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
