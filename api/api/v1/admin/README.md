@@ -99,3 +99,17 @@ POST: <HOST>/api/1.0/admin/alert_types/save
 - {success=true, data=null}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
 
+### 8. Get all countries
+POST: <HOST>/api/1.0/admin/countries  
+**Response:**
+- {success=true, data=Country object collection}
+- {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."  
+
+**Country object:**
+```csharp
+{
+    "country_code": "US",
+    "name": "United State"
+}
+```
+

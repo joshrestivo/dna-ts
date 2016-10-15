@@ -73,6 +73,10 @@ module Townsquare
           end
           JSONResult.new(true, nil)
         end
+       
+        get 'countries' do
+          JSONResult.new(true, Country.all)
+        end
          
       end
     end
