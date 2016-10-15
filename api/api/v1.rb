@@ -10,6 +10,10 @@ module Townsquare
       error_formatter :json, Townsquare::CustomErrorFormatter
       prefix :api
       
+      before do
+        header "Access-Control-Allow-Origin", "*"
+      end
+      
       get :ping do
         "pong" 
       end
