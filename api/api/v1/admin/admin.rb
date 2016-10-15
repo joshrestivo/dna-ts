@@ -27,14 +27,6 @@ module Townsquare
           remove_admin_auth()
           JSONResult.new(true, nil)
         end
-
-        params do
-          requires :country_code, type:String, desc: "Country code"
-        end
-        get 'resources/:country_code' do
-          resources = ClientResource.where(:country_code => params[:country_code])
-          JSONResult.new(true, resources)
-        end
         
         params do
           requires :country_code, type:String, desc: "Country code"
@@ -59,10 +51,6 @@ module Townsquare
           end
           JSONResult.new(true, nil)
         end
-       
-        get 'alert_types' do
-          JSONResult.new(true, AlertType.select("name").all().map {|item| item["name"]})
-        end
 
         params do
           requires :types, type: Array[String]
@@ -72,10 +60,6 @@ module Townsquare
             AlertType.where(:name => type).first_or_create
           end
           JSONResult.new(true, nil)
-        end
-       
-        get 'countries' do
-          JSONResult.new(true, Country.all)
         end
          
       end
