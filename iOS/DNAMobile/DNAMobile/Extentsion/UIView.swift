@@ -13,7 +13,9 @@ extension UIView {
     }
     
     func setRadiusConer() -> () {
-        self.layer.borderColor = UIColor.gray.cgColor
-        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 5.0
+        self.clipsToBounds = true
     }
 }
