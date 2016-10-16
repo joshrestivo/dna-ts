@@ -10,10 +10,10 @@ app.controller('loginController', function ($scope, $http) {
             return;
         }
 
-        showLoadingImage("div.login-container");
+        showLoadingImage();
         $http.get(SERVICE_BASE_URL + 'login')
             .success(function (result) {
-                hideLoading("div.login-container");
+                hideLoading();
                 if (result.Success) {
                 	var return_url = getUrlParameter("return_url");
                     if (return_url != ""){
@@ -23,9 +23,10 @@ app.controller('loginController', function ($scope, $http) {
                 	processCommonExeption(result.Data, $scope);
                     $("#user_name").focus();
                 }
-            }
+            })
             .error(function(){
-            	$scope.errorMessage = SERVER_ERROR_MSG;
-            }));
+            	hideLoading();
+        		$scope.errorMessage = SERVER_ERROR_MSG;
+        	});
     };
 });

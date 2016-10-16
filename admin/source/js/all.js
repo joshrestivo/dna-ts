@@ -19,6 +19,15 @@ function hideLoading(selector) {
     $(selector).unblock();
 }
 
+function showLoadingImage() {
+    showLoading(".loading", "<img src='images/loading.gif' />", "56px");
+}
+
+function hideLoading() {
+    $(".loading").unblock();
+}
+
+
 /// How to use:
 /// var tech = getUrlParameter('technology');
 /// var blog = getUrlParameter('blog');

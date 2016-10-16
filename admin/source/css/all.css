@@ -1,3 +1,11 @@
+
+.loading {
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	bottom: 0; 
+	left: 0;
+}
 .header{
 	height:80px;
 	border-bottom: solid 2px #f24537;
@@ -34,7 +42,7 @@
 }
 .login-container{
 	width: 400px;
-	margin: 30px auto 0;	
+	margin: 120px auto 0;	
 }
 .main {
 	height: auto;
