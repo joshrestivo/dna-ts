@@ -10,6 +10,7 @@ import UIKit
 
 class MenuViewController: BaseViewController {
 
+    @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt"),
@@ -21,9 +22,10 @@ class MenuViewController: BaseViewController {
     
     override func viewDidLoad()
     {
+        viewHeader.backgroundColor = ConstantHelper.redColor
         super.viewDidLoad()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationInfoViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class LocationInfoViewController: BaseCenterViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var lblEmptyMessage: UILabel!
     @IBOutlet weak var userTableView: UITableView!
@@ -17,7 +17,6 @@ class LocationInfoViewController: BaseViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         initScreen()
-        registerNavbarButton()
         getDataSource()
     }
     
@@ -45,37 +44,15 @@ class LocationInfoViewController: BaseViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = self.data[(indexPath as NSIndexPath).row]
-    }
-    
-    func backToHome(_ id:AnyObject) {
-        let upcomingVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewControllerID") as! HomeViewController
-        let revealVC = self.revealViewController()
-        let navUpcomingVC = UINavigationController(rootViewController: upcomingVC)
-        revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
+        pustToNewsDetail()
     }
     
     func initScreen(){
-        self.navigationController!.navigationBar.isTranslucent = false
+        addDefaultNavUI()
         self.navigationItem.title = "Location Info"
-        self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.tintColor = UIColor.white
-        
         self.userTableView?.rowHeight=100
         self.userTableView?.rowHeight = UITableViewAutomaticDimension
         self.userTableView?.estimatedRowHeight = 100
-    }
-    
-    func registerNavbarButton(){
-        let leftNavImage = UIImage(named: "icon-nav-left")
-        
-        let button = UIButton()
-        button.setBackgroundImage(leftNavImage, for: UIControlState.normal)
-        button.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        button.addTarget(self, action: #selector(LocationInfoViewController.backToHome(_:)), for: UIControlEvents.touchUpInside)
-        let barButton = UIBarButtonItem(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
-        self.navigationItem.leftBarButtonItem = barButton
     }
     
     func getDataSource(){    

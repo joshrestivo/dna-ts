@@ -44,14 +44,12 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = self.data[(indexPath as NSIndexPath).row]
+        pustToNewsDetail()
     }
     
     func initScreen(){
-        self.navigationController!.navigationBar.isTranslucent = false
+        addDefaultNavUI()
         self.navigationItem.title = "Up Coming Events"
-        self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.tintColor = UIColor.white
         
         self.userTableView?.rowHeight=200
         self.userTableView?.rowHeight = UITableViewAutomaticDimension

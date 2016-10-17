@@ -51,8 +51,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="epK-0g-aqr">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="wRq-6H-0BX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="wRq-6H-0BX" userLabel="View Header">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-Vs-uOb">
@@ -62,14 +62,14 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" red="0.7725490196" green="0.1176470588" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="jmB-Vs-uOb" firstAttribute="centerY" secondItem="wRq-6H-0BX" secondAttribute="centerY" constant="10" id="A0K-tT-0cl"/>
                                         <constraint firstAttribute="trailing" secondItem="jmB-Vs-uOb" secondAttribute="trailing" constant="70" id="oUI-2h-E0C"/>
+                                        <constraint firstItem="jmB-Vs-uOb" firstAttribute="centerY" secondItem="wRq-6H-0BX" secondAttribute="centerY" constant="10" id="ygO-j7-x7O"/>
                                     </constraints>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0jt-aq-zxF" userLabel="HeaderView">
-                                    <rect key="frame" x="0.0" y="115" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="135" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-tm-FsL">
@@ -97,10 +97,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCellID" id="BHw-eq-nRW" customClass="MenuTableViewCell" customModule="DNAMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="45" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="65" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BHw-eq-nRW" id="Zui-XL-6oS">
-                                            <frame key="frameInset" width="375" height="70"/>
+                                            <frame key="frameInset" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-k9-DYC">
@@ -110,13 +110,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DNA Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-gl-agF">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
                                                     <color key="textColor" red="0.77158717109999997" green="0.0" blue="0.09696237664" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="sQ5-gl-agF" firstAttribute="leading" secondItem="YBF-k9-DYC" secondAttribute="trailing" constant="10" id="BFH-dK-XKf"/>
+                                                <constraint firstItem="sQ5-gl-agF" firstAttribute="leading" secondItem="YBF-k9-DYC" secondAttribute="trailing" constant="6" id="BFH-dK-XKf"/>
                                                 <constraint firstItem="sQ5-gl-agF" firstAttribute="centerY" secondItem="YBF-k9-DYC" secondAttribute="centerY" id="Mb4-Uc-gzE"/>
                                                 <constraint firstItem="YBF-k9-DYC" firstAttribute="leading" secondItem="Zui-XL-6oS" secondAttribute="leadingMargin" constant="14" id="cqf-A3-gZe"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="sQ5-gl-agF" secondAttribute="trailing" constant="10" id="hdh-zs-v7W"/>
@@ -139,7 +139,7 @@
                         <constraints>
                             <constraint firstItem="nz6-le-DH7" firstAttribute="top" secondItem="epK-0g-aqr" secondAttribute="bottom" id="FZc-bx-0Eb"/>
                             <constraint firstItem="epK-0g-aqr" firstAttribute="leading" secondItem="joo-ve-jHs" secondAttribute="leading" id="U8W-oj-pcv"/>
-                            <constraint firstItem="epK-0g-aqr" firstAttribute="top" secondItem="Zje-Jm-bMC" secondAttribute="bottom" id="iSs-LF-8L9"/>
+                            <constraint firstItem="epK-0g-aqr" firstAttribute="top" secondItem="Zje-Jm-bMC" secondAttribute="bottom" constant="-20" id="iSs-LF-8L9"/>
                             <constraint firstAttribute="trailing" secondItem="epK-0g-aqr" secondAttribute="trailing" id="nv6-Wp-4Am"/>
                         </constraints>
                     </view>
@@ -148,6 +148,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="epK-0g-aqr" id="OdS-oA-ej4"/>
+                        <outlet property="viewHeader" destination="wRq-6H-0BX" id="sjI-CT-PMZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ga2-lJ-62A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,13 +206,13 @@
                                                         <constraint firstAttribute="width" constant="100" id="ncb-Sm-NRW"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Top" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-Zt-oDU" userLabel="lbl Title">
-                                                    <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Top" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJS-Zt-oDU" userLabel="lbl Title">
+                                                    <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Bottom" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxc-dQ-0vE" userLabel="lbl Description">
-                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="14"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -259,18 +260,18 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="ORA-2x-nXb"/>
+                                                    <exclude reference="Qqz-5T-yqT"/>
+                                                    <exclude reference="WbN-1T-0Zh"/>
                                                     <exclude reference="Imn-Xj-yjf"/>
-                                                    <exclude reference="vpa-qF-ugC"/>
                                                     <exclude reference="O3h-OV-x8k"/>
                                                     <exclude reference="oML-V1-hF6"/>
-                                                    <exclude reference="Qqz-5T-yqT"/>
-                                                    <exclude reference="ORA-2x-nXb"/>
-                                                    <exclude reference="WbN-1T-0Zh"/>
-                                                    <exclude reference="XjH-ui-RuS"/>
+                                                    <exclude reference="vpa-qF-ugC"/>
                                                     <exclude reference="2eW-Zh-LFC"/>
-                                                    <exclude reference="fpw-yg-8an"/>
-                                                    <exclude reference="W4A-h2-nUv"/>
                                                     <exclude reference="7N9-S1-O1y"/>
+                                                    <exclude reference="W4A-h2-nUv"/>
+                                                    <exclude reference="XjH-ui-RuS"/>
+                                                    <exclude reference="fpw-yg-8an"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -471,18 +472,18 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="A6I-6G-3AJ"/>
-                                                    <exclude reference="YNj-LN-uD1"/>
-                                                    <exclude reference="iyy-NF-uI8"/>
-                                                    <exclude reference="QsI-wf-qxm"/>
-                                                    <exclude reference="iEh-ea-sZ3"/>
-                                                    <exclude reference="kmp-vU-4fd"/>
-                                                    <exclude reference="u7N-fc-bS6"/>
                                                     <exclude reference="48M-bm-j5E"/>
                                                     <exclude reference="5sH-b4-5ZD"/>
                                                     <exclude reference="5vb-1i-tUS"/>
                                                     <exclude reference="bzA-bK-Kgc"/>
                                                     <exclude reference="lWc-bd-SkQ"/>
+                                                    <exclude reference="QsI-wf-qxm"/>
+                                                    <exclude reference="iEh-ea-sZ3"/>
+                                                    <exclude reference="kmp-vU-4fd"/>
+                                                    <exclude reference="u7N-fc-bS6"/>
+                                                    <exclude reference="A6I-6G-3AJ"/>
+                                                    <exclude reference="YNj-LN-uD1"/>
+                                                    <exclude reference="iyy-NF-uI8"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -515,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TY6-ff-Dip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3609" y="2707"/>
+            <point key="canvasLocation" x="692" y="1342"/>
         </scene>
         <!--Street Alert View Controller-->
         <scene sceneID="Al9-CN-6ED">
@@ -553,13 +554,13 @@
                                                         <constraint firstAttribute="width" constant="100" id="PWK-D9-Eyf"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Top" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-xb-Nut" userLabel="lbl Title">
-                                                    <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Top" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PVw-xb-Nut" userLabel="lbl Title">
+                                                    <fontDescription key="fontDescription" name="Muli-Bold" family="Muli" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left Bottom" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4x-lY-oFn" userLabel="lbl Description">
-                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="14"/>
                                                     <color key="textColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -607,13 +608,13 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="MZ4-aS-aD2"/>
+                                                    <exclude reference="XZm-9b-yDs"/>
+                                                    <exclude reference="Z4E-ZV-6F6"/>
                                                     <exclude reference="21T-iE-IEC"/>
                                                     <exclude reference="LvD-wJ-D11"/>
                                                     <exclude reference="XLc-vJ-UbM"/>
                                                     <exclude reference="dgf-Kj-MfI"/>
-                                                    <exclude reference="MZ4-aS-aD2"/>
-                                                    <exclude reference="XZm-9b-yDs"/>
-                                                    <exclude reference="Z4E-ZV-6F6"/>
                                                     <exclude reference="1Er-sP-9Yz"/>
                                                     <exclude reference="HT6-Cc-Hav"/>
                                                     <exclude reference="HsB-8Q-t0Z"/>
@@ -651,7 +652,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2L-9s-4YL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3609" y="2707"/>
+            <point key="canvasLocation" x="1418" y="1341"/>
         </scene>
         <!--HomeViewControllerID-->
         <scene sceneID="Q9R-qD-50B">
@@ -667,7 +668,7 @@
     <resources>
         <image name="facebook" width="234" height="232"/>
         <image name="ic_add_alert" width="24" height="24"/>
-        <image name="ic_close_36pt" width="36" height="36"/>
+        <image name="ic_close_36pt" width="27" height="27"/>
         <image name="icon-right-arrow.png" width="24" height="24"/>
         <image name="twitter" width="256" height="256"/>
     </resources>

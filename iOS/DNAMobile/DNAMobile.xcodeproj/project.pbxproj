@@ -15,8 +15,6 @@
 		AA8FCB531DAEA29800B86633 /* ConstantHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB521DAEA29800B86633 /* ConstantHelper.swift */; };
 		AA8FCB581DAEB48500B86633 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB571DAEB48500B86633 /* AsyncImageView.m */; };
 		AA8FCB751DAEB88F00B86633 /* UIImageView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8FCB741DAEB88F00B86633 /* UIImageView+Size.m */; };
-		AAB2E7521DAF6AB00090EBC9 /* icon-nav-left.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */; };
-		AAB2E7531DAF6AB10090EBC9 /* icon-nav-right.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */; };
 		AAB2E7671DAF6F200090EBC9 /* Lato.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7561DAF6F200090EBC9 /* Lato.ttf */; };
 		AAB2E7681DAF6F200090EBC9 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */; };
 		AAB2E7691DAF6F200090EBC9 /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */; };
@@ -33,7 +31,6 @@
 		AAB2E7741DAF6F200090EBC9 /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */; };
 		AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */; };
 		AAB2E7781DAF767C0090EBC9 /* LocationInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */; };
-		AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */; };
 		AAB2E77C1DAFE3920090EBC9 /* StreetAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E77B1DAFE3920090EBC9 /* StreetAlertCell.swift */; };
 		AAB2E77E1DAFE5220090EBC9 /* StreetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E77D1DAFE5220090EBC9 /* StreetAlert.swift */; };
 		AAB2E7811DAFFCBE0090EBC9 /* UpComingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB2E7801DAFFCBE0090EBC9 /* UpComingEvents.swift */; };
@@ -93,8 +90,6 @@
 		AA8FCB571DAEB48500B86633 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		AA8FCB731DAEB88F00B86633 /* UIImageView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Size.h"; sourceTree = "<group>"; };
 		AA8FCB741DAEB88F00B86633 /* UIImageView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Size.m"; sourceTree = "<group>"; };
-		AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-nav-left.png"; sourceTree = "<group>"; };
-		AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-nav-right.png"; sourceTree = "<group>"; };
 		AAB2E7561DAF6F200090EBC9 /* Lato.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lato.ttf; sourceTree = "<group>"; };
 		AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
 		AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -111,7 +106,6 @@
 		AAB2E7651DAF6F200090EBC9 /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
 		AAB2E7661DAF6F200090EBC9 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
 		AAB2E7771DAF767C0090EBC9 /* LocationInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInfoCell.swift; sourceTree = "<group>"; };
-		AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-right-arrow.png"; sourceTree = "<group>"; };
 		AAB2E77B1DAFE3920090EBC9 /* StreetAlertCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAlertCell.swift; sourceTree = "<group>"; };
 		AAB2E77D1DAFE5220090EBC9 /* StreetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetAlert.swift; sourceTree = "<group>"; };
 		AAB2E7801DAFFCBE0090EBC9 /* UpComingEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpComingEvents.swift; sourceTree = "<group>"; };
@@ -235,9 +229,6 @@
 		AAB2E74F1DAF6AB00090EBC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				AAB2E7791DAFD9340090EBC9 /* icon-right-arrow.png */,
-				AAB2E7501DAF6AB00090EBC9 /* icon-nav-left.png */,
-				AAB2E7511DAF6AB00090EBC9 /* icon-nav-right.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -549,14 +540,11 @@
 				C00AA1921DA3F4F8000F7819 /* Main.storyboard in Resources */,
 				C00AFEDB1DAF7E5C009C6D03 /* Home.storyboard in Resources */,
 				AAB2E7751DAF6F200090EBC9 /* Raleway-Regular.ttf in Resources */,
-				AAB2E77A1DAFD9340090EBC9 /* icon-right-arrow.png in Resources */,
-				AAB2E7531DAF6AB10090EBC9 /* icon-nav-right.png in Resources */,
 				AAB2E7701DAF6F200090EBC9 /* Muli-SemiBold.ttf in Resources */,
 				AAB2E76B1DAF6F200090EBC9 /* Muli-ExtraLightItalic.ttf in Resources */,
 				AAB2E7711DAF6F200090EBC9 /* Muli.ttf in Resources */,
 				AAB2E7681DAF6F200090EBC9 /* Muli-Bold.ttf in Resources */,
 				AAB2E76D1DAF6F200090EBC9 /* Muli-Light.ttf in Resources */,
-				AAB2E7521DAF6AB00090EBC9 /* icon-nav-left.png in Resources */,
 				AAB2E76E1DAF6F200090EBC9 /* Muli-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

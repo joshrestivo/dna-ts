@@ -10,6 +10,9 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    var sbMain = UIStoryboard(name: "Main", bundle: nil)
+    var sbHome = UIStoryboard(name: "Home", bundle: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Left
@@ -48,5 +51,17 @@ class BaseViewController: UIViewController {
     public func addRightBarButtonWithImage(buttonImage: UIImage, action: Selector?) {
         let rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action:action)
         navigationItem.rightBarButtonItem = rightButton;
+    }
+    
+    func pustToNewsDetail() {        
+        let secondViewController = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
+    func addDefaultNavUI(){
+        self.navigationController!.navigationBar.isTranslucent = false
+        self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
+        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
+        self.navigationController!.navigationBar.tintColor = UIColor.white
     }
 }

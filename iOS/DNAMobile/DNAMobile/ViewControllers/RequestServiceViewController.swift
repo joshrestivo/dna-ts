@@ -32,14 +32,11 @@ class RequestServiceViewController: BaseCenterViewController, UIWebViewDelegate 
     }
     
     func initScreen(){
-        self.navigationController!.navigationBar.isTranslucent = false
+        addDefaultNavUI()
         self.navigationItem.title = "Request Services"
-        self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.tintColor = UIColor.white
         
         webviewer.delegate = self
-        let urlPath = URL(string: "http://vnexpress.net")
+        let urlPath = URL(string: "http://www.downtownstl.org/downtown-street-alert-38/")
         let requestObj = URLRequest(url: urlPath!)
         webviewer.loadRequest(requestObj)
     }
