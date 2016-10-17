@@ -18,7 +18,12 @@ class NewCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.layer.borderColor = UIColor.gray.cgColor
-        self.contentView.layer.borderWidth = 1.0
+        self.contentView.setRadiusConer()
     }
+//    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes!) {
+//        super.apply(layoutAttributes)
+//        if let attributes = layoutAttributes as? NewLayoutAttributes {
+//            imageViewHeightLayoutConstraint.constant = attributes.photoHeight
+//        }
+//    }
 }

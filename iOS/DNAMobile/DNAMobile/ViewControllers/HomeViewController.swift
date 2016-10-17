@@ -32,6 +32,7 @@ class HomeViewController: BaseCenterViewController {
                 MBProgressHUD.hide(for: self.newCollectionView, animated: true)
             }
         }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,7 +47,7 @@ class HomeViewController: BaseCenterViewController {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         if collectionView == newCollectionView {
             if self.news != nil {
@@ -73,8 +74,16 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    //UIEdgeInsetsMake(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat)
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
+//        return UIEdgeInsetsMake(5, 1, 1, 1)
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        return CGSize( width: self.view.bounds.width - 80, height: newCollectionView.bounds.size.height - 10)
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "pushToNewDetail", sender: nil)
     }
 }
-

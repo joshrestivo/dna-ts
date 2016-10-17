@@ -333,6 +333,13 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		C07A198E1DB3113800B8E850 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Layouts;
+			sourceTree = "<group>";
+		};
 		C07EFBA71DA602BB00EC6AF2 /* Extentsion */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +357,7 @@
 		C07EFBAF1DA602BB00EC6AF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C07A198E1DB3113800B8E850 /* Layouts */,
 				C099D5301DA88EF9003422B2 /* Custom */,
 				C07EFBBC1DA60C7000EC6AF2 /* Xibs */,
 				C07EFBBB1DA60C6300EC6AF2 /* Storyboards */,
@@ -843,6 +851,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ECW5XQ64WL;
 				INFOPLIST_FILE = DNAMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.DNAMobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -860,6 +869,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ECW5XQ64WL;
 				INFOPLIST_FILE = DNAMobile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.DNAMobile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
