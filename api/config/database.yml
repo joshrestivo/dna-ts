@@ -10,10 +10,10 @@ development:
   timeout: 5000
 staging:
   adapter: postgresql
-  host: ec2-107-22-238-96.compute-1.amazonaws.com
-  username: jlqnutnsiqhycq
-  password: 1clFnNKjHPd_3OMn6-RYp2OzXW
-  database: dc0g7vcuo8mk0b
+  host: ec2-54-243-203-87.compute-1.amazonaws.com
+  username: hizxozxplmvmlo
+  password: 69nDxq5rHOU6y0YCWhk0CdNAZi
+  database: d52fbueftefdkn
   pool: 5
   timeout: 5000
 production:

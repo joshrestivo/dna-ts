@@ -6,24 +6,27 @@ module Townsquare
 
     def publish_ios(device_tokens, message, count, type, id, notification_id)
       APNS.port = 2195
-      if Townsquare_ENV == 'development'
+      if TOWNSQUARE_ENV == 'development' || TOWNSQUARE_ENV == 'staging' 
         APNS.host = 'gateway.sandbox.push.apple.com'
         APNS.pem = "config/apn_development.pem"
       else
         APNS.host = 'gateway.push.apple.com'
         APNS.pem = "config/apn_production.pem"
       end
-      notifis = []
+      
+      APNS.start_persistence
       device_tokens.each do |device_token|
         begin
-          notif = APNS::Notification.new(device_token, :alert => message, :badge => count, :sound => 'default', :other => {:type => type, :id => id, :notification_id => notification_id})
-          notifis.push notif
+          result = APNS.send_notification(device_token, :alert => message, :badge => count, :sound => 'default', :other => {:type => type, :id => id, :notification_id => notification_id})
+          if APNS.feedback.length == 0
+            APNS.stop_persistence
+            APNS.start_persistence
+          end
         rescue => ex #ingore the exception in this case
           LOG.fatal(ex)          
         end
       end
-      
-      APNS.send_notifications(notifis)      
+      APNS.stop_persistence
     end
 
     def publish_android(device_tokens, message, count, type, id, notification_id)

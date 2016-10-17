@@ -1,5 +1,5 @@
 # Define our constants
-TOWNSQUARE_ENV = ENV['TOWNSQUARE_ENV'] ||= ENV['RACK_ENV'] ||= ENV['RAILS_ENV'] ||= 'development' unless defined?(TOWNSQUARE_ENV)
+TOWNSQUARE_ENV = ENV['TOWNSQUARE_ENV'] ||= 'development' unless defined?(TOWNSQUARE_ENV)
 TOWNSQUARE_ROOT = File.expand_path('../..', __FILE__) unless defined?(TOWNSQUARE_ROOT)
 
 AWS_CDN_ACCESS_KEY_ID = 'AKIAI7CCBOFMFV6J75FQ'
