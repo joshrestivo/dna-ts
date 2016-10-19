@@ -152,6 +152,12 @@ struct ConstantHelper {
         image.clipsToBounds = true
     }
     
+    static func roundButton(_ target: UIButton, color: UIColor?){
+        target.layer.cornerRadius = 10.0
+        target.layer.borderWidth = 1.0
+        target.layer.borderColor = color?.cgColor        
+    }
+    
     static func getUserFont () -> String? {
         let defaultFontName = "Lato.ttf"
         return UserDefaults.standard.object(forKey: defaultFontName) as? String
