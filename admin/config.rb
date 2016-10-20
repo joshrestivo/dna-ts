@@ -7,7 +7,7 @@ set :js_dir, 'js'
 set :css_dir, 'css'
 
 page '/index.html', :layout => :template
-page '/main.html', :layout => :main_template
+page '/location.html', :layout => :main_template
 
 # Build-specific configuration
 configure :build do

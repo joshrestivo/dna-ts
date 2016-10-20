@@ -10,26 +10,30 @@ app.controller('loginController', function ($scope, $http) {
             return;
         }
 
-        showLoadingImage("div.login-container");
+        showLoadingImage();
         $.ajax({
         	url: SERVICE_BASE_URL + '/login',
         	type: 'POST',
         	data: JSON.stringify({username: $scope.user_name, password: $scope.password}),
         	contentType: 'application/json',
         	success: function(result){
-                hideLoading("div.login-container");
+        		alert(JSON.stringify(result));
+                hideLoading();
                 if (result.Success) {
                 	var return_url = getUrlParameter("return_url");
                     if (return_url != ""){
                     	window.location.herf = return_url;
                     }
                 } else {
+                	if(result.Data == "INCORRECT") {
+                		$scope.errorMessage = "Invalid login credantial";
+                	}
                 	processCommonExeption(result.Data, $scope);
                     $("#user_name").focus();
                 }
         	},
         	error: function(){
-            	hideLoading("div.login-container");
+            	hideLoading();
             	$scope.errorMessage = SERVER_ERROR_MSG;
         	}
         });
