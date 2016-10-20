@@ -61,7 +61,7 @@ class BaseViewController: UIViewController {
     func addDefaultNavUI(){
         self.navigationController!.navigationBar.isTranslucent = false
         self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
+        //self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
         self.navigationController!.navigationBar.tintColor = UIColor.white
     }
 }

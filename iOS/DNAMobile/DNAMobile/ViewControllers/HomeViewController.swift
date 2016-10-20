@@ -20,26 +20,10 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //requestServiceBtn.setRadiusConer()
-        //contentLbl.setRadiusConer()
-        ConstantHelper.roundButton(requestServiceBtn, color: ConstantHelper.defaultSessionTextColor)
+        ConstantHelper.roundButton(requestServiceBtn, color: ConstantHelper.buttonBorderColor, radius: 5)
         initScreen()
         initData()
-        contentLbl.text = "Sep. 30 - 7:00pm - Public lynching" + "\n" + "Oct 1 - 8:30pm - Town Sq. Clearnup" + "\n"  + "Oct 2 - City Council Meeting" 
-
-        /*
-        MBProgressHUD.showAdded(to: self.newCollectionView, animated: true)
-        ApiClient.sharedInstance.getNews { ( news) in
-            if news != nil {
-                self.news  = news
-                self.newCollectionView.reloadData()
-            }
-            
-            DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.newCollectionView, animated: true)
-            }
-        }
-        */
+        contentLbl.text = "Sep. 30 - 7:00pm - Public lynching" + "\n" + "Oct 1 - 8:30pm - Town Sq. Clearnup" + "\n"  + "Oct 2 - City Council Meeting"
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,8 +31,9 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func initScreen(){
-        self.navigationItem.title = "DNA"
+        self.navigationItem.title = "DNA App"
         viewRequestService.backgroundColor = ConstantHelper.redColor
+        
         addDefaultNavUI()
     }
     
@@ -85,23 +70,20 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         return CGSize( width: self.view.bounds.width, height: newCollectionView.bounds.size.height - 5)
-
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat{
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-        return 1
-    }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewCollectionViewCellID", for: indexPath) as! NewCollectionViewCell
         let new = news[indexPath.row]
         cell.titleLbl.text = new.title
         cell.contentLbl.text = new.content
-        cell.organizationLbl.text = "Cas Group"
+        if collectionView == self.newCollectionView {
+            cell.organizationLbl.text = "Cas Group - News"
+        }
+        else{
+            cell.organizationLbl.text = "Cas Group - Buletin"
+        }
+        
         if indexPath.row > 2 {
             cell.newImgView.downloadedFrom(link: new.imageUrl!)    
         }

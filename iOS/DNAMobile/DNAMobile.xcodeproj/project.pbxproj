@@ -24,6 +24,7 @@
 		AAAE98951DB62042009C6CD3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAAE988C1DB62042009C6CD3 /* OpenSans-Regular.ttf */; };
 		AAAE98961DB62042009C6CD3 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAAE988D1DB62042009C6CD3 /* OpenSans-Semibold.ttf */; };
 		AAAE98971DB62042009C6CD3 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAAE988E1DB62042009C6CD3 /* OpenSans-SemiboldItalic.ttf */; };
+		AAAE989E1DB78D1D009C6CD3 /* puletin.png in Resources */ = {isa = PBXBuildFile; fileRef = AAAE989D1DB78D1D009C6CD3 /* puletin.png */; };
 		AAB2E7671DAF6F200090EBC9 /* Lato.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7561DAF6F200090EBC9 /* Lato.ttf */; };
 		AAB2E7681DAF6F200090EBC9 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */; };
 		AAB2E7691DAF6F200090EBC9 /* Muli-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */; };
@@ -108,6 +109,7 @@
 		AAAE988C1DB62042009C6CD3 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		AAAE988D1DB62042009C6CD3 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		AAAE988E1DB62042009C6CD3 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		AAAE989D1DB78D1D009C6CD3 /* puletin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = puletin.png; sourceTree = "<group>"; };
 		AAB2E7561DAF6F200090EBC9 /* Lato.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lato.ttf; sourceTree = "<group>"; };
 		AAB2E7581DAF6F200090EBC9 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
 		AAB2E7591DAF6F200090EBC9 /* Muli-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		AAB2E74F1DAF6AB00090EBC9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AAAE989D1DB78D1D009C6CD3 /* puletin.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				AAB2E76F1DAF6F200090EBC9 /* Muli-Semi-BoldItalic.ttf in Resources */,
 				AAB2E7731DAF6F200090EBC9 /* Raleway-Bold.ttf in Resources */,
 				AAB2E76C1DAF6F200090EBC9 /* Muli-Italic.ttf in Resources */,
+				AAAE989E1DB78D1D009C6CD3 /* puletin.png in Resources */,
 				AAAE988F1DB62042009C6CD3 /* OpenSans-Bold-webfont.ttf in Resources */,
 				AAB2E7671DAF6F200090EBC9 /* Lato.ttf in Resources */,
 				C00AA19A1DA3F4F8000F7819 /* LaunchScreen.storyboard in Resources */,

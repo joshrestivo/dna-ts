@@ -50,43 +50,25 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="epK-0g-aqr">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="wRq-6H-0BX" userLabel="View Header">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-Vs-uOb">
-                                            <state key="normal" image="ic_close_36pt"/>
-                                            <connections>
-                                                <action selector="menuTap:" destination="XKM-dG-oXo" eventType="touchUpInside" id="Ib1-Vo-ntK"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.7725490196" green="0.1176470588" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="jmB-Vs-uOb" secondAttribute="trailing" constant="70" id="oUI-2h-E0C"/>
-                                        <constraint firstItem="jmB-Vs-uOb" firstAttribute="centerY" secondItem="wRq-6H-0BX" secondAttribute="centerY" constant="10" id="ygO-j7-x7O"/>
-                                    </constraints>
-                                </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0jt-aq-zxF" userLabel="HeaderView">
-                                    <rect key="frame" x="0.0" y="135" width="375" height="50"/>
+                                    <rect key="frame" x="0.0" y="71" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-tm-FsL">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="Dpe-Dq-ip7"/>
-                                                <constraint firstAttribute="width" constant="50" id="Swh-aF-FUe"/>
+                                                <constraint firstAttribute="height" constant="40" id="Dpe-Dq-ip7"/>
+                                                <constraint firstAttribute="width" constant="40" id="Swh-aF-FUe"/>
                                             </constraints>
                                             <state key="normal" image="twitter"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcA-jy-iRy">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="2gN-It-SpH"/>
-                                                <constraint firstAttribute="width" constant="50" id="CW8-Oe-ZXh"/>
+                                                <constraint firstAttribute="height" constant="40" id="2gN-It-SpH"/>
+                                                <constraint firstAttribute="width" constant="40" id="CW8-Oe-ZXh"/>
                                             </constraints>
                                             <state key="normal" image="facebook"/>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="CcA-jy-iRy" firstAttribute="leading" secondItem="LzA-tm-FsL" secondAttribute="trailing" constant="20" id="9lP-dQ-y5p"/>
                                         <constraint firstItem="LzA-tm-FsL" firstAttribute="centerY" secondItem="0jt-aq-zxF" secondAttribute="centerY" id="Lkm-lr-Kao"/>
@@ -96,7 +78,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCellID" id="BHw-eq-nRW" customClass="MenuTableViewCell" customModule="DNAMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="65" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BHw-eq-nRW" id="Zui-XL-6oS">
                                             <frame key="frameInset" width="375" height="69"/>
@@ -104,13 +86,13 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-k9-DYC">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="MWR-Wi-XBi"/>
-                                                        <constraint firstAttribute="height" constant="50" id="jP7-WQ-XCl"/>
+                                                        <constraint firstAttribute="width" constant="40" id="MWR-Wi-XBi"/>
+                                                        <constraint firstAttribute="height" constant="40" id="jP7-WQ-XCl"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DNA Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-gl-agF">
-                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
-                                                    <color key="textColor" red="0.77158717109999997" green="0.0" blue="0.09696237664" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="15"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -138,7 +120,7 @@
                         <constraints>
                             <constraint firstItem="nz6-le-DH7" firstAttribute="top" secondItem="epK-0g-aqr" secondAttribute="bottom" id="FZc-bx-0Eb"/>
                             <constraint firstItem="epK-0g-aqr" firstAttribute="leading" secondItem="joo-ve-jHs" secondAttribute="leading" id="U8W-oj-pcv"/>
-                            <constraint firstItem="epK-0g-aqr" firstAttribute="top" secondItem="Zje-Jm-bMC" secondAttribute="bottom" constant="-20" id="iSs-LF-8L9"/>
+                            <constraint firstItem="epK-0g-aqr" firstAttribute="top" secondItem="Zje-Jm-bMC" secondAttribute="bottom" id="iSs-LF-8L9"/>
                             <constraint firstAttribute="trailing" secondItem="epK-0g-aqr" secondAttribute="trailing" id="nv6-Wp-4Am"/>
                         </constraints>
                     </view>
@@ -147,7 +129,6 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="epK-0g-aqr" id="OdS-oA-ej4"/>
-                        <outlet property="viewHeader" destination="wRq-6H-0BX" id="sjI-CT-PMZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ga2-lJ-62A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -667,7 +648,6 @@
     <resources>
         <image name="facebook" width="234" height="232"/>
         <image name="ic_add_alert" width="24" height="24"/>
-        <image name="ic_close_36pt" width="27" height="27"/>
         <image name="icon-right-arrow.png" width="24" height="24"/>
         <image name="twitter" width="256" height="256"/>
     </resources>
