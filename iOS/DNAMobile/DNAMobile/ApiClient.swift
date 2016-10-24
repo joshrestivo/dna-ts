@@ -54,17 +54,17 @@ class ApiClient: NSObject {
         task.resume()
     }
     
-    func getNews(callback:@escaping ([New]?) -> ()) -> () {
+    func getNews(callback:@escaping ([News]?) -> ()) -> () {
         let urlNew = "http://www.saintlouisdna.org/category/News/feed"
         downloadXMLDataFromUrl(url: urlNew) { (successs, data) in
             if successs {
-                var news = [New]()
+                var news = [News]()
                 if let dict = data as? [String: Any] {
                     if let dictChannle = dict["channel"] as? [String: Any]{
                         if let items = dictChannle["item"] as? [[String: Any]] {
                             
                             for item in items {
-                                news.append(New(imageUrl: "http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png", title: item["title"] as! String, content: item["content:encoded"] as! String))
+                                news.append(News(imageUrl: "http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png", title: item["title"] as! String, content: item["content:encoded"] as! String))
                                 //http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png
                             }
 //                            print("item \(items)")

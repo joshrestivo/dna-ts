@@ -13,7 +13,11 @@ struct ConstantHelper {
     
     //Table color
     
-    static var redColor = UIColor(red: 197.0 / 255.0, green: 30 / 255.0, blue: 58 / 255.0, alpha: 1.0)
+    static var redColor = UIColor(red: 211 / 255.0, green: 55 / 255.0, blue: 42 / 255.0, alpha: 1)
+    
+    static var borderColor = UIColor(red: 236 / 255.0, green: 236 / 255.0, blue: 236 / 255.0, alpha: 1)
+    
+    static var buttonBorderColor = UIColor(red: 144 / 255.0, green: 31 / 255.0, blue: 24 / 255.0, alpha: 1)
     
     static var defaultTextColor = UIColor(red: 50.0/255.0, green: 128.0/255.0, blue: 202.0/255, alpha: 1)
     
@@ -150,6 +154,12 @@ struct ConstantHelper {
         image.layer.borderWidth = CGFloat(borderWidth)
         image.layer.cornerRadius = image.frame.size.width / 2
         image.clipsToBounds = true
+    }
+    
+    static func roundButton(_ target: UIButton, color: UIColor?, radius: CGFloat){
+        target.layer.cornerRadius = radius
+        target.layer.borderWidth = 1
+        target.layer.borderColor = color?.cgColor        
     }
     
     static func getUserFont () -> String? {

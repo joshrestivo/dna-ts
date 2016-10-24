@@ -10,6 +10,8 @@ import UIKit
 
 class NewCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var organizationLbl: UILabel!
+    
     @IBOutlet weak var newImgView: UIImageView!
     
     @IBOutlet weak var titleLbl: UILabel!
@@ -18,7 +20,7 @@ class NewCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.setRadiusConer()
+        //self.contentView.setRadiusConer()
     }
 //    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes!) {
 //        super.apply(layoutAttributes)

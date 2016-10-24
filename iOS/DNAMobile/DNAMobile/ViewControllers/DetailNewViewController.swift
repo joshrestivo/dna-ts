@@ -13,7 +13,7 @@ class DetailNewViewController: BaseViewController {
     @IBOutlet weak var webview: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        webview.loadRequest(URLRequest(url: URL(string:"http://www.saintlouisdna.org/september-happy-hour-at-busch/")!))
+        webview.loadRequest(URLRequest(url: URL(string:"http://www.downtownstl.org/downtown-street-alert-38/")!))
     }
 
     override func didReceiveMemoryWarning() {

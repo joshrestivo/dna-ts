@@ -8,9 +8,8 @@
 
 import UIKit
 
-class MenuViewController: BaseViewController {
-
-    @IBOutlet weak var viewHeader: UIView!
+class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     
     let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt"),
@@ -22,7 +21,6 @@ class MenuViewController: BaseViewController {
     
     override func viewDidLoad()
     {
-        viewHeader.backgroundColor = ConstantHelper.redColor
         super.viewDidLoad()
     }
     
@@ -31,13 +29,7 @@ class MenuViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func menuTap(_ sender: AnyObject) {
-        self.revealViewController().revealToggle(animated: true)
-    }
-}
-extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
-    // MARK: - Table view data source
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return menuItems.count;
     }
@@ -54,8 +46,12 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
 //        cell.iconImageView.tintColor = 
 
         return cell
-      
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
