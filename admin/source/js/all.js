@@ -55,12 +55,18 @@ function gotoLoginPage(){
 	window.location.href = "/index.html?return_url=" + encodeURIComponent(return_url);
 }
 
-function processCommonExeption(errorCode, $scope){
+function gotoPage(pageName) {
+	window.location.href = "/"+ pageName + ".html";
+}
+
+function processCommonExeption(errorCode, $scope){	
 	if (errorCode.indexOf("SYSTEM_ERROR") === 0) {
         $scope.errorMessage = SERVER_ERROR_MSG;
     } else if (errorCode == "INVALID_SESSION"){
     	alert(SESSION_EXPIRE_MSG);
         gotoLoginPage();
+    } else {
+    	$scope.errorMessage = SERVER_ERROR_MSG;
     }
 }
 

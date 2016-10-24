@@ -54,16 +54,16 @@
   <div class="site-body">
   	<div class="main">
   		<div class="left-side">
-	    	<nav>
+	    	<nav role="navigation">
 	    		<ul class="nav">
 	    			<li>
 	    				<a href="#">
-	    					<span>Location</span>
+	    					<span>Locations</span>
 	    				</a>	    				
 	    			</li>
 	    			<li>
 	    				<a href="#">
-	    					<span>Alert Type</span>
+	    					<span>Alert Types</span>
 	    				</a>	
     				</li>    
     				<li>
@@ -73,7 +73,7 @@
     				</li>   
     				<li>
 	    				<a href="#">
-	    					<span>Client Resource</span>
+	    					<span>Client Resources</span>
 	    				</a>	
     				</li>   				
 	    		</ul>
@@ -89,3 +89,9 @@
   </div>
 </body>
 </html>
+<script language="javascript" type="text/javascript">	
+	$('.nav li').click(function() {		
+	     $(".nav").find(".active").removeClass("active");
+  		 $(this).addClass("active");
+  	});
+</script>
