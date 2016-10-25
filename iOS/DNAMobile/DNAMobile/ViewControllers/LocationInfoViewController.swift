@@ -47,7 +47,7 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = self.data[(indexPath as NSIndexPath).row]
-        pustToNewsDetail()
+        self.navigateToView("sbNewsDetail")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){

@@ -12,12 +12,12 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var tableView: UITableView!
     
-    let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt"),
-                     MenuItem(title: "Upcoming Events",imageName: "ic_event_36pt"),
-                     MenuItem(title: "Request Service",imageName: "ic_assignment_36pt"),
-                     MenuItem(title: "Location Info",imageName: "ic_info_outline_36pt"),
-                     MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt"),
-                     MenuItem(title: "Settings",imageName: "ic_settings_36pt")]
+    let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
+                     MenuItem(title: "Upcoming Events",imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
+                     MenuItem(title: "Request Service",imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
+                     MenuItem(title: "Location Info",imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
+                     MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
+                     MenuItem(title: "Settings",imageName: "ic_settings_36pt",type: MenuItemType.leftMenuSetting)]
     
     override func viewDidLoad()
     {
@@ -26,7 +26,6 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -39,12 +38,7 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellID") as! MenuTableViewCell
         let item = menuItems[indexPath.row]
         cell.titleLabel.text = item.title
-        
-//        let image = UIImage(named: item.imageName)?.withRenderingMode(.alwaysTemplate)
-//        button.tintColor = UIColor.redColor()
         cell.iconImageView.image =  UIImage(named: item.imageName)?.withRenderingMode(.alwaysTemplate)
-//        cell.iconImageView.tintColor = 
-
         return cell
     }
     
@@ -94,11 +88,7 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
             break
         default:
             break
-        }
-       
+        }       
     }
 }
-struct MenuItem {
-    var title:String
-    var imageName:String
-}
+

@@ -30,6 +30,10 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func requestService(_ sender: AnyObject) {
+        self.navigateToView("sbNewsDetail")
+    }
+    
     func initScreen(){
         self.navigationItem.title = "DNA App"
         viewRequestService.backgroundColor = ConstantHelper.redColor
