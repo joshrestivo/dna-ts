@@ -10,7 +10,7 @@ app.controller('loginController', function ($scope, $http) {
 	            .success(function (result) {
 	                hideLoading();
 	                if (result.success) {
-	                	gotoPage("locations");
+	                	gotoPage("client_resources");
 	                } else {
 	                	if(result.data == "INCORRECT") {                	
 	                		$scope.errorMessage  = "Invalid login credantial";

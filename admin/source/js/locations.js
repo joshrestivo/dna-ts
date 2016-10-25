@@ -17,5 +17,7 @@ app.controller('locationController', function ($scope, $http) {
    		{ Name:"Location9", City:"New York", State:"State", Longitute: "-74.005941", Latitute: "40.712784"},
    		{ Name:"Location10", City:"New York", State:"State", Longitute: "-74.005941", Latitute: "40.712784"}		
    	];
+   	
+   	$(".nav li.tab_locations").addClass("active"); 
 });
 angular.bootstrap(document.getElementById("locations"), ['locations']);

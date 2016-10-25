@@ -1,4 +1,4 @@
-
+@import "font-awesome.css";
 .loading {
 	position: absolute; 
 	top: 0; 
@@ -73,17 +73,33 @@
     position: relative;
     margin-left:250px;
 }
-.location {
+.locations {
 	padding: 20px;
 }
-.location .locations-table .paginations {
+.locations .locations-table .edit-resource{
+	background-color: #2C3E50;
+    padding: 4px;
+    color: white;
+}
+.locations .locations-table .delete-resource{
+	background-color: red;
+    padding: 4px;
+    color: white;
+}
+.locations .locations-table .paginations {
 	overflow: auto;
 }
-.location .locations-table .paginations .total{ 
+.locations .locations-table .paginations .total{ 
 	float: right;
 	text-align:right;
 }
 
 table th{
 	text-align: center
+}
+table thead{
+	background-color:#2C3E50;
+}
+table thead th {
+	color: #18bc9c;
 }

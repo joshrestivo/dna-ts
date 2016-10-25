@@ -1,0 +1,35 @@
+<div id="client_resource" class="locations" ng-controller="clientResourceController">
+	<div class="locations-table">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>DisplayText</th>		
+					<th width="90px">New</th>			
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="clientResource in clientResources">
+                        <td ng-bind="clientResource.Name"></td>
+                        <td ng-bind="clientResource.DisplayText"></td>    
+                        <td align="center">
+                        	<a class="edit-resource" href="#"><i class="fa fa-pencil-square-o"></i></a>   
+                        	<a class="delete-resource" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
+                        </td>                                           
+                    </tr>
+			</tbody>
+		 </table>
+		 <div class="paginations">
+            <div class="col-md-6">
+                <uib-pagination boundary-links="true" total-items="TotalItems" ng-change="pageChanged(currentPage)" max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            </div>
+            <div class="col-md-6 total">
+                <span>Total:</span>
+                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      
+	</div>
+</div>
+<script language="javascript" src="js/client_resources.js"></script>
+
+	
