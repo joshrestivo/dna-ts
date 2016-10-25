@@ -1,6 +1,8 @@
 package cas_group.com.dnamobile;
 
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,7 +18,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import cas_group.com.dnamobile.apdater.LeftMenuAdapter;
+import cas_group.com.dnamobile.apdater.NewsAdapter;
 import cas_group.com.dnamobile.models.LeftMenuItem;
+import cas_group.com.dnamobile.models.News;
 
 public class MainActivity extends BaseAppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -24,6 +28,27 @@ public class MainActivity extends BaseAppCompatActivity
     protected void onInitControls() {
         _drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         _uiLvLeftMenu = (ListView) findViewById(R.id.uiLvLeftMenu);
+        _uiHomeNewLvl = (RecyclerView) findViewById(R.id.uiLvHomeNew);
+        _uiHomeBulletin = (RecyclerView) findViewById(R.id.uiLvBulletin);
+//        _uiHomeBulletin
+        LinearLayoutManager horizontalLayoutManagaer
+                = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        _uiHomeNewLvl.setLayoutManager(horizontalLayoutManagaer);
+
+        LinearLayoutManager horizontalLayoutManagaerBulletin
+                = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+
+        _uiHomeBulletin.setLayoutManager(horizontalLayoutManagaerBulletin);
+
+        _news = new ArrayList<>();
+        _news.add(new News("test", "test", "test"));
+        _news.add(new News("test", "test", "test"));
+        _news.add(new News("test", "test", "test"));
+
+        _newsAdapter = new NewsAdapter(_news);
+        _uiHomeNewLvl.setAdapter(_newsAdapter);
+        _uiHomeBulletin.setAdapter(_newsAdapter);
+
     }
     @Override
     protected void onRegisterEvents() {
@@ -63,7 +88,6 @@ public class MainActivity extends BaseAppCompatActivity
         menuItems.add(new LeftMenuItem("Street Alerts",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_add_alert_black_36dp)));
         menuItems.add(new LeftMenuItem("Settings",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_settings_black_36dp)));
         LeftMenuAdapter adapter = new LeftMenuAdapter(this, menuItems);
-//        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.list_item_leftmenu,menuItems);
 
         _uiLvLeftMenu.setAdapter(adapter);
 
@@ -150,8 +174,16 @@ public class MainActivity extends BaseAppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+    //UI
     private ListView _uiLvLeftMenu;
     private DrawerLayout _drawerLayout;
+    private RecyclerView _uiHomeNewLvl;
+    private RecyclerView _uiHomeBulletin;
 
+    //variable
+    private ArrayList<News> _news;
+    private ArrayList<News> _bulletin = new ArrayList<>();
+
+    private NewsAdapter _newsAdapter;
+    private NewsAdapter _bulletinAdapter;
 }

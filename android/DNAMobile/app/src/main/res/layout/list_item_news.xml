@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        app:srcCompat="@drawable/default_test"
+        android:id="@+id/imageView"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_height="140dp" />
+
+    <TextView
+        android:text="TextView asdfasdf alsdf asdlf asldfkj alksdfj alskdfj alsdfj laksdjf laskdjfl akjsdflkajsdf lakjsdf lakjsdf lajksdf lakdjsf kasdjf asdkf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+</LinearLayout>

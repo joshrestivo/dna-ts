@@ -13,8 +13,29 @@
     tools:context="cas_group.com.dnamobile.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/uiLvHomeNew"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        />
+
+    <LinearLayout
+        android:id="@+id/uiPnlCenter"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/uiLvHomeNew"
+        android:layout_height="100dp"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"></LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/uiLvBulletin"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/uiPnlCenter"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light" />
 </RelativeLayout>
