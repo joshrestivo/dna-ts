@@ -47,20 +47,27 @@ function getUrlParameter(sParam) {
 
 function gotoLoginPage(){
 	var return_url = location.pathname;
+	alert(return_url);
 	if (location.seach != "" && location.search != null){
 		return_url += location.search;
 	}
 	
 	// Redirect to login page
-	window.location.href = "/index.html?return_url=" + encodeURIComponent(return_url);
+	window.location.href = "/login.html?return_url=" + encodeURIComponent(return_url);
 }
 
-function processCommonExeption(errorCode, $scope){
+function gotoPage(pageName) {
+	window.location.href = "/"+ pageName + ".html";
+}
+
+function processCommonExeption(errorCode, $scope){	
 	if (errorCode.indexOf("SYSTEM_ERROR") === 0) {
         $scope.errorMessage = SERVER_ERROR_MSG;
     } else if (errorCode == "INVALID_SESSION"){
     	alert(SESSION_EXPIRE_MSG);
         gotoLoginPage();
+    } else {
+    	$scope.errorMessage = SERVER_ERROR_MSG;
     }
 }
 
@@ -68,12 +75,13 @@ function processCommonExeption(errorCode, $scope){
 var cookie = Cookies.get('TOWNSQUARE_ADMIN');
 var host = window.location.host;
 var current_url = window.location.href;
+
 if (cookie == null && 
 	!current_url.endsWith(host) && 
-	!current_url.endsWith(host + "/index.html") &&
+	!current_url.endsWith(host + "/login.html") &&
 	current_url.indexOf(host + "?") == -1 &&
-	current_url.indexOf(host + "/index.html?") == -1){
-	gotoLoginPage();
+	current_url.indexOf(host + "/login.html?") == -1){
+	//gotoLoginPage();
 }
 
 // Define global variables

@@ -8,36 +8,27 @@
 
 import UIKit
 
-class MenuViewController: BaseViewController {
-
-    @IBOutlet weak var viewHeader: UIView!
+class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     
-    let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt"),
-                     MenuItem(title: "Upcoming Events",imageName: "ic_event_36pt"),
-                     MenuItem(title: "Request Service",imageName: "ic_assignment_36pt"),
-                     MenuItem(title: "Location Info",imageName: "ic_info_outline_36pt"),
-                     MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt"),
-                     MenuItem(title: "Settings",imageName: "ic_settings_36pt")]
+    let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
+                     MenuItem(title: "Upcoming Events",imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
+                     MenuItem(title: "Request Service",imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
+                     MenuItem(title: "Location Info",imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
+                     MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
+                     MenuItem(title: "Settings",imageName: "ic_settings_36pt",type: MenuItemType.leftMenuSetting)]
     
     override func viewDidLoad()
     {
-        viewHeader.backgroundColor = ConstantHelper.redColor
         super.viewDidLoad()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func menuTap(_ sender: AnyObject) {
-        self.revealViewController().revealToggle(animated: true)
-    }
-}
-extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
-    // MARK: - Table view data source
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return menuItems.count;
     }
@@ -47,15 +38,14 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellID") as! MenuTableViewCell
         let item = menuItems[indexPath.row]
         cell.titleLabel.text = item.title
-        
-//        let image = UIImage(named: item.imageName)?.withRenderingMode(.alwaysTemplate)
-//        button.tintColor = UIColor.redColor()
         cell.iconImageView.image =  UIImage(named: item.imageName)?.withRenderingMode(.alwaysTemplate)
-//        cell.iconImageView.tintColor = 
-
         return cell
-      
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
@@ -98,11 +88,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource{
             break
         default:
             break
-        }
-       
+        }       
     }
 }
-struct MenuItem {
-    var title:String
-    var imageName:String
-}
+

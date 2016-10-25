@@ -1,0 +1,26 @@
+<div class="login-container">
+	<form id="login" name="login" ng-controller="loginController">
+        <div class="form-group">
+            <input type="text" id="user_name" class="form-control" name="username" placeholder="User name" ng-model="Model.username" required
+            	   uib-tooltip="{{(loginController.username.$error.required)?'This field is required.':''}}"
+                   tooltip-enable="!Model.username"
+                   tooltip-placement="bottom" tooltip-trigger="mouseenter" />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" ng-model="Model.password" required
+             	   uib-tooltip="{{(loginController.password.$error.required)?'This field is required.':''}}"
+                   tooltip-enable="!Model.password"
+                   tooltip-placement="bottom" tooltip-trigger="mouseenter" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="authenticate()">Login</button>
+        </div>
+        <div class="form-group">
+            <div ng-bind="errorMessage" class="text-danger" ng-show="errorMessage"></div>
+        </div>
+    </form>
+</div>
+<script language="javascript" src="js/login.js"></script>
+<script language="javascript" type="text/javascript">	
+	angular.bootstrap(document.getElementById("login"), ['login']);
+</script>

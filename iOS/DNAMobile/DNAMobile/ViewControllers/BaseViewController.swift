@@ -15,13 +15,6 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Left
-        self.navigationController?.navigationItem.leftBarButtonItem?.tintColor = ConstantHelper.redColor
-        self.navigationItem.leftBarButtonItem?.tintColor = ConstantHelper.redColor
-        
-        //right
-        self.navigationController?.navigationBar.tintColor = ConstantHelper.whiteColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :ConstantHelper.whiteColor]
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,25 +36,29 @@ class BaseViewController: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
-    public func addLeftBarButtonWithImage(buttonImage: UIImage, action: Selector?) {
-        let leftButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action: action)
-        navigationItem.leftBarButtonItem = leftButton;
-    }
-    
-    public func addRightBarButtonWithImage(buttonImage: UIImage, action: Selector?) {
-        let rightButton: UIBarButtonItem = UIBarButtonItem(image: buttonImage, style: .plain, target: self, action:action)
-        navigationItem.rightBarButtonItem = rightButton;
-    }
-    
-    func pustToNewsDetail() {        
-        let secondViewController = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+    func navigateToView(_ storyboardId: String) {
+        
+        let toView: UIViewController!
+        switch storyboardId {
+            case "sbNewsDetail" :
+                toView = self.sbHome.instantiateViewController(withIdentifier: storyboardId) as! DetailNewViewController
+            
+            default: toView = self
+        }
+        
+        if toView == self {
+            return
+        }
+        
+        self.navigationController?.pushViewController(toView, animated: true)
     }
     
     func addDefaultNavUI(){
+        self.navigationController?.navigationBar.tintColor = ConstantHelper.whiteColor
         self.navigationController!.navigationBar.isTranslucent = false
         self.navigationController!.navigationBar.barTintColor = ConstantHelper.redColor
-        self.navigationController!.navigationBar.backgroundColor = ConstantHelper.redColor
         self.navigationController!.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName :ConstantHelper.whiteColor]
+
     }
 }

@@ -13,6 +13,9 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     @IBOutlet weak var lblEmptyMessage: UILabel!
     @IBOutlet weak var userTableView: UITableView!
     var data = [BuildingLocation]()
+    var searchValue = ""
+    var pageNumber = 1
+    var isSearchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +47,26 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = self.data[(indexPath as NSIndexPath).row]
-        pustToNewsDetail()
+        self.navigateToView("sbNewsDetail")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        self.view.endEditing(true)
+        searchValue = searchBar.text!
+        pageNumber = 1
+        self.getDataSource()
+        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        pageNumber = 1
+        searchValue = ""
+        isSearchMode = false
+        self.view.endEditing(true)
+        self.data.removeAll(keepingCapacity: false)
+        self.getDataSource()
     }
     
     func initScreen(){

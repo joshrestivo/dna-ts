@@ -28,6 +28,8 @@ GEM
     fastimage (2.0.0)
       addressable (~> 2)
     ffi (1.9.14)
+    font-awesome-middleman (4.2.1)
+      middleman-core (>= 3.0.0)
     haml (4.0.7)
       tilt
     hamster (3.0.0)
@@ -87,7 +89,6 @@ GEM
       activesupport (>= 3.1)
     parallel (1.9.0)
     rack (1.6.4)
-    rack-cors (0.4.0)
     rack-livereload (0.3.16)
       rack
     rb-fsevent (0.9.7)
@@ -107,9 +108,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  font-awesome-middleman
   middleman (>= 4.0.0)
   middleman-livereload (~> 3.4.3)
-  rack-cors
   tzinfo-data
   wdm (~> 0.1.0)
 

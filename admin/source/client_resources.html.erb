@@ -1,22 +1,21 @@
-<div id="locations" class="location" ng-controller="locationController">
+<div id="client_resource" class="client_resource" ng-controller="clientResourceController">
 	<div class="locations-table">
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>City</th>
-					<th>State</th>
-					<th>Longitute</th>
-					<th>Latitude</th>
+					<th>DisplayText</th>		
+					<th width="90px">New</th>			
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="location in locations">
-                        <td ng-bind="location.Name"></td>
-                        <td ng-bind="location.City"></td>
-                        <td ng-bind="location.State +' '+ item.PhoneNumber"></td>
-                        <td ng-bind="location.Longitute"></td>
-                        <td ng-bind="location.Latitute"></td>     
+				<tr ng-repeat="clientResource in clientResources">
+                        <td ng-bind="clientResource.Name"></td>
+                        <td ng-bind="clientResource.DisplayText"></td>    
+                        <td align="center">
+                        	<a class="td-edit" href="#"><i class="fa fa-pencil-square-o"></i></a>   
+                        	<a class="td-delete" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
+                        </td>                                           
                     </tr>
 			</tbody>
 		 </table>
@@ -31,6 +30,6 @@
         </div>      
 	</div>
 </div>
-<script language="javascript" src="js/locations.js"></script>
+<script language="javascript" src="js/client_resources.js"></script>
 
 	
