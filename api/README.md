@@ -14,9 +14,13 @@
 #####**ClientResource**
 ```csharp
 {
-    "country_code": "US",
-    "unique_name": "lblLogin",
-    "display_text": "Login"
+    "id": 1,
+    "name": "English Suite",
+    "is_default": "true",
+    "details":[{
+    	"unique_name": "lblName",
+    	"display_text": "Any text"
+    }]
 }
 ```
 #####**Country**
@@ -58,7 +62,8 @@ POST: <HOST>/api/1.0/admin/countries
 #**For administration tool**
 [1. Login](#1-login)  
 [2. Logout](#2-logout)  
-[3. Create/update client UI resource](#3-createupdate-client-ui-resource)  
+[3. Get all resources](#3-get-all-resources)
+[4. Create/update client UI resource](#3-createupdate-client-ui-resource)  
 [4. Delete client UI resource](#4-delete-client-ui-resource)  
 [5. Update alert types](#5-update-alert-types)  
 
@@ -80,6 +85,13 @@ POST: <HOST>/api/1.0/admin/login
 GET: <HOST>/api/1.0/admin/logout  
 ######**Response:**
 - {success=true, data=null}
+
+####**3. Get all resources**
+GET: <HOST>/api/1.0/admin/resources  
+######**Response:**
+- {success=true, data=[ClientResource](#clientresource) collection}
+- {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
+- {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**3. Create/update client UI resource**
 POST: <HOST>/api/1.0/admin/resource/save  

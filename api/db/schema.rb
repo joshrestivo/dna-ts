@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910200000) do
+ActiveRecord::Schema.define(version: 20161026200000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,12 +59,19 @@ ActiveRecord::Schema.define(version: 20160910200000) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "client_resources", force: :cascade do |t|
-    t.string   "country_code"
+  create_table "client_resource_details", id: :bigserial, force: :cascade do |t|
+    t.integer  "client_resource_id", limit: 8
     t.string   "unique_name"
     t.string   "display_text"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "client_resources", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "is_default", default: false
   end
 
   create_table "countries", force: :cascade do |t|
@@ -106,8 +113,9 @@ ActiveRecord::Schema.define(version: 20160910200000) do
     t.boolean  "has_street_alerts"
     t.string   "created_by"
     t.string   "updated_by"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "client_resource_id",         limit: 8
   end
 
   create_table "news_feeds", id: :bigserial, force: :cascade do |t|
