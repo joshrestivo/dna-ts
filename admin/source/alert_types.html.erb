@@ -1,5 +1,5 @@
-<div id="locations" class="locations" ng-controller="locationController">
-	<div class="locations-table">
+<div id="alert_types" class="alert_types" ng-controller="alertTypesController">
+	<div class="alert-types-table">
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
@@ -11,12 +11,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="location in locations">
-                        <td ng-bind="location.Name"></td>
-                        <td ng-bind="location.City"></td>
-                        <td ng-bind="location.State +' '+ item.PhoneNumber"></td>
-                        <td ng-bind="location.Longitute"></td>
-                        <td ng-bind="location.Latitute"></td>     
+				<tr ng-repeat="alertType in alertTypes">
+                        <td ng-bind="alertType.Name"></td>
+                        <td ng-bind="alertType.City"></td>
+                        <td ng-bind="alertType.State +' '+ item.PhoneNumber"></td>
+                        <td ng-bind="alertType.Longitute"></td>
+                        <td ng-bind="alertType.Latitute"></td>     
                     </tr>
 			</tbody>
 		 </table>
@@ -31,6 +31,6 @@
         </div>      
 	</div>
 </div>
-<script language="javascript" src="js/locations.js"></script>
+<script language="javascript" src="js/alert_types.js"></script>
 
 	

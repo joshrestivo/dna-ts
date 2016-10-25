@@ -73,23 +73,23 @@
     position: relative;
     margin-left:250px;
 }
-.locations {
+.locations, .alert_types, .client_resource {
 	padding: 20px;
 }
-.locations .locations-table .edit-resource{
+.td-edit{
 	background-color: #2C3E50;
     padding: 4px;
     color: white;
 }
-.locations .locations-table .delete-resource{
+.td-delete{
 	background-color: red;
     padding: 4px;
     color: white;
 }
-.locations .locations-table .paginations {
+.paginations {
 	overflow: auto;
 }
-.locations .locations-table .paginations .total{ 
+.paginations .total{ 
 	float: right;
 	text-align:right;
 }
