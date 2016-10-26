@@ -1,5 +1,5 @@
-angular.module('app').controller('locationController', ['$scope', '$http', function ($scope, $http) {
-    $scope.maxSize = 5; 
+angular.module('app').controller('locationController',  ['$scope', '$http', function ($scope, $http) {
+   $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    
    	$scope.TotalItems = 1;

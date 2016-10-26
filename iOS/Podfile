@@ -1,7 +1,7 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'DNAMobile' do
+target 'TownSquare' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -19,7 +19,7 @@ post_install do |installer|
         end
     end
 end
-  target 'DNAMobileTests' do
+  target 'TownSquareTests' do
     inherit! :search_paths
     # Pods for testing
   end

@@ -1,4 +1,4 @@
-angular.module('app').controller('loginController', ['$scope', '$http', function ($scope, $http) {
+angular.module('app').controller('loginController',  ['$scope', '$http', function ($scope, $http) {
     $scope.Model = {};
     
     $("#user_name").focus();

@@ -1,4 +1,4 @@
-angular.module('app').controller('clientResourceController', ['$scope', '$http', function ($scope, $http) {
+angular.module('app').controller('clientResourceController',  ['$scope', '$http', function ($scope, $http) {
     $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    
