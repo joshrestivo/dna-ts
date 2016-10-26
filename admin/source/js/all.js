@@ -71,8 +71,30 @@ function processCommonExeption(errorCode, $scope){
     }
 }
 
+function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+
 // Check for authentication cookie
-var cookie = Cookies.get('TOWNSQUARE_ADMIN');
+var cookie = readCookie('TOWNSQUARE_ADMIN');
 var host = window.location.host;
 var current_url = window.location.href;
 
@@ -81,7 +103,7 @@ if (cookie == null &&
 	!current_url.endsWith(host + "/login.html") &&
 	current_url.indexOf(host + "?") == -1 &&
 	current_url.indexOf(host + "/login.html?") == -1){
-	//gotoLoginPage();
+	gotoLoginPage();
 }
 
 // Define global variables
