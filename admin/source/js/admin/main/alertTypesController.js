@@ -1,4 +1,4 @@
-angular.module('app').controller('alertTypesController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
+angular.module('app').controller('alertTypesController',  ['$scope', '$http', function ($scope, $http) {
     $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    

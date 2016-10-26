@@ -1,6 +1,5 @@
 angular.module('app').controller('clientResourceController',  ['$scope', '$http', function ($scope, $http) {    
-   
-   	
+      	
    	$http.get(SERVICE_BASE_URL + '/resources')
 	        .success(function (result) {	                
 	            if (result.success) {

@@ -1,5 +1,3 @@
-angular.module('app', ['ui.bootstrap']);
-
 function showLoading(selector, message, width, left) {
     $(selector).block({
         message: message,
