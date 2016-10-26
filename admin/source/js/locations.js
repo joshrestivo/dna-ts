@@ -1,5 +1,4 @@
-var app = angular.module("locations", ['ui.bootstrap']);
-app.controller('locationController', function ($scope, $http) {
+angular.module('app').controller('locationController', ['$scope', '$http', function ($scope, $http) {
     $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    
@@ -19,5 +18,4 @@ app.controller('locationController', function ($scope, $http) {
    	];
    	
    	$(".nav li.tab_locations").addClass("active"); 
-});
-angular.bootstrap(document.getElementById("locations"), ['locations']);
+}]);
