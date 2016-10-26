@@ -11,19 +11,19 @@ import java.util.List;
 
 import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.models.News;
+import cas_group.com.dnamobile.models.UpcomingEvent;
 
 /**
  * Created by kuccu on 10/25/16.
  */
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-    private Context _context;
-    private List<News> horizontalList;
+public class UpcomingEventAdapter extends RecyclerView.Adapter<UpcomingEventAdapter.ViewHolder> {
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtView;
 
-        public NewsViewHolder(View view) {
+        public ViewHolder(View view) {
             super(view);
 //            txtView = (TextView) view.findViewById(R.id.txtView);
 
@@ -32,21 +32,21 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
 
 
-    public NewsAdapter(Context context, List<News> horizontalList) {
-        this.horizontalList = horizontalList;
+    public UpcomingEventAdapter(Context context, List<UpcomingEvent> horizontalList) {
         _context = context;
+        this.items = horizontalList;
     }
 
     @Override
-    public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_news, parent, false);
+                .inflate(R.layout.list_item_upcoming, parent, false);
 
-        return new NewsViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final NewsViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 //        holder.txtView.setText(horizontalList.get(position));
 
 //        holder.txtView.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +59,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public int getItemCount() {
-        return horizontalList.size();
+        return items.size();
     }
+
+    private List<UpcomingEvent> items;
+    private Context _context;
 }

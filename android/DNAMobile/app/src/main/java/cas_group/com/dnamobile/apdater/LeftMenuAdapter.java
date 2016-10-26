@@ -46,13 +46,21 @@ public class LeftMenuAdapter extends ArrayAdapter<LeftMenuItem>{
         LeftMenuItem item = _dataSource.get(position);
         holder.uiLblName.setText(item.getTitle());
         holder.uiImageAvatar.setImageDrawable(item.getDrawable());
+        if (_selectedPosition == position) {
+            convertView.setBackgroundColor(_context.getResources().getColor(android.R.color.darker_gray));
+        }else{
+            convertView.setBackgroundColor(_context.getResources().getColor(R.color.colorWhite));
+        }
         return convertView;
+    }
+    public void setSelectedItem(int position) {
+        _selectedPosition = position;
     }
 
     private ArrayList<LeftMenuItem> _dataSource;
     private Context _context;
     private LayoutInflater _inflater;
-
+    private int _selectedPosition = 0;
     private static class ViewHolder {
         public TextView uiLblName;
         public ImageView uiImageAvatar;
