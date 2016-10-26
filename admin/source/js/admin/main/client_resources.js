@@ -1,5 +1,4 @@
-var app = angular.module("client_resource", ['ui.bootstrap']);
-app.controller('clientResourceController', function ($scope, $http) {
+angular.module('app').controller('clientResourceController',  ['$scope', '$http', function ($scope, $http) {
     $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    
@@ -19,5 +18,4 @@ app.controller('clientResourceController', function ($scope, $http) {
    	];
    	
     $(".nav li.tab_client_resources").addClass("active");       
-});
-angular.bootstrap(document.getElementById("client_resource"), ['client_resource']);
+}]);

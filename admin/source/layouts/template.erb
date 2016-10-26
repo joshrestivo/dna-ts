@@ -23,35 +23,39 @@
   <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
   <link rel="manifest" href="images/icons/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/all.css" rel="stylesheet">
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/angular-block-ui.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/ngDialog.css" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
   
-  <script src="js/jquery-2.2.4.min.js" language="javascript"></script>
-  <script src="js/bootstrap.min.js" language="javascript"></script>
-  <script src="js/angular.min.js" language="javascript"></script>  
-  <script src="js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
-  <script src="js/jquery.blockUI.js" language="javascript"></script>
-  <script src="js/js.cookie.js" language="javascript"></script>  
-  <script src="js/all.js" language="javascript"></script>  
+  <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
+  <script src="/js/bootstrap.min.js" language="javascript"></script>
+  <script src="/js/angular.min.js" language="javascript"></script>
+  <script src="/js/ngDialog.min.js" language="javascript"></script>
+  <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
+  <script src="/js/angular-block-ui.min.js" language="javascript"></script>
+  <script src="/js/admin/app.js" language="javascript"></script>
+  <script src="/js/admin/directives.js" language="javascript"></script>  
+  <script src="/js/js.cookie.js" language="javascript"></script>  
+  <script src="/js/all.js" language="javascript"></script>  
 </head>
-<body>
-	 <div class="loading">
-		<div class="header">
-		    <div class="logo col-md-4">
-		      <img src="images/logo.png" />
-		    </div>
-		    <div class="col-md-4">
-		      <p class="text-center title">ADMINISTRATION TOOL</p>
-		    </div>
-  		</div>
-	    <div class="site-body">
-	      <%= yield %>
+<body ng-app="app">
+	<div class="header">
+	    <div class="logo col-md-4">
+	      <img src="/images/logo.png" />
 	    </div>
-		<div class="footer">
-		</div>
+	    <div class="col-md-4">
+	      <p class="text-center title">ADMINISTRATION TOOL</p>
+	    </div>
+	</div>
+    <div class="site-body">
+      <%= yield %>
+    </div>
+	<div class="footer">
 	</div>
 </body>
 </html>

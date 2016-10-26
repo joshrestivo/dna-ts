@@ -1,5 +1,4 @@
-var app = angular.module("alert_types", ['ui.bootstrap']);
-app.controller('alertTypesController', function ($scope, $http) {
+angular.module('app').controller('alertTypesController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
     $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    
@@ -19,5 +18,4 @@ app.controller('alertTypesController', function ($scope, $http) {
    	];
    	
    	$(".nav li.tab_alert_types").addClass("active"); 
-});
-angular.bootstrap(document.getElementById("alert_types"), ['alert_types']);
+}]);

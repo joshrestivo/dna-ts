@@ -1,3 +1,5 @@
+angular.module('app', ['ui.bootstrap']);
+
 function showLoading(selector, message, width, left) {
     $(selector).block({
         message: message,
@@ -47,7 +49,6 @@ function getUrlParameter(sParam) {
 
 function gotoLoginPage(){
 	var return_url = location.pathname;
-	alert(return_url);
 	if (location.seach != "" && location.search != null){
 		return_url += location.search;
 	}
@@ -104,6 +105,10 @@ if (cookie == null &&
 	current_url.indexOf(host + "?") == -1 &&
 	current_url.indexOf(host + "/login.html?") == -1){
 	gotoLoginPage();
+} else {
+	if (current_url.indexOf("login") > 0) {
+		window.location.href = ("/");
+	}
 }
 
 // Define global variables

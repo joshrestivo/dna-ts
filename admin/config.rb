@@ -6,11 +6,10 @@ page '/*.txt', layout: false
 set :js_dir, 'js'
 set :css_dir, 'css'
 set :fonts_dir,  "fonts"
+set :index_file, "/main/index.html"
 
-page '/index.html', :layout => :main_template
-page '/login.html', :layout => :template
-page '/alert_types.html', :layout => :main_template
-page '/client_resources.html', :layout => :main_template
+page "/account/*", :layout => "template"
+page "/main/*", :layout => "main_template"
 
 # Build-specific configuration
 configure :build do

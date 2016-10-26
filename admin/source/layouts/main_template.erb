@@ -26,21 +26,27 @@
   <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link href="css/bootstrap.css" rel="stylesheet">
-  <link href="css/all.css" rel="stylesheet">
+ <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/angular-block-ui.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/ngDialog.css" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
   
-  <script src="js/jquery-2.2.4.min.js" language="javascript"></script>
-  <script src="js/bootstrap.min.js" language="javascript"></script>
-  <script src="js/angular.min.js" language="javascript"></script>  
-  <script src="js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
-  <script src="js/jquery.blockUI.js" language="javascript"></script>
-  <script src="js/js.cookie.js" language="javascript"></script>  
-  <script src="js/all.js" language="javascript"></script>  
+  <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
+  <script src="/js/bootstrap.min.js" language="javascript"></script>
+  <script src="/js/angular.min.js" language="javascript"></script>  
+  <script src="/js/ngDialog.min.js" language="javascript"></script>
+  <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
+  <script src="/js/angular-block-ui.min.js" language="javascript"></script>
+  <script src="/js/admin/app.js" language="javascript"></script>
+  <script src="/js/admin/directives.js" language="javascript"></script>  
+  <script src="/js/js.cookie.js" language="javascript"></script>  
+  <script src="/js/all.js" language="javascript"></script>  
 </head>
-<body>
+<body ng-app="app">
   <div class="header">
     <div class="logo col-md-4">
-      <img src="images/logo.png" />
+      <img src="/images/logo.png" />
     </div>
     <div class="col-md-4">
       <p class="text-center title">ADMINISTRATION TOOL</p>
@@ -57,22 +63,22 @@
 	    	<nav role="navigation">
 	    		<ul class="nav">
 	    			<li class="tab_locations">
-	    				<a href="/">
+	    				<a href="/main/index.html">
 	    					<span>Locations</span>
 	    				</a>	    				
 	    			</li>
 	    			<li class="tab_alert_types">
-	    				<a href="/alert_types.html">
+	    				<a href="/main/alert_types.html">
 	    					<span>Alert Types</span>
 	    				</a>	
     				</li>    
     				<li class="tab_bulletins">
-	    				<a href="/client_resources.html">
+	    				<a href="/main/client_resources.html">
 	    					<span>Bulletins</span>
 	    				</a>	
     				</li>   
     				<li class="tab_client_resources">
-	    				<a href="/client_resources.html">
+	    				<a href="/main/client_resources.html">
 	    					<span>Client Resources</span>
 	    				</a>	
     				</li>   				
@@ -83,10 +89,8 @@
 	    	<%= yield %>
 	    </div>
 	</div>
-  		
   </div>
   <div class="footer">
   </div>
 </body>
 </html>
-
