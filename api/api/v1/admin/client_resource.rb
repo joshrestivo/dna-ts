@@ -141,7 +141,7 @@ module Townsquare
         end
         post 'resource/key/del' do
           if !admin_authenticate?
-            return JSONResult.new(true, "INVALID_SESSION")
+            return JSONResult.new(false, "INVALID_SESSION")
           end
           
           ClientResourceDetail.where("LOWER(unique_name) = ?", params[:unique_name].downcase()).destroy_all

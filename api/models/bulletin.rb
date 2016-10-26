@@ -2,6 +2,7 @@ class Bulletin < ActiveRecord::Base
 
   def as_json(*)        
     {
+      :id                   => id,
       :location_id          => location_id,
       :title                => title,
       :description          => description,

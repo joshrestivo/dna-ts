@@ -5,7 +5,7 @@ module Townsquare
        
         get 'countries' do
           if !authenticate?
-            return JSONResult.new(true, "INVALID_SESSION")
+            return JSONResult.new(false, "INVALID_SESSION")
           end
           
           JSONResult.new(true, Country.all)
@@ -16,7 +16,7 @@ module Townsquare
         end
         get 'resources/:country_code' do
           if !authenticate?
-            return JSONResult.new(true, "INVALID_SESSION")
+            return JSONResult.new(false, "INVALID_SESSION")
           end
 
           resources = ClientResource.where(:country_code => params[:country_code])
@@ -25,13 +25,26 @@ module Townsquare
        
         get 'alert_types' do
           if !authenticate?
-            return JSONResult.new(true, "INVALID_SESSION")
+            return JSONResult.new(false, "INVALID_SESSION")
           end
 
           JSONResult.new(true, AlertType.select("name").all().map {|item| item["name"]})
         end
-
-      end
+        
+        desc 'General upload file'
+        params do
+          requires :media, type: File, desc: "File to upload"
+        end
+        post 'upload' do
+          if !authenticate?
+            return JSONResult.new(false, "INVALID_SESSION")
+          end
+                    
+          url = upload(params[:media])
+          JSONResult.new(true, url)
+        end
+        
+      end      
     end
   end
 end

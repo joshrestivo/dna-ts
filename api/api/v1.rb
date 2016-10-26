@@ -77,6 +77,25 @@ module Townsquare
             expires: Time.now - (20 * 365 * 60 * 60 * 24)
           }
         end
+        
+        def upload(uploaded_file)
+          image_extensions = ["png", "bmp", "jpg", "jpeg"]
+          url = nil
+          filename = File.basename(uploaded_file.filename)
+          if (image_extensions.any? { |ext| filename.downcase().end_with?(ext) })
+            dir = 'dragon_fly'
+            images = Townsquare::Image.process(dir, uploaded_file.tempfile.path)
+            url = Townsquare::CDN.store("#{TOWNSQUARE_ROOT}/#{dir}/#{images[0]}", images[0], :public_read)
+            Townsquare::CDN.store("#{TOWNSQUARE_ROOT}/#{dir}/#{images[1]}", images[1], :public_read)
+            File.delete("#{TOWNSQUARE_ROOT}/#{dir}/#{images[0]}")
+            File.delete("#{TOWNSQUARE_ROOT}/#{dir}/#{images[1]}")
+          else
+            file_name = "#{Time.now.to_i}_#{SecureRandom.uuid}" + File.extname(uploaded_file.filename)
+            url = Townsquare::CDN.store(uploaded_file.tempfile, file_name, :public_read)            
+          end
+          
+          url
+        end
       end
       
     end

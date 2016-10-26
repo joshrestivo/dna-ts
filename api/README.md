@@ -69,6 +69,11 @@
     }
 }
 ```
+#####**Bulletin**
+```csharp
+{
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
@@ -102,6 +107,7 @@ POST: <HOST>/api/1.0/admin/countries
 [9. Get all locations](#9-get-all-locations)  
 [10. Create/update a location](#10-createupdate-a-location)  
 [11. Delete a location](#11-delete-a-location)  
+[12. Get bulletins](#12-get-bulletins)  
 
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
@@ -246,5 +252,12 @@ POST: <HOST>/api/1.0/admin/location/save
 GET: <HOST>/api/1.0/admin/location/{id}/del  
 ######**Response:**
 - {success=true, data=null}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**12. Get bulletins**
+GET: <HOST>/api/1.0/admin/location/{id}/bulletins  
+######**Response:**
+- {success=true, data=[Bulletin](#bulletin) objects}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.

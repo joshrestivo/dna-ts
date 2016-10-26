@@ -34,7 +34,6 @@ module Townsquare
           end
           
           location = Location.find_by(:id => params[:id])
-          puts location
           if !location
             location = Location.create(:name => params[:name],
                                        :longitude => params[:longitude],
@@ -70,11 +69,11 @@ module Townsquare
         end
 
         params do
-          requires :id, type:String, desc: "ID of a location"
+          requires :id, type:Integer, desc: "ID of a location"
         end
-        get 'location/{id}/del' do
+        get 'location/:id/del' do
           if !admin_authenticate?
-            return JSONResult.new(true, "INVALID_SESSION")
+            return JSONResult.new(false, "INVALID_SESSION")
           end
           
           location = Location.find_by(:id => params[:id])

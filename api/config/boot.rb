@@ -8,6 +8,14 @@ AWS_CDN_SECRET_ACCESS_KEY = '00kqwPVereQKNQt8a1CsEReShQNqh3n94UL1E3BV'
 TWITTER_CONSUMER_KEY = 'FE5lvbrybLMQZZxPAvSQ'
 TWITTER_CONSUMER_SECRET = 'wCu7dJLmc2LXOuVYpImp0HjcPZqIP6OxJBxmfQlirNc'
 
+THUMBNAIL_SIZE = '150x150'
+CDN_BUCKET = 'm-townsquare'
+CDN_UPLOAD = 'uploads-staging'
+if TOWNSQUARE_ENV == 'production'
+  ANTI_CDN_UPLOAD = 'uploads'
+end
+
+
 # Load dependencies
 require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
@@ -22,6 +30,9 @@ Dir["lib/**/*.rb"].sort.each { |library_file| load library_file }
 include Townsquare::PushNotification
 include Townsquare::CustomErrorFormatter
 include Townsquare::SESHelper
+include Townsquare::Image
+include Townsquare::CDN
+include Townsquare::Utils
 
 database_settings = YAML::load(File.open('config/database.yml'))[TOWNSQUARE_ENV]
 
