@@ -11,7 +11,8 @@ module Townsquare
       
       before do
         header['Access-Control-Allow-Origin'] = '*'         
-        header['Access-Control-Allow-Headers'] = "*"
+        header['Access-Control-Allow-Headers'] = '*'
+        header['Access-Control-Allow-Credentials'] = 'true'
       end
       
       get :ping do

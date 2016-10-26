@@ -4,10 +4,10 @@ angular.module('app').controller('loginController',  ['$scope', '$http', functio
     $("#user_name").focus();
    	$scope.authenticate = function () {   
    		if ($scope.login.$valid) {   			
-		    $http.post(SERVICE_BASE_URL + '/login', $scope.Model)
+		    $http.post(SERVICE_BASE_URL + '/login', $scope.Model,{ withCredentials: true })
 	            .success(function (result) {	                
 	                if (result.success) {
-	                	createCookie("TOWNSQUARE_ADMIN", "test", 7);
+	                	//createCookie("TOWNSQUARE_ADMIN", "test", 7);
 	                	var return_url = getUrlParameter("return_url");                	
 	                    if (return_url != ""){	                    	
 	                    	window.location.href = return_url;

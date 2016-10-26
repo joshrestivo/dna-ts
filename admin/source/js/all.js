@@ -94,6 +94,7 @@ function readCookie(name) {
 
 // Check for authentication cookie
 var cookie = readCookie('TOWNSQUARE_ADMIN');
+console.log(cookie);
 var host = window.location.host;
 var current_url = window.location.href;
 
