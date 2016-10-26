@@ -38,6 +38,37 @@
     "name": "United State"
 }
 ```
+#####**Location**
+```csharp
+{
+	"id": 1,
+    "longitude": 1,
+    "latitude": 1,
+    "name": "Saigon",
+    "city": "Saigon",
+    "state": "HCM",
+    "country_code": "vn",
+    "country": "Vietnam",
+    "has_upcomming_events": true,
+    "has_request_service": true,
+    "has_location_info": true,
+    "has_street_alerts": true,
+    "created_by": "admin",
+    "updated_by": null,
+    "created_at": "2016-10-26T06:07:34.835Z",
+    "updated_at": "2016-10-26T06:07:34.835Z",
+    "client_resource": {
+        "id": 2,
+        "name": "Vietnamese",
+        "is_default": false,
+        "details": [......],
+        "created_by": "admin",
+        "updated_by": null,
+        "created_at": "2016-10-26T04:25:46.512Z",
+        "updated_at": "2016-10-26T04:25:46.512Z"
+    }
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
@@ -68,6 +99,9 @@ POST: <HOST>/api/1.0/admin/countries
 [6. Add a resource key](#6-add-a-resource-key)
 [7. Delete resource key](#7-delete-resource-key)
 [8. Update alert types](#8-update-alert-types)  
+[9. Get all locations](#9-get-all-locations)  
+[10. Create/update a location](#10-createupdate-a-location)  
+[11. Delete a location](#11-delete-a-location)  
 
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
@@ -176,3 +210,41 @@ POST: <HOST>/api/1.0/admin/alert_types/save
 - {success=false, data="SYSTEM_ERROR"}  
 - {success=false, data="INVALID_SESSION"}
 
+####**9. Get all locations**
+GET: <HOST>/api/1.0/admin/locations  
+######**Response:**
+- {success=true, data=[Location](#location) collection}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**10. Create/update a location**
+POST: <HOST>/api/1.0/admin/location/save  
+######**Parameters:**
+```csharp
+{
+  "id": 0,
+  "name": "Saigon",
+  "longitude": 1,
+  "latitude": 1,
+  "city": "Saigon",
+  "state": "HCM",
+  "country_code": "vn",
+  "street_alerts_rss_feed_url": "street_alerts_rss_feed_url",
+  "has_upcomming_events": true,
+  "has_request_service": true,
+  "has_location_info": true,
+  "has_street_alerts": true,
+  "client_resource_id": 2
+}
+```
+######**Response:**
+- {success=true, data=[Location](#location) object}
+- {success=false, data="SYSTEM_ERROR"}  
+- {success=false, data="INVALID_SESSION"}
+
+####**11. Delete a location**
+GET: <HOST>/api/1.0/admin/location/{id}/del  
+######**Response:**
+- {success=true, data=null}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
