@@ -108,6 +108,8 @@ POST: <HOST>/api/1.0/admin/countries
 [10. Create/update a location](#10-createupdate-a-location)  
 [11. Delete a location](#11-delete-a-location)  
 [12. Get bulletins](#12-get-bulletins)  
+[13. Create/update bulletin](#13-createupdate-bulletin)   
+[14. Get bulletins](#14-get-bulletin)  
 
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
@@ -256,8 +258,37 @@ GET: <HOST>/api/1.0/admin/location/{id}/del
 - {success=false, data="SYSTEM_ERROR"}.
 
 ####**12. Get bulletins**
-GET: <HOST>/api/1.0/admin/location/{id}/bulletins  
+GET: <HOST>/api/1.0/admin/location/{location_id}/bulletins  
 ######**Response:**
 - {success=true, data=[Bulletin](#bulletin) objects}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**13. Create/update bulletin**
+POST: <HOST>/api/1.0/admin/location/{location_id}/bulletin/save  
+######**Parameters:**
+```csharp
+Below json is used to decorate, but when using, please use multipart parameters of FormData object to make ajax request 
+ 
+{
+  "id": 0,
+  "title": "title",
+  "description": "description",
+  "valid_from": "1/1/2001 12:12:00",
+  "valid_to": "1/1/2001 12:12:01",
+  "image": FILE
+}
+```
+######**Response:**
+- {success=true, data=[Bulletin](#bulletin) object}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="FROM_TO_INVALID"}. Show "Please select invalid date for from < to"
+- {success=false, data="IMAGE_INVALID"}. Show "Please select image (png, bmp, jpg, jpeg)"
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**14. Get bulletins**
+GET: <HOST>/api/1.0/admin/location/{location_id}/bulletin/:id/del  
+######**Response:**
+- {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.

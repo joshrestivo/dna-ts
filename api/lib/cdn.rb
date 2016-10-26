@@ -41,6 +41,10 @@ module Townsquare
       end
     end
     
+    def build_url(file_name)
+      "https://s3.amazonaws.com/#{CDN_BUCKET}/#{CDN_UPLOAD}/#{file_name}"
+    end
+    
     def exists_to(name, folder)
       begin
         s3 = AWS::S3.new(:access_key_id     => AWS_CDN_ACCESS_KEY_ID, 
