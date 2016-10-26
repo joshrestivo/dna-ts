@@ -1,5 +1,7 @@
 class ClientResource < ActiveRecord::Base
 
+  has_many :client_resource_details
+  
   def as_json(*)        
     {
       :id           => id,
