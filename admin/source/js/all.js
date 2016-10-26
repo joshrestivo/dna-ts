@@ -103,11 +103,7 @@ if (cookie == null &&
 	current_url.indexOf(host + "?") == -1 &&
 	current_url.indexOf(host + "/account/login.html?") == -1){
 	gotoLoginPage();
-} else {
-	if (current_url.indexOf("login") > 0) {
-		window.location.href = ("/");
-	}
-}
+} 
 
 // Define global variables
 SERVICE_BASE_URL = "http://localhost:9002/api/1.0/admin";

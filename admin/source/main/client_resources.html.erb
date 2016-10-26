@@ -1,33 +1,40 @@
 <div class="client_resource" ng-controller="clientResourceController">
-	<div class="locations-table">
-		<table class="table table-hover table-bordered">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>DisplayText</th>		
-					<th width="90px">New</th>			
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="clientResource in clientResources">
-                        <td ng-bind="clientResource.Name"></td>
-                        <td ng-bind="clientResource.DisplayText"></td>    
-                        <td align="center">
-                        	<a class="td-edit" href="#"><i class="fa fa-pencil-square-o"></i></a>   
-                        	<a class="td-delete" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
-                        </td>                                           
-                    </tr>
-			</tbody>
-		 </table>
-		 <div class="paginations">
-            <div class="col-md-6">
-                <uib-pagination boundary-links="true" total-items="TotalItems" ng-change="pageChanged(currentPage)" max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
-            </div>
-            <div class="col-md-6 total">
-                <span>Total:</span>
-                <span ng-bind="TotalItems"></span>                
-            </div>
-        </div>      
+	<div>
+		<div class="list-resource col-md-4">	
+			<button type="submit" class="new-resource btn btn-primary">New</button>
+			<ul class="list-group" >				
+			  	<li class="list-group-item" ng-repeat="resource in resources" ng-class="{active: $first}">
+			  		<span class="badge" ng-if="resource.is_default == 'true'">Default</span>
+			  		<a href="#" ng-click="updateResource($event, resource.id)">			  		
+			  		<span ng-bind="resource.name"></span></a>			  		
+			  	</li>
+			  	
+			</ul>
+		</div>
+		
+		<div class="resource-detail col-md-8">
+			<button type="submit" class="add-key-resource btn btn-primary">Add Key</button>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>DisplayText</th>		
+						<th width="90px">New</th>			
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="resourceDetail in resourceDetails">
+	                        <td ng-bind="resourceDetail.unique_name"></td>
+	                        <td ng-bind="resourceDetail.display_text"></td>    
+	                        <td align="center">
+	                        	<a class="td-edit" href="#" ng-click="updateResourceKey(resourceDetail.id)"><i class="fa fa-pencil-square-o"></i></a>   
+	                        	<a class="td-delete" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
+	                        </td>                                           
+	                    </tr>
+				</tbody>
+			 </table>			
+		</div>
+		
 	</div>
 </div>
 <script language="javascript" src="/js/admin/main/clientResourceController.js"></script>
