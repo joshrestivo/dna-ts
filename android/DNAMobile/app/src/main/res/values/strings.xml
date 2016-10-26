@@ -273,4 +273,14 @@
 
     <string name="unable_to_connect_to_server_again">Unable to connect to server. Please try again!</string>
 
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Upcoming event</item>
+        <item>Request service</item>
+        <item>Location Infor</item>
+        <item>Street Alert</item>
+        <item>Settings</item>
+    </string-array>
+
+
 </resources>

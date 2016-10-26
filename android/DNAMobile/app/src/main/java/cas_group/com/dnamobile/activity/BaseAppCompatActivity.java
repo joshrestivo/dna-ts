@@ -1,10 +1,9 @@
-package cas_group.com.dnamobile;
+package cas_group.com.dnamobile.activity;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -15,9 +14,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.utils.AlertDialogManager;
 
-//import com.pipefish.rock.PFApplication;
 
 
 public class BaseAppCompatActivity extends AppCompatActivity {
@@ -46,7 +45,6 @@ public class BaseAppCompatActivity extends AppCompatActivity {
 		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 		setSupportActionBar(toolbar);
 		final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-//		upArrow.setColorFilter(getResources().getColor(R.color.Black), PorterDuff.Mode.SRC_ATOP);
 		getSupportActionBar().setHomeAsUpIndicator(upArrow);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayShowHomeEnabled(true);
