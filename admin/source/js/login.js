@@ -10,6 +10,7 @@ app.controller('loginController', function ($scope, $http) {
 	            .success(function (result) {
 	                hideLoading();
 	                if (result.success) {
+	                	createCookie("TOWNSQUARE_ADMIN", "test", 7);
 	                	var return_url = getUrlParameter("return_url");                	
 	                    if (return_url != ""){	                    	
 	                    	window.location.href = return_url;
