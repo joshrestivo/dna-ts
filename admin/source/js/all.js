@@ -54,7 +54,7 @@ function gotoLoginPage(){
 	}
 	
 	// Redirect to login page
-	window.location.href = "/login.html?return_url=" + encodeURIComponent(return_url);
+	window.location.href = "/account/login.html?return_url=" + encodeURIComponent(return_url);
 }
 
 function gotoPage(pageName) {
@@ -101,15 +101,11 @@ var current_url = window.location.href;
 
 if (cookie == null && 
 	!current_url.endsWith(host) && 
-	!current_url.endsWith(host + "/login.html") &&
+	!current_url.endsWith(host + "/account/login.html") &&
 	current_url.indexOf(host + "?") == -1 &&
-	current_url.indexOf(host + "/login.html?") == -1){
+	current_url.indexOf(host + "/account/login.html?") == -1){
 	gotoLoginPage();
-} else {
-	if (current_url.indexOf("login") > 0) {
-		window.location.href = ("/");
-	}
-}
+} 
 
 // Define global variables
 SERVICE_BASE_URL = "http://localhost:9002/api/1.0/admin";

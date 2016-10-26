@@ -103,3 +103,10 @@ table thead{
 table thead th {
 	color: #18bc9c;
 }
+
+.client_resource .new-resource, .add-key-resource {
+	margin-bottom: 10px;	
+}
+.client_resource li.active{
+	background-color: #2C3E50;
+}

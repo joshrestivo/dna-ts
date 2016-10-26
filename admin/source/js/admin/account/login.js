@@ -3,11 +3,9 @@ angular.module('app').controller('loginController',  ['$scope', '$http', functio
     
     $("#user_name").focus();
    	$scope.authenticate = function () {   
-   		if ($scope.login.$valid) {
-   			showLoadingImage();
+   		if ($scope.login.$valid) {   			
 		    $http.post(SERVICE_BASE_URL + '/login', $scope.Model)
-	            .success(function (result) {
-	                hideLoading();
+	            .success(function (result) {	                
 	                if (result.success) {
 	                	createCookie("TOWNSQUARE_ADMIN", "test", 7);
 	                	var return_url = getUrlParameter("return_url");                	
@@ -24,8 +22,7 @@ angular.module('app').controller('loginController',  ['$scope', '$http', functio
 	                    $("#user_name").focus();
 	                }
 	            })
-	            .error(function (error, status){
-	            	hideLoading();
+	            .error(function (error, status){	            	
 			        $scope.errorMessage = SERVER_ERROR_MSG; 
 	  			}); 
    		}
