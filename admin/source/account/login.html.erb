@@ -1,5 +1,5 @@
 <div class="login-container">
-	<form id="login" name="login" ng-controller="loginController">
+	<form name="login" ng-controller="loginController">
         <div class="form-group">
             <input type="text" id="user_name" class="form-control" name="username" placeholder="User name" ng-model="Model.username" required
             	   uib-tooltip="{{(loginController.username.$error.required)?'This field is required.':''}}"
@@ -20,7 +20,4 @@
         </div>
     </form>
 </div>
-<script language="javascript" src="js/admin/login.js"></script>
-<script language="javascript" type="text/javascript">	
-	angular.bootstrap(document.getElementById("login"), ['login']);
-</script>
+<script language="javascript" src="/js/admin/account/login.js"></script>

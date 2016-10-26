@@ -1,5 +1,4 @@
-var app = angular.module("login", ['ui.bootstrap']);
-app.controller('loginController', function ($scope, $http) {
+angular.module('app').controller('loginController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
     $scope.Model = {};
     
     $("#user_name").focus();
@@ -31,4 +30,4 @@ app.controller('loginController', function ($scope, $http) {
 	  			}); 
    		}
     };
-});
+}]);

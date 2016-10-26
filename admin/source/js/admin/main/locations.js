@@ -1,6 +1,5 @@
-var app = angular.module("locations", ['ui.bootstrap']);
-app.controller('locationController', function ($scope, $http) {
-    $scope.maxSize = 5; 
+angular.module('app').controller('locationController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
+   $scope.maxSize = 5; 
     $scope.itemPerPage = 20;
     $scope.reverse = false;    
    	$scope.TotalItems = 1;
@@ -18,6 +17,5 @@ app.controller('locationController', function ($scope, $http) {
    		{ Name:"Location10", City:"New York", State:"State", Longitute: "-74.005941", Latitute: "40.712784"}		
    	];
    	
-   	$(".nav li.tab_locations").addClass("active"); 
-});
-angular.bootstrap(document.getElementById("locations"), ['locations']);
+   	$(".nav li.tab_locations").addClass("active");  
+}]);
