@@ -8,7 +8,7 @@ set :css_dir, 'css'
 set :fonts_dir,  "fonts"
 
 page '/index.html', :layout => :main_template
-page '/login.html', :layout => :template
+page "/account/*", :layout => "template"
 page '/alert_types.html', :layout => :main_template
 page '/client_resources.html', :layout => :main_template
 
