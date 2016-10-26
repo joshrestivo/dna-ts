@@ -6,7 +6,7 @@ page '/*.txt', layout: false
 set :js_dir, 'js'
 set :css_dir, 'css'
 set :fonts_dir,  "fonts"
-set :index_file, "/main/index.html"
+set :index_file, "/main/location.html"
 
 page "/account/*", :layout => "template"
 page "/main/*", :layout => "main_template"
