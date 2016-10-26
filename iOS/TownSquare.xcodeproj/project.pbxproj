@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0B090E224A2364ECD725CB71 /* Pods_DNAMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0942B3003774CEE81F26F70F /* Pods_DNAMobileTests.framework */; };
 		368C7DDD9182D309BE7F1490 /* Pods_TownSquare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D346D441E78E10AE091809C /* Pods_TownSquare.framework */; };
-		4AFA458A91B8002248F23DDD /* Pods_DNAMobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5737BD37B8FBA6E3473D0495 /* Pods_DNAMobile.framework */; };
 		7266A1848CD7B8E06D1539E3 /* Pods_TownSquareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 675F1906C182CE2B7B5F1DBB /* Pods_TownSquareTests.framework */; };
 		AA7A4CC91DC06CB1003B9B38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4C6C1DC06CB1003B9B38 /* AppDelegate.swift */; };
 		AA7A4CCA1DC06CB1003B9B38 /* Lato.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7A4C701DC06CB1003B9B38 /* Lato.ttf */; };
@@ -170,12 +169,12 @@
 		AA7A4D1B1DC070BF003B9B38 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		AA7A4D1E1DC070BF003B9B38 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		AA7A4D1F1DC070BF003B9B38 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
-		AA7A4D211DC070BF003B9B38 /* DNAMobile-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DNAMobile-Bridging-Header.h"; sourceTree = "<group>"; };
 		AA7A4D221DC070BF003B9B38 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		AA7A4D231DC070BF003B9B38 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		AA7A4D251DC070BF003B9B38 /* UIImageView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Size.h"; sourceTree = "<group>"; };
 		AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Size.m"; sourceTree = "<group>"; };
 		AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHelper.swift; sourceTree = "<group>"; };
+		AA7A4D361DC0747A003B9B38 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "TownSquare/Bridging-Header.h"; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* TownSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TownSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA1A01DA3F4F8000F7819 /* TownSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TownSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9BD5E73CCA9529DBE5587F /* Pods-DNAMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNAMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNAMobileTests/Pods-DNAMobileTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,7 +186,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AFA458A91B8002248F23DDD /* Pods_DNAMobile.framework in Frameworks */,
 				368C7DDD9182D309BE7F1490 /* Pods_TownSquare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,7 +440,6 @@
 		AA7A4D201DC070BF003B9B38 /* SWRevealViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AA7A4D211DC070BF003B9B38 /* DNAMobile-Bridging-Header.h */,
 				AA7A4D221DC070BF003B9B38 /* SWRevealViewController.h */,
 				AA7A4D231DC070BF003B9B38 /* SWRevealViewController.m */,
 			);
@@ -472,6 +469,7 @@
 			children = (
 				AA7A4C6A1DC06CB1003B9B38 /* TownSquare */,
 				AA7A4C6C1DC06CB1003B9B38 /* AppDelegate.swift */,
+				AA7A4D361DC0747A003B9B38 /* Bridging-Header.h */,
 				AA7A4C901DC06CB1003B9B38 /* Assets.xcassets */,
 				AA7A4C981DC06CB1003B9B38 /* DNAMobile.xcdatamodeld */,
 				AA7A4CA21DC06CB1003B9B38 /* Info.plist */,
@@ -912,12 +910,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ECW5XQ64WL;
-				INFOPLIST_FILE = DNAMobile/Info.plist;
+				INFOPLIST_FILE = TownSquare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.townsquare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DNAMobile/Libs/SWRevealViewController/DNAMobile-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TownSquare/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -930,12 +928,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ECW5XQ64WL;
-				INFOPLIST_FILE = DNAMobile/Info.plist;
+				INFOPLIST_FILE = TownSquare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.townsquare";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DNAMobile/Libs/SWRevealViewController/DNAMobile-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "TownSquare/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -947,9 +945,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = ZK83HD7K73;
-				INFOPLIST_FILE = DNAMobileTests/Info.plist;
+				INFOPLIST_FILE = TownSquareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.DNAMobileTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.TownSquareTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TownSquare.app/TownSquare";
@@ -963,9 +961,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = ZK83HD7K73;
-				INFOPLIST_FILE = DNAMobileTests/Info.plist;
+				INFOPLIST_FILE = TownSquareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.DNAMobileTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cas-group.TownSquareTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TownSquare.app/TownSquare";
