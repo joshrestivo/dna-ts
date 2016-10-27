@@ -1,0 +1,98 @@
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/location.html">Locations</a></li>
+	  <li class="active">Location detail</li>
+	</ol>
+</div>
+<div class="location-detail" ng-cloak ng-controller="locationDetailController" ng-init="Init()">
+	<h2>Add or Update Location</h2>
+	<div class="row">
+		      <div class="col-md-6">
+		      	<div class="row">
+            		<div class="col-md-3">
+            			Name:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.name" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			City:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.city" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			State:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.state" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			Country code:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.country_code" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			RSS alerts url:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.street_alerts_rss_feed_url" />
+            		</div>
+            	</div>
+		      </div>
+		      <div class="col-md-6">
+		      	<div class="row">
+            		<div class="col-md-3">
+            			Has up comming events:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="checkbox" ng-model="location.has_upcomming_events" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			Has request service:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.has_request_service" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			Has location info:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.has_location_info" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			Has street alerts:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.has_street_alerts" />
+            		</div>
+            	</div>
+            	<div class="row">
+            		<div class="col-md-3">
+            			Resources:
+            		</div>
+            		<div class="col-md-9">
+            			<input type="text" ng-model="location.name" />
+            		</div>
+            	</div>
+		      </div>
+	</div>
+</div>
+<script language="javascript" src="/js/admin/main/locationDetailController.js"></script>
+
+	
