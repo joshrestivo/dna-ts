@@ -26,6 +26,8 @@ table thead th {	color: #18bc9c;}
 /*change modal default*/
 .ngdialog.ngdialog-theme-default{padding-top:50px;}
 .ngdialog.ngdialog-theme-default .ngdialog-content{width: 600px!important}
+.ngdialog.ngdialog-theme-default .ngdialog-close {right: 10px;top: 10px;
+}
 
 /*add new location*/
 .modal-location .panel-heading{background-color: #2C3E50}

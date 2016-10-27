@@ -28,6 +28,20 @@ function hideLoading() {
 }
 
 
+function showErrorDialog(ngDialog, message) {
+	ngDialog.open({
+        template: 'alert-error',
+        data: '{"message":"' + message + '"}'
+    });
+}
+
+function showInfoDialog(ngDialog, message) {
+	ngDialog.open({
+        template: 'alert-ok',
+        data: '{"message":"' + message + '"}'
+	});
+}
+
 /// How to use:
 /// var tech = getUrlParameter('technology');
 /// var blog = getUrlParameter('blog');
