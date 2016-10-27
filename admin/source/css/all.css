@@ -29,3 +29,28 @@ table thead th {	color: #18bc9c;}
 
 /*add new location*/
 .modal-location .panel-heading{background-color: #2C3E50}
+
+.header .col-md-4{	padding: 0;}
+.header .user {	float: right;	margin-right: 20px;	margin-top: 20px;}
+.header .title{	font-size: 17pt;	font-weight: bold;	padding-top: 20px;}
+.header img{	width:80px;	height:78px;	float:left;}
+.site-body{	margin-top:80px;}
+.login-container{	width: 400px;	margin: 120px auto 0;}
+.main {	height: auto;}
+.main .left-side {	transition: 0.3s all linear;    position: fixed;    left: 0;    top: 80px;    height: 100%;    overflow: auto;	background: #2c3e50;	width: 250px;}
+.main .left-side ul li {	border-bottom: 1px solid white;	color: white;}
+.main .left-side ul li.active{	background: white;}
+.main .left-side ul li a {	padding: 15px;}
+.main .right-site {	min-height: 100%;    padding: 0 !important;    position: relative;    margin-left:250px;}
+.locations, .alert_types, .client_resource {	padding: 20px;}
+.td-edit{	background-color: #2C3E50;    padding: 4px;    color: white;}
+.td-delete{	background-color: red;    padding: 4px;    color: white;}
+.paginations {	overflow: auto;}
+.paginations .total{ 	float: right;	text-align:right;}
+
+table th{	text-align: center}
+table thead{	background-color:#2C3E50;}
+table thead th {	color: #18bc9c;}
+
+.client_resource .new-resource, .add-key-resource {	margin-bottom: 10px;}
+.client_resource li.active{	background-color: #2C3E50;}

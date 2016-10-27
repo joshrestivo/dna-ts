@@ -34,6 +34,6 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
  		$('li[class*="active"]').removeClass("active");
 	    angular.element(event.currentTarget).parent().addClass("active");
 	};
-   	   	
+	
     $(".nav li.tab_client_resources").addClass("active");       
 }]);
