@@ -131,6 +131,7 @@ POST: <HOST>/api/1.0/admin/countries
 [16. Create an user](#16-create-an-user)  
 [17. Update an user](#17-update-an-user)  
 [18. Delete an user](#18-delete-an-user)  
+[19. Reset user password](#19-reset-user-password)  
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
 ######**Parameters:**
@@ -361,5 +362,21 @@ GET: <HOST>/api/1.0/admin/user/{user_id}/del
 - {success=false, data="NOT_EXISTED"}. Show "Deleted user is not existed"
 - {success=false, data="DELETE_YOURSELF"}. Show "Your account is login"
 - {success=false, data="DELETE_SUPER_ADMIN"}. Show "Super admin cannot be deleted"
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**19. Reset user password**
+POST: <HOST>/api/1.0/admin/user/pwd/reset   
+######**Parameters:**
+```csharp
+{
+  "id": 1,
+  "password": "thanh"
+}
+```
+######**Response:**
+- {success=true, data=[User](#user) object}
+- {success=false, data="NOT_EXISTED"}. Show "User is not existed"
+- {success=false, data="RESET_SUPER_ADMIN"}. Show "You cannot reset password for super admin"
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.

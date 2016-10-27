@@ -96,6 +96,31 @@ module Townsquare
           user.destroy
           return JSONResult.new(true, nil)
         end
+        
+        params do
+          requires :id, type:Integer, desc: "Id of the user"
+          requires :password, type:String, desc: "New password"
+        end
+        post 'user/pwd/reset' do
+          admin_user = login_admin_user
+          if !admin_user
+            return JSONResult.new(false, "INVALID_SESSION")
+          end
+          
+          user = User.find_by(:id => params[:id])
+          if user
+            if user.username == 'admin' && admin_user.username != 'admin'
+              return JSONResult.new(false, "RESET_SUPER_ADMIN")
+            end
+            
+            password_hash = user.name.downcase() + params[:password]
+            password_hash = "#{Digest::SHA1.hexdigest(password_hash)}"
+            user.password = password_hash            
+            return JSONResult.new(true, user)
+          end
+            
+          JSONResult.new(false, "NOT_EXISTED")
+        end
          
       end
     end
