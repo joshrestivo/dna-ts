@@ -21,6 +21,12 @@
 	padding: 0;
 }
 
+.header .user {
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
 .header .title{
 	font-size: 17pt;
 	font-weight: bold;
@@ -35,11 +41,7 @@
 .site-body{
 	margin-top:80px;
 }
-.user {
-	float:right;
-	margin-right: 20px;
-	margin-top: 25px;
-}
+
 .login-container{
 	width: 400px;
 	margin: 120px auto 0;	
