@@ -263,10 +263,12 @@ alert_types.each do |alert_type|
   alert_type = AlertType.where(:name => alert_type).first_or_create
 end
 
+admin_username = 'admin'
 admin_password = 't0wnsq@re2016'
+admin_password = admin_username + admin_password
 admin_password = "#{Digest::SHA1.hexdigest(admin_password)}"
 User.create(:name => 'Administrator',
-            :username => 'admin',
+            :username => admin_username,
             :password => admin_password,
             :email => 'admin@townsquare.com',
             :created_by => 'admin',

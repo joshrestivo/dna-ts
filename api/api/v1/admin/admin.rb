@@ -13,7 +13,8 @@ module Townsquare
             return JSONResult.new(false, "INCORRECT")
           end
           
-          password_hash = "#{Digest::SHA1.hexdigest(params[:password])}"
+          password_hash = params[:username].downcase() + params[:password]
+          password_hash = "#{Digest::SHA1.hexdigest(password_hash)}"
           if (user.password != password_hash)
             return JSONResult.new(false, "INCORRECT")
           end

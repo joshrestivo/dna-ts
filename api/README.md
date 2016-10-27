@@ -2,6 +2,7 @@
 #####**User**
 ```csharp
 {
+	"id": 1,
     "name": "Administrator",
     "username": "admin",
     "email": "admin@townsquare.com",
@@ -72,6 +73,22 @@
 #####**Bulletin**
 ```csharp
 {
+    "id": 1,
+    "location_id": 1,
+    "title": "Test",
+    "description": "Test",
+    "valid_from": "2001-01-01T12:12:00.000+00:00",
+    "valid_to": "2001-01-01T12:12:01.000+00:00",
+    "image_url": "https://s3.amazonaws.com/m-townsquare/uploads-staging/1477550844_29de7075-cfa7-4749-bba8-cfe6d40b0960.jpg",
+    "image_width": 720,
+    "image_height": 720,
+    "thumbnail_url": "https://s3.amazonaws.com/m-townsquare/uploads-staging/150x150_1477550844_29de7075-cfa7-4749-bba8-cfe6d40b0960.jpg",
+    "thumbnail_width": 150,
+    "thumbnail_height": 150,
+    "created_by": "admin",
+    "updated_by": null,
+    "created_at": "2016-10-27T06:47:33.911Z",
+    "updated_at": "2016-10-27T06:47:33.911Z"
 }
 ```
 #**API Reference**
@@ -109,8 +126,11 @@ POST: <HOST>/api/1.0/admin/countries
 [11. Delete a location](#11-delete-a-location)  
 [12. Get bulletins](#12-get-bulletins)  
 [13. Create/update bulletin](#13-createupdate-bulletin)   
-[14. Get bulletins](#14-get-bulletin)  
-
+[14. Delete a bulletin](#14-delete-a-bulletin)  
+[15. Get users](#15-get-users)  
+[16. Create an user](#16-create-an-user)  
+[17. Update an user](#17-update-an-user)  
+[18. Delete an user](#18-delete-an-user)  
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
 ######**Parameters:**
@@ -268,7 +288,7 @@ GET: <HOST>/api/1.0/admin/location/{location_id}/bulletins
 POST: <HOST>/api/1.0/admin/location/{location_id}/bulletin/save  
 ######**Parameters:**
 ```csharp
-Below json is used to decorate, but when using, please use multipart parameters of FormData object to make ajax request 
+Below json is used to decorate, but when implementing, please use multipart parameters of javascript's FormData object to make ajax request 
  
 {
   "id": 0,
@@ -286,9 +306,60 @@ Below json is used to decorate, but when using, please use multipart parameters 
 - {success=false, data="IMAGE_INVALID"}. Show "Please select image (png, bmp, jpg, jpeg)"
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**14. Get bulletins**
+####**14. Delete a bulletin**
 GET: <HOST>/api/1.0/admin/location/{location_id}/bulletin/:id/del  
 ######**Response:**
 - {success=true, data=null}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**15. Get users**
+GET: <HOST>/api/1.0/admin/users  
+######**Response:**
+- {success=true, data=[User](#user) objects collection}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**16. Create an user**
+POST: <HOST>/api/1.0/admin/user/create   
+######**Parameters:**
+```csharp
+{
+  "username": "ppthanhtn",
+  "password": "thanh",
+  "name": "Thanh Pham",
+  "email": "ppthanhtn@gmail.com"
+}
+```
+######**Response:**
+- {success=true, data=[User](#user) object}
+- {success=false, data="USERNAME_EXISTED"}. Show "Username is existed"
+- {success=false, data="EMAIL_EXISTED"}. Show "Email is existed"
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**17. Update an user**
+POST: <HOST>/api/1.0/admin/user/update   
+######**Parameters:**
+```csharp
+{
+  "id": 1,
+  "name": "Thanh Pham",
+  "email": "ppthanhtn@gmail.com"
+}
+```
+######**Response:**
+- {success=true, data=[User](#user) object}
+- {success=false, data="EMAIL_EXISTED"}. Show "Email is existed"
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**18. Delete an user**
+GET: <HOST>/api/1.0/admin/user/{user_id}/del   
+######**Response:**
+- {success=true, data=null}
+- {success=false, data="NOT_EXISTED"}. Show "Deleted user is not existed"
+- {success=false, data="DELETE_YOURSELF"}. Show "Your account is login"
+- {success=false, data="DELETE_SUPER_ADMIN"}. Show "Super admin cannot be deleted"
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   def as_json(*)        
     {
+      :id             => id,
       :name           => name,
       :username       => username,
       :email          => email,
