@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
 
     var sbMain = UIStoryboard(name: "Main", bundle: nil)
     var sbHome = UIStoryboard(name: "Home", bundle: nil)
+    var ApiService: ApiClientUsage = ApiClientUsage.shareInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()

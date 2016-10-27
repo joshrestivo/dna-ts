@@ -23,7 +23,6 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         ConstantHelper.roundButton(requestServiceBtn, color: ConstantHelper.buttonBorderColor, radius: 5)
         initScreen()
         initData()
-        contentLbl.text = "Sep. 30 - 7:00pm - Public lynching" + "\n" + "Oct 1 - 8:30pm - Town Sq. Clearnup" + "\n"  + "Oct 2 - City Council Meeting"
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,20 +34,21 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func initScreen(){
-        self.navigationItem.title = "DNA App"
+        contentLbl.text = ConstantHelper.cache["home_middle_left_content"] as! String
+        self.navigationItem.title = ConstantHelper.cache["home_header_title"] as! String
+        requestServiceBtn.setTitle(ConstantHelper.cache["home_middle_request_button_text"] as! String, for: UIControlState.normal)
         viewRequestService.backgroundColor = ConstantHelper.redColor
-        
         addDefaultNavUI()
     }
     
     func initData(){
         let imgUrl = "http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png"
-        let news1 = News(imageUrl: imgUrl, title: "Downtown Street Alert", content: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let news2 = News(imageUrl: imgUrl, title: "Downtown Street Alert", content: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let news3 = News(imageUrl: imgUrl, title: "Downtown Street Alert", content: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let news4 = News(imageUrl: imgUrl, title: "Downtown Street Alert", content: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let news5 = News(imageUrl: imgUrl, title: "Downtown Street Alert", content: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let news6 = News(imageUrl: imgUrl, title: "Downtown Street Alert", content: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
+        let news1 = News(imageUrl: imgUrl, title: ConstantHelper.cache["menu_new_title"] as! String, content: ConstantHelper.cache["menu_new_content"] as! String)
+        let news2 = News(imageUrl: imgUrl, title: ConstantHelper.cache["menu_new_title"] as! String, content: ConstantHelper.cache["menu_new_content"] as! String)
+        let news3 = News(imageUrl: imgUrl, title: ConstantHelper.cache["menu_new_title"] as! String, content: ConstantHelper.cache["menu_new_content"] as! String)
+        let news4 = News(imageUrl: imgUrl, title: ConstantHelper.cache["menu_new_title"] as! String, content: ConstantHelper.cache["menu_new_content"] as! String)
+        let news5 = News(imageUrl: imgUrl, title: ConstantHelper.cache["menu_new_title"] as! String, content: ConstantHelper.cache["menu_new_content"] as! String)
+        let news6 = News(imageUrl: imgUrl, title: ConstantHelper.cache["menu_new_title"] as! String, content: ConstantHelper.cache["menu_new_content"] as! String)
         news.append(news1)
         news.append(news2)
         news.append(news3)

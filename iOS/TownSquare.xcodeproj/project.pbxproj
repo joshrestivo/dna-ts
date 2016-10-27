@@ -76,6 +76,10 @@
 		AA7A4D321DC070C0003B9B38 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D231DC070BF003B9B38 /* SWRevealViewController.m */; };
 		AA7A4D331DC070C0003B9B38 /* UIImageView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */; };
 		AA7A4D351DC070FE003B9B38 /* ConstantHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */; };
+		AAEF063E1DC1FCBF00D11C77 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF063D1DC1FCBF00D11C77 /* Localization.swift */; };
+		AAEF06401DC2086200D11C77 /* ApiClientUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */; };
+		AAEF06421DC208B200D11C77 /* ErrorTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */; };
+		AAEF06441DC2094C00D11C77 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF06431DC2094C00D11C77 /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +173,10 @@
 		AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Size.m"; sourceTree = "<group>"; };
 		AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHelper.swift; sourceTree = "<group>"; };
 		AA7A4D361DC0747A003B9B38 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "TownSquare/Bridging-Header.h"; sourceTree = "<group>"; };
+		AAEF063D1DC1FCBF00D11C77 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientUsage.swift; sourceTree = "<group>"; };
+		AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypeHelper.swift; sourceTree = "<group>"; };
+		AAEF06431DC2094C00D11C77 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* TownSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TownSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA1A01DA3F4F8000F7819 /* TownSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TownSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9BD5E73CCA9529DBE5587F /* Pods-DNAMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNAMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNAMobileTests/Pods-DNAMobileTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -317,6 +325,7 @@
 		AA7A4CAE1DC06CB1003B9B38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AAEF063D1DC1FCBF00D11C77 /* Localization.swift */,
 				AA7A4CAF1DC06CB1003B9B38 /* BuildingLocation.swift */,
 				AA7A4CB01DC06CB1003B9B38 /* MenuItem.swift */,
 				AA7A4CB11DC06CB1003B9B38 /* New.swift */,
@@ -390,6 +399,7 @@
 		AA7A4D111DC070BF003B9B38 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */,
 				AA7A4D121DC070BF003B9B38 /* ApiClient.swift */,
 			);
 			path = Api;
@@ -450,6 +460,8 @@
 		AA7A4D271DC070BF003B9B38 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AAEF06431DC2094C00D11C77 /* ErrorMessage.swift */,
+				AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */,
 				AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */,
 			);
 			path = Utils;
@@ -714,10 +726,13 @@
 				AA7A4D2F1DC070C0003B9B38 /* UIView.swift in Sources */,
 				AA7A4CFB1DC06CB1003B9B38 /* UpComingEvents.swift in Sources */,
 				AA7A4D2B1DC070C0003B9B38 /* UIColor.swift in Sources */,
+				AAEF06401DC2086200D11C77 /* ApiClientUsage.swift in Sources */,
 				AA7A4CC91DC06CB1003B9B38 /* AppDelegate.swift in Sources */,
 				AA7A4D051DC06CB2003B9B38 /* SettingsViewController.swift in Sources */,
+				AAEF063E1DC1FCBF00D11C77 /* Localization.swift in Sources */,
 				AA7A4D2A1DC070BF003B9B38 /* String.swift in Sources */,
 				AA7A4D031DC06CB2003B9B38 /* MenuViewController.swift in Sources */,
+				AAEF06421DC208B200D11C77 /* ErrorTypeHelper.swift in Sources */,
 				AA7A4D321DC070C0003B9B38 /* SWRevealViewController.m in Sources */,
 				AA7A4D041DC06CB2003B9B38 /* RequestServiceViewController.swift in Sources */,
 				AA7A4D351DC070FE003B9B38 /* ConstantHelper.swift in Sources */,
@@ -728,6 +743,7 @@
 				AA7A4D281DC070BF003B9B38 /* ApiClient.swift in Sources */,
 				AA7A4CEB1DC06CB1003B9B38 /* DNAMobile.xcdatamodeld in Sources */,
 				AA7A4D301DC070C0003B9B38 /* UIViewController.swift in Sources */,
+				AAEF06441DC2094C00D11C77 /* ErrorMessage.swift in Sources */,
 				AA7A4D0C1DC06CB2003B9B38 /* StreetAlertCell.swift in Sources */,
 				AA7A4D2E1DC070C0003B9B38 /* UITableViewExtension.swift in Sources */,
 				AA7A4D0B1DC06CB2003B9B38 /* NewCollectionViewCell.swift in Sources */,

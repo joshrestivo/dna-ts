@@ -49,8 +49,7 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
     
     func initScreen(){
         addDefaultNavUI()
-        self.navigationItem.title = "Up Coming Events"
-        
+        self.navigationItem.title = ConstantHelper.cache["upCommingEvents_header_title"] as! String
         self.userTableView?.rowHeight=200
         self.userTableView?.rowHeight = UITableViewAutomaticDimension
         self.userTableView?.estimatedRowHeight = 200
@@ -58,18 +57,19 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
     
     func getDataSource(){
         let imgUrl = "https://qconnewyork.com/sites/all/themes/qconbs/images/logo2x.png"
-        let location1 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let location2 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "These events have been permitted to close the following streets at the times below; reopenings are subject to change at the discretion of the police")
-        let location3 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Walk Route: Walkers begin at 13th Street and Chestnut Street, head south on 13th Street, west on Market Street, north on Jefferson Avenue, east on Olive Street, south on 13th Street, and finish at 13th Street and Pine Street")
-        let location4 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.")
-        let location5 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "These events have been permitted to close the following streets at the times below; reopenings are subject to change at the discretion of the police")
-        let location6 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Walk Route: Walkers begin at 13th Street and Chestnut Street, head south on 13th Street, west on Market Street, north on Jefferson Avenue, east on Olive Street, south on 13th Street, and finish at 13th Street and Pine Street.")
-        let location7 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Downtown streets will be impacted over the next few days by Q in the Lou (9/23-9/25), St. Jude Walk/Run (9/24), and Families ROC 5K (9/25).  See the street closure information below.  Plan ahead for an alternative route or added travel time")
-        let location8 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "These events have been permitted to close the following streets at the times below; reopenings are subject to change at the discretion of the police.")
-        let location9 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Downtown streets will be impacted on this extended weekend by the Big Muddy Blues Festival (9/3-9/4) and Labor Day Parade (9/5).  See the street closure information below.  Plan ahead for an alternative route or added travel time")
-        let location10 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "These events have been permitted to close the following streets at the times below; reopenings are subject to change at the discretion of the police")
-        let location11 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "Downtown streets will be impacted this weekend by the Rise Up Festival, Budweiser Brew Fest and the Moonlight Ramble.  See the street closure information below.  Plan ahead for an alternative route or added travel time")
-        let location12 = UpComingEvents(thumbnailUrl: imgUrl, title: "Downtown Street Alert", description: "These events have been permitted to close the following streets at the times below; reopenings are subject to change at the discretion of the police")
+        
+        let location1 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location2 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location3 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location4 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location5 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location6 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location7 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location8 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location9 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location10 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location11 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
+        let location12 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_content"] as! String)
         data.append(location1)
         data.append(location2)
         data.append(location3)

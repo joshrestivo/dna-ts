@@ -33,8 +33,7 @@ class RequestServiceViewController: BaseCenterViewController, UIWebViewDelegate 
     
     func initScreen(){
         addDefaultNavUI()
-        self.navigationItem.title = "Request Services"
-        
+        self.navigationItem.title = ConstantHelper.cache["request_service_header_title"] as! String
         webviewer.delegate = self
         let urlPath = URL(string: "http://www.downtownstl.org/downtown-street-alert-38/")
         let requestObj = URLRequest(url: urlPath!)

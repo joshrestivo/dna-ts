@@ -9,9 +9,11 @@ target 'TownSquare' do
   pod 'SwiftyJSON', git: 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git', branch: 'swift3'
   pod 'Alamofire', '~> 4.0'
   pod 'SDWebImage'
-  pod 'XMLDictionary'
+  pod 'AwesomeCache', git:'https://github.com/aschuch/AwesomeCache.git', :branch => 'master'
   pod 'MBProgressHUD'
-  
+  pod 'XMLDictionary'
+  pod 'EVReflection', git:'https://github.com/evermeer/EVReflection.git', :branch => 'Swift3'
+
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|

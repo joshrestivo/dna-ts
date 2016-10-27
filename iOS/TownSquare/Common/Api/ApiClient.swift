@@ -1,15 +1,33 @@
 //
 //  ApiClient.swift
-//  DNAMobile
+//  DealARide
 //
-//  Created by Cuc Nguyen on 10/7/16.
-//  Copyright © 2016 Cas-group. All rights reserved.
+//  Created by PhucDoan on 8/30/15.
+//  Copyright (c) 2015 PhucDoan. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import XMLDictionary
+import Alamofire
+import SwiftyJSON
 
-class ApiClient: NSObject {
+#if DEBUG
+    let BASE_HOST = "http://hovit-dev.azurewebsites.net"
+    let SignalRURL = "http://devsignalr.hovit.com/"
+#else
+    let BASE_HOST = "https://api.hovit.com"
+    let SignalRURL = "https://channel.hovit.com"
+#endif
+
+let BASE_URL = "\(BASE_HOST)/api/"
+
+class ApiClient {
+    var jsonHeaderSession = [
+        "Content-Type": "application/json",
+        "Accept": "application/vnd.lichess.v1+json",
+        "User-Agent": "007"
+    ]
+    
     class var sharedInstance : ApiClient {
         struct Static {
             static let instance : ApiClient = ApiClient()
@@ -17,66 +35,31 @@ class ApiClient: NSObject {
         return Static.instance
     }
     
-    
-    func downloadXMLDataFromUrl(url:String, completion:@escaping ((Bool, Any)->())){
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        let request = URLRequest(url: URL(string: url)!)
-        let task = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            if let data = data {
-                //convert to dict
-                let dict = XMLDictionaryParser.sharedInstance().dictionary(with: data) as! [String: Any]
-              
-                if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
-                    completion(true, dict)
-                } else {
-                    completion(false, dict)
-                }
-            }
-        })
-        task.resume()
+    func  getAbsoluteUrl(_ relativeUrl: String) -> String{
+        return BASE_URL + relativeUrl;
     }
-    
-    func downloadDataFromUrl(url:String, completion:@escaping ((Bool, Any)->())){
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        let request = URLRequest(url: URL(string: url)!)
-        let task = session.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            if let data = data {
-                //convert to dict
-                
-                let json = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
-                    completion(true, json)
-                } else {
-                    completion(false, json)
-                }
+
+    func executeRequest(_ url: String, _ method: HTTPMethod, _ params: Parameters? = nil, callback: @escaping (Bool, AnyObject?) -> ()) {
+        request(url, method: method, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+            let result = response.result
+            if result.isSuccess {
+                let resultData = result.value as! NSDictionary
+                self.handleResponseWithData(resultData, callBack: { (dataResponse, isSuccess) in
+                    callback(isSuccess, dataResponse)
+                })
+            }else {
+                callback(false, nil)
             }
-        })
-        task.resume()
-    }
-    
-    func getNews(callback:@escaping ([News]?) -> ()) -> () {
-        let urlNew = "http://www.saintlouisdna.org/category/News/feed"
-        downloadXMLDataFromUrl(url: urlNew) { (successs, data) in
-            if successs {
-                var news = [News]()
-                if let dict = data as? [String: Any] {
-                    if let dictChannle = dict["channel"] as? [String: Any]{
-                        if let items = dictChannle["item"] as? [[String: Any]] {
-                            
-                            for item in items {
-                                news.append(News(imageUrl: "http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png", title: item["title"] as! String, content: item["content:encoded"] as! String))
-                                //http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png
-                            }
-//                            print("item \(items)")
-                        }
-                    }
-                }
-                callback(news)
-            }else{
-                callback(nil)
-            }
-            print("data response")
         }
     }
     
+    func handleResponseWithData(_ aData: NSDictionary, callBack: @escaping (AnyObject?, Bool) -> ()) {
+        if let unwrappedData = aData as? Dictionary<String, AnyObject> {
+            if let successAuthent = unwrappedData["Success"] as? Bool{
+                callBack(unwrappedData["Data"], successAuthent)
+            }else{
+                callBack(nil, false)
+            }
+        }
+    }
 }

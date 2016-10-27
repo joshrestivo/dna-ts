@@ -5,6 +5,8 @@
 
 @import SwiftyJSON;
 @import SDWebImage;
+@import AwesomeCache;
+@import EVReflection;
 
 #import "SWRevealViewController.h"
 #import <XMLDictionary/XMLDictionary.h>

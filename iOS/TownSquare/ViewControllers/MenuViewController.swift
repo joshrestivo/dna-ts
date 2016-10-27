@@ -11,13 +11,12 @@ import UIKit
 class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    let menuItems = [MenuItem(title: "Home",imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
-                     MenuItem(title: "Upcoming Events",imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
-                     MenuItem(title: "Request Service",imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
-                     MenuItem(title: "Location Info",imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
-                     MenuItem(title: "Street Alerts",imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
-                     MenuItem(title: "Settings",imageName: "ic_settings_36pt",type: MenuItemType.leftMenuSetting)]
+    let menuItems = [MenuItem(title: ConstantHelper.cache["menuHome"] as! String,imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
+                     MenuItem(title: ConstantHelper.cache["menuUpComingEvents"] as! String,imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
+                     MenuItem(title: ConstantHelper.cache["menuRequestService"] as! String,imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
+                     MenuItem(title: ConstantHelper.cache["menuLocationInfo"] as! String,imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
+                     MenuItem(title: ConstantHelper.cache["menuStreetAlert"] as! String,imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
+                     MenuItem(title: ConstantHelper.cache["menuSetting"] as! String,imageName: "ic_settings_36pt",type: MenuItemType.leftMenuSetting)]
     
     override func viewDidLoad()
     {
