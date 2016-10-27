@@ -1,32 +1,3 @@
-function showLoading(selector, message, width, left) {
-    $(selector).block({
-        message: message,
-        css: {
-            padding: 10,
-            backgroundColor: "#fff",
-            border: "solid 1px #ddd",
-            width: width + '',
-            left: left + ''
-        }
-    });
-}
-
-function showLoadingImage(selector) {
-    showLoading(selector, "<img src='images/loading.gif' />", "56px");
-}
-
-function hideLoading(selector) {
-    $(selector).unblock();
-}
-
-function showLoadingImage() {
-    showLoading(".loading", "<img src='images/loading.gif' />", "56px");
-}
-
-function hideLoading() {
-    $(".loading").unblock();
-}
-
 
 function showErrorDialog(ngDialog, message) {
 	ngDialog.open({
@@ -90,14 +61,14 @@ function gotoPage(pageName) {
 	window.location.href = "/"+ pageName + ".html";
 }
 
-function processCommonExeption(errorCode, $scope){	
+function processCommonExeption(errorCode, ngDialog){	
 	if (errorCode.indexOf("SYSTEM_ERROR") === 0) {
-        $scope.errorMessage = SERVER_ERROR_MSG;
+		showErrorDialog(ngDialog, SERVER_ERROR_MSG);        
     } else if (errorCode == "INVALID_SESSION"){
     	alert(SESSION_EXPIRE_MSG);
         gotoLoginPage();
     } else {
-    	$scope.errorMessage = SERVER_ERROR_MSG;
+    	showErrorDialog(ngDialog, SERVER_ERROR_MSG);    
     }
 }
 

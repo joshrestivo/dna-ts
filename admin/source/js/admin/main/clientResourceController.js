@@ -1,46 +1,27 @@
-angular.module('app').controller('clientResourceController',  ['$scope', '$http', function ($scope, $http) {    
+angular.module('app').controller('clientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {    
       	
    	$http.get(SERVICE_BASE_URL + '/resources', { withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {
-	            	alert(JSON.stringify(result));
 	            	$scope.resources = result.data;
+	            	$scope.resourceDetails = result.data.details;
 	            }
 	        })
 	        .error(function (error, status){	            	
-		        alert(error);
-			}); 
-	  			   	
-	$scope.resourceDetails = [
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"}
-   	];
+		        processCommonExeption(error, ngDialog);
+			}); 	  			   	
    	
- 	$scope.createUpdateResource = function (event, id) {
- 		alert(id); 	
- 		$http.post(SERVICE_BASE_URL + '/resource/save',{"id":"0", "name":"Ha Noi", "is_default":"true"},{ withCredentials: true })
-            .success(function (result) {	                
-                if (result.success) {	      
-    	          	alert(JSON.stringify(result));
-                } else {                	              	  	
-            		processCommonExeption(result.data, $scope);                	              	                    
-                }
-            })
-            .error(function (error, status){	            	
-		        $scope.errorMessage = SERVER_ERROR_MSG; 
-  			}); 	
+ 	$scope.createUpdateResource = function (event, resource) {
  		if (event != null) {
+ 			sessionStorage.setItem("resource", JSON.stringify(resource));
+ 		}
+ 		
+ 		window.location.href = ("/main/update_client_resource.html"); 	
+ 		
+ 		/*if (event != null) {
  			$('li[class*="active"]').removeClass("active");
  			angular.element(event.currentTarget).parent().addClass("active");
- 		}	    
+ 		}	 */   
 	};
 	
     $(".nav li.tab_client_resources").addClass("active");       

@@ -15,16 +15,16 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 	                    }
 	                } else {
 	                	if(result.data == "INCORRECT") {                	
-	                		$scope.errorMessage  = "Invalid login credantial";
+	                		showErrorDialog(ngDialog, "Invalid login credantial") ;
 	                	} else {                  	  	
-	                		processCommonExeption(result.data, $scope);
+	                		processCommonExeption(result.data, ngDialog);
 	                	}
 	                	
 	                    $("#user_name").focus();
 	                }
 	            })
 	            .error(function (error, status){	            	
-			        $scope.errorMessage = SERVER_ERROR_MSG; 
+			        processCommonExeption(error, ngDialog);
 	  			}); 
    		}
     };
