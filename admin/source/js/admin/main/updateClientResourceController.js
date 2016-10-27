@@ -8,6 +8,7 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		if (typeof resource !== 'undefined' && resource == null) {		
 			$scope.IsUpdate = false;
 			$scope.Model.id = 0;
+			$scope.Model.is_default = false;
 		} else {
 			resource = JSON.parse(resource);			
 			$scope.IsUpdate = true;
