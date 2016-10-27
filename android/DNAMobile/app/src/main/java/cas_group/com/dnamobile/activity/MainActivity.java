@@ -80,8 +80,6 @@ public class MainActivity extends BaseAppCompatActivity {
         _leftMenuAdapter = new LeftMenuAdapter(this, _leftMenuItems);
         _uiLvLeftMenu.setAdapter(_leftMenuAdapter);
 
-
-
     }
     @Override
     public void onBackPressed() {

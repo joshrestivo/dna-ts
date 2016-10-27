@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -51,14 +52,13 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-//        holder.txtView.setText(horizontalList.get(position));
 
-//        holder.txtView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(_context,"test", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

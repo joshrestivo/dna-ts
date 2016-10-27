@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/uiMainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp"
+        android:layout_marginBottom="60dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+            android:layout_width="match_parent"
+                app:srcCompat="@drawable/default_test"
+            android:id="@+id/uiImageNews"
+                android:scaleType="center"
+                android:layout_height="250dp"
+                android:layout_margin="10dp" />
+            <Button
+                android:text="SEPTEMBER HAPPY HOUR"
+                android:layout_width="match_parent"
+                android:id="@+id/uiBtnTitle"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_margin="10dp"
+                android:layout_height="44dp" />
+
+            <TextView
+            android:text="TextView adsfasf aksfd alsdfj alsdkfj alskdfj alskf alskdf aklsdf jaklsdfj alsdfj
+            alsdfjalsdf alsdf alskdfj alksdfj alksdfj alksdf asdlfkj askdlf aslkdfj alsdf aksdf aksdf aksd
+            falksd faks dfas dfladf jadf laskdf alksdf asdf asdf kasdf lasdf as dfas dfasd fasd fasdf veryy long
+            lasdfja lksdfjklasdfjkasdjf alsdf sdlfjkas dkflalksdf lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long
+             lasdf as dfas dfasd fasd fasdf veryy long lasdf as dfas dfasd fasd fasdf veryy long"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/uiTxtContent"
+                android:padding="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:text="DataSource"
+        android:layout_width="match_parent"
+        android:id="@+id/uiBtnDataSource"
+        android:layout_alignParentBottom="true"
+        android:layout_height="60dp"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/colorWhite" />
+
+
+</RelativeLayout>
