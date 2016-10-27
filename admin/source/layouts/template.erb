@@ -30,6 +30,7 @@
   <link href="/css/angular-block-ui.css" rel="stylesheet">
   <link href="/css/font-awesome.css" rel="stylesheet">
   <link href="/css/ngDialog.css" rel="stylesheet">
+    <link href="/css/ngDialog-theme-default.css" rel="stylesheet">
   <link href="/css/all.css" rel="stylesheet">
   
   <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
@@ -59,3 +60,51 @@
 	</div>
 </body>
 </html>
+
+<script type="text/ng-template" id="alert-ok">
+    <div id="modalSuccess" class="modal-block modal-block-success">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Infomation!</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button ng-click="closeThisDialog(0)" class="btn btn-success modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
+<script type="text/ng-template" id="alert-error">
+    <div id="modalDanger" class="modal-block modal-block-danger">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Error!</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button ng-click="closeThisDialog(0)" class="btn btn-danger modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>

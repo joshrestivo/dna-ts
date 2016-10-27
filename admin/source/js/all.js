@@ -28,6 +28,20 @@ function hideLoading() {
 }
 
 
+function showErrorDialog(ngDialog, message) {
+	ngDialog.open({
+        template: 'alert-error',
+        data: '{"message":"' + message + '"}'
+    });
+}
+
+function showInfoDialog(ngDialog, message) {
+	ngDialog.open({
+        template: 'alert-ok',
+        data: '{"message":"' + message + '"}'
+	});
+}
+
 /// How to use:
 /// var tech = getUrlParameter('technology');
 /// var blog = getUrlParameter('blog');
@@ -43,6 +57,23 @@ function getUrlParameter(sParam) {
             return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
         }
     }
+};
+
+function logout() {
+    $.ajax({
+		url: SERVICE_BASE_URL + '/logout',
+		xhrFields: {
+	      withCredentials: true
+	  	},
+		type: 'GET',				  
+		success: function(result){
+			deleteCookie("USERNAME_LOGIN");
+			gotoLoginPage();
+  		},
+  		error: function (request, status, error) {
+        	alert(error);
+    	}
+	});
 };
 
 function gotoLoginPage(){
@@ -91,20 +122,30 @@ function readCookie(name) {
     return null;
 }
 
+function deleteCookie(name) {
+    createCookie(name,"",-1);
+}
 
 // Check for authentication cookie
 var cookie = readCookie('TOWNSQUARE_ADMIN');
+var userNameLoginCookie = readCookie("USERNAME_LOGIN"); 
 console.log(cookie);
 var host = window.location.host;
 var current_url = window.location.href;
 
-if (cookie == null && 
-	!current_url.endsWith(host) && 
-	!current_url.endsWith(host + "/account/login.html") &&
-	current_url.indexOf(host + "?") == -1 &&
-	current_url.indexOf(host + "/account/login.html?") == -1){
-	gotoLoginPage();
-} 
+if (userNameLoginCookie != null) {   	
+	$(".user-name").text(userNameLoginCookie);  
+}
+
+if (cookie == null){
+	if (!current_url.endsWith(host + "/account/login.html") &&	current_url.indexOf(host + "/account/login.html?") == -1) {	  
+	  	gotoLoginPage();
+	}	
+} else {	
+	if(current_url.indexOf("/account/login.html") > 0) {
+		window.location.href = "/";
+	}
+}
 
 // Define global variables
 SERVICE_BASE_URL = "http://localhost:9002/api/1.0/admin";

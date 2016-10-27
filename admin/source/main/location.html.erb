@@ -1,22 +1,44 @@
-<div class="locations" ng-controller="locationController">
+<div class="locations" ng-cloak ng-controller="locationController" ng-init="Init()">
 	<div>
+		<a class="add-new-location" ng-click="addNewLocation()">New Locaiton</a>
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
+					<th>#</th>
 					<th>Name</th>
 					<th>City</th>
 					<th>State</th>
+					<th>Country </th>
+					<th>Street Alerts RSS Url</th>
+					<th>Has Upcoming Service</th>
+					<th>Has Requset Service</th>
+					<th>Has Loation Info</th>
+					<th>Has Street Alerts</th>
+					<th>Resource Name</th>
 					<th>Longitute</th>
 					<th>Latitude</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="location in locations">
-                        <td ng-bind="location.Name"></td>
-                        <td ng-bind="location.City"></td>
-                        <td ng-bind="location.State +' '+ item.PhoneNumber"></td>
-                        <td ng-bind="location.Longitute"></td>
-                        <td ng-bind="location.Latitute"></td>     
+                        <td ng-bind="$index"></td>
+                        <td ng-bind="location.name"></td>
+                        <td ng-bind="location.city"></td>
+                        <td ng-bind="location.state"></td>
+                        <td ng-bind="location.country_code"></td>
+                        <td ng-bind="location.street_alerts_rss_feed_url"></td>
+                        <td ng-bind="location.has_upcomming_events"></td>
+                        <td ng-bind="location.has_request_service"></td>
+                        <td ng-bind="location.has_location_info"></td>
+                        <td ng-bind="location.has_street_alerts"></td>
+                        <td ng-bind="location.client_resource.name"></td>
+                        <td ng-bind="location.longitude"></td>
+                        <td ng-bind="location.latitude"></td>    
+                        <td>
+                        	<a class="td-edit" ng-click="editLocation(location)"><i class="fa fa-pencil-square-o"></i></a>   
+                        	<a class="td-delete" ng-click="deleteLocation(location.id)"><i class="fa fa-times"></i></a>           
+                    	</td> 
                     </tr>
 			</tbody>
 		 </table>
@@ -31,6 +53,7 @@
         </div>      
 	</div>
 </div>
+
 <script language="javascript" src="/js/admin/main/locationController.js"></script>
 
 	
