@@ -4,95 +4,132 @@
 	  <li class="active">Location detail</li>
 	</ol>
 </div>
-<div class="location-detail" ng-cloak ng-controller="locationDetailController" ng-init="Init()">
+<form name="locationDetail" class="location-detail" ng-cloak ng-controller="locationDetailController" ng-init="Init()">
 	<h2>Add or Update Location</h2>
 	<div class="row">
 		      <div class="col-md-6">
-		      	<div class="row">
+		      	<div class="row item">
             		<div class="col-md-3">
             			Name:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.name" />
+            			<input type="text" ng-model="location.name" class="form-control" name="name" required
+                              uib-tooltip="{{(locationDetail.name.$error.required)?'This field is required.':''}}"
+                              tooltip-enable="!location.name"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
             	</div>
-            	<div class="row">
+            	<div class="row item">
             		<div class="col-md-3">
             			City:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.city" />
+            			<input type="text" ng-model="location.city" class="form-control" name="city" required
+                              uib-tooltip="{{(locationDetail.city.$error.required)?'This field is required.':''}}"
+                              tooltip-enable="!location.city"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
             	</div>
-            	<div class="row">
+            	<div class="row item">
             		<div class="col-md-3">
             			State:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.state" />
+            			<input type="text" ng-model="location.state" class="form-control" name="state" required
+                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}"
+                              tooltip-enable="!location.state"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
             	</div>
-            	<div class="row">
+            	<div class="row item" >
             		<div class="col-md-3">
             			Country code:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.country_code" />
+            			<input type="text" ng-model="location.country_code" class="form-control" required
+                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}"
+                              tooltip-enable="!location.state"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
             	</div>
-            	<div class="row">
+            	<div class="row item">
             		<div class="col-md-3">
             			RSS alerts url:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.street_alerts_rss_feed_url" />
+            			<input type="text" ng-model="location.street_alerts_rss_feed_url" class="form-control"  required
+                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}"
+                              tooltip-enable="!location.state"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
             	</div>
-		      </div>
-		      <div class="col-md-6">
-		      	<div class="row">
-            		<div class="col-md-3">
-            			Has up comming events:
-            		</div>
-            		<div class="col-md-9">
-            			<input type="checkbox" ng-model="location.has_upcomming_events" />
-            		</div>
-            	</div>
-            	<div class="row">
-            		<div class="col-md-3">
-            			Has request service:
-            		</div>
-            		<div class="col-md-9">
-            			<input type="text" ng-model="location.has_request_service" />
-            		</div>
-            	</div>
-            	<div class="row">
-            		<div class="col-md-3">
-            			Has location info:
-            		</div>
-            		<div class="col-md-9">
-            			<input type="text" ng-model="location.has_location_info" />
-            		</div>
-            	</div>
-            	<div class="row">
-            		<div class="col-md-3">
-            			Has street alerts:
-            		</div>
-            		<div class="col-md-9">
-            			<input type="text" ng-model="location.has_street_alerts" />
-            		</div>
-            	</div>
-            	<div class="row">
+            	<div class="row item">
             		<div class="col-md-3">
             			Resources:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.name" />
+            			<select class="form-control" ng-model="location.resource"  ng-init="location.resource" ng-options="resource.id as resource.name for resource in resources" required>
+                        		<option value="" disabled selected hidden>Choose a resource...</option>
+                   		 </select>
             		</div>
             	</div>
 		      </div>
+		      <div class="col-md-6">
+		      	<div class="row item2">
+            		<div class="col-md-5">
+            			Has up comming events:
+            		</div>
+            		<div class="col-md-7">
+            			<label class="checkbox-inline" >
+	                        <input type="checkbox" ng-model="location.has_upcomming_events"  
+	                        ng-init="location.has_upcomming_events" 
+	                        name="has_upcomming_events"/> <span ng-bind="location.has_upcomming_events? 'Yes':'No'"></span>
+                        </label>
+            		</div>
+            	</div>
+            	<div class="row item2">
+            		<div class="col-md-5">
+            			Has request service:
+            		</div>
+            		<div class="col-md-7">
+            			<label class="checkbox-inline" >
+	                        <input type="checkbox" ng-model="location.has_request_service"  
+	                        ng-init="location.has_request_service" 
+	                        name="has_request_service"/> <span ng-bind="location.has_request_service?'Yes':'No'"></span>
+                        </label>
+            		</div>
+            	</div>
+            	<div class="row item2">
+            		<div class="col-md-5">
+            			Has location info:
+            		</div>
+            		<div class="col-md-7">
+            			<label class="checkbox-inline" >
+	                        <input type="checkbox" ng-model="location.has_location_info"  
+	                        ng-init="location.has_location_info" 
+	                        name="has_location_info"/> <span ng-bind="location.has_location_info?'Yes':'No'"></span>
+                        </label>
+            		</div>
+            	</div>
+            	<div class="row item2">
+            		<div class="col-md-5">
+            			Has street alerts:
+            		</div>
+            		<div class="col-md-7">
+            			<label class="checkbox-inline" >
+	                        <input type="checkbox" ng-model="location.has_street_alerts"  
+	                        ng-init="location.has_street_alerts" 
+	                        name="has_street_alerts"/> <span ng-bind="location.has_street_alerts?'Yes':'No'"></span>
+                        </label>
+            		</div>
+            	</div>
+	      </div>
 	</div>
-</div>
+	<div class="bottom-action">
+		<button type="submit" ng-click="save()" class="button-save">Save</button>
+		<button  ng-click="cancel()" class="button-cancel">Cancel</button>
+	</div>
+</form>
 <script language="javascript" src="/js/admin/main/locationDetailController.js"></script>
 
 	
