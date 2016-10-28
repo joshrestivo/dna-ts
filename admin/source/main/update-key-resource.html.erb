@@ -1,0 +1,48 @@
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/client-resources.html">Client Resource</a></li>
+	  <li class="active">Update Key Resource</li>
+	</ol>
+</div>
+<div class="update-key-resource" ng-cloak ng-controller="addKeyResourceController" ng-init="Init()">
+	<div class="title">
+		<h2>Key Resource</h2>
+	</div>	
+	
+	<form name="addKeyResource" >
+		<div class="detail">
+			<div class="row">
+	            <div class="col-md-2 name">
+	                Key
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Key Resource Name" name="unique_name" ng-model="Model.unique_name" required
+	                       uib-tooltip="{{(addKeyResource.unique_name.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.unique_name"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        </br>
+	        <div class="row" ng-repeat="resource in resources ">
+	        	<div class="col-md-2 name">
+	                <span ng-bind="resource.name"></span>
+	            </div>
+	            <div class="col-md-6">	   
+	                <input type="text" class="form-control" placeholder="Display Text" name="display_text" ng-model="Model.values[resource.id]" required
+                 		   uib-tooltip="{{(addKeyResource.display_text.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.values[resource.name]"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        
+	        <div class="row pnl-button">	        	
+        		<button ng-click="createUpdateKeyResource()" class="btn btn-primary">Add</button>
+        	</div>         	
+		</div>
+	</form>
+	
+	
+</div>
+<script language="javascript" src="/js/admin/main/updateKeyResourceController.js"></script>
+
+	

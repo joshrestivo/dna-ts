@@ -1,40 +1,39 @@
-<div class="client_resource" ng-controller="clientResourceController">
+<div class="client-resource" ng-cloak ng-controller="clientResourceController">
 	<div>
 		<div class="list-resource col-md-4">	
 			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
 			<ul class="list-group" >				
 			  	<li class="list-group-item" ng-repeat="resource in resources" ng-class="{active: $first}">
 			  		<span class="badge" ng-if="resource.is_default">Default</span>
-			  		<a href="#" >				  			
+			  		<a href="#" ng-click="reloadResourceDetail(resource,$event)">				  			
 			  		<span ng-bind="resource.name"></span></a>	
-			  		<a href="#" class="edit-resource" ng-click="createUpdateResource($event, resource)"><i class="fa fa-pencil-square-o"></i></a>	  				  		
+			  		<a href="#" class="edit-resource" ng-click="createUpdateResource(resource)"><i class="fa fa-pencil-square-o"></i></a>	  				  		
 			  	</li>			  	
 			</ul>
 		</div>
 		
 		<div class="resource-detail col-md-8">
-			<button type="submit" class="add-key-resource btn btn-primary">Add Key</button>
+			<button ng-click="createUpdateKeyResource(null)" class="add-key-resource btn btn-primary">Add Key</button>
 			<table class="table table-hover table-bordered">
 				<thead>
 					<tr>
 						<th>Name</th>
 						<th>DisplayText</th>		
-						<th width="90px">New</th>			
+						<th width="90px">#</th>			
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="resourceDetail in resourceDetails">
-	                        <td ng-bind="resourceDetail.unique_name"></td>
-	                        <td ng-bind="resourceDetail.display_text"></td>    
+					<tr ng-repeat="keyResource in keyResources">
+	                        <td ng-bind="keyResource.unique_name"></td>
+	                        <td ng-bind="keyResource.display_text"></td>    
 	                        <td align="center">
-	                        	<a class="td-edit" href="#" ng-click="updateResourceKey(resourceDetail.id)"><i class="fa fa-pencil-square-o"></i></a>   
+	                        	<a class="td-edit" href="#" ng-click="createUpdateKeyResource(keyResource)"><i class="fa fa-pencil-square-o"></i></a>   
 	                        	<a class="td-delete" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
 	                        </td>                                           
 	                    </tr>
 				</tbody>
 			 </table>			
-		</div>
-		
+		</div>		
 	</div>
 </div>
 <script language="javascript" src="/js/admin/main/clientResourceController.js"></script>

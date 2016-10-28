@@ -42,6 +42,7 @@
   <script src="/js/admin/app.js" language="javascript"></script>
   <script src="/js/admin/directives.js" language="javascript"></script>  
   <script src="/js/js.cookie.js" language="javascript"></script>    
+  <script src="/js/all.js" language="javascript"></script> 
 </head>
 <body ng-app="app">
   <div class="header">
@@ -80,17 +81,17 @@
 	    				</a>	    				
 	    			</li>
 	    			<li class="tab_alert_types">
-	    				<a href="/main/alert_types.html">
+	    				<a href="/main/alert-types.html">
 	    					<span>Alert Types</span>
 	    				</a>	
     				</li>    
     				<li class="tab_bulletins">
-	    				<a href="/main/client_resources.html">
+	    				<a href="/main/client-resources.html">
 	    					<span>Bulletins</span>
 	    				</a>	
     				</li>   
     				<li class="tab_client_resources">
-	    				<a href="/main/client_resources.html">
+	    				<a href="/main/client-resources.html">
 	    					<span>Client Resources</span>
 	    				</a>	
     				</li>   				
@@ -155,4 +156,10 @@
     </div>
 </script>
 
-<script src="/js/all.js" language="javascript"></script>  
+<script >
+	var userNameLoginCookie = readCookie("USERNAME_LOGIN"); 
+	if (userNameLoginCookie != null) {   	
+		$(".user-name").text(userNameLoginCookie);  
+	}
+</script> 
+ 

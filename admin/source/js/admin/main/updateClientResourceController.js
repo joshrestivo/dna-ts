@@ -18,7 +18,7 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		}
 	};
 		
-	$scope.createUPdateResource = function (event, resource) {
+	$scope.createUpdateResource = function (event, resource) {
 		if($scope.updateClientResource.$valid) {
 			$http.post(SERVICE_BASE_URL + '/resource/save',$scope.Model,{ withCredentials: true })
             .success(function (result) {	                

@@ -99,14 +99,9 @@ function deleteCookie(name) {
 
 // Check for authentication cookie
 var cookie = readCookie('TOWNSQUARE_ADMIN');
-var userNameLoginCookie = readCookie("USERNAME_LOGIN"); 
 console.log(cookie);
 var host = window.location.host;
 var current_url = window.location.href;
-
-if (userNameLoginCookie != null) {   	
-	$(".user-name").text(userNameLoginCookie);  
-}
 
 if (cookie == null){
 	if (!current_url.endsWith(host + "/account/login.html") &&	current_url.indexOf(host + "/account/login.html?") == -1) {	  
