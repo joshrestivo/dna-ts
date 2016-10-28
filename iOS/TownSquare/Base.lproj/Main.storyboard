@@ -39,7 +39,7 @@
         <!--Menu View Controller-->
         <scene sceneID="Mxx-A0-OEP">
             <objects>
-                <viewController id="XKM-dG-oXo" customClass="MenuViewController" customModule="DNAMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XKM-dG-oXo" customClass="MenuViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zje-Jm-bMC"/>
                         <viewControllerLayoutGuide type="bottom" id="nz6-le-DH7"/>
@@ -51,7 +51,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="epK-0g-aqr">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0jt-aq-zxF" userLabel="HeaderView">
-                                    <rect key="frame" x="0.0" y="71" width="375" height="70"/>
+                                    <rect key="frame" x="0.0" y="71" width="1000" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-tm-FsL">
@@ -77,11 +77,11 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCellID" id="BHw-eq-nRW" customClass="MenuTableViewCell" customModule="DNAMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="375" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCellID" id="BHw-eq-nRW" customClass="MenuTableViewCell" customModule="TownSquare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="1000" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BHw-eq-nRW" id="Zui-XL-6oS">
-                                            <frame key="frameInset" width="375" height="69"/>
+                                            <frame key="frameInset" width="1000" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-k9-DYC">
@@ -140,7 +140,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3la-yG-cSf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Fzo-RL-gNu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fzo-RL-gNu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -156,7 +156,7 @@
         <!--Upcoming Event View Controller-->
         <scene sceneID="OaB-dF-bVh">
             <objects>
-                <viewController storyboardIdentifier="UpcomingEventViewControllerID" id="R5Y-AI-f05" customClass="UpcomingEventViewController" customModule="DNAMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpcomingEventViewControllerID" id="R5Y-AI-f05" customClass="UpcomingEventViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AMa-vo-j3t"/>
                         <viewControllerLayoutGuide type="bottom" id="Twk-QC-pFI"/>
@@ -173,7 +173,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ize-4M-c8g">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="upCommingEventsCell" rowHeight="120" id="ol8-jg-0QD" userLabel="Street Alert Cell" customClass="UpComingEventsCell" customModule="DNAMobile" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="upCommingEventsCell" rowHeight="120" id="ol8-jg-0QD" userLabel="Street Alert Cell" customClass="UpComingEventsCell" customModule="TownSquare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ol8-jg-0QD" id="Uco-BU-Snc">
@@ -292,7 +292,7 @@
         <!--Request Services-->
         <scene sceneID="brJ-Oo-6Xl">
             <objects>
-                <viewController storyboardIdentifier="RequestServiceViewControllerID" title="Request Services" id="PR9-6X-Itl" customClass="RequestServiceViewController" customModule="DNAMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RequestServiceViewControllerID" title="Request Services" id="PR9-6X-Itl" customClass="RequestServiceViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cD9-0K-mmj"/>
                         <viewControllerLayoutGuide type="bottom" id="on9-I5-xYH"/>
@@ -327,7 +327,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bEi-gI-IX5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NFY-Sd-tEP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NFY-Sd-tEP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -343,7 +343,7 @@
         <!--Settings View Controller-->
         <scene sceneID="JRR-Fb-O1h">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewControllerID" id="KhP-CL-Z5f" customClass="SettingsViewController" customModule="DNAMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewControllerID" id="KhP-CL-Z5f" customClass="SettingsViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jcq-Mi-CfW"/>
                         <viewControllerLayoutGuide type="bottom" id="sQI-Oc-yWM"/>
@@ -361,7 +361,7 @@
         <!--Location Info View Controller-->
         <scene sceneID="VOo-gn-M69">
             <objects>
-                <viewController storyboardIdentifier="vcLocationInfo" title="Location Info View Controller" id="ijt-FH-yU6" customClass="LocationInfoViewController" customModule="DNAMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcLocationInfo" title="Location Info View Controller" id="ijt-FH-yU6" customClass="LocationInfoViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4tm-1Q-MrT"/>
                         <viewControllerLayoutGuide type="bottom" id="wcX-ew-VQl"/>
@@ -380,17 +380,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5uE-Ej-bBb" userLabel="Table Detail">
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="IlU-vA-Lul">
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Locations" id="IlU-vA-Lul">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="buildingLocationCell" rowHeight="100" id="sQQ-kB-qVM" userLabel="Building Location Cell" customClass="LocationInfoCell" customModule="DNAMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="buildingLocationCell" rowHeight="100" id="sQQ-kB-qVM" userLabel="Building Location Cell" customClass="LocationInfoCell" customModule="TownSquare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="1000" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sQQ-kB-qVM" id="Azu-cP-C25">
-                                            <frame key="frameInset" width="375" height="100"/>
+                                            <frame key="frameInset" width="1000" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kzn-RF-48i" userLabel="Img " customClass="AsyncImageView">
@@ -501,7 +501,7 @@
         <!--Street Alert View Controller-->
         <scene sceneID="Al9-CN-6ED">
             <objects>
-                <viewController storyboardIdentifier="vcStreetAlertView" title="Street Alert View Controller" id="U3s-hq-mRy" customClass="StreetAlertViewController" customModule="DNAMobile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vcStreetAlertView" title="Street Alert View Controller" id="U3s-hq-mRy" customClass="StreetAlertViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QZq-aG-Wz8"/>
                         <viewControllerLayoutGuide type="bottom" id="8gh-7g-dYE"/>
@@ -521,11 +521,11 @@
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="streetAlertCell" rowHeight="120" id="z4X-oL-5ER" userLabel="Street Alert Cell" customClass="StreetAlertCell" customModule="DNAMobile" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="streetAlertCell" rowHeight="120" id="z4X-oL-5ER" userLabel="Street Alert Cell" customClass="StreetAlertCell" customModule="TownSquare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z4X-oL-5ER" id="8JD-AL-pV0">
-                                            <frame key="frameInset" width="375" height="120"/>
+                                            <frame key="frameInset" width="1000" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpS-Be-q0K" userLabel="Img " customClass="AsyncImageView">

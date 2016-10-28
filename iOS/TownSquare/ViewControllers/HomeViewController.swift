@@ -16,6 +16,8 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     @IBOutlet weak var viewRequestService: UIView!
     @IBOutlet weak var requestServiceBtn: UIButton!
     @IBOutlet weak var contentLbl: MarginLabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+
     var news = [News]()
     
     override func viewDidLoad() {
@@ -23,6 +25,7 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         ConstantHelper.roundButton(requestServiceBtn, color: ConstantHelper.buttonBorderColor, radius: 5)
         initScreen()
         initData()
+        setupKeyboardNotifcationListenerForScrollView(scrollView)
     }
     
     override func didReceiveMemoryWarning() {
