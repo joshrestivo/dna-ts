@@ -1,12 +1,13 @@
 <div class="client_resource" ng-controller="clientResourceController">
 	<div>
 		<div class="list-resource col-md-4">	
-			<button type="submit" class="new-resource btn btn-primary">New</button>
+			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
 			<ul class="list-group" >				
 			  	<li class="list-group-item" ng-repeat="resource in resources" ng-class="{active: $first}">
-			  		<span class="badge" ng-if="resource.is_default == 'true'">Default</span>
-			  		<a href="#" ng-click="updateResource($event, resource.id)">			  		
-			  		<span ng-bind="resource.name"></span></a>			  		
+			  		<span class="badge" ng-if="resource.is_default">Default</span>
+			  		<a href="#" >				  			
+			  		<span ng-bind="resource.name"></span></a>	
+			  		<a href="#" class="edit-resource" ng-click="createUpdateResource($event, resource)"><i class="fa fa-pencil-square-o"></i></a>	  				  		
 			  	</li>			  	
 			</ul>
 		</div>

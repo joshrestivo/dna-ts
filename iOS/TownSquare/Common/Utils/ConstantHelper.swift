@@ -11,8 +11,6 @@ import SDWebImage
 
 struct ConstantHelper {
     
-    //Table color
-    
     static var redColor = UIColor(red: 211 / 255.0, green: 55 / 255.0, blue: 42 / 255.0, alpha: 1)
     
     static var borderColor = UIColor(red: 236 / 255.0, green: 236 / 255.0, blue: 236 / 255.0, alpha: 1)
@@ -58,6 +56,12 @@ struct ConstantHelper {
     static var placeholderColor = UIColor(red: 109/255, green: 109/255, blue: 109/255, alpha: 1.0)
 
     static let attributedAlertString = NSAttributedString(string: "", attributes: [NSFontAttributeName : UIFont(name: defaultFontName, size: 14)! ,NSForegroundColorAttributeName : UIColor.red])
+    
+    static let cache = try! Cache<NSString>(name: "cacheLocalization")
+    
+    static let localizationKey = "localizationCacheKey"
+    
+    static var languageKeys = [LocalizationKey]()
     
     static func isValidEmail(_ testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
@@ -167,6 +171,17 @@ struct ConstantHelper {
         return UserDefaults.standard.object(forKey: defaultFontName) as? String
     }
     
+    static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
+    }
+    
     static func stringFromTimeInterval(_ interval:TimeInterval) -> NSString {
         
         let ti = NSInteger(interval)        
@@ -211,6 +226,22 @@ struct ConstantHelper {
         mutableText = NSMutableAttributedString(string: text, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 15)])
         mutableText.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range: NSRange(location: text.characters.count - 1,length: 1))
         target.attributedText = mutableText
+    }
+    
+    static func existInCache(_ newCache: [LocalizationKey])->Bool?{
+        for item in newCache {
+            if ConstantHelper.localizationKey == item.key && ConstantHelper.cache[ConstantHelper.localizationKey] == item.value {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    static func setCacheValues(_ newCache: [LocalizationKey]){
+        for item in newCache {
+            ConstantHelper.cache.setObject(item.value!, forKey: item.key!, expires: .never)
+        }
     }
 }
 

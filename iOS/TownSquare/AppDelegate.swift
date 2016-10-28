@@ -13,13 +13,30 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var ApiService: ApiClientUsage = ApiClientUsage.shareInstance
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        /*
+         self.ApiService.getLocalazation("", longitude: "", callback: { (resObject,isSucces, error) -> () in
+             if isSucces == true  {
+                 let validData = resObject as! NSDictionary
+                 for (key, value) in validData {
+                    ConstantHelper.cache.setObject(value as! NSString, forKey: key as! String, expires: .never)
+                 }
+             }
+         })
+         */
+        
+        let stringListObject:String = "[{\"key\": \"menuHome\", \"value\": \"Home\"}, {\"key\": \"menuUpComingEvents\", \"value\": \"Upcoming Events\"},{\"key\": \"menuRequestService\", \"value\": \"Request Service\"},{\"key\": \"menuLocationInfo\", \"value\": \"Location Info\"},{\"key\": \"menuStreetAlert\", \"value\": \"Street Alerts\"},{\"key\": \"menuSetting\", \"value\": \"Settings\"},{\"key\": \"home_header_title\", \"value\": \"DNA App\"},{\"key\": \"home_middle_request_button_text\", \"value\": \"REQUEST SERVICE\"},{\"key\": \"home_middle_left_content\", \"value\": \"Sep. 30 - 7:00pm - Public lynching Oct 1 - 8:30pm - Town Sq. Clearnup Oct 2 - City Council Meeting\"},{\"key\": \"menu_new_title\", \"value\": \"Downtown Street Alert\"},{\"key\": \"menu_new_content\", \"value\": \"Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.\"},{\"key\": \"upCommingEvents_title\", \"value\": \"Downtown Street Alert\"},{\"key\": \"upCommingEvents_content\", \"value\": \"Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time\"},{\"key\": \"upCommingEvents_header_title\", \"value\": \"Up Coming Events\"}, {\"key\": \"street_alert_header_title\", \"value\": \"Street Alert\"}, {\"key\": \"street_alert_title\", \"value\": \"Downtown Street Alert\"},{\"key\": \"street_alert_content\", \"value\": \"Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time\"}, {\"key\": \"request_service_header_title\", \"value\": \"Request service\"}, {\"key\": \"location_info_header_title\", \"value\": \"Location Info\"}, {\"key\": \"location_title\", \"value\": \"10th St. Lofts\"}, {\"key\": \"location_new_body\", \"value\": \"1010 Saint Charles St, 63101\"}, {\"key\": \"setting_header_title\", \"value\": \"Settings\"}]"
+        
+        let languageKeys = [LocalizationKey](json: stringListObject)        
+        if ConstantHelper.existInCache(languageKeys) == false {
+            ConstantHelper.setCacheValues(languageKeys)
+        }
+        
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -27,11 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // If your application supports background execution, this methodvar called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // Called as part of the transition from the background to the active statvarhere you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

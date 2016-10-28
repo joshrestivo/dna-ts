@@ -71,7 +71,7 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     
     func initScreen(){
         addDefaultNavUI()
-        self.navigationItem.title = "Location Info"
+        self.navigationItem.title = ConstantHelper.cache["location_info_header_title"] as! String
         self.userTableView?.rowHeight=100
         self.userTableView?.rowHeight = UITableViewAutomaticDimension
         self.userTableView?.estimatedRowHeight = 100
@@ -79,18 +79,18 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     
     func getDataSource(){    
         let imgUrl = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"
-        let location1 = BuildingLocation(thumbnailUrl: imgUrl, title: "10th St. Lofts", description: "1010 Saint Charles St, 63101")
-        let location2 = BuildingLocation(thumbnailUrl: imgUrl, title: "1818 Washington", description: "1818 Washington Awe, 63103")
-        let location3 = BuildingLocation(thumbnailUrl: imgUrl, title: "Adler Lofts", description: "2034 Lucas Awe, 63103, 63101")
-        let location4 = BuildingLocation(thumbnailUrl: imgUrl, title: "Annex Lofts", description: "1511 Locust St, 63101")
-        let location5 = BuildingLocation(thumbnailUrl: imgUrl, title: "Ballpark Lofts", description: "1004 Spruce St, 63102")
-        let location6 = BuildingLocation(thumbnailUrl: imgUrl, title: "Blu City Spaces", description: "210 N. 17th St, 63103")
-        let location7 = BuildingLocation(thumbnailUrl: imgUrl, title: "City Museum Building", description: "701 N, 15th Street, 63103")
-        let location8 = BuildingLocation(thumbnailUrl: imgUrl, title: "City Parc at Pine", description: "1531 Pine St, 63101")
-        let location9 = BuildingLocation(thumbnailUrl: imgUrl, title: "City View", description: "1600 Pine St, 63102")
-        let location10 = BuildingLocation(thumbnailUrl: imgUrl, title: "Cupples Station Lofts", description: "1023 Spruce St, 63102")
-        let location11 = BuildingLocation(thumbnailUrl: imgUrl, title: "Dorsa Lofts", description: "1015 Washington Awe, 63101")
-        let location12 = BuildingLocation(thumbnailUrl: imgUrl, title: "Edge Lofts", description: "701 N, 15th Street, 63103")
+        let location1 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)        
+        let location2 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location3 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location4 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location5 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location6 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location7 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location8 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location9 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location10 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location11 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
+        let location12 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_new_body"] as! String)
         data.append(location1)
         data.append(location2)
         data.append(location3)

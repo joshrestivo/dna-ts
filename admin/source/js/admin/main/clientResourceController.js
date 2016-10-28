@@ -1,38 +1,27 @@
-angular.module('app').controller('clientResourceController',  ['$scope', '$http', function ($scope, $http) {    
+angular.module('app').controller('clientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {    
       	
-   	$http.get(SERVICE_BASE_URL + '/resources')
+   	$http.get(SERVICE_BASE_URL + '/resources', { withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {
-	            	alert(JSON.stringify(result));
+	            	$scope.resources = result.data;
+	            	$scope.resourceDetails = result.data.details;
 	            }
 	        })
 	        .error(function (error, status){	            	
-		        alert(error);
-			}); 
-	  			
-   	$scope.resources = [
-   		{ id:"1", name:"New York", is_default:"true"},
-   		{ id:"2", name:"England", is_default:"false"},
-   		{ id:"3", name:"VN", is_default:"false"},
-   		{ id:"4", name:"China", is_default:"false"},
-   		{ id:"5", name:"Singapore", is_default:"false"},
-   	];
-	$scope.resourceDetails = [
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"},
-		{ unique_name:"unique_name1", display_text:"New York"}
-   	];
+		        processCommonExeption(error, ngDialog);
+			}); 	  			   	
    	
- 	$scope.updateResource = function (event, id) {
- 		$('li[class*="active"]').removeClass("active");
-	    angular.element(event.currentTarget).parent().addClass("active");
+ 	$scope.createUpdateResource = function (event, resource) {
+ 		if (event != null) {
+ 			sessionStorage.setItem("resource", JSON.stringify(resource));
+ 		}
+ 		
+ 		window.location.href = ("/main/update_client_resource.html"); 	
+ 		
+ 		/*if (event != null) {
+ 			$('li[class*="active"]').removeClass("active");
+ 			angular.element(event.currentTarget).parent().addClass("active");
+ 		}	 */   
 	};
 	
     $(".nav li.tab_client_resources").addClass("active");       

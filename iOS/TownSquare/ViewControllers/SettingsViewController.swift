@@ -13,7 +13,7 @@ class SettingsViewController: BaseCenterViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addDefaultNavUI()
-        self.navigationItem.title = "Settings"
+        self.navigationItem.title = ConstantHelper.cache["setting_header_title"] as! String
     }
 
     override func didReceiveMemoryWarning() {
