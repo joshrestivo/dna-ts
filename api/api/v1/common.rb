@@ -10,18 +10,6 @@ module Townsquare
           
           JSONResult.new(true, Country.all)
         end
-
-        params do
-          requires :country_code, type:String, desc: "Country code"
-        end
-        get 'resources/:country_code' do
-          if !authenticate?
-            return JSONResult.new(false, "INVALID_SESSION")
-          end
-
-          resources = ClientResource.where(:country_code => params[:country_code])
-          JSONResult.new(true, resources)
-        end
        
         get 'alert_types' do
           if !authenticate?

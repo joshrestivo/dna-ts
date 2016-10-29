@@ -109,23 +109,37 @@
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
+[3. Ping](#3-ping)  
 
 ###****Notes**
-When using the API from mobile client (or partners), remember to add a key 'Secret-Key' in the HTTP Header of the HTTP request. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
+When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
 
 ####**1. Get all alert types**
-POST: <HOST>/api/1.0/admin/alert_types  
+GET: <HOST>/api/1.0/admin/alert_types  
 ######**Response:**
 - {success=true, data=Alert types string collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 - {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**2. Get all countries**
-POST: <HOST>/api/1.0/admin/countries  
+GET: <HOST>/api/1.0/admin/countries  
 ######**Response:**
 - {success=true, data=[Country](#country) object collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 - {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
+
+####**3. Ping**
+GET: <HOST>/api/1.0/admin/ping  
+######**Response:**
+- {success=true, data="pong"}
+- {success=false, data="SYSTEM_ERROR"}
+
+####**4. Authentication**
+POST: <HOST>/api/1.0/admin/auth  
+######**Response:**
+- {success=true, data="pong"}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
 
 #**For administration tool**
 [1. Login](#1-login)  
