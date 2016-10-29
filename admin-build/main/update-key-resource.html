@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Townsquare - Administration</title>
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="images/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+  <link rel="manifest" href="images/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+ <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/angular-block-ui.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/ngDialog.css" rel="stylesheet">
+  <link href="/css/ngDialog-theme-default.css" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
+  
+  <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
+  <script src="/js/bootstrap.min.js" language="javascript"></script>
+  <script src="/js/angular.min.js" language="javascript"></script>  
+  <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
+  <script src="/js/angular-block-ui.min.js" language="javascript"></script>
+   <script src="/js/ngDialog.min.js" language="javascript"></script>
+  <script src="/js/admin/app.js" language="javascript"></script>
+  <script src="/js/admin/directives.js" language="javascript"></script>  
+  <script src="/js/js.cookie.js" language="javascript"></script>    
+  <script src="/js/all.js" language="javascript"></script> 
+</head>
+<body ng-app="app">
+  <div class="header">
+    <div class="logo col-md-4">
+      <img src="/images/logo.png" />
+    </div>
+    <div class="col-md-4">
+      <p class="text-center title">ADMINISTRATION TOOL</p>
+    </div>
+    <div class="col-md-4">
+    	<div class="user">
+    		<ul class="nav nav-pills">
+    			<li role="presentation" class="dropdown pull-right">
+				    <a class="dropdown-toggle " data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+				    	<span class="user-name"></span>
+				      	<span class="caret"></span>
+				    </a>   
+				    <ul class="dropdown-menu">
+	  					<li>
+	  						<a href="#" onclick="logout();return false;"><span>Logout</span></a>
+	  					</li>      				
+    				</ul>
+  				</li>  				
+			</ul>
+    	</div>      
+    </div>
+  </div>
+  <div class="site-body">
+  	<div class="main">
+  		<div class="left-side">
+	    	<nav role="navigation">
+	    		<ul class="nav">
+	    			<li class="tab_locations">
+	    				<a href="/main/location.html">
+	    					<span>Locations</span>
+	    				</a>	    				
+	    			</li>
+	    			<li class="tab_alert_types">
+	    				<a href="/main/alert-types.html">
+	    					<span>Alert Types</span>
+	    				</a>	
+    				</li>    
+    				<li class="tab_bulletins">
+	    				<a href="/main/client-resources.html">
+	    					<span>Bulletins</span>
+	    				</a>	
+    				</li>   
+    				<li class="tab_client_resources">
+	    				<a href="/main/client-resources.html">
+	    					<span>Client Resources</span>
+	    				</a>	
+    				</li>   				
+	    		</ul>
+	    	</nav>
+    	</div>
+	    <div class="right-site">
+	    	<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/client-resources.html">Client Resource</a></li>
+	  <li class="active">Update Key Resource</li>
+	</ol>
+</div>
+<div class="update-key-resource" ng-cloak ng-controller="addKeyResourceController" ng-init="Init()">
+	<div class="title">
+		<h2>Key Resource</h2>
+	</div>	
+	
+	<form name="addKeyResource" >
+		<div class="detail">
+			<div class="row">
+	            <div class="col-md-2 name">
+	                Key
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Key Resource Name" name="unique_name" ng-model="Model.unique_name" required
+	                       uib-tooltip="{{(addKeyResource.unique_name.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.unique_name"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        </br>
+	        <div class="row" ng-repeat="resource in resources ">
+	        	<div class="col-md-2 name">
+	                <span ng-bind="resource.name"></span>
+	            </div>
+	            <div class="col-md-6">	   
+	                <input type="text" class="form-control" placeholder="Display Text" name="display_text" ng-model="Model.values[resource.id]" required
+                 		   uib-tooltip="{{(addKeyResource.display_text.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.values[resource.name]"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        
+	        <div class="row pnl-button">	        	
+        		<button ng-click="createUpdateKeyResource()" class="btn btn-primary">Add</button>
+        	</div>         	
+		</div>
+	</form>
+	
+	
+</div>
+<script language="javascript" src="/js/admin/main/updateKeyResourceController.js"></script>
+
+	
+
+	    </div>
+	</div>
+  </div>
+  <div class="footer">
+  </div>
+</body>
+</html>
+
+<script type="text/ng-template" id="alert-ok">
+    <div id="modalSuccess" class="modal-block modal-block-success">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Infomation!</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button ng-click="closeThisDialog(0)" class="btn btn-success modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
+<script type="text/ng-template" id="alert-error">
+    <div id="modalDanger" class="modal-block modal-block-danger">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Error!</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button ng-click="closeThisDialog(0)" class="btn btn-danger modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
+<script >
+	var userNameLoginCookie = readCookie("USERNAME_LOGIN"); 
+	if (userNameLoginCookie != null) {   	
+		$(".user-name").text(userNameLoginCookie);  
+	}
+</script> 
+ 
