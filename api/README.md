@@ -91,6 +91,21 @@
     "updated_at": "2016-10-27T06:47:33.911Z"
 }
 ```
+#####**Customer**
+```csharp
+{
+    "id": 1,
+    "name": "ABC",
+    "phone": "756-347-4736",
+    "address": "Address",
+    "email": "ppthanhtn@gmail.com",
+    "secret_key": "eb14201b-f0fb-430d-803f-bc5e00b506e4",
+    "created_by": "admin",
+    "updated_by": null,
+    "created_at": "2016-10-27T06:47:33.911Z",
+    "updated_at": "2016-10-27T06:47:33.911Z"
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
@@ -132,6 +147,9 @@ POST: <HOST>/api/1.0/admin/countries
 [17. Update an user](#17-update-an-user)  
 [18. Delete an user](#18-delete-an-user)  
 [19. Reset user password](#19-reset-user-password)  
+[20. Get customers](#20-get-customers)  
+[21. Create/update customer](#21-createupdate-customer)  
+[22. Delete a customer](22-delete-a-customer#)  
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
 ######**Parameters:**
@@ -378,5 +396,37 @@ POST: <HOST>/api/1.0/admin/user/pwd/reset
 - {success=true, data=[User](#user) object}
 - {success=false, data="NOT_EXISTED"}. Show "User is not existed"
 - {success=false, data="RESET_SUPER_ADMIN"}. Show "You cannot reset password for super admin"
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**20. Get customers**
+GET: <HOST>/api/1.0/admin/customers  
+######**Response:**
+- {success=true, data=[Customer](#customer) objects collection}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**21. Create/update customer**
+POST: <HOST>/api/1.0/admin/customer/save  
+######**Parameters:**
+```csharp
+{
+  "id": 0,
+  "name": "name",
+  "phone": "phone",
+  "address": "description",
+  "email": "ppthanhtn@gmail.com" //Unique
+}
+```
+######**Response:**
+- {success=true, data=[Customer](#customer) object}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="EMAIL_EXISTED"}. Show "Customer with the same email is already existed"
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**22. Delete a customer**
+GET: <HOST>/api/1.0/admin/customer/{id}/del  
+######**Response:**
+- {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
