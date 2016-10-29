@@ -1,0 +1,2 @@
+git subtree push --prefix api dev master
+git subtree push --prefix admin admin master
