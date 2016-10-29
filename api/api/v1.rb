@@ -158,6 +158,7 @@ module Townsquare
           end
         end
         
+        closest_location.need_client_resource = true
         JSONResult.new(true, closest_location)
       end
       
