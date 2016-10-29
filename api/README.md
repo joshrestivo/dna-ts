@@ -110,34 +110,44 @@
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
 [3. Ping](#3-ping)  
+[4. Authentication](#4-authentication)
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
 
 ####**1. Get all alert types**
-GET: <HOST>/api/1.0/admin/alert_types  
+GET: <HOST>/api/1.0/alert_types  
 ######**Response:**
 - {success=true, data=Alert types string collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 - {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**2. Get all countries**
-GET: <HOST>/api/1.0/admin/countries  
+GET: <HOST>/api/1.0/countries  
 ######**Response:**
 - {success=true, data=[Country](#country) object collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 - {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**3. Ping**
-GET: <HOST>/api/1.0/admin/ping  
+GET: <HOST>/api/1.0/ping  
 ######**Response:**
 - {success=true, data="pong"}
 - {success=false, data="SYSTEM_ERROR"}
 
 ####**4. Authentication**
-POST: <HOST>/api/1.0/admin/auth  
+POST: <HOST>/api/1.0/auth  
+######**Parameters:**
+```csharp
+{
+  "longitude": 10.844365,
+  "latitude": 106.640025,
+  "client_os": "ios", // ios or android
+  "device_token": "Test"
+}
+```
 ######**Response:**
-- {success=true, data="pong"}
+- {success=true, data=[Location](#location) object}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
