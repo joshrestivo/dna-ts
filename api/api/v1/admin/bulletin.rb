@@ -1,9 +1,9 @@
 module Townsquare
   module API
     class V1 < Grape::API
-      resource 'admin' do
+      resource 'admin/location' do
         
-        route_param 'location/:location_id' do
+        route_param :location_id do
           get 'bulletins' do
             if !admin_authenticate?
               return JSONResult.new(false, "INVALID_SESSION")

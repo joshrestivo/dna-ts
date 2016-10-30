@@ -4,7 +4,7 @@ require "sinatra/activerecord/rake"
 desc "API Routes"
 task :routes do
   Townsquare::API::V1.routes.each do |api|
-    puts "        #{api.route_method.ljust(10)} #{api.route_path.to_s.ljust(40)} #{api.route_description}"
+    puts "        #{api.request_method.ljust(10)} #{api.path.to_s.ljust(40)} #{api.description}"
   end
 end
 
