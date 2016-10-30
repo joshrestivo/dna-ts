@@ -110,7 +110,8 @@
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
 [3. Ping](#3-ping)  
-[4. Authentication](#4-authentication)
+[4. Authentication](#4-authentication)  
+[5. Get bulletins](#5-get-bulletins)  
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
@@ -148,6 +149,13 @@ POST: <HOST>/api/1.0/auth
 ```
 ######**Response:**
 - {success=true, data=[Location](#location) object}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**5. Get bulletins**
+GET: <HOST>/api/1.0/{location_id}/bulletins?page=1&limit=10 (default page = 1, limit=10 if missing)
+######**Response:**
+- {success=true, data=[Bulletin](#bulletin) object}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
