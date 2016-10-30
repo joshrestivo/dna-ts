@@ -4,7 +4,7 @@ class Building < ActiveRecord::Base
     {
       :id                   => id,
       :location_id          => location_id,
-      :title                => title,
+      :name                 => name,
       :address              => address,
       :zipcode              => zipcode,
       :image_url            => image_url,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029200000) do
+ActiveRecord::Schema.define(version: 20161031200000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20161029200000) do
 
   create_table "buildings", id: :bigserial, force: :cascade do |t|
     t.integer  "location_id",      limit: 8
-    t.string   "title"
+    t.string   "name"
     t.string   "address"
     t.string   "zipcode"
     t.string   "image_url"

@@ -111,7 +111,7 @@
 {
     "id": 1,
     "location_id": "1",
-    "title": "title",
+    "name": "name",
     "address": "Address",
     "zipcode": "zipcode",
     "image_url": "image_url",
@@ -211,6 +211,8 @@ GET: <HOST>/api/1.0/{location_id}/buildings?page=1&limit=10 (default page = 1, l
 [21. Create/update customer](#21-createupdate-customer)  
 [22. Delete a customer](22-delete-a-customer#)  
 [23. Get buildings](#23-get-buildings)  
+[24. Create/update building](#24-createupdate-building)  
+[25. Delete a building](#25-delete-a-building)  
 
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
@@ -377,7 +379,7 @@ Below json is used to decorate, but when implementing, please use multipart para
   "description": "description",
   "valid_from": "1/1/2001 12:12:00",
   "valid_to": "1/1/2001 12:12:01",
-  "image": FILE
+  "image": FILE // Optional
 }
 ```
 ######**Response:**
@@ -497,5 +499,32 @@ GET: <HOST>/api/1.0/admin/customer/{id}/del
 GET: <HOST>/api/1.0/admin/location/{location_id}/buidings  
 ######**Response:**
 - {success=true, data=[Building](#building) objects collection}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**24. Create/update building**
+POST: <HOST>/api/1.0/admin/location/{location_id}/building/save  
+######**Parameters:**
+```csharp
+Below json is used to decorate, but when implementing, please use multipart parameters of javascript's FormData object to make ajax request 
+ 
+{
+  "id": 0,
+  "name": "name",
+  "address": "address",
+  "zipcode": "zipcode",
+  "image": FILE // Optional
+}
+```
+######**Response:**
+- {success=true, data=[Building](#building) object}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="IMAGE_INVALID"}. Show "Please select image (png, bmp, jpg, jpeg)"
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**25. Delete a building**
+GET: <HOST>/api/1.0/admin/location/{location_id}/building/:id/del  
+######**Response:**
+- {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
