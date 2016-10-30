@@ -106,12 +106,33 @@
     "updated_at": "2016-10-27T06:47:33.911Z"
 }
 ```
+#####**Building**
+```csharp
+{
+    "id": 1,
+    "location_id": "1",
+    "title": "title",
+    "address": "Address",
+    "zipcode": "zipcode",
+    "image_url": "image_url",
+    "image_width": "image_width",
+    "image_height": "image_height",
+    "thumbnail_url": "thumbnail_url",
+    "thumbnail_width": "thumbnail_width",
+    "thumbnail_height": "thumbnail_height",    
+    "created_by": "admin",
+    "updated_by": null,
+    "created_at": "2016-10-27T06:47:33.911Z",
+    "updated_at": "2016-10-27T06:47:33.911Z"
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
 [3. Ping](#3-ping)  
 [4. Authentication](#4-authentication)  
 [5. Get bulletins](#5-get-bulletins)  
+[6. Get buildings](#6-get-buildings)  
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
@@ -155,7 +176,14 @@ POST: <HOST>/api/1.0/auth
 ####**5. Get bulletins**
 GET: <HOST>/api/1.0/{location_id}/bulletins?page=1&limit=10 (default page = 1, limit=10 if missing)
 ######**Response:**
-- {success=true, data=[Bulletin](#bulletin) object}
+- {success=true, data=[Bulletin](#bulletin) objects}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**6. Get buildings**
+GET: <HOST>/api/1.0/{location_id}/buildings?page=1&limit=10 (default page = 1, limit=10 if missing)
+######**Response:**
+- {success=true, data=[Building](#building) objects}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
@@ -182,6 +210,8 @@ GET: <HOST>/api/1.0/{location_id}/bulletins?page=1&limit=10 (default page = 1, l
 [20. Get customers](#20-get-customers)  
 [21. Create/update customer](#21-createupdate-customer)  
 [22. Delete a customer](22-delete-a-customer#)  
+[23. Get buildings](#23-get-buildings)  
+
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
 ######**Parameters:**
@@ -460,5 +490,12 @@ POST: <HOST>/api/1.0/admin/customer/save
 GET: <HOST>/api/1.0/admin/customer/{id}/del  
 ######**Response:**
 - {success=true, data=null}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**23. Get buildings**
+GET: <HOST>/api/1.0/admin/location/{location_id}/buidings  
+######**Response:**
+- {success=true, data=[Building](#building) objects collection}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.

@@ -2,6 +2,7 @@ module Townsquare
   module API
     class V1 < Grape::API
       resource 'admin' do
+        
         helpers do
           def get_default_resource
             default_resource = ClientResource.find_by(:is_default => true)
