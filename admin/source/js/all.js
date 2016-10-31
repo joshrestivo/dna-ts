@@ -65,7 +65,7 @@ function processCommonExeption(errorCode, ngDialog){
 	if (errorCode.indexOf("SYSTEM_ERROR") === 0) {
 		showErrorDialog(ngDialog, SERVER_ERROR_MSG);        
     } else if (errorCode == "INVALID_SESSION"){
-    	alert(SESSION_EXPIRE_MSG);
+    	showErrorDialog(ngDialog, SESSION_EXPIRE_MSG);  
         gotoLoginPage();
     } else {
     	showErrorDialog(ngDialog, SERVER_ERROR_MSG);    
