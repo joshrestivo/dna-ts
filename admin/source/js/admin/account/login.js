@@ -12,6 +12,8 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 	                	var return_url = getUrlParameter("return_url");                	
 	                    if (return_url != ""){	                    	
 	                    	window.location.href = return_url;
+	                    } else {
+	                    	window.location.href = "/";
 	                    }
 	                } else {
 	                	if(result.data == "INCORRECT") {                	
@@ -24,7 +26,7 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 	                }
 	            })
 	            .error(function (error, status){	            	
-			        processCommonExeption(error, ngDialog);
+			        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
 	  			}); 
    		}
     };

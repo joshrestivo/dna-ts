@@ -2,6 +2,7 @@
 	<div>
 		<div class="list-resource col-md-4">	
 			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
+			<h3>Resources</h3>
 			<ul class="list-group" >				
 			  	<li class="list-group-item" ng-repeat="resource in resources" ng-class="{active: $first}">
 			  		<span class="badge" ng-if="resource.is_default">Default</span>
@@ -27,8 +28,8 @@
 	                        <td ng-bind="keyResource.unique_name"></td>
 	                        <td ng-bind="keyResource.display_text"></td>    
 	                        <td align="center">
-	                        	<a class="td-edit" href="#" ng-click="createUpdateKeyResource(keyResource)"><i class="fa fa-pencil-square-o"></i></a>   
-	                        	<a class="td-delete" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
+	                        	<a class="td-edit" href="#" ng-click="createUpdateKeyResource(keyResource.unique_name)"><i class="fa fa-pencil-square-o"></i></a>   
+	                        	<a class="td-delete" href="#" ng-click="deleteKeyResource(keyResource.unique_name)"><i class="fa fa-times"></i></a>                	                       	                        	
 	                        </td>                                           
 	                    </tr>
 				</tbody>

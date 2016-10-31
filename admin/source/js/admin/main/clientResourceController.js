@@ -20,11 +20,25 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
  		window.location.href = ("/main/update-client-resource.html"); 	
 	};
 	
-	$scope.createUpdateKeyResource = function (keyResource) { 	
-		if(keyResource != null) {			
-			sessionStorage.setItem("keyResource", JSON.stringify(keyResource));
+	$scope.createUpdateKeyResource = function (keyResourceUniqueName) { 	
+		if(keyResourceUniqueName != null) {			
+			sessionStorage.setItem("keyResourceUniqueName", keyResourceUniqueName);
 		} 
  		window.location.href = ("/main/update-key-resource.html"); 	 		 		
+	};
+	
+	$scope.deleteKeyResource = function(keyResourceUniqueName) {
+		$http.post(SERVICE_BASE_URL + '/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
+	        .success(function (result) {	                
+	            if (result.success) {	      
+		          	window.location.href = "/main/client-resources.html";
+	            } else {                	              	  	
+	        		processCommonExeption(result.data, $scope);                	              	                    
+	            }
+	        })
+	        .error(function (error, status){	            	
+		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
+			}); 	
 	};
 	
 	$scope.reloadResourceDetail = function(resource, event) {
