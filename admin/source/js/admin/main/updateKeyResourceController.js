@@ -10,22 +10,19 @@ angular.module('app').controller('addKeyResourceController',  ['$scope', '$http'
 		$scope.resources = allResource;		
 				
 		if (keyResourceUniqueName != null) {
-			$scope.Model.unique_name = keyResourceUniqueName;	
-			$scope.IsUpdate = true;		
+			$scope.Model.unique_name = keyResourceUniqueName;
+			var displayTextInit = new Array();		
+			$.each(allResource, function (index, value) {
+	  			keyResource = $.grep(allResource[index].details, function(e){ return e.unique_name == keyResourceUniqueName; });
+	  			displayTextInit[allResource[index].id] = keyResource[0].display_text;
+			});						
+			$scope.Model.values = displayTextInit;	
+			$scope.IsUpdate = true;					
 			$('.unquie-name').prop('readonly', true);
 		} else {
-			// get the first item
-			keyResourceUniqueName = allResource[0].details[0].unique_name;
 			$scope.Model.unique_name = "";
 			$scope.IsUpdate = false;
 		}
-		
-		var displayTextInit = new Array();		
-		$.each(allResource, function (index, value) {
-  			keyResource = $.grep(allResource[index].details, function(e){ return e.unique_name == keyResourceUniqueName; });
-  			displayTextInit[allResource[index].id] = keyResource[0].display_text;
-		});						
-		$scope.Model.values = displayTextInit;
 	};
 		
 	$scope.createUpdateKeyResource = function () {
