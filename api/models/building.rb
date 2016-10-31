@@ -2,8 +2,9 @@ class Building < ActiveRecord::Base
 
   def as_json(*)        
     {
+      :id                   => id,
       :location_id          => location_id,
-      :title                => title,
+      :name                 => name,
       :address              => address,
       :zipcode              => zipcode,
       :image_url            => image_url,

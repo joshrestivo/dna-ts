@@ -1,6 +1,12 @@
-<div class="update_client_resource" ng-cloak ng-controller="updateClientResourceController" ng-init="Init()">
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/client-resources.html">Client Resource</a></li>
+	  <li class="active">Update Client Resource</li>
+	</ol>
+</div>
+<div class="update-client-resource" ng-cloak ng-controller="updateClientResourceController" ng-init="Init()">
 	<div class="title">
-		<h4>Resource</h4>
+		<h2>Resource</h2>
 	</div>	
 	
 	<form name="updateClientResource" >
@@ -27,8 +33,8 @@
 	            </div>
 	        </div>
 	        <div class="row pnl-button">
-	        	<button ng-click="createUPdateResource()" ng-if="!IsUpdate" class="btn btn-primary">Create Resource</button>
-        		<button ng-click="createUPdateResource()" ng-if="IsUpdate"  class="btn btn-primary">Update Resource</button>
+	        	<button ng-click="createUpdateResource()" ng-if="!IsUpdate" class="btn btn-primary">Create Resource</button>
+        		<button ng-click="createUpdateResource()" ng-if="IsUpdate"  class="btn btn-primary">Update Resource</button>
         	</div>         	
 		</div>
 	</form>

@@ -15,10 +15,6 @@ module Townsquare
         header['Access-Control-Allow-Credentials'] = 'true'
       end
       
-      get :ping do
-        "pong" 
-      end
-      
       helpers do
         def login_admin_user
           cookie = cookies[:TOWNSQUARE_ADMIN]
@@ -37,7 +33,7 @@ module Townsquare
           secret_key = headers['Secret-Key']
           if secret_key != '' && secret_key != nil
             if secret_key != 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
-              customer = Customer.find_by(:secret_key => secret_key)
+              customer = Customer.where("LOWER(secret_key) = ?", secret_key).first
               if customer
                 return customer.name
               else
@@ -97,6 +93,76 @@ module Townsquare
           
           url
         end
+
+        def limit(limit = nil)
+          if params[:limit]
+            @limit = params[:limit].to_i
+          else
+            @limit = limit ? limit : 10
+          end
+
+          @limit
+        end
+
+        def page(page = nil)
+          if params[:page]
+            @page = params[:page].to_i
+          else
+            @page = page ? page : 1
+          end
+
+          @page
+        end
+
+        def offset
+          (page - 1) * limit
+        end
+      end
+      
+      get :ping do
+        "pong" 
+      end
+      
+      params do
+        requires :longitude, type:Float, desc: "Longitude"
+        requires :latitude, type:Float, desc: "latitude"
+        requires :client_os, type:String, desc: "Client OS: ios, android"
+        optional :device_token, type:String, desc: "device token"
+      end
+      post :auth do
+        if !user_authenticate?
+          return JSONResult.new(false, "INVALID_SESSION")          
+        end
+        
+        page_index = 0        
+        locations = Location.order("id asc").offset(page_index * limit).limit(limit)
+        closest_location = nil
+        closest_distance = -1
+        while locations.size > 0 do
+          locations.each do |location|
+            distance = Townsquare::Geo.distance([params[:latitude], params[:longitude]], [location.latitude, location.longitude])
+            if !closest_location || closest_distance > distance
+              closest_location = location
+              closest_distance = distance
+            end 
+          end
+          
+          page_index = page_index + 1
+          locations = Location.order("id asc").offset(page_index * limit).limit(limit)
+        end
+        
+        if (params[:client_os] == 'ios' || params[:client_os] == 'android') && (params[:device_token] + '') != ''
+          if !Device.where("LOWER(platform) = ? AND LOWER(token) = ?", params[:client_os].downcase(), params[:device_token].downcase()).first
+            Device.create(:token => params[:device_token],
+                          :platform => params[:client_os])
+          end
+        end
+        
+        if closest_location
+          closest_location.need_client_resource = true
+        end 
+        
+        JSONResult.new(true, closest_location)
       end
       
     end

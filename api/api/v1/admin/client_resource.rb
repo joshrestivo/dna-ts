@@ -2,6 +2,7 @@ module Townsquare
   module API
     class V1 < Grape::API
       resource 'admin' do
+        
         helpers do
           def get_default_resource
             default_resource = ClientResource.find_by(:is_default => true)
@@ -117,7 +118,7 @@ module Townsquare
             ui = ClientResourceDetail.where("client_resource_id = ? AND LOWER(unique_name) = ?", resource.id, params[:unique_name].downcase()).first
             existed = false
             values.each do |value|
-              if resource.id == value["resource_id"]
+              if resource.id == value["resource_id"].to_i
                 existed = true
                 if ui
                   ui.display_text = value["display_text"]

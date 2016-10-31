@@ -1,0 +1,9 @@
+Deployement
+
+	git subtree push --prefix api dev master
+	git subtree push --prefix admin admin master
+
+Migrate
+
+	heroku run rake db:migrate --remote dev
+

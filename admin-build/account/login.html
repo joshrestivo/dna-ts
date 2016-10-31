@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Townsquare - Administration</title>
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="images/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+  <link rel="manifest" href="images/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/angular-block-ui.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="/css/ngDialog.css" rel="stylesheet">
+    <link href="/css/ngDialog-theme-default.css" rel="stylesheet">
+  <link href="/css/all.css" rel="stylesheet">
+  
+  <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
+  <script src="/js/bootstrap.min.js" language="javascript"></script>
+  <script src="/js/angular.min.js" language="javascript"></script>
+  <script src="/js/ngDialog.min.js" language="javascript"></script>
+  <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
+  <script src="/js/angular-block-ui.min.js" language="javascript"></script>
+  <script src="/js/admin/app.js" language="javascript"></script>
+  <script src="/js/admin/directives.js" language="javascript"></script>  
+  <script src="/js/js.cookie.js" language="javascript"></script>  
+  <script src="/js/all.js" language="javascript"></script>  
+</head>
+<body ng-app="app">
+	<div class="header">
+	    <div class="logo col-md-4">
+	      <img src="/images/logo.png" />
+	    </div>
+	    <div class="col-md-4">
+	      <p class="text-center title">ADMINISTRATION TOOL</p>
+	    </div>
+	</div>
+    <div class="site-body">
+      <div class="login-container">
+	<form name="login" ng-controller="loginController">
+        <div class="form-group">
+            <input type="text" id="user_name" class="form-control" name="username" placeholder="User name" ng-model="Model.username" required
+            	   uib-tooltip="{{(loginController.username.$error.required)?'This field is required.':''}}"
+                   tooltip-enable="!Model.username"
+                   tooltip-placement="bottom" tooltip-trigger="mouseenter" />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" ng-model="Model.password" required
+             	   uib-tooltip="{{(loginController.password.$error.required)?'This field is required.':''}}"
+                   tooltip-enable="!Model.password"
+                   tooltip-placement="bottom" tooltip-trigger="mouseenter" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="authenticate()">Login</button>
+        </div>
+        <div class="form-group">
+            <div ng-bind="errorMessage" class="text-danger" ng-show="errorMessage"></div>
+        </div>
+    </form>
+</div>
+
+<script language="javascript" src="/js/admin/account/login.js"></script>
+
+
+    </div>
+	<div class="footer">
+	</div>
+</body>
+</html>
+
+<script type="text/ng-template" id="alert-ok">
+    <div id="modalSuccess" class="modal-block modal-block-success">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Infomation!</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button ng-click="closeThisDialog(0)" class="btn btn-success modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
+<script type="text/ng-template" id="alert-error">
+    <div id="modalDanger" class="modal-block modal-block-danger">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Error!</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button ng-click="closeThisDialog(0)" class="btn btn-danger modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>

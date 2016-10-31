@@ -91,26 +91,101 @@
     "updated_at": "2016-10-27T06:47:33.911Z"
 }
 ```
+#####**Customer**
+```csharp
+{
+    "id": 1,
+    "name": "ABC",
+    "phone": "756-347-4736",
+    "address": "Address",
+    "email": "ppthanhtn@gmail.com",
+    "secret_key": "eb14201b-f0fb-430d-803f-bc5e00b506e4",
+    "created_by": "admin",
+    "updated_by": null,
+    "created_at": "2016-10-27T06:47:33.911Z",
+    "updated_at": "2016-10-27T06:47:33.911Z"
+}
+```
+#####**Building**
+```csharp
+{
+    "id": 1,
+    "location_id": "1",
+    "name": "name",
+    "address": "Address",
+    "zipcode": "zipcode",
+    "image_url": "image_url",
+    "image_width": "image_width",
+    "image_height": "image_height",
+    "thumbnail_url": "thumbnail_url",
+    "thumbnail_width": "thumbnail_width",
+    "thumbnail_height": "thumbnail_height",    
+    "created_by": "admin",
+    "updated_by": null,
+    "created_at": "2016-10-27T06:47:33.911Z",
+    "updated_at": "2016-10-27T06:47:33.911Z"
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
+[3. Ping](#3-ping)  
+[4. Authentication](#4-authentication)  
+[5. Get bulletins](#5-get-bulletins)  
+[6. Get buildings](#6-get-buildings)  
 
 ###****Notes**
-When using the API from mobile client (or partners), remember to add a key 'Secret-Key' in the HTTP Header of the HTTP request. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
+When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
 
 ####**1. Get all alert types**
-POST: <HOST>/api/1.0/admin/alert_types  
+GET: <HOST>/api/1.0/alert_types  
 ######**Response:**
 - {success=true, data=Alert types string collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 - {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
 
 ####**2. Get all countries**
-POST: <HOST>/api/1.0/admin/countries  
+GET: <HOST>/api/1.0/countries  
 ######**Response:**
 - {success=true, data=[Country](#country) object collection}
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 - {success=false, data="INVALID_SESSION"}. On website, show message: "Your session is expired. Please login and try again.".
+
+####**3. Ping**
+GET: <HOST>/api/1.0/ping  
+######**Response:**
+- {success=true, data="pong"}
+- {success=false, data="SYSTEM_ERROR"}
+
+####**4. Authentication**
+POST: <HOST>/api/1.0/auth  
+######**Parameters:**
+```csharp
+{
+  "longitude": 10.844365,
+  "latitude": 106.640025,
+  "client_os": "ios", // ios or android
+  "device_token": "Test"
+}
+```
+######**Response:**
+- {success=true, data=[Location](#location) object}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**5. Get bulletins**
+GET: <HOST>/api/1.0/{location_id}/bulletins?page=1&limit=10 (default page = 1, limit=10 if missing)
+######**Response:**
+- {success=true, data=[Bulletin](#bulletin) objects}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**6. Get buildings**
+GET: <HOST>/api/1.0/{location_id}/buildings?page=1&limit=10 (default page = 1, limit=10 if missing)
+######**Response:**
+- {success=true, data=[Building](#building) objects}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
 
 #**For administration tool**
 [1. Login](#1-login)  
@@ -132,6 +207,13 @@ POST: <HOST>/api/1.0/admin/countries
 [17. Update an user](#17-update-an-user)  
 [18. Delete an user](#18-delete-an-user)  
 [19. Reset user password](#19-reset-user-password)  
+[20. Get customers](#20-get-customers)  
+[21. Create/update customer](#21-createupdate-customer)  
+[22. Delete a customer](22-delete-a-customer#)  
+[23. Get buildings](#23-get-buildings)  
+[24. Create/update building](#24-createupdate-building)  
+[25. Delete a building](#25-delete-a-building)  
+
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
 ######**Parameters:**
@@ -297,7 +379,7 @@ Below json is used to decorate, but when implementing, please use multipart para
   "description": "description",
   "valid_from": "1/1/2001 12:12:00",
   "valid_to": "1/1/2001 12:12:01",
-  "image": FILE
+  "image": FILE // Optional
 }
 ```
 ######**Response:**
@@ -378,5 +460,71 @@ POST: <HOST>/api/1.0/admin/user/pwd/reset
 - {success=true, data=[User](#user) object}
 - {success=false, data="NOT_EXISTED"}. Show "User is not existed"
 - {success=false, data="RESET_SUPER_ADMIN"}. Show "You cannot reset password for super admin"
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**20. Get customers**
+GET: <HOST>/api/1.0/admin/customers  
+######**Response:**
+- {success=true, data=[Customer](#customer) objects collection}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**21. Create/update customer**
+POST: <HOST>/api/1.0/admin/customer/save  
+######**Parameters:**
+```csharp
+{
+  "id": 0,
+  "name": "name",
+  "phone": "phone",
+  "address": "description",
+  "email": "ppthanhtn@gmail.com" //Unique
+}
+```
+######**Response:**
+- {success=true, data=[Customer](#customer) object}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="EMAIL_EXISTED"}. Show "Customer with the same email is already existed"
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**22. Delete a customer**
+GET: <HOST>/api/1.0/admin/customer/{id}/del  
+######**Response:**
+- {success=true, data=null}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**23. Get buildings**
+GET: <HOST>/api/1.0/admin/location/{location_id}/buidings  
+######**Response:**
+- {success=true, data=[Building](#building) objects collection}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**24. Create/update building**
+POST: <HOST>/api/1.0/admin/location/{location_id}/building/save  
+######**Parameters:**
+```csharp
+Below json is used to decorate, but when implementing, please use multipart parameters of javascript's FormData object to make ajax request 
+ 
+{
+  "id": 0,
+  "name": "name",
+  "address": "address",
+  "zipcode": "zipcode",
+  "image": FILE // Optional
+}
+```
+######**Response:**
+- {success=true, data=[Building](#building) object}
+- {success=false, data="INVALID_SESSION"}.
+- {success=false, data="IMAGE_INVALID"}. Show "Please select image (png, bmp, jpg, jpeg)"
+- {success=false, data="SYSTEM_ERROR"}.
+
+####**25. Delete a building**
+GET: <HOST>/api/1.0/admin/location/{location_id}/building/:id/del  
+######**Response:**
+- {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.

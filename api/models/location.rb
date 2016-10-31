@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+  
   belongs_to :client_resource
   has_many :buildings
   has_many :news_feeds
@@ -27,9 +28,7 @@ class Location < ActiveRecord::Base
       :updated_at     => updated_at
     }
     
-    puts "GO HERE #{need_client_resource}"
     if need_client_resource
-      puts "GO HERE2"
       ret["client_resource"] = client_resource
     end
     ret

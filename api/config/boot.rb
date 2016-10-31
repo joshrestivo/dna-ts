@@ -33,6 +33,7 @@ include Townsquare::SESHelper
 include Townsquare::Image
 include Townsquare::CDN
 include Townsquare::Utils
+include Townsquare::Geo
 
 database_settings = YAML::load(File.open('config/database.yml'))[TOWNSQUARE_ENV]
 
