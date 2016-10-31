@@ -1,21 +1,35 @@
 angular.module('app').controller('addKeyResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
 	
 	$scope.Model = {};	
+	$scope.IsUpdate = false;
 	var allResource = JSON.parse(sessionStorage.getItem("allResource"));
-	var keyResource = sessionStorage.getItem("keyResource");
-	sessionStorage.removeItem("keyResource");	
+	var keyResourceUniqueName = sessionStorage.getItem("keyResourceUniqueName");
+	sessionStorage.removeItem("keyResourceUniqueName");		
 	
 	$scope.Init = function () {
 		$scope.resources = allResource;		
-		if (keyResource == null) {
-			keyResource = $.grep(allResource, function(e){ return e.is_default == true; });						
-		} 
+				
+		if (keyResourceUniqueName != null) {
+			$scope.Model.unique_name = keyResourceUniqueName;	
+			$scope.IsUpdate = true;		
+			$('.unquie-name').prop('readonly', true);
+		} else {
+			// get the first item
+			keyResourceUniqueName = allResource[0].details[0].unique_name;
+			$scope.Model.unique_name = "";
+			$scope.IsUpdate = false;
+		}
+		
+		var displayTextInit = new Array();		
+		$.each(allResource, function (index, value) {
+  			keyResource = $.grep(allResource[index].details, function(e){ return e.unique_name == keyResourceUniqueName; });
+  			displayTextInit[allResource[index].id] = keyResource[0].display_text;
+		});						
+		$scope.Model.values = displayTextInit;
 	};
 		
 	$scope.createUpdateKeyResource = function () {
 		if($scope.addKeyResource.$valid) {
-			alert(JSON.stringify($scope.Model));
-			
 			var data = {};
 			data.unique_name = $scope.Model.unique_name;
 			
@@ -27,23 +41,24 @@ angular.module('app').controller('addKeyResourceController',  ['$scope', '$http'
 				};  	
 				values.push(keyResource);		
 			});		
-			data.values = values;
+			data.values = JSON.stringify(values);
 			
 			$http.post(SERVICE_BASE_URL + '/resource/key/add',JSON.stringify(data),{ withCredentials: true })
-            .success(function (result) {	             	              
-                if (result.success) {	      
-    	          	alert("Success");
-                } else {       
-                	alert("failed");  
-            		processCommonExeption(result.data, ngDialog);                	              	                    
-                }
-            })
-            .error(function (error, status){	            	
-		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);       
-  			}); 	
-		}
-		
-		
+	            .success(function (result) {	             	              
+	                if (result.success) {	      
+	    	          	window.location.href = "/main/client-resources.html";
+	                } else {       
+	                	if(result.data == "VALUE_MISSING") {                	
+	                		showErrorDialog(ngDialog, "VALUE_MISSING") ;
+	                	} else {                  	  	
+	                		processCommonExeption(result.data, ngDialog);
+	                	}                	              	                    
+	                }
+	            })
+	            .error(function (error, status){	            	
+			        processCommonExeption(SERVER_ERROR_MSG, ngDialog);       
+	  			}); 	
+		}		
 	};
 		
     $(".nav li.tab_client_resources").addClass("active");       

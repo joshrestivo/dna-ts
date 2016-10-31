@@ -16,7 +16,7 @@
 	                Key
 	            </div>
 	            <div class="col-md-6">
-	                <input type="text" class="form-control" placeholder="Key Resource Name" name="unique_name" ng-model="Model.unique_name" required
+	                <input type="text" class="unquie-name form-control" placeholder="Key Resource Name" name="unique_name" ng-model="Model.unique_name" required
 	                       uib-tooltip="{{(addKeyResource.unique_name.$error.required)?'This field is required.':''}}"
 	                       tooltip-enable="!Model.unique_name"
 	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
@@ -36,12 +36,12 @@
 	        </div>
 	        
 	        <div class="row pnl-button">	        	
-        		<button ng-click="createUpdateKeyResource()" class="btn btn-primary">Add</button>
+        		<button ng-click="createUpdateKeyResource()" ng-if="!IsUpdate" class="btn btn-primary">Add</button>
+        		<button ng-click="createUpdateKeyResource()" ng-if="IsUpdate" class="btn btn-primary">Update</button>
         	</div>         	
 		</div>
 	</form>
-	
-	
+		
 </div>
 <script language="javascript" src="/js/admin/main/updateKeyResourceController.js"></script>
 

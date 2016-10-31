@@ -1,6 +1,7 @@
 angular.module('app').controller('updateClientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
 	
 	$scope.Model = {};	
+	$scope.IsUpdate = false;
 	var resource = sessionStorage.getItem("resource");
 	sessionStorage.removeItem("resource");
 	
@@ -21,16 +22,16 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 	$scope.createUpdateResource = function (event, resource) {
 		if($scope.updateClientResource.$valid) {
 			$http.post(SERVICE_BASE_URL + '/resource/save',$scope.Model,{ withCredentials: true })
-            .success(function (result) {	                
-                if (result.success) {	      
-    	          	window.location.href = "/main/client_resources.html";
-                } else {                	              	  	
-            		processCommonExeption(result.data, $scope);                	              	                    
-                }
-            })
-            .error(function (error, status){	            	
-		        $scope.errorMessage = SERVER_ERROR_MSG; 
-  			}); 	
+	        .success(function (result) {	                
+	            if (result.success) {	      
+		          	window.location.href = "/main/client-resources.html";
+	            } else {                	              	  	
+	        		processCommonExeption(result.data, $scope);                	              	                    
+	            }
+	        })
+	        .error(function (error, status){	            	
+		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
+			}); 	
 		} 		  
 	};
 		
