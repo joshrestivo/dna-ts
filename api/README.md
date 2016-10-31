@@ -133,6 +133,8 @@
 [4. Authentication](#4-authentication)  
 [5. Get bulletins](#5-get-bulletins)  
 [6. Get buildings](#6-get-buildings)  
+[7. Get locations](#7-get-locations)  
+[8. Get a location with its resources](#8-get-a-location-with-its-resources)  
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
@@ -184,6 +186,20 @@ GET: <HOST>/api/1.0/{location_id}/bulletins?page=1&limit=10 (default page = 1, l
 GET: <HOST>/api/1.0/{location_id}/buildings?page=1&limit=10 (default page = 1, limit=10 if missing)
 ######**Response:**
 - {success=true, data=[Building](#building) objects}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**7. Get locations**
+GET: <HOST>/api/1.0/locations?page=1&limit=10 (default page = 1, limit=10 if missing)
+######**Response:**
+- {success=true, data=[Location](#location) objects}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**8. Get a location with its resources**
+GET: <HOST>/api/1.0/location/{id}
+######**Response:**
+- {success=true, data=[Location](#location) object}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 

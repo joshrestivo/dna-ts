@@ -8,7 +8,7 @@ module Townsquare
             return JSONResult.new(false, "INVALID_SESSION")
           end
           
-          JSONResult.new(true, Country.all)
+          JSONResult.new(true, Country.all.order("name asc"))
         end
        
         get 'alert_types' do

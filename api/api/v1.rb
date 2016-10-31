@@ -165,6 +165,27 @@ module Townsquare
         JSONResult.new(true, closest_location)
       end
       
+      get :locations do
+        if !user_authenticate?
+          return JSONResult.new(false, "INVALID_SESSION")          
+        end
+        
+        locations = Location.offset(offset).limit(limit)
+        JSONResult.new(true, locations)
+      end
+      
+      get 'location/:id' do
+        if !user_authenticate?
+          return JSONResult.new(false, "INVALID_SESSION")          
+        end
+        
+        location = Location.find_by(:id => params[:id])
+        if location
+          location.need_client_resource = true
+        end
+        JSONResult.new(true, location)
+      end
+      
     end
   end
 end
