@@ -1,11 +1,19 @@
 angular.module('app').controller('clientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {    
 	  	
-   	$http.get(SERVICE_BASE_URL + '/resources', { withCredentials: true })
+	$scope.keyResourcesFiltered = [];
+   	$scope.currentPage = 1;
+    $scope.itemPerPage = ITEM_PER_PAGE;
+    $scope.maxSize = PAGE_MAX_SIZE;   	
+   	
+   	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	     	            	
-	            	$scope.resources = result.data;
+	            	$scope.resources = result.data;	            	
 	            	$scope.keyResources = result.data[0].details;
-	            	sessionStorage.setItem("allResource", JSON.stringify(result.data));	            	
+	            	$scope.TotalItems = result.data[0].details.length;
+	            	sessionStorage.setItem("allResource", JSON.stringify(result.data));	    
+	            	
+	            	updatePaginationUI();   	
 	            }
 	        })
 	        .error(function (error, status){	            	
@@ -51,9 +59,19 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	
 	$scope.reloadResourceDetail = function(resource, event) {
 		$scope.keyResources = resource.details;
-		
+		updatePaginationUI();
+	
 		$('.list-resource li[class*="active"]').removeClass("active");
 		angular.element(event.currentTarget).parent().addClass("active");
+	};	
+	
+	var updatePaginationUI = function(){
+		$scope.$watch('currentPage + itemPerPage', function() {
+			var begin = (($scope.currentPage - 1) * $scope.itemPerPage)
+			, end = begin + $scope.itemPerPage;
+			
+			$scope.keyResourcesFiltered = $scope.keyResources.slice(begin, end);
+		});  
 	};
 	
     $(".nav li.tab_client_resources").addClass("active");       

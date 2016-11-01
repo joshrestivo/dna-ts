@@ -24,7 +24,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="keyResource in keyResources">
+					<tr ng-repeat="keyResource in keyResourcesFiltered">
 	                        <td ng-bind="keyResource.unique_name"></td>
 	                        <td ng-bind="keyResource.display_text"></td>    
 	                        <td align="center">
@@ -33,7 +33,16 @@
 	                        </td>                                           
 	                    </tr>
 				</tbody>
-			 </table>			
+			 </table>		
+			 <div class="paginations">
+	            <div class="col-md-6">
+					<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+	            </div>
+	            <div class="col-md-6 total">
+	                <span>Total:</span>
+	                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      	
 		</div>		
 	</div>
 </div>

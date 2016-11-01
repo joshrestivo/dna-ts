@@ -21,7 +21,7 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		
 	$scope.createUpdateResource = function (event, resource) {
 		if($scope.updateClientResource.$valid) {
-			$http.post(SERVICE_BASE_URL + '/resource/save',$scope.Model,{ withCredentials: true })
+			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	      
 		          	window.location.href = "/main/resources/client-resources.html";
