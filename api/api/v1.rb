@@ -170,7 +170,7 @@ module Townsquare
           return JSONResult.new(false, "INVALID_SESSION")          
         end
         
-        locations = Location.offset(offset).limit(limit)
+        locations = Location.order('name asc').offset(offset).limit(limit)
         JSONResult.new(true, locations)
       end
       

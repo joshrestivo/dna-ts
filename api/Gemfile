@@ -19,6 +19,7 @@ gem 'link_thumbnailer'
 gem 'fastimage'
 gem 'twitter_oauth'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'simple-rss'
 
 #group :development do #UNCOMMENT when deploy to production
   gem 'faker'

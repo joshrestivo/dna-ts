@@ -126,6 +126,13 @@
     "updated_at": "2016-10-27T06:47:33.911Z"
 }
 ```
+#####**StreetAlertFeed**
+```csharp
+{
+    "date": "date",
+    "link": "link"
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
@@ -135,6 +142,7 @@
 [6. Get buildings](#6-get-buildings)  
 [7. Get locations](#7-get-locations)  
 [8. Get a location with its resources](#8-get-a-location-with-its-resources)  
+[9. Get street alerts](#9-get-street-alerts)  
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
@@ -176,14 +184,14 @@ POST: <HOST>/api/1.0/auth
 - {success=false, data="INVALID_SESSION"}
 
 ####**5. Get bulletins**
-GET: <HOST>/api/1.0/{location_id}/bulletins?page=1&limit=10 (default page = 1, limit=10 if missing)
+GET: <HOST>/api/1.0/main/{location_id}/bulletins?page=1&limit=10 (default page = 1, limit=10 if missing)
 ######**Response:**
 - {success=true, data=[Bulletin](#bulletin) objects}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
 ####**6. Get buildings**
-GET: <HOST>/api/1.0/{location_id}/buildings?page=1&limit=10 (default page = 1, limit=10 if missing)
+GET: <HOST>/api/1.0/main/{location_id}/buildings?page=1&limit=10 (default page = 1, limit=10 if missing)
 ######**Response:**
 - {success=true, data=[Building](#building) objects}
 - {success=false, data="SYSTEM_ERROR"}
@@ -200,6 +208,13 @@ GET: <HOST>/api/1.0/locations?page=1&limit=10 (default page = 1, limit=10 if mis
 GET: <HOST>/api/1.0/location/{id}
 ######**Response:**
 - {success=true, data=[Location](#location) object}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**9. Get street alerts**
+GET: <HOST>/api/1.0/main/{id}/street-alerts
+######**Response:**
+- {success=true, data=[StreetAlertFeed](#streetalertfeed) objects}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
