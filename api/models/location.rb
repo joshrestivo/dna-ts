@@ -18,6 +18,7 @@ class Location < ActiveRecord::Base
       :state          => state,
       :country_code   => country_code,
       :country => Country.where("LOWER(country_code) = ?", country_code.downcase()).first.name,
+      :street_alerts_rss_feed_url => street_alerts_rss_feed_url,
       :has_upcomming_events => has_upcomming_events,
       :has_request_service  => has_request_service,
       :has_location_info    => has_location_info,
