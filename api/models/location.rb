@@ -25,7 +25,9 @@ class Location < ActiveRecord::Base
       :created_by     => created_by,
       :updated_by     => updated_by,
       :created_at     => created_at,
-      :updated_at     => updated_at
+      :updated_at     => updated_at,
+      :client_resource_id => client_resource_id,
+      :client_resource_name => client_resource.name
     }
     
     if need_client_resource

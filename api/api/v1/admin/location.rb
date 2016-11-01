@@ -9,7 +9,7 @@ module Townsquare
           end
           
           locations = Location.all          
-          JSONResult.new(true, locations)          
+          JSONResult.new(true, locations)
         end
 
         params do
