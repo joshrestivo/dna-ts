@@ -17,14 +17,14 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
  			sessionStorage.setItem("resource", JSON.stringify(resource)); 			
  		}
  		
- 		window.location.href = ("/main/update-client-resource.html"); 	
+ 		window.location.href = ("/main/resources/update-client-resource.html"); 	
 	};
 	
 	$scope.createUpdateKeyResource = function (keyResourceUniqueName) { 	
 		if(keyResourceUniqueName != null) {			
 			sessionStorage.setItem("keyResourceUniqueName", keyResourceUniqueName);
 		} 
- 		window.location.href = ("/main/update-key-resource.html"); 	 		 		
+ 		window.location.href = ("/main/resources/update-key-resource.html"); 	 		 		
 	};
 	
 	$scope.deleteKeyResource = function(keyResourceUniqueName) {
@@ -36,7 +36,7 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
             $http.post(SERVICE_BASE_URL + '/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	      
-		          	window.location.href = "/main/client-resources.html";
+		          	window.location.href = "/main/resources/client-resources.html";
 	            } else {                	              	  	
 	        		processCommonExeption(result.data, $scope);                	              	                    
 	            }
@@ -47,13 +47,12 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
         }, function (value) {
             
         });
-
 	};
 	
 	$scope.reloadResourceDetail = function(resource, event) {
 		$scope.keyResources = resource.details;
 		
-		$('li[class*="active"]').removeClass("active");
+		$('.list-resource li[class*="active"]').removeClass("active");
 		angular.element(event.currentTarget).parent().addClass("active");
 	};
 	
