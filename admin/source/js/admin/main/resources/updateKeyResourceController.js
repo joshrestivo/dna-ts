@@ -40,10 +40,10 @@ angular.module('app').controller('addKeyResourceController',  ['$scope', '$http'
 			});		
 			data.values = JSON.stringify(values);
 			
-			$http.post(SERVICE_BASE_URL + '/resource/key/add',JSON.stringify(data),{ withCredentials: true })
+			$http.post(SERVICE_BASE_URL + '/admin/resource/key/add',JSON.stringify(data),{ withCredentials: true })
 	            .success(function (result) {	             	              
 	                if (result.success) {	      
-	    	          	window.location.href = "/main/client-resources.html";
+	    	          	window.location.href = "/main/resources/client-resources.html";
 	                } else {       
 	                	if(result.data == "VALUE_MISSING") {                	
 	                		showErrorDialog(ngDialog, "VALUE_MISSING") ;

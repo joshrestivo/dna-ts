@@ -1,0 +1,46 @@
+<div class="client-resource" ng-cloak ng-controller="bulletinsController" ng-init="Init()">
+	<div>
+		<h2>Bulletins</h2>		
+	</div>
+	
+	<div class="row">
+		<div class="col-md-2 name">
+			Locations:
+		</div>
+		<div class="col-md-6">
+			<select class="form-control" ng-model="Model.location"  ng-init="Model.location" 
+			ng-options="location as location.name for location in locations" required>
+            		<option value="" disabled selected hidden>Choose a location...</option>
+       		 </select>
+		</div>
+	</div>
+	
+	<div class="bulletins-table">
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>City</th>				
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="bulletin in bulletinsFiltered">
+                        <td  ng-bind="bulletin.Name"></td>
+                        <td  ng-bind="bulletin.City"></td>                        
+                    </tr>
+			</tbody>
+		 </table>
+		 <div class="paginations">
+            <div class="col-md-6">
+				<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            </div>
+            <div class="col-md-6 total">
+                <span>Total:</span>
+                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      
+	</div>
+</div>
+<script language="javascript" src="/js/admin/main/bulletins/bulletinsController.js"></script>
+
+	

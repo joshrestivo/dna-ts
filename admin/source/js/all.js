@@ -115,7 +115,10 @@ if (cookie == null){
 }
 
 // Define global variables
-//SERVICE_BASE_URL = "http://localhost:9002/api/1.0/admin";
-SERVICE_BASE_URL = "https://townsquare-dev.herokuapp.com/api/1.0/admin";
+SERVICE_BASE_URL = "http://localhost:9002/api/1.0";
+//SERVICE_BASE_URL = "https://townsquare-dev.herokuapp.com/api/1.0";
 SERVER_ERROR_MSG = "Server is error. Please contact site administrator for support.";
 SESSION_EXPIRE_MSG = "Your session is expired. Please login and try again.";
+//paging
+ITEM_PER_PAGE = 3;
+PAGE_MAX_SIZE = 5;
