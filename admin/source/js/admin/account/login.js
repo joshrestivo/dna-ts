@@ -4,7 +4,7 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
     $("#user_name").focus();
    	$scope.authenticate = function () {   
    		if ($scope.login.$valid) {   			
-		    $http.post(SERVICE_BASE_URL + '/login', $scope.Model,{ withCredentials: true })
+		    $http.post(SERVICE_BASE_URL + '/admin/login', $scope.Model,{ withCredentials: true })
 	            .success(function (result) {	                
 	                if (result.success) {	      	                	 
         	          	var userName = result.data.name;

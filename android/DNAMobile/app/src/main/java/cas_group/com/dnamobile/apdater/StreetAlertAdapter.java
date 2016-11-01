@@ -5,14 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import cas_group.com.dnamobile.R;
-import cas_group.com.dnamobile.models.News;
 import cas_group.com.dnamobile.models.StreetAlert;
-import cas_group.com.dnamobile.models.UpcomingEvent;
+import cas_group.com.dnamobile.utils.GraphicsUtil;
 
 /**
  * Created by kuccu on 10/25/16.
@@ -22,12 +22,14 @@ public class StreetAlertAdapter extends RecyclerView.Adapter<StreetAlertAdapter.
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtView;
-
+        public TextView uiTxtTitle;
+        public TextView uiTxtContent;
+        public ImageView uiImagview;
         public ViewHolder(View view) {
             super(view);
-//            txtView = (TextView) view.findViewById(R.id.txtView);
-
+            uiTxtTitle = (TextView) view.findViewById(R.id.uiTxtTitle);
+            uiTxtContent = (TextView) view.findViewById(R.id.uiTxtContent);
+            uiImagview = (ImageView) view.findViewById(R.id.uiImageView);
         }
     }
 
@@ -48,6 +50,7 @@ public class StreetAlertAdapter extends RecyclerView.Adapter<StreetAlertAdapter.
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
+        GraphicsUtil.displayPhoto(_context, "http://www.mappery.com/maps/Poznan-Street-Map.png", holder.uiImagview);
 //        holder.txtView.setText(horizontalList.get(position));
 
 //        holder.txtView.setOnClickListener(new View.OnClickListener() {

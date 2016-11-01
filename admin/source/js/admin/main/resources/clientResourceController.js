@@ -1,5 +1,4 @@
 angular.module('app').controller('clientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {    
-	  	
 	$scope.keyResourcesFiltered = [];
    	$scope.currentPage = 1;
     $scope.itemPerPage = ITEM_PER_PAGE;
@@ -41,7 +40,7 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	        data: '{"message":"Are you want to delete ' + keyResourceUniqueName + '?"}'
 		})
 		.then(function (value) {
-            $http.post(SERVICE_BASE_URL + '/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
+            $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	      
 		          	window.location.href = "/main/resources/client-resources.html";

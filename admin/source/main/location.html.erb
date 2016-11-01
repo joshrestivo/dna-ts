@@ -14,33 +14,34 @@
 					<th>City</th>
 					<th>State</th>
 					<th>Country </th>
+					<th>Longitute</th>
+					<th>Latitude</th>
 					<th>Street Alerts RSS Url</th>
 					<th>Has Upcoming Service</th>
 					<th>Has Requset Service</th>
 					<th>Has Loation Info</th>
 					<th>Has Street Alerts</th>
 					<th>Resource Name</th>
-					<th>Longitute</th>
-					<th>Latitude</th>
-					<th>Action</th>
+										<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="location in locations">
-                        <td ng-bind="$index"></td>
+                        <td ng-bind="$index+1"></td>
                         <td ng-bind="location.name"></td>
                         <td ng-bind="location.city"></td>
                         <td ng-bind="location.state"></td>
                         <td ng-bind="location.country_code"></td>
+                        <td ng-bind="location.longitude"></td>
+                        <td ng-bind="location.latitude"></td>
                         <td ng-bind="location.street_alerts_rss_feed_url"></td>
                         <td ng-bind="location.has_upcomming_events"></td>
                         <td ng-bind="location.has_request_service"></td>
                         <td ng-bind="location.has_location_info"></td>
                         <td ng-bind="location.has_street_alerts"></td>
                         <td ng-bind="location.client_resource.name"></td>
-                        <td ng-bind="location.longitude"></td>
-                        <td ng-bind="location.latitude"></td>    
-                        <td>
+                            
+                        <td width="80px;" align="center">
                         	<a class="td-edit" ng-click="editLocation(location)"><i class="fa fa-pencil-square-o"></i></a>   
                         	<a class="td-delete" ng-click="deleteLocation(location.id)"><i class="fa fa-times"></i></a>           
                     	</td> 

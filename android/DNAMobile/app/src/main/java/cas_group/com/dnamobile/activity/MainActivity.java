@@ -27,7 +27,7 @@ import cas_group.com.dnamobile.fragment.UpcomingEventFragment;
 import cas_group.com.dnamobile.fragment.HomeFragment;
 import cas_group.com.dnamobile.models.LeftMenuItem;
 
-public class MainActivity extends BaseAppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.DrawerListener{
     @Override
     protected void onInitControls() {
         _drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -52,17 +52,22 @@ public class MainActivity extends BaseAppCompatActivity {
                 selectLeftMenuItem(position, false);
             }
         });
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, _drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        _drawerLayout.addDrawerListener(toggle);
+        _drawerLayout.addDrawerListener(this);
+        toggle.syncState();
     }
+
     @Override
     protected void onInitContentView() {
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
 
     }
 
@@ -173,6 +178,26 @@ public class MainActivity extends BaseAppCompatActivity {
             default:
                 return new HomeFragment();
         }
+    }
+
+    @Override
+    public void onDrawerOpened(View arg0) {
+        hideSoftKeyboard();
+    }
+
+    @Override
+    public void onDrawerClosed(View arg0) {
+        hideSoftKeyboard();
+    }
+
+    @Override
+    public void onDrawerSlide(View arg0, float arg1) {
+
+    }
+
+    @Override
+    public void onDrawerStateChanged(int arg0) {
+
     }
     // tags used to attach the fragments
     private static final String TAG_HOME = "home";

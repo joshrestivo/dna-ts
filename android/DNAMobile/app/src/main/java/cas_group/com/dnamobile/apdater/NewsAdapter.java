@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.activity.DetailNewsActivity;
 import cas_group.com.dnamobile.activity.MainActivity;
 import cas_group.com.dnamobile.models.News;
+import cas_group.com.dnamobile.utils.GraphicsUtil;
 
 /**
  * Created by kuccu on 10/25/16.
@@ -24,10 +26,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private List<News> horizontalList;
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
-        public TextView txtView;
+        public TextView uiTxtTitle;
+        public TextView uiTxtContent;
+        public ImageView uiImageView;
 
         public NewsViewHolder(View view) {
             super(view);
+            uiTxtTitle = (TextView) view.findViewById(R.id.uiTxtTitle);
+            uiTxtContent = (TextView) view.findViewById(R.id.uiTxtContent);
+            uiImageView = (ImageView) view.findViewById(R.id.uiImageView);
         }
     }
 
@@ -58,6 +65,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
             }
         });
+        GraphicsUtil.displayPhoto(_context, "http://i.imgur.com/DvpvklR.png", holder.uiImageView);
+
     }
 
     @Override

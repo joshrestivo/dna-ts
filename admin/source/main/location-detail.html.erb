@@ -6,6 +6,7 @@
 </div>
 <form name="locationDetail" class="location-detail" ng-cloak ng-controller="locationDetailController" ng-init="Init()">
 	<h2 ng-bind="IsUpdate?'Update Location':'Add Location'"></h2>
+	 <input type="text" gm-places-autocomplete ng-model="autocomplete" class="form-control" placeholder="Input your location"/>
 	<div class="row">
 		      <div class="col-md-6">
 		      	<div class="row item">
@@ -24,7 +25,7 @@
             			City:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.city" class="form-control" name="city" required
+            			<input type="text" ng-model="location.city" class="form-control" name="city" required readonly
                               uib-tooltip="{{(locationDetail.city.$error.required)?'This field is required.':''}}"
                               tooltip-enable="!location.city"
                               tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
@@ -35,8 +36,8 @@
             			State:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.state" class="form-control" name="state" required
-                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}"
+            			<input type="text" ng-model="location.state" class="form-control" name="state" required readonly disabled
+                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}" 
                               tooltip-enable="!location.state"
                               tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
@@ -46,20 +47,24 @@
             			Country:
             		</div>
             		<div class="col-md-9">
-            			<select class="form-control" ng-model="location.country_code"  ng-init="location.country_code" 
-            			ng-options="countryCode.country_code as countryCode.name for countryCode in countryCodes" required>
-                        		<option value="" disabled selected hidden>Choose a resource...</option>
-                   		 </select>
-                   		 </div>
+            			<input type="text" ng-model="location.country" class="form-control" name="country" required readonly disabled
+                              uib-tooltip="{{(locationDetail.country.$error.required)?'This field is required.':''}}" 
+                              tooltip-enable="!location.country"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+                              <input type="text" ng-model="location.country_code" class="form-control" name="country_code" required readonly  ng-show="false"
+                              uib-tooltip="{{(locationDetail.country_code.$error.required)?'This field is required.':''}}" 
+                              tooltip-enable="!location.country_code"
+                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+            		 </div>
             	</div>
             	<div class="row item">
             		<div class="col-md-3">
             			RSS alerts url:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.street_alerts_rss_feed_url" class="form-control"  required
-                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}"
-                              tooltip-enable="!location.state"
+            			<input type="text" ng-model="location.street_alerts_rss_feed_url" class="form-control" name="street_alerts_rss_feed_url"  required
+                              uib-tooltip="{{(locationDetail.street_alerts_rss_feed_url.$error.required)?'This field is required.':''}}"
+                              tooltip-enable="!location.street_alerts_rss_feed_url"
                               tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
             		</div>
             	</div>
@@ -81,7 +86,7 @@
             			Longitude:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.longitude" class="form-control" name="longitude"  required
+            			<input type="text" ng-model="location.longitude" class="form-control" name="longitude"  required readonly
                               uib-tooltip="{{(locationDetail.longitude.$error.required)?'This field is required.':''}}"
                               tooltip-enable="!location.longitude"
                               tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
@@ -92,7 +97,7 @@
             			Latitude:
             		</div>
             		<div class="col-md-9">
-            			<input type="text" ng-model="location.latitude" class="form-control" name="latitude"  required
+            			<input type="text" ng-model="location.latitude" class="form-control" name="latitude"  required readonly
                               uib-tooltip="{{(locationDetail.latitude.$error.required)?'This field is required.':''}}"
                               tooltip-enable="!location.latitude"
                               tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
@@ -131,10 +136,11 @@
 	      </div>
 	</div>
 	<div class="bottom-action">
-		<button type="submit" ng-click="save()" class="button-save">Save</button>
+		<button ng-click="save()" class="button-save">Save</button>
 		<button  ng-click="cancel()" class="button-cancel">Cancel</button>
 	</div>
 </form>
+
 <script language="javascript" src="/js/admin/main/locationDetailController.js"></script>
 
 	
