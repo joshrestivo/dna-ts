@@ -10,9 +10,27 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
 	
     $scope.Init = function(){
     	//load all resource
-    	$http.get(SERVICE_BASE_URL+'/resources ',{ withCredentials: true }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/resources ',{ withCredentials: true }).success(function (result) {
             if (result.success) {
                 $scope.resources = result.data;
+                
+            }else {
+	                  	if(result.data == "INVALID_SESSION") {           
+	                		showErrorDialog(ngDialog,"Invalid login credantial");
+	                	} else {                  	  	
+	                		processCommonExeption(result.data, ngDialog);
+	                	}
+	                }
+	            })
+	            .error(function (error, status){
+	            	processCommonExeption(error, ngDialog);
+			       //showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+	  			});
+	  			
+	  	//get all country code
+	  	$http.get(SERVICE_BASE_URL+'/countries  ',{ withCredentials: true }).success(function (result) {
+            if (result.success) {
+                $scope.countryCodes = result.data;
                 
             }else {
 	                  	if(result.data == "INVALID_SESSION") {           
@@ -57,7 +75,7 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
    			client_resource_id:$scope.location.resource.id,
    		};
    		alert(JSON.stringify(data));
-   		$http.post(SERVICE_BASE_URL+'/location/save ',data,{ withCredentials: true })
+   		$http.post(SERVICE_BASE_URL+'/admin/location/save ', data, { withCredentials: true })
    		.success(function (result) {
             if (result.Success) {
                alert("OK");
