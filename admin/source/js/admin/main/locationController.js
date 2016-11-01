@@ -4,9 +4,10 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
     };
     
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/locations ',{ withCredentials: true }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true }).success(function (result) {
             if (result.success) {
-                $scope.locations = result.Data;
+            	alert(JSON.stringify(result.data));
+                $scope.locations = result.data;
             }else {
 	                	if(result.data == "INVALID_SESSION") {                	
 	                		showErrorDialog(ngDialog,"Invalid login credantial");
@@ -25,8 +26,9 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
     };
     
     $scope.editLocation = function(location){
+    	
     		sessionStorage.setItem("location", JSON.stringify(location));
-			location.href=location.orgrin +"main/location-detail.html";
+			window.location.href=("/main/location-detail.html");
     };
     
     $scope.deleteLocation=function(location){

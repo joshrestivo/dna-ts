@@ -1,6 +1,6 @@
 angular.module('app').controller('clientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {    
 	  	
-   	$http.get(SERVICE_BASE_URL + '/resources', { withCredentials: true })
+   	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	     	            	
 	            	$scope.resources = result.data;
@@ -33,7 +33,7 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	        data: '{"message":"Are you want to delete ' + keyResourceUniqueName + '?"}'
 		})
 		.then(function (value) {
-            $http.post(SERVICE_BASE_URL + '/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
+            $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	      
 		          	window.location.href = "/main/resources/client-resources.html";
