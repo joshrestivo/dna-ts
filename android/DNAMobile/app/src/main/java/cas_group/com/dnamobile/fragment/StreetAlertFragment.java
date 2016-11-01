@@ -14,7 +14,9 @@ import java.util.ArrayList;
 
 import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.activity.MainActivity;
+import cas_group.com.dnamobile.apdater.StreetAlertAdapter;
 import cas_group.com.dnamobile.apdater.UpcomingEventAdapter;
+import cas_group.com.dnamobile.models.StreetAlert;
 import cas_group.com.dnamobile.models.UpcomingEvent;
 
 /**
@@ -93,19 +95,19 @@ public class StreetAlertFragment extends Fragment {
 
 
     protected void onInitData(){
-        _items.add(new UpcomingEvent("test","test","test"));
-        _items.add(new UpcomingEvent("test","test","test"));
-        _items.add(new UpcomingEvent("test","test","test"));
-        _items.add(new UpcomingEvent("test","test","test"));
-        _items.add(new UpcomingEvent("test","test","test"));
+        _items.add(new StreetAlert("test","test","test"));
+        _items.add(new StreetAlert("test","test","test"));
+        _items.add(new StreetAlert("test","test","test"));
+        _items.add(new StreetAlert("test","test","test"));
+        _items.add(new StreetAlert("test","test","test"));
 
-        _adapter = new UpcomingEventAdapter(getActivity(), _items);
+        _adapter = new StreetAlertAdapter(getActivity(), _items);
         _uiListEmail.setAdapter(_adapter);
         _adapter.notifyDataSetChanged();
     }
 
     private RecyclerView _uiListEmail;
-    private UpcomingEventAdapter _adapter;
+    private StreetAlertAdapter _adapter;
 
-    private ArrayList<UpcomingEvent> _items = new ArrayList<>();
+    private ArrayList<StreetAlert> _items = new ArrayList<>();
 }

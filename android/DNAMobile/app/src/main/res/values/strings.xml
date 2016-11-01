@@ -182,46 +182,10 @@
     <string name="link_email">Link email</string>
     <string name="title_invite_email">1. Please enter emails you want to invite, using semicolon to separate each other</string>
 
-    <string name="maximum_invite_user_left">2. Maximum emails to be invited: </string>
-    <string name="invite">Invite</string>
-    <string name="verify_delete_message">Verify delete message</string>
-    <string name="verify_delete_message_content">Verify delete message</string>
-    <string name="verification_code_sent_to_your_email">Please enter verification code which is sent to your email to proceed</string>
-    <string name="lbl_search_keyword">Enter a name</string>
-    <string name="leave_room">Leave room</string>
-    <string name="confirm_leave_room">Are you sure you want to leave room?</string>
-    <string name="name_room">Mob Name</string>
-    <string name="enter_new_name_room">Enter new Mob Name</string>
-    <string name="public_post">The Riot</string>
-    <string name="private_message">Your Mob</string>
-    <string name="delete">Delete</string>
-    <string name="photo_gallery">Photos</string>
-    <string name="current_pass_word">OLD PASSWORD</string>
-    <string name="confirm_new_password">CONFIRM PASSWORD</string>
-    <string name="change_pass_word">Change password</string>
-    <string name="blocked_users">Blocked users</string>
-    <string name="muted_user">Muted users</string>
-    <string name="user_is_typing"> %s is typing...</string>
-    <string name="email_not_exist">Your account is not found</string>
-    <string name="system_error">Unexpected error. The error has been logged. We apologize for the inconvenience.</string>
-    <string name="user_name">USERNAME</string>
 
-    <string name="icon_profile">profile</string>
-    <string name="silly">silly</string>
-    <string name="pseudo">pseudo</string>
-    <string name="sad">sad</string>
-    <string name="smiley">smiley</string>
-    <string name="wink">wink</string>
-    <string name="surprised">surprised</string>
-    <string name="angry">angry</string>
-    <string name="meh">meh</string>
-    <string name="laughing">laughing</string>
-    <string name="tired">tired</string>
-    <string name="freebie">freebie</string>
-    <string name="no_name">No name</string>
-    <string name="website">Website </string>
-    <string name="birthday">Birthday </string>
-    <string name="bio">Bio </string>
+    <string name="system_error">Unexpected error. The error has been logged. We apologize for the inconvenience.</string>
+
+
 
     <string name="just_now">just now</string>
     <string name="minnu_ago"> a minute ago</string>

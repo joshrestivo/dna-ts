@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -45,11 +46,26 @@ public class LocationInforFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_location_infor, container, false);
 
+        _uiSearchView = (SearchView) rootView.findViewById(R.id.uiSearchView);
         _uiListEmail = (RecyclerView) rootView.findViewById(R.id.uiListEvent);
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         _uiListEmail.setLayoutManager(horizontalLayoutManagaer);
+
         onInitData();
+
+        _uiSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
         return rootView;
 
     }
@@ -113,6 +129,8 @@ public class LocationInforFragment extends Fragment {
     }
 
     private RecyclerView _uiListEmail;
+    private SearchView _uiSearchView;
+
     private LocationInforAdapter _adapter;
 
     private ArrayList<BuildingLocation> _items = new ArrayList<>();
