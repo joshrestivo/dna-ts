@@ -35,7 +35,7 @@ table thead th {	color: #18bc9c;}
 .ngdialog.ngdialog-theme-default{padding-top:50px;}
 .ngdialog.ngdialog-theme-default .ngdialog-content{width: 600px!important}
 .ngdialog.ngdialog-theme-default .ngdialog-close {right: 10px;top: 10px;}
-
+.ngdialog-button-yes{background-color:#2C3E50 !important}
 .breadcrumb{margin-bottom: 0px;}
 /*location detail*/
 .location-detail {padding: 20px; position: relative;margin-bottom: 40px;}

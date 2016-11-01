@@ -156,6 +156,31 @@
     </div>
 </script>
 
+<script type="text/ng-template" id="confirm-message">
+    <div id="modalDanger" class="modal-block modal-block-danger">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Confirm</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                       <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>
+                    	<button type="button" class="ngdialog-button ngdialog-button-primary ngdialog-button-yes " ng-click="confirm(1)">Yes</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
 <script >
 	var userNameLoginCookie = readCookie("USERNAME_LOGIN"); 
 	if (userNameLoginCookie != null) {   	

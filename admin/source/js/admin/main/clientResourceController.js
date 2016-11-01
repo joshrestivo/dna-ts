@@ -28,7 +28,12 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	};
 	
 	$scope.deleteKeyResource = function(keyResourceUniqueName) {
-		$http.post(SERVICE_BASE_URL + '/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
+		ngDialog.openConfirm({
+		    template: 'confirm-message',
+	        data: '{"message":"Are you want to delete ' + keyResourceUniqueName + '?"}'
+		})
+		.then(function (value) {
+            $http.post(SERVICE_BASE_URL + '/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
 	        .success(function (result) {	                
 	            if (result.success) {	      
 		          	window.location.href = "/main/client-resources.html";
@@ -39,6 +44,10 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	        .error(function (error, status){	            	
 		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
 			}); 	
+        }, function (value) {
+            
+        });
+
 	};
 	
 	$scope.reloadResourceDetail = function(resource, event) {
