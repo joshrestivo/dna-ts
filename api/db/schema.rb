@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031200000) do
+ActiveRecord::Schema.define(version: 20161102200000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,9 @@ ActiveRecord::Schema.define(version: 20161031200000) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.integer  "client_resource_id",         limit: 8
+    t.string   "news_rss_url_1"
+    t.string   "news_rss_url_2"
+    t.string   "news_rss_url_3"
   end
 
   create_table "news_feeds", id: :bigserial, force: :cascade do |t|
