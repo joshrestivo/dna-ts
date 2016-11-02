@@ -1,0 +1,69 @@
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li class="active">All Location</li>
+	</ol>
+</div>
+<div class="locations" ng-cloak ng-controller="locationController" ng-init="Init()">
+	<div>
+		<a class="add-new-location" ng-click="addNewLocation()">New Locaiton</a>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Country </th>
+					<th>Longitute</th>
+					<th>Latitude</th>
+					<th>Street Alerts RSS Url</th>
+					<th>New RSS Url</th>
+					<th>Has Upcoming Service</th>
+					<th>Has Requset Service</th>
+					<th>Has Loation Info</th>
+					<th>Has Street Alerts</th>
+					<th>Resource Name</th>
+										<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="location in locations.slice(((currentPage-1)*itemPerPage), ((currentPage)*itemPerPage))">
+                        <td ng-bind="location.name"></td>
+                        <td ng-bind="location.city"></td>
+                        <td ng-bind="location.state"></td>
+                        <td ng-bind="location.country"></td>
+                        <td ng-bind="location.longitude"></td>
+                        <td ng-bind="location.latitude"></td>
+                        <td ng-bind="location.street_alerts_rss_feed_url"></td>
+                        <td>
+                        	<p ng-if="location.news_rss_url_1">1. {{location.news_rss_url_1}}</p>
+                        	<p ng-if="location.news_rss_url_1">2. {{location.news_rss_url_2}}</p>
+                        	<p ng-if="location.news_rss_url_1">3. {{location.news_rss_url_3}}</p>
+                        </td>
+                        <td width="50px;" align="center" ng-bind="location.has_upcomming_events?'YES':'NO'"></td>
+                        <td width="50px;" align="center" ng-bind="location.has_request_service?'YES':'NO'"></td>
+                        <td width="50px;" align="center" ng-bind="location.has_location_info?'YES':'NO'"></td>
+                        <td width="50px;" align="center" ng-bind="location.has_street_alerts?'YES':'NO'"></td>
+                        <td ng-bind="location.client_resource_name"></td>
+                            
+                        <td width="70px;" align="center">
+                        	<a class="td-edit" ng-click="editLocation(location)"><i class="fa fa-pencil-square-o"></i></a>   
+                        	<a class="td-delete" ng-click="deleteLocation(location)"><i class="fa fa-times"></i></a>           
+                    	</td> 
+                    </tr>
+			</tbody>
+		 </table>
+		 <div class="paginations">
+            <div class="col-md-6">
+            	<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            </div>
+            <div class="col-md-6 total">
+                <span>Total:</span>
+                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      
+	</div>
+</div>
+
+<script language="javascript" src="/js/admin/main/location/locationController.js"></script>
+
+	
