@@ -63,6 +63,7 @@ module Townsquare
           cookies[:TOWNSQUARE_ADMIN] = {
             value: "#{user.id}-#{user.uuid}",
             path: '/',
+            domain: '',
             expires: Time.now + (20 * 365 * 60 * 60 * 24)
           }
         end
@@ -71,6 +72,7 @@ module Townsquare
           cookies[:TOWNSQUARE_ADMIN] = {
             value: '',
             path: '/',
+            domain: '',
             expires: Time.now - (20 * 365 * 60 * 60 * 24)
           }
         end
