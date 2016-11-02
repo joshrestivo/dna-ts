@@ -1,10 +1,31 @@
 require 'simple-rss'
 require 'open-uri'
+require 'will_paginate/array'
+require 'nokogiri'
 
 module Townsquare
   module API
     class V1 < Grape::API
       route_param 'main/:location_id' do
+        
+        helpers do
+          def populate_news_feeds(feeds, url)
+            if url
+              rss = SimpleRSS.parse open(url)
+              rss.items.each do |item|
+                if item.title && item.pubDate && item.link
+                  feeds.push({:date => item.pubDate, 
+                              :link => item.link, 
+                              :title => item.title.force_encoding("UTF-8"), 
+                              :description => item.description.force_encoding("UTF-8"),
+                              :thumbnail_url => '',
+                              :thumbnail_width => 0,
+                              :thumbnail_height => 0})
+                end
+              end            
+            end
+          end
+        end
 
         get 'bulletins' do
           if !user_authenticate?
@@ -50,24 +71,30 @@ module Townsquare
           
           location = Location.find_by(:id => params[:location_id])
           feeds = []
-          if location && location.has_upcomming_events            
-            if location.news_rss_url_1
-              rss = SimpleRSS.parse open(location.news_rss_url_1)
-              rss.items.each do |item|
-                if item.title && item.pubDate && item.link
-                  feeds.push({:date => item.pubDate, :title => item.title, :link => item.link, :description => item.description})
-                end
-              end               
+          if location && location.has_upcomming_events       
+            populate_news_feeds(feeds, location.news_rss_url_1)     
+            populate_news_feeds(feeds, location.news_rss_url_2)     
+            populate_news_feeds(feeds, location.news_rss_url_3)     
+          end
+          
+          feeds = feeds.sort_by {|feed| feed[:date]}.reverse.paginate(:page => page, :per_page => limit)
+          if !feeds
+            feeds = []
+          end          
+          feeds.each do |feed|
+            doc = Nokogiri::HTML(feed[:description])
+            img_srcs = doc.css('img').map{ |i| i['src'] }
+            if img_srcs.size > 0
+              feed[:thumbnail_url] = img_srcs[0]
+              image_size = FastImage.size(img_srcs[0])
+              feed[:thumbnail_width] = image_size[0]
+              feed[:thumbnail_height] = image_size[1]
             end
             
-            if location.news_rss_url_3
-              rss = SimpleRSS.parse open(location.news_rss_url_3)
-              rss.items.each do |item|
-                if item.title && item.pubDate && item.link
-                  feeds.push({:date => item.pubDate, :title => item.title, :link => item.link, :description => item.description})
-                end
-              end
-            end
+            feed[:description] = Nokogiri::HTML(feed[:description]).text
+            feed[:description] = feed[:description].gsub(/\r/, '')
+            feed[:description] = feed[:description].gsub(/\n/, '')
+            feed[:description] = feed[:description].gsub(/\t/, '')
           end
           
           JSONResult.new(true, feeds)
