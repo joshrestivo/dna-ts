@@ -22,7 +22,6 @@ class Location < ActiveRecord::Base
       :news_rss_url_1 => news_rss_url_1,
       :news_rss_url_2 => news_rss_url_2,
       :news_rss_url_3 => news_rss_url_3,
-      :google_calendar_url => google_calendar_url,
       :google_calendar_id => google_calendar_id,
       :google_calendar_api_key => google_calendar_api_key,
       :has_upcomming_events => has_upcomming_events,

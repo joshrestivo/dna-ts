@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102200000) do
+ActiveRecord::Schema.define(version: 20161102200002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20161102200000) do
     t.string   "news_rss_url_1"
     t.string   "news_rss_url_2"
     t.string   "news_rss_url_3"
+    t.string   "google_calendar_id"
+    t.string   "google_calendar_api_key"
   end
 
   create_table "news_feeds", id: :bigserial, force: :cascade do |t|

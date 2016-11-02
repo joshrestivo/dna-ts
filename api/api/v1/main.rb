@@ -2,6 +2,7 @@ require 'simple-rss'
 require 'open-uri'
 require 'will_paginate/array'
 require 'nokogiri'
+require 'rest-client'
 
 module Townsquare
   module API
@@ -100,6 +101,42 @@ module Townsquare
           JSONResult.new(true, feeds)
         end   
 
+        get 'calendar' do
+          if !user_authenticate?
+            return JSONResult.new(false, "INVALID_SESSION")          
+          end
+          
+          location = Location.find_by(:id => params[:location_id])
+          calendars = []
+          if location && location.google_calendar_id && location.google_calendar_api_key
+            google_url = "https://www.googleapis.com/calendar/v3/calendars/#{location.google_calendar_id}/events?key=#{location.google_calendar_api_key}"
+            response = RestClient.get(google_url, :content_type => :json, :accept => :json)
+            if response
+              result = JSON.parse(response)
+              result["items"].each do |item|
+                calendars.push({:start => item["start"]["dateTime"],
+                                :end => item["end"]["dateTime"],
+                                :location => item["location"],
+                                :description => item["description"]})
+              end
+            end
+          end
+          
+          if !calendars
+            calendars = []
+          end
+
+          calendars = calendars.sort_by {|calendar| calendar[:start]}
+          now = Time.now
+          calendars.each do |calendar|
+            if calendar[:start] > now
+              return JSONResult.new(true, calendar)
+            end
+          end
+          
+          JSONResult.new(true, nil)
+        end
+        
       end      
     end
   end
