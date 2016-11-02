@@ -1,50 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Townsquare - Administration</title>
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="images/icons/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
-  <link rel="manifest" href="images/icons/manifest.json">
+  <title>Townsquare - Administration</title> 
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link href="/css/bootstrap.css" rel="stylesheet">
+ <link href="/css/bootstrap.css" rel="stylesheet">
   <link href="/css/angular-block-ui.css" rel="stylesheet">
   <link href="/css/font-awesome.css" rel="stylesheet">
   <link href="/css/ngDialog.css" rel="stylesheet">
-    <link href="/css/ngDialog-theme-default.css" rel="stylesheet">
+  <link href="/css/ngDialog-theme-default.css" rel="stylesheet">
   <link href="/css/all.css" rel="stylesheet">
   
   <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
   <script src="/js/bootstrap.min.js" language="javascript"></script>
   <script src="/js/angular.min.js" language="javascript"></script>
-  <script src="/js/ngDialog.min.js" language="javascript"></script>
+  <script src="/js/angularjs-google-maps.js" language="javascript"></script>  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTu_OEl2Cw8Lp6OJAuctSRmba9U6AH8nA&libraries=places"></script>
   <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
   <script src="/js/angular-block-ui.min.js" language="javascript"></script>
+   <script src="/js/ngDialog.min.js" language="javascript"></script>
   <script src="/js/admin/app.js" language="javascript"></script>
   <script src="/js/admin/directives.js" language="javascript"></script>  
-  <script src="/js/js.cookie.js" language="javascript"></script>  
-  <script src="/js/all.js" language="javascript"></script>  
+  <script src="/js/js.cookie.js" language="javascript"></script>    
+  <script src="/js/all.js" language="javascript"></script> 
 </head>
-<body >
+<body ng-app="app">
 	<div class="header">
 	    <div class="logo col-md-4">
 	      <img src="/images/logo.png" />
