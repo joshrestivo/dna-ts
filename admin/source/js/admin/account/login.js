@@ -9,7 +9,7 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 	                if (result.success) {	      	                	 
         	          	var userName = result.data.name;
         	          	createCookie("USERNAME_LOGIN", userName, 7);
-	                	var return_url = getUrlParameter("return_url");                	
+	                	var return_url = getUrlParameter("return_url");    
 	                    if (return_url != ""){	                    	
 	                    	window.location.href = return_url;
 	                    } else {
