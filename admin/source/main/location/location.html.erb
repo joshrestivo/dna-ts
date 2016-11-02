@@ -26,7 +26,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="location in locations">
+				<tr ng-repeat="location in locations.slice(((currentPage-1)*itemPerPage), ((currentPage)*itemPerPage))">
                         <td ng-bind="location.name"></td>
                         <td ng-bind="location.city"></td>
                         <td ng-bind="location.state"></td>
@@ -47,14 +47,14 @@
                             
                         <td width="70px;" align="center">
                         	<a class="td-edit" ng-click="editLocation(location)"><i class="fa fa-pencil-square-o"></i></a>   
-                        	<a class="td-delete" ng-click="deleteLocation(location.id)"><i class="fa fa-times"></i></a>           
+                        	<a class="td-delete" ng-click="deleteLocation(location)"><i class="fa fa-times"></i></a>           
                     	</td> 
                     </tr>
 			</tbody>
 		 </table>
 		 <div class="paginations">
             <div class="col-md-6">
-                <uib-pagination boundary-links="true" total-items="TotalItems" ng-change="pageChanged(currentPage)" max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            	<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
             </div>
             <div class="col-md-6 total">
                 <span>Total:</span>
@@ -64,6 +64,6 @@
 	</div>
 </div>
 
-<script language="javascript" src="/js/admin/main/locationController.js"></script>
+<script language="javascript" src="/js/admin/main/location/locationController.js"></script>
 
 	

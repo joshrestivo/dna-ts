@@ -78,7 +78,7 @@
 	    	<nav role="navigation">
 	    		<ul class="nav">
 	    			<li class="tab_locations">
-	    				<a href="/main/location/location.html">
+	    				<a href="/main/location.html">
 	    					<span>Locations</span>
 	    				</a>	    				
 	    			</li>
@@ -101,7 +101,53 @@
 	    	</nav>
     	</div>
 	    <div class="right-site">
-	    	<%= yield %>
+	    	<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/resources/client-resources.html">Client Resource</a></li>
+	  <li class="active">Update Client Resource</li>
+	</ol>
+</div>
+<div class="update-client-resource" ng-cloak ng-controller="updateClientResourceController" ng-init="Init()">
+	<div class="title">
+		<h2>Resource</h2>
+	</div>	
+	
+	<form name="updateClientResource" >
+		<div class="detail">
+			<div class="row">
+	            <div class="col-md-2 name">
+	                Name:
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Resource Name" name="name" ng-model="Model.name" required
+	                       uib-tooltip="{{(updateClientResource.name.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.name"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-md-2 name" >
+	                Is Default:
+	            </div>
+	            <div class="col-md-8">
+	                <label class="checkbox-inline">
+	                    <input type="checkbox" ng-model="Model.is_default"  />
+	                </label>
+	            </div>
+	        </div>
+	        <div class="row pnl-button">
+	        	<button ng-click="createUpdateResource()" ng-if="!IsUpdate" class="btn btn-primary">Create Resource</button>
+        		<button ng-click="createUpdateResource()" ng-if="IsUpdate"  class="btn btn-primary">Update Resource</button>
+        	</div>         	
+		</div>
+	</form>
+	
+	
+</div>
+<script language="javascript" src="/js/admin/main/resources/updateClientResourceController.js"></script>
+
+	
+
 	    </div>
 	</div>
   </div>
@@ -167,7 +213,7 @@
             <div class="panel-body">
                 <div class="modal-wrapper">
                     <div class="modal-text">
-                    	<p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
                     </div>
                 </div>
             </div>

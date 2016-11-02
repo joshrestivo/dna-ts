@@ -63,7 +63,7 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
   });
 
    $scope.cancel=function(){
-   		window.location.href = "/main/location.html";
+   		window.location.href = "/main/location/location.html";
    };
    	
    $scope.save = function(){
