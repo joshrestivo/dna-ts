@@ -4,19 +4,20 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
     };
     
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/locations ',{ withCredentials: true }).success(function (result) {
-            if (result.Success) {
-                $scope.locations = result.Data;
+    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true }).success(function (result) {
+            if (result.success) {
+            	alert(JSON.stringify(result.data));
+                $scope.locations = result.data;
             }else {
 	                	if(result.data == "INVALID_SESSION") {                	
-	                		$scope.errorMessage  = "Invalid login credantial";
+	                		showErrorDialog(ngDialog,"Invalid login credantial");
 	                	} else {                  	  	
-	                		processCommonExeption(result.data, $scope);
+	                		processCommonExeption(result.data, ngDialog);
 	                	}
 	                }
 	            })
 	            .error(function (error, status){
-			        $scope.errorMessage = SERVER_ERROR_MSG; 
+	            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
 	  			}); 
     };
     
@@ -25,24 +26,25 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
     };
     
     $scope.editLocation = function(location){
+    	
     		sessionStorage.setItem("location", JSON.stringify(location));
-			location.href=location.orgrin +"main/location-detail.html";
+			window.location.href=("/main/location-detail.html");
     };
     
     $scope.deleteLocation=function(location){
     		$http.get(SERVICE_BASE_URL+'/location/'+location.id+'/del  ',{ withCredentials: true }).success(function (result) {
-            if (result.Success) {
+            if (result.success) {
                 alert("OK");
             }else {
 	                	if(result.data == "INVALID_SESSION") {                	
-	                		$scope.errorMessage  = "Invalid login credantial";
+	                		showErrorDialog(ngDialog,"Invalid login credantial");
 	                	} else {                  	  	
-	                		processCommonExeption(result.data, $scope);
+	                		processCommonExeption(result.data, ngDialog);
 	                	}
 	                }
 	            })
 	            .error(function (error, status){
-			        $scope.errorMessage = SERVER_ERROR_MSG; 
+			       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
 	  			}); 
     };
     

@@ -35,7 +35,9 @@
   
   <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
   <script src="/js/bootstrap.min.js" language="javascript"></script>
-  <script src="/js/angular.min.js" language="javascript"></script>  
+  <script src="/js/angular.min.js" language="javascript"></script>
+  <script src="/js/angularjs-google-maps.js" language="javascript"></script>  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTu_OEl2Cw8Lp6OJAuctSRmba9U6AH8nA&libraries=places"></script>
   <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
   <script src="/js/angular-block-ui.min.js" language="javascript"></script>
    <script src="/js/ngDialog.min.js" language="javascript"></script>
@@ -86,12 +88,12 @@
 	    				</a>	
     				</li>    
     				<li class="tab_bulletins">
-	    				<a href="/main/client-resources.html">
+	    				<a href="/main/bulletins/bulletins.html">
 	    					<span>Bulletins</span>
 	    				</a>	
     				</li>   
     				<li class="tab_client_resources">
-	    				<a href="/main/client-resources.html">
+	    				<a href="/main/resources/client-resources.html">
 	    					<span>Client Resources</span>
 	    				</a>	
     				</li>   				
@@ -187,6 +189,31 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button ng-click="closeThisDialog(0)" class="btn btn-danger modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
+<script type="text/ng-template" id="confirm-message">
+    <div id="modalDanger" class="modal-block modal-block-danger">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Confirm</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                       <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>
+                    	<button type="button" class="ngdialog-button ngdialog-button-primary ngdialog-button-yes " ng-click="confirm(1)">Yes</button>
                     </div>
                 </div>
             </footer>

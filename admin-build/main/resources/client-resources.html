@@ -35,7 +35,9 @@
   
   <script src="/js/jquery-2.2.4.min.js" language="javascript"></script>
   <script src="/js/bootstrap.min.js" language="javascript"></script>
-  <script src="/js/angular.min.js" language="javascript"></script>  
+  <script src="/js/angular.min.js" language="javascript"></script>
+  <script src="/js/angularjs-google-maps.js" language="javascript"></script>  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTu_OEl2Cw8Lp6OJAuctSRmba9U6AH8nA&libraries=places"></script>
   <script src="/js/ui-bootstrap-tpls-1.1.1.js" language="javascript"></script>  
   <script src="/js/angular-block-ui.min.js" language="javascript"></script>
    <script src="/js/ngDialog.min.js" language="javascript"></script>
@@ -86,12 +88,12 @@
 	    				</a>	
     				</li>    
     				<li class="tab_bulletins">
-	    				<a href="/main/client-resources.html">
+	    				<a href="/main/bulletins/bulletins.html">
 	    					<span>Bulletins</span>
 	    				</a>	
     				</li>   
     				<li class="tab_client_resources">
-	    				<a href="/main/client-resources.html">
+	    				<a href="/main/resources/client-resources.html">
 	    					<span>Client Resources</span>
 	    				</a>	
     				</li>   				
@@ -103,6 +105,7 @@
 	<div>
 		<div class="list-resource col-md-4">	
 			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
+			<h3>Resources</h3>
 			<ul class="list-group" >				
 			  	<li class="list-group-item" ng-repeat="resource in resources" ng-class="{active: $first}">
 			  		<span class="badge" ng-if="resource.is_default">Default</span>
@@ -124,20 +127,29 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="keyResource in keyResources">
+					<tr ng-repeat="keyResource in keyResourcesFiltered">
 	                        <td ng-bind="keyResource.unique_name"></td>
 	                        <td ng-bind="keyResource.display_text"></td>    
 	                        <td align="center">
-	                        	<a class="td-edit" href="#" ng-click="createUpdateKeyResource(keyResource)"><i class="fa fa-pencil-square-o"></i></a>   
-	                        	<a class="td-delete" href="#"><i class="fa fa-times"></i></a>                	                       	                        	
+	                        	<a class="td-edit" href="#" ng-click="createUpdateKeyResource(keyResource.unique_name)"><i class="fa fa-pencil-square-o"></i></a>   
+	                        	<a class="td-delete" href="#" ng-click="deleteKeyResource(keyResource.unique_name)"><i class="fa fa-times"></i></a>                	                       	                        	
 	                        </td>                                           
 	                    </tr>
 				</tbody>
-			 </table>			
+			 </table>		
+			 <div class="paginations">
+	            <div class="col-md-6">
+					<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+	            </div>
+	            <div class="col-md-6 total">
+	                <span>Total:</span>
+	                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      	
 		</div>		
 	</div>
 </div>
-<script language="javascript" src="/js/admin/main/clientResourceController.js"></script>
+<script language="javascript" src="/js/admin/main/resources/clientResourceController.js"></script>
 
 	
 
@@ -190,6 +202,31 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <button ng-click="closeThisDialog(0)" class="btn btn-danger modal-dismiss">OK</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+</script>
+
+<script type="text/ng-template" id="confirm-message">
+    <div id="modalDanger" class="modal-block modal-block-danger">
+        <section class="panel">
+            <div class="panel-heading">
+                <h2 class="panel-title">Confirm</h2>
+            </div>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-text">
+                        <p ng-model="ngDialogData.message">{{ngDialogData.message}}</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                       <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>
+                    	<button type="button" class="ngdialog-button ngdialog-button-primary ngdialog-button-yes " ng-click="confirm(1)">Yes</button>
                     </div>
                 </div>
             </footer>
