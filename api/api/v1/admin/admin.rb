@@ -19,7 +19,8 @@ module Townsquare
             return JSONResult.new(false, "INCORRECT")
           end
           
-          set_admin_auth(user)
+          #set_admin_auth(user)
+          user.access_token = "#{user.id}-#{user.uuid}"
           JSONResult.new(true, user)
         end
 

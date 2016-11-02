@@ -17,6 +17,16 @@ module Townsquare
       
       helpers do
         def login_admin_user
+          access_token = headers['Access-Token']
+          if access_token != '' && access_token != nil
+            separator_index = access_token.index('-')
+            if separator_index
+              user_id = access_token[0, separator_index]
+              user_uuid = access_token[separator_index + 1, access_token.length - separator_index - 1]
+              return User.find_by(:id => user_id, :uuid => user_uuid)
+            end
+          end
+=begin          
           cookie = cookies[:TOWNSQUARE_ADMIN]
           if cookie
             separator_index = cookie.index('-')
@@ -26,6 +36,7 @@ module Townsquare
               return User.find_by(:id => user_id, :uuid => user_uuid)
             end
           end
+=end
           nil
         end
 
