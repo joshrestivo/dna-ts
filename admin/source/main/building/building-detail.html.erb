@@ -1,0 +1,172 @@
+<div ng-cloak ng-controller="locationDetailController" ng-init="Init()">
+	<div class="breakcrumb">
+		<ol class="breadcrumb">
+		  <li><a href="/main/location/location.html">Locations</a></li>
+		  <li class="active">Location detail</li>
+		</ol>
+	</div>
+	<div  class="location-detail-header" >
+		<h2 ng-bind="IsUpdate?'Update Location':'Add Location'"></h2>
+	 <input type="text" gm-places-autocomplete ng-model="autocomplete" class="form-control" placeholder="Input your location"/>
+		 </div>
+	<form name="locationDetail" class="location-detail" >
+		<div class="row">
+			      <div class="col-md-6">
+			      	<div class="row item">
+	            		<div class="col-md-3">
+	            			Name:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.name" class="form-control" name="name" required
+	                              uib-tooltip="{{(locationDetail.name.$error.required)?'This field is required.':''}}"
+	                              tooltip-enable="!location.name"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			Resources:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<select class="form-control" ng-model="location.client_resource_id"  ng-init="location.client_resource_id" 
+	            			 ng-options="resource.id as resource.name for resource in resources" required>
+	                        		<option value="" disabled selected hidden>Choose a resource...</option>
+	                   		 </select>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			RSS alerts url:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.street_alerts_rss_feed_url" class="form-control" name="street_alerts_rss_feed_url"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			New RSS url 1:
+	            		</div>
+	            		<div class="col-md-9">
+	            				<input type="text" ng-model="location.news_rss_url_1" class="form-control" name="street_alerts_rss_feed_url"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			New RSS url 2:
+	            		</div>
+	            		<div class="col-md-9">
+	            				<input type="text" ng-model="location.news_rss_url_2" class="form-control" name="street_alerts_rss_feed_url"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			New RSS url 1:
+	            		</div>
+	            		<div class="col-md-9">
+	            				<input type="text" ng-model="location.news_rss_url_3" class="form-control" name="street_alerts_rss_feed_url"/>
+	            		</div>
+	            	</div>
+			      </div>
+			      <div class="col-md-6">
+			      	<div class="row item">
+	            		<div class="col-md-3">
+	            			City:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.city" class="form-control" name="city" required readonly
+	                              uib-tooltip="{{(locationDetail.city.$error.required)?'This field is required.':''}}"
+	                              tooltip-enable="!location.city"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			State:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.state" class="form-control" name="state" required readonly disabled
+	                              uib-tooltip="{{(locationDetail.state.$error.required)?'This field is required.':''}}" 
+	                              tooltip-enable="!location.state"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item" >
+	            		<div class="col-md-3">
+	            			Country:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.country" class="form-control" name="country" required readonly disabled
+	                              uib-tooltip="{{(locationDetail.country.$error.required)?'This field is required.':''}}" 
+	                              tooltip-enable="!location.country"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	                              <input type="text" ng-model="location.country_code" class="form-control" name="country_code" required readonly  ng-show="false"
+	                              uib-tooltip="{{(locationDetail.country_code.$error.required)?'This field is required.':''}}" 
+	                              tooltip-enable="!location.country_code"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		 </div>
+	            	</div>
+			      	<div class="row item">
+	            		<div class="col-md-3">
+	            			Longitude:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.longitude" class="form-control" name="longitude"  required readonly
+	                              uib-tooltip="{{(locationDetail.longitude.$error.required)?'This field is required.':''}}"
+	                              tooltip-enable="!location.longitude"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			Latitude:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.latitude" class="form-control" name="latitude"  required readonly
+	                              uib-tooltip="{{(locationDetail.latitude.$error.required)?'This field is required.':''}}"
+	                              tooltip-enable="!location.latitude"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		</div>
+	            	</div>
+			      	<div class="row item2">
+	            		<div class="col-md-6">
+	            			<label class="checkbox-inline" >
+		                        <input type="checkbox" ng-model="location.has_request_service"  
+		                        ng-init="location.has_request_service" 
+		                        name="has_request_service"/> Has request service
+	                        </label>
+	            		</div>
+	            			<div class="col-md-6">
+	            			<label class="checkbox-inline" >
+		                        <input type="checkbox" ng-model="location.has_location_info"  
+		                        ng-init="location.has_location_info" 
+		                        name="has_location_info"/>	Has location info
+	                        </label>
+	            		</div>
+	            	</div>
+	            	<div class="row item2">
+	            			<div class="col-md-6">
+	            				<label class="checkbox-inline" >
+		                        <input type="checkbox" ng-model="location.has_upcomming_events"  
+		                        ng-init="location.has_upcomming_events" 
+		                        name="has_upcomming_events"/>Has up comming events
+	                        </label>
+	            			</div>
+	            			<div class="col-md-6">
+	            				<label class="checkbox-inline" >
+		                        <input type="checkbox" ng-model="location.has_street_alerts"  
+		                        ng-init="location.has_street_alerts" 
+		                        name="has_street_alerts"/> Has street alerts
+	                        </label>
+	            			</div>
+	            	</div>
+		      </div>
+		</div>
+		<div class="bottom-action">
+			<button type="submit" ng-click="save()" class="button-save">Save</button>
+			<button  ng-click="cancel()" class="button-cancel">Cancel</button>
+		</div>
+	</form>
+</div>
+<script language="javascript" src="/js/admin/main/location/locationDetailController.js"></script>
+
+	
