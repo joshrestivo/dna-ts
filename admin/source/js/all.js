@@ -1,3 +1,12 @@
+// Define global variables
+AUTH_COOKIE_NAME = "TOWNSQUARE_ACCESS_TOKEN";
+SERVICE_BASE_URL = "http://localhost:9002/api/1.0";
+//SERVICE_BASE_URL = "https://townsquare-dev.herokuapp.com/api/1.0";
+SERVER_ERROR_MSG = "Server is error. Please contact site administrator for support.";
+SESSION_EXPIRE_MSG = "Your session is expired. Please login and try again.";
+//paging
+ITEM_PER_PAGE = 3;
+PAGE_MAX_SIZE = 5;
 
 function showErrorDialog(ngDialog, message) {
 	ngDialog.open({
@@ -101,7 +110,7 @@ function deleteCookie(name) {
 }
 
 // Check for authentication cookie
-var cookie = readCookie('TOWNSQUARE_ADMIN');
+var cookie = readCookie(AUTH_COOKIE_NAME);
 var host = window.location.host;
 var current_url = window.location.href;
 
@@ -114,12 +123,3 @@ if (cookie == null){
 		window.location.href = "/";
 	}
 }
-
-// Define global variables
-SERVICE_BASE_URL = "http://localhost:9002/api/1.0";
-//SERVICE_BASE_URL = "https://townsquare-dev.herokuapp.com/api/1.0";
-SERVER_ERROR_MSG = "Server is error. Please contact site administrator for support.";
-SESSION_EXPIRE_MSG = "Your session is expired. Please login and try again.";
-//paging
-ITEM_PER_PAGE = 3;
-PAGE_MAX_SIZE = 5;

@@ -7,7 +7,7 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
       };
     
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
             if (result.success) {
             	$scope.locations = result.data;
             	$scope.TotalItems = $scope.locations.length;
