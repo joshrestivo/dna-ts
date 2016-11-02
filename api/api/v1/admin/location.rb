@@ -24,6 +24,9 @@ module Townsquare
           optional :news_rss_url_1, type:String, desc: "New RSS url 1"
           optional :news_rss_url_2, type:String, desc: "New RSS url 2"
           optional :news_rss_url_3, type:String, desc: "New RSS url 3"
+          optional :google_calendar_url, type:String, desc: "Google calendar url"
+          optional :google_calendar_id, type:String, desc: "Google calendar Id"
+          optional :google_calendar_api_key, type:String, desc: "Google calendar api key"
           requires :has_upcomming_events, type:Boolean, desc: "Support upcomming events"
           requires :has_request_service, type:Boolean, desc: "Support request service"
           requires :has_location_info, type:Boolean, desc: "Support building "
@@ -48,6 +51,9 @@ module Townsquare
                                        :news_rss_url_1 => params[:news_rss_url_1],
                                        :news_rss_url_2 => params[:news_rss_url_2],
                                        :news_rss_url_3 => params[:news_rss_url_3],
+                                       :google_calendar_url => params[:google_calendar_url],
+                                       :google_calendar_id => params[:google_calendar_id],
+                                       :google_calendar_api_key => params[:google_calendar_api_key],
                                        :has_upcomming_events => params[:has_upcomming_events],
                                        :has_request_service => params[:has_request_service],
                                        :has_location_info => params[:has_location_info],
@@ -65,6 +71,9 @@ module Townsquare
             location.news_rss_url_1 = params[:news_rss_url_1]
             location.news_rss_url_2 = params[:news_rss_url_2]
             location.news_rss_url_3 = params[:news_rss_url_3]
+            location.google_calendar_url = params[:google_calendar_url]
+            location.google_calendar_id, = params[:google_calendar_id,]
+            location.google_calendar_api_key = params[:google_calendar_api_key]
             location.has_location_info = params[:has_location_info]
             location.has_request_service = params[:has_request_service]
             location.has_street_alerts = params[:has_street_alerts]
