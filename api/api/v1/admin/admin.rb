@@ -19,14 +19,8 @@ module Townsquare
             return JSONResult.new(false, "INCORRECT")
           end
           
-          #set_admin_auth(user)
           user.access_token = "#{user.id}-#{user.uuid}"
           JSONResult.new(true, user)
-        end
-
-        get 'logout' do
-          remove_admin_auth()
-          JSONResult.new(true, nil)
         end
 
         params do

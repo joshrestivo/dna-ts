@@ -26,17 +26,6 @@ module Townsquare
               return User.find_by(:id => user_id, :uuid => user_uuid)
             end
           end
-=begin          
-          cookie = cookies[:TOWNSQUARE_ADMIN]
-          if cookie
-            separator_index = cookie.index('-')
-            if separator_index
-              user_id = cookie[0, separator_index]
-              user_uuid = cookie[separator_index + 1, cookie.length - separator_index - 1]
-              return User.find_by(:id => user_id, :uuid => user_uuid)
-            end
-          end
-=end
           nil
         end
 
@@ -68,24 +57,6 @@ module Townsquare
         
         def authenticate?
           admin_authenticate? || user_authenticate?
-        end
-        
-        def set_admin_auth(user)
-          cookies[:TOWNSQUARE_ADMIN] = {
-            value: "#{user.id}-#{user.uuid}",
-            path: '/',
-            domain: '',
-            expires: Time.now + (20 * 365 * 60 * 60 * 24)
-          }
-        end
-        
-        def remove_admin_auth()
-          cookies[:TOWNSQUARE_ADMIN] = {
-            value: '',
-            path: '/',
-            domain: '',
-            expires: Time.now - (20 * 365 * 60 * 60 * 24)
-          }
         end
         
         def upload(uploaded_file)

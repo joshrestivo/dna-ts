@@ -145,6 +145,15 @@
     "thumbnail_height": xx
 }
 ```
+#####**Calendar**
+```csharp
+{
+    "start": "date",
+    "end": "date",
+    "location": "location",
+    "description": "description"
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
@@ -156,6 +165,7 @@
 [8. Get a location with its resources](#8-get-a-location-with-its-resources)  
 [9. Get street alerts](#9-get-street-alerts)  
 [10. Get upcoming events](#10-get-upcoming-events)  
+[11. Get calendar](#11-get-calendar)
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
@@ -238,32 +248,38 @@ GET: <HOST>/api/1.0/main/{id}/news?page=1&limit=10 (default page = 1, limit=10 i
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
+####**11. Get calendar**
+GET: <HOST>/api/1.0/main/{id}/calendar
+######**Response:**
+- {success=true, data=[Calendar](#calendar) object}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
 #**For administration tool**
 [1. Login](#1-login)  
-[2. Logout](#2-logout)  
-[3. Get all resources](#3-get-all-resources)  
-[4. Create/update a resource](#4-createupdate-a-resource)  
-[5. Update display text for a resource key](#5-update-display-text-for-a-resource-key)
-[6. Add a resource key](#6-add-a-resource-key)
-[7. Delete resource key](#7-delete-resource-key)
-[8. Update alert types](#8-update-alert-types)  
-[9. Get all locations](#9-get-all-locations)  
-[10. Create/update a location](#10-createupdate-a-location)  
-[11. Delete a location](#11-delete-a-location)  
-[12. Get bulletins](#12-get-bulletins)  
-[13. Create/update bulletin](#13-createupdate-bulletin)   
-[14. Delete a bulletin](#14-delete-a-bulletin)  
-[15. Get users](#15-get-users)  
-[16. Create an user](#16-create-an-user)  
-[17. Update an user](#17-update-an-user)  
-[18. Delete an user](#18-delete-an-user)  
-[19. Reset user password](#19-reset-user-password)  
-[20. Get customers](#20-get-customers)  
-[21. Create/update customer](#21-createupdate-customer)  
-[22. Delete a customer](22-delete-a-customer#)  
-[23. Get buildings](#23-get-buildings)  
-[24. Create/update building](#24-createupdate-building)  
-[25. Delete a building](#25-delete-a-building)  
+[2. Get all resources](#2-get-all-resources)  
+[3. Create/update a resource](#3-createupdate-a-resource)  
+[4. Update display text for a resource key](#4-update-display-text-for-a-resource-key)
+[5. Add a resource key](#5-add-a-resource-key)
+[6. Delete resource key](#6-delete-resource-key)
+[7. Update alert types](#7-update-alert-types)  
+[8. Get all locations](#8-get-all-locations)  
+[9. Create/update a location](#9-createupdate-a-location)  
+[10. Delete a location](#10-delete-a-location)  
+[11. Get bulletins](#11-get-bulletins)  
+[12. Create/update bulletin](#12-createupdate-bulletin)   
+[13. Delete a bulletin](#13-delete-a-bulletin)  
+[14. Get users](#14-get-users)  
+[15. Create an user](#15-create-an-user)  
+[16. Update an user](#16-update-an-user)  
+[17. Delete an user](#17-delete-an-user)  
+[18. Reset user password](#18-reset-user-password)  
+[19. Get customers](#19-get-customers)  
+[20. Create/update customer](#20-createupdate-customer)  
+[21. Delete a customer](21-delete-a-customer#)  
+[22. Get buildings](#22-get-buildings)  
+[23. Create/update building](#23-createupdate-building)  
+[24. Delete a building](#24-delete-a-building)  
 
 ####**1. Login**
 POST: <HOST>/api/1.0/admin/login  
@@ -279,12 +295,7 @@ POST: <HOST>/api/1.0/admin/login
 - {success=false, data="INCORRECT"}. Show message: "Invalid login credential."
 - {success=false, data="SYSTEM_ERROR"}. Show a common message: "Server is error. Please contact site administrator for support."
 
-####**2. Logout**
-GET: <HOST>/api/1.0/admin/logout  
-######**Response:**
-- {success=true, data=null}
-
-####**3. Get all resources**
+####**2. Get all resources**
 GET: <HOST>/api/1.0/admin/resources  
 ######**Response:**
 - {success=true, data=[ClientResource](#clientresource) collection}
@@ -293,7 +304,7 @@ GET: <HOST>/api/1.0/admin/resources
 - {success=false, data="DUPLICATE"}. Show "This resource name is already in used.".
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**4. Create/update a resource**
+####**3. Create/update a resource**
 POST: <HOST>/api/1.0/admin/resource/save  
 ######**Parameters:**
 ```csharp
@@ -308,7 +319,7 @@ POST: <HOST>/api/1.0/admin/resource/save
 - {success=false, data="INVALID_SESSION"}
 - {success=false, data="SYSTEM_ERROR"}
 
-####**5. Update display text for a resource key**
+####**4. Update display text for a resource key**
 POST: <HOST>/api/1.0/admin/resource/value/save  
 ######**Parameters:**
 ```csharp
@@ -323,7 +334,7 @@ POST: <HOST>/api/1.0/admin/resource/value/save
 - {success=false, data="INVALID_SESSION"}
 - {success=false, data="SYSTEM_ERROR"}
 
-####**6. Add a resource key**
+####**5. Add a resource key**
 POST: <HOST>/api/1.0/admin/resource/key/add  
 ######**Parameters:**
 ```csharp
@@ -338,7 +349,7 @@ POST: <HOST>/api/1.0/admin/resource/key/add
 - {success=false, data="VALUE_MISSING"}. Show "Not enought display text for all resources."
 - {success=false, data="SYSTEM_ERROR"}
 
-####**7. Delete resource key**
+####**6. Delete resource key**
 POST: <HOST>/api/1.0/admin/resource/key/del  
 ######**Parameters:**
 ```csharp
@@ -351,7 +362,7 @@ POST: <HOST>/api/1.0/admin/resource/key/del
 - {success=false, data="INVALID_SESSION"}
 - {success=false, data="SYSTEM_ERROR"}
 
-####**8. Update alert types**
+####**7. Update alert types**
 POST: <HOST>/api/1.0/admin/alert_types/save  
 ######**Parameters:**
 ```csharp
@@ -372,14 +383,14 @@ POST: <HOST>/api/1.0/admin/alert_types/save
 - {success=false, data="SYSTEM_ERROR"}  
 - {success=false, data="INVALID_SESSION"}
 
-####**9. Get all locations**
+####**8. Get all locations**
 GET: <HOST>/api/1.0/admin/locations  
 ######**Response:**
 - {success=true, data=[Location](#location) collection}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**10. Create/update a location**
+####**9. Create/update a location**
 POST: <HOST>/api/1.0/admin/location/save  
 ######**Parameters:**
 ```csharp
@@ -404,21 +415,21 @@ POST: <HOST>/api/1.0/admin/location/save
 - {success=false, data="SYSTEM_ERROR"}  
 - {success=false, data="INVALID_SESSION"}
 
-####**11. Delete a location**
+####**10. Delete a location**
 GET: <HOST>/api/1.0/admin/location/{id}/del  
 ######**Response:**
 - {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**12. Get bulletins**
+####**11. Get bulletins**
 GET: <HOST>/api/1.0/admin/location/{location_id}/bulletins  
 ######**Response:**
 - {success=true, data=[Bulletin](#bulletin) objects}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**13. Create/update bulletin**
+####**12. Create/update bulletin**
 POST: <HOST>/api/1.0/admin/location/{location_id}/bulletin/save  
 ######**Parameters:**
 ```csharp
@@ -440,21 +451,21 @@ Below json is used to decorate, but when implementing, please use multipart para
 - {success=false, data="IMAGE_INVALID"}. Show "Please select image (png, bmp, jpg, jpeg)"
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**14. Delete a bulletin**
+####**13. Delete a bulletin**
 GET: <HOST>/api/1.0/admin/location/{location_id}/bulletin/:id/del  
 ######**Response:**
 - {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**15. Get users**
+####**14. Get users**
 GET: <HOST>/api/1.0/admin/users  
 ######**Response:**
 - {success=true, data=[User](#user) objects collection}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**16. Create an user**
+####**15. Create an user**
 POST: <HOST>/api/1.0/admin/user/create   
 ######**Parameters:**
 ```csharp
@@ -472,7 +483,7 @@ POST: <HOST>/api/1.0/admin/user/create
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**17. Update an user**
+####**16. Update an user**
 POST: <HOST>/api/1.0/admin/user/update   
 ######**Parameters:**
 ```csharp
@@ -488,7 +499,7 @@ POST: <HOST>/api/1.0/admin/user/update
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**18. Delete an user**
+####**17. Delete an user**
 GET: <HOST>/api/1.0/admin/user/{user_id}/del   
 ######**Response:**
 - {success=true, data=null}
@@ -498,7 +509,7 @@ GET: <HOST>/api/1.0/admin/user/{user_id}/del
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**19. Reset user password**
+####**18. Reset user password**
 POST: <HOST>/api/1.0/admin/user/pwd/reset   
 ######**Parameters:**
 ```csharp
@@ -514,14 +525,14 @@ POST: <HOST>/api/1.0/admin/user/pwd/reset
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**20. Get customers**
+####**19. Get customers**
 GET: <HOST>/api/1.0/admin/customers  
 ######**Response:**
 - {success=true, data=[Customer](#customer) objects collection}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**21. Create/update customer**
+####**20. Create/update customer**
 POST: <HOST>/api/1.0/admin/customer/save  
 ######**Parameters:**
 ```csharp
@@ -539,21 +550,21 @@ POST: <HOST>/api/1.0/admin/customer/save
 - {success=false, data="EMAIL_EXISTED"}. Show "Customer with the same email is already existed"
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**22. Delete a customer**
+####**21. Delete a customer**
 GET: <HOST>/api/1.0/admin/customer/{id}/del  
 ######**Response:**
 - {success=true, data=null}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**23. Get buildings**
+####**22. Get buildings**
 GET: <HOST>/api/1.0/admin/location/{location_id}/buidings  
 ######**Response:**
 - {success=true, data=[Building](#building) objects collection}
 - {success=false, data="INVALID_SESSION"}.
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**24. Create/update building**
+####**23. Create/update building**
 POST: <HOST>/api/1.0/admin/location/{location_id}/building/save  
 ######**Parameters:**
 ```csharp
@@ -573,7 +584,7 @@ Below json is used to decorate, but when implementing, please use multipart para
 - {success=false, data="IMAGE_INVALID"}. Show "Please select image (png, bmp, jpg, jpeg)"
 - {success=false, data="SYSTEM_ERROR"}.
 
-####**25. Delete a building**
+####**24. Delete a building**
 GET: <HOST>/api/1.0/admin/location/{location_id}/building/:id/del  
 ######**Response:**
 - {success=true, data=null}
