@@ -1,10 +1,10 @@
-<div class="client-resource" ng-cloak ng-controller="clientResourceController">
+<div class="client-resource" ng-cloak ng-controller="clientResourceController" ng-init="Init()">
 	<div>
 		<div class="list-resource col-md-5">	
 			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
 			<h3>Resources</h3>
 			<ul class="list-group" >				
-			  	<li class="list-group-item" ng-repeat="resource in resources.slice(((currentPageResource-1)*itemPerPage), ((currentPageResource)*itemPerPage))" ng-class="{active: $first} ">
+			  	<li class="list-group-item" ng-repeat="resource in resources.slice(((currentPageResource-1)*itemPerPage), ((currentPageResource)*itemPerPage))" ng-class="{active: resource.status}">
 			  		<span class="badge" ng-if="resource.is_default">Default</span>
 			  		<a href="#" ng-click="reloadResourceDetail(resource,$event)">				  			
 			  		<span ng-bind="resource.name"></span></a>	
