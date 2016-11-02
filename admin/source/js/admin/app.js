@@ -1,4 +1,4 @@
-﻿var townSquare = angular.module('app', ['ngDialog', 'ui.bootstrap', 'blockUI','gm', 'ngRoute']);
+﻿var townSquare = angular.module('app', ['ngDialog', 'ui.bootstrap', 'blockUI','gm']);
 
 townSquare.config(['$httpProvider', 'blockUIConfig', function ($httpProvider, blockUIConfig) {
     if (!$httpProvider.defaults.headers.get) {
