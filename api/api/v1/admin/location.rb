@@ -21,6 +21,9 @@ module Townsquare
           requires :state, type:String, desc: "State of location"
           requires :country_code, type:String, desc: "Country of location"
           optional :street_alerts_rss_feed_url, type:String, desc: "Street alert RSS feed"
+          optional :news_rss_url_1, type:String, desc: "New RSS url 1"
+          optional :news_rss_url_2, type:String, desc: "New RSS url 2"
+          optional :news_rss_url_3, type:String, desc: "New RSS url 3"
           requires :has_upcomming_events, type:Boolean, desc: "Support upcomming events"
           requires :has_request_service, type:Boolean, desc: "Support request service"
           requires :has_location_info, type:Boolean, desc: "Support building "
@@ -42,6 +45,9 @@ module Townsquare
                                        :state => params[:state],
                                        :country_code => params[:country_code],
                                        :street_alerts_rss_feed_url => params[:street_alerts_rss_feed_url],
+                                       :news_rss_url_1 => params[:news_rss_url_1],
+                                       :news_rss_url_2 => params[:news_rss_url_2],
+                                       :news_rss_url_3 => params[:news_rss_url_3],
                                        :has_upcomming_events => params[:has_upcomming_events],
                                        :has_request_service => params[:has_request_service],
                                        :has_location_info => params[:has_location_info],
@@ -56,6 +62,9 @@ module Townsquare
             location.state = params[:state]
             location.country_code = params[:country_code]
             location.street_alerts_rss_feed_url = params[:street_alerts_rss_feed_url]
+            location.news_rss_url_1 = params[:news_rss_url_1]
+            location.news_rss_url_2 = params[:news_rss_url_2]
+            location.news_rss_url_3 = params[:news_rss_url_3]
             location.has_location_info = params[:has_location_info]
             location.has_request_service = params[:has_request_service]
             location.has_street_alerts = params[:has_street_alerts]
