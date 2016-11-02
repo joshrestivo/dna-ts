@@ -1,19 +1,28 @@
 <div class="client-resource" ng-cloak ng-controller="clientResourceController">
 	<div>
-		<div class="list-resource col-md-4">	
+		<div class="list-resource col-md-5">	
 			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
 			<h3>Resources</h3>
 			<ul class="list-group" >				
-			  	<li class="list-group-item" ng-repeat="resource in resources" ng-class="{active: $first}">
+			  	<li class="list-group-item" ng-repeat="resource in resources.slice(((currentPageResource-1)*itemPerPage), ((currentPageResource)*itemPerPage))" ng-class="{active: $first} ">
 			  		<span class="badge" ng-if="resource.is_default">Default</span>
 			  		<a href="#" ng-click="reloadResourceDetail(resource,$event)">				  			
 			  		<span ng-bind="resource.name"></span></a>	
 			  		<a href="#" class="edit-resource" ng-click="createUpdateResource(resource)"><i class="fa fa-pencil-square-o"></i></a>	  				  		
 			  	</li>			  	
 			</ul>
+			<div class="paginations">
+	            <div class="col-md-6">
+					<uib-pagination boundary-links="true" total-items="TotalResourceItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPageResource" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+	            </div>
+	            <div class="col-md-6 total">
+	                <span>Total:</span>
+	                <span ng-bind="TotalResourceItems"></span>                
+            	</div>
+            </div>
 		</div>
 		
-		<div class="resource-detail col-md-8">
+		<div class="resource-detail col-md-7">
 			<button ng-click="createUpdateKeyResource(null)" class="add-key-resource btn btn-primary">Add Key</button>
 			<table class="table table-hover table-bordered">
 				<thead>
@@ -24,7 +33,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="keyResource in keyResourcesFiltered">
+					<tr ng-repeat="keyResource in keyResources.slice(((currentPageKeyResource-1)*itemPerPage), ((currentPageKeyResource)*itemPerPage))">
 	                        <td ng-bind="keyResource.unique_name"></td>
 	                        <td ng-bind="keyResource.display_text"></td>    
 	                        <td align="center">
@@ -36,11 +45,11 @@
 			 </table>		
 			 <div class="paginations">
 	            <div class="col-md-6">
-					<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+					<uib-pagination boundary-links="true" total-items="TotalKeyResourceItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPageKeyResource" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
 	            </div>
 	            <div class="col-md-6 total">
 	                <span>Total:</span>
-	                <span ng-bind="TotalItems"></span>                
+	                <span ng-bind="TotalKeyResourceItems"></span>                
             </div>
         </div>      	
 		</div>		

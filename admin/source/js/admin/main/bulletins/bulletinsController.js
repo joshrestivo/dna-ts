@@ -61,7 +61,7 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
    	$scope.bulletins = bulletins;
    	
   	$scope.Init = function () {
-		$http.get(SERVICE_BASE_URL + '/admin/locations',{ withCredentials: true })
+		$http.get(SERVICE_BASE_URL + '/admin/locations',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
 	            .success(function (result) {	             	              
 	                if (result.success) {	     
 	    	          	$scope.locations = result.data;
