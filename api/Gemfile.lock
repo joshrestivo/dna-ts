@@ -184,6 +184,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
+    will_paginate (3.1.5)
 
 PLATFORMS
   ruby
@@ -197,6 +198,7 @@ DEPENDENCIES
   grape
   json
   link_thumbnailer
+  nokogiri
   octokit
   ohembedr
   pg
@@ -212,6 +214,7 @@ DEPENDENCIES
   twitter_oauth
   unicorn
   video_info
+  will_paginate (~> 3.1.0)
 
 BUNDLED WITH
    1.11.2

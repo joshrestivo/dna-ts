@@ -133,6 +133,18 @@
     "link": "link"
 }
 ```
+#####**NewsFeed**
+```csharp
+{
+    "date": "date",
+    "link": "link",
+    "title": "title",
+    "description": "description",
+    "thumbnail_url": "thumbnail_url",
+    "thumbnail_width": xx,
+    "thumbnail_height": xx
+}
+```
 #**API Reference**
 [1. Get all alert types](#1-get-all-alert-types)  
 [2. Get all countries](#2-get-all-countries)  
@@ -143,6 +155,7 @@
 [7. Get locations](#7-get-locations)  
 [8. Get a location with its resources](#8-get-a-location-with-its-resources)  
 [9. Get street alerts](#9-get-street-alerts)  
+[10. Get upcoming events](#10-get-upcoming-events)  
 
 ###****Notes**
 When partner use the API, remember to add a key 'Secret-Key' in the HTTP Header of all the HTTP requests. For internal usage, please use a hard-coded key 'ee9c6aaa512cd328c641d21f13bb2654353d36dc'
@@ -215,6 +228,13 @@ GET: <HOST>/api/1.0/location/{id}
 GET: <HOST>/api/1.0/main/{id}/street-alerts
 ######**Response:**
 - {success=true, data=[StreetAlertFeed](#streetalertfeed) objects}
+- {success=false, data="SYSTEM_ERROR"}
+- {success=false, data="INVALID_SESSION"}
+
+####**10. Get upcoming events**
+GET: <HOST>/api/1.0/main/{id}/news?page=1&limit=10 (default page = 1, limit=10 if missing)
+######**Response:**
+- {success=true, data=[NewsFeed](#newsfeed) objects}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 
