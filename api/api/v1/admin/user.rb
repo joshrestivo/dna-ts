@@ -56,8 +56,7 @@ module Townsquare
           
           user = User.find_by(:id => params[:id])
           if user
-            user = User.where("LOWER(email) = ? AND email != ?", params[:email].downcase(), user.email).first
-            if user
+            if User.where("LOWER(email) = ? AND email != ?", params[:email].downcase(), user.email).first
               return JSONResult.new(false, "EMAIL_EXISTED")
             end 
             
@@ -85,7 +84,7 @@ module Townsquare
             return JSONResult.new(false, "NOT_EXISTED")
           end
           
-          if user.username.downcase() == admin.username.downcase()
+          if user.username.downcase() == admin_user.username.downcase()
             return JSONResult.new(false, "DELETE_YOURSELF")
           end 
           

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Muli.ttf">
+            <string>Muli</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoadingViewController" customModule="Hovit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCN-PN-DCx">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" red="0.1450980392" green="0.2901960784" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="vbJ-mr-pIb">
+                    <rect key="frame" x="284" y="274" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="gNG-U6-lO3"/>
+                        <constraint firstAttribute="width" constant="32" id="xGa-h0-YVO"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbf-Cb-Rr7">
+                    <rect key="frame" x="30" y="326" width="540" height="24"/>
+                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="lbf-Cb-Rr7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9Ef-Ca-Kh2"/>
+                <constraint firstItem="hCN-PN-DCx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ART-Ew-HRj"/>
+                <constraint firstItem="lbf-Cb-Rr7" firstAttribute="top" secondItem="vbJ-mr-pIb" secondAttribute="bottom" constant="20" id="BDT-fx-9BM"/>
+                <constraint firstItem="hCN-PN-DCx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CzC-W7-Y7d"/>
+                <constraint firstAttribute="trailing" secondItem="lbf-Cb-Rr7" secondAttribute="trailing" constant="30" id="agV-5l-T5M"/>
+                <constraint firstItem="lbf-Cb-Rr7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="lKW-Dg-5HP"/>
+                <constraint firstItem="lbf-Cb-Rr7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="qoz-5I-3ks"/>
+                <constraint firstItem="vbJ-mr-pIb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vHU-zK-SEv"/>
+                <constraint firstItem="vbJ-mr-pIb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-10" id="wmE-Dy-TJy"/>
+                <constraint firstItem="hCN-PN-DCx" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="x2q-rv-cPb"/>
+                <constraint firstItem="hCN-PN-DCx" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="yAd-EK-huX"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="qoz-5I-3ks"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="imgLoading" destination="vbJ-mr-pIb" id="wPo-f0-toV"/>
+                <outlet property="lblMessage" destination="lbf-Cb-Rr7" id="bFl-8l-tn7"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="loading.png" width="32" height="32"/>
+    </resources>
+</document>

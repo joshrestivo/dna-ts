@@ -1,16 +1,16 @@
-angular.module('app').controller('locationController',  ['$scope', '$http','ngDialog', function ($scope, $http, ngDialog) {
+angular.module('app').controller('adminUserController',  ['$scope', '$http','ngDialog', function ($scope, $http, ngDialog) {
 	$scope.Init = function(){
-    	$scope.currentPage = 1;
+		$scope.currentPage = 1;
 	    $scope.itemPerPage = ITEM_PER_PAGE;
 	    $scope.maxSize = PAGE_MAX_SIZE;
-    	getData();
-      };
-    
+	    getData();
+	};
+  		
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/users',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
             if (result.success) {
-            	$scope.locations = result.data;
-            	$scope.TotalItems = $scope.locations.length;
+            	$scope.adminUsers = result.data;
+            	$scope.TotalItems = $scope.adminUsers.length;
             }else {
 	                	if(result.data == "INVALID_SESSION") {                	
 	                		showErrorDialog(ngDialog,"Invalid login credantial");
@@ -24,22 +24,27 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
 	  			}); 
     };
     
-    $scope.addNewLocation = function(){
-    		location.href="/main/location/location-detail.html";	
+    $scope.addNewAdminUser = function(){
+    		location.href="/main/admin-user/admin-user-detail.html";	
     };
     
-    $scope.editLocation = function(location){
-    		sessionStorage.setItem("location", JSON.stringify(location));
-			window.location.href=("/main/location/location-detail.html");
+    $scope.editAdminUser = function(adminUser){
+    		sessionStorage.setItem("adminUser", JSON.stringify(adminUser));
+			window.location.href=("/main/admin-user/admin-user-detail.html");
     };
     
-    $scope.deleteLocation=function(location){
+    $scope.resetPasswordAdminUser = function(adminUser){
+    		sessionStorage.setItem("adminUserResetPassword", JSON.stringify(adminUser));
+			window.location.href=("/main/admin-user/reset-pwd.html");
+    };
+    
+    $scope.deleteAdminUser=function(adminUser){
     	ngDialog.openConfirm({
 		    template: 'confirm-message',
-	        data: '{"message":"Are you want to delete location: ' + location.Name + '?"}'
+	        data: '{"message":"Are you want to delete user: ' + adminUser.name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/location/'+location.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')}}).success(function (result) {
+           $http.get(SERVICE_BASE_URL+'/admin/user/'+adminUser.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')}}).success(function (result) {
 			            if (result.success) {
 			            getData();
 			            }else {
@@ -58,5 +63,5 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
 	};
 	
     //active tab
-   	$(".nav li.tab_locations").addClass("active"); 
+   	$(".nav li.tab_admin_users").addClass("active"); 
 }]);

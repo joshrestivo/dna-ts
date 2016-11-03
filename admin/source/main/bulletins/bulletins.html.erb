@@ -4,14 +4,14 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-md-2 name">
-			Locations:
-		</div>
-		<div class="col-md-6">
-			<select class="form-control" ng-model="Model.location"  ng-init="Model.location" 
-			ng-options="location as location.name for location in locations" required>
-            		<option value="" disabled selected hidden>Choose a location...</option>
+		<div class="col-md-2">Location:</div>
+		<div class="col-md-8">
+			<select class="form-control" ng-model="locationId"  ng-init="locationId" 
+        			    ng-options="location.id as location.name for location in locations" ng-change="changeLocation(locationId)">
        		 </select>
+		</div>
+		<div class="col-md-2">
+			<a class="add-key-resource btn btn-primary" ng-click="addNewBulletin()">New Bulletin</a>
 		</div>
 	</div>
 	
@@ -19,15 +19,26 @@
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>City</th>				
+					<th>Title</th>
+					<th>Description</th>	
+					<th>From</th>
+					<th>To</th>
+					<th>Image</th>	
+					<th>#</th>			
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="bulletin in bulletinsFiltered">
-                        <td  ng-bind="bulletin.Name"></td>
-                        <td  ng-bind="bulletin.City"></td>                        
-                    </tr>
+				<tr ng-repeat="bulletin in bulletins">
+                    <td  ng-bind="bulletin.title"></td>
+                    <td  ng-bind="bulletin.description"></td>    
+                    <td  ng-bind="bulletin.valid_from | date:'yyyy/MM/dd'"></td>    
+                    <td  ng-bind="bulletin.valid_to | date:'yyyy/MM/dd'"></td> 
+                    <td><img ng-src="{{bulletin.thumbnail_url}}"/></td>   
+                    <td width="70px;" align="center">
+                    	<a href="#" class="td-edit" ng-click="editBulletin(bulletin)"><i class="fa fa-pencil-square-o"></i></a>   
+                    	<a href="#" class="td-delete" ng-click="deleteBulletin(bulletin)"><i class="fa fa-times"></i></a>           
+                	</td>                      
+                </tr>
 			</tbody>
 		 </table>
 		 <div class="paginations">

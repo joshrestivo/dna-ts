@@ -12,7 +12,7 @@ class NewCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var organizationLbl: UILabel!
     
-    @IBOutlet weak var newImgView: UIImageView!
+    @IBOutlet weak var newImgView: AsyncImageView!
     
     @IBOutlet weak var titleLbl: UILabel!
     
@@ -20,12 +20,12 @@ class NewCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.contentView.setRadiusConer()
     }
-//    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes!) {
-//        super.apply(layoutAttributes)
-//        if let attributes = layoutAttributes as? NewLayoutAttributes {
-//            imageViewHeightLayoutConstraint.constant = attributes.photoHeight
-//        }
-//    }
+    
+    func setCellValue(txtOrganization: String?, txtTitle:String?, txtContent:String?, imgSrc:String?){
+        ConstantHelper.addAsyncImage(newImgView, imageUrl: imgSrc, imgNotFound: "icon-notFound")
+        organizationLbl.text = txtOrganization
+        titleLbl.text = txtTitle
+        contentLbl.text = txtContent
+    }
 }

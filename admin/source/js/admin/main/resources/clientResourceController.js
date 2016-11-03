@@ -1,29 +1,18 @@
 angular.module('app').controller('clientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {    
-	$scope.keyResourcesFiltered = [];
-   	$scope.currentPage = 1;
-    $scope.itemPerPage = ITEM_PER_PAGE;
-    $scope.maxSize = PAGE_MAX_SIZE;   	
-   	
-   	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true })
-	        .success(function (result) {	                
-	            if (result.success) {	     	            	
-	            	$scope.resources = result.data;	            	
-	            	$scope.keyResources = result.data[0].details;
-	            	$scope.TotalItems = result.data[0].details.length;
-	            	sessionStorage.setItem("allResource", JSON.stringify(result.data));	    
-	            	
-	            	updatePaginationUI();   	
-	            }
-	        })
-	        .error(function (error, status){	            	
-		        processCommonExeption(error, ngDialog);
-			}); 	  			   	
+   	    
+    $scope.Init = function(){
+    	$scope.currentPageResource = 1;
+	   	$scope.currentPageKeyResource = 1;
+	    $scope.itemPerPage = ITEM_PER_PAGE;
+	    $scope.maxSize = PAGE_MAX_SIZE;   	
+	    
+	    getResources();
+  	};
    	
  	$scope.createUpdateResource = function (resource) {
  		if (resource != null) { 	
  			sessionStorage.setItem("resource", JSON.stringify(resource)); 			
- 		}
- 		
+ 		} 		
  		window.location.href = ("/main/resources/update-client-resource.html"); 	
 	};
 	
@@ -40,10 +29,12 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	        data: '{"message":"Are you want to delete ' + keyResourceUniqueName + '?"}'
 		})
 		.then(function (value) {
-            $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true })
+            $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
 	        .success(function (result) {	                
 	            if (result.success) {	      
-		          	window.location.href = "/main/resources/client-resources.html";
+		          	getResources();
+		          	$scope.currentPageResource = 1;
+	   				$scope.currentPageKeyResource = 1;
 	            } else {                	              	  	
 	        		processCommonExeption(result.data, $scope);                	              	                    
 	            }
@@ -58,20 +49,29 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	
 	$scope.reloadResourceDetail = function(resource, event) {
 		$scope.keyResources = resource.details;
-		updatePaginationUI();
 	
-		$('.list-resource li[class*="active"]').removeClass("active");
-		angular.element(event.currentTarget).parent().addClass("active");
+		$('.list-resource tr[class*="selected"]').removeClass("selected");
+		angular.element(event.currentTarget).parent().parent().addClass("selected");
 	};	
 	
-	var updatePaginationUI = function(){
-		$scope.$watch('currentPage + itemPerPage', function() {
-			var begin = (($scope.currentPage - 1) * $scope.itemPerPage)
-			, end = begin + $scope.itemPerPage;
-			
-			$scope.keyResourcesFiltered = $scope.keyResources.slice(begin, end);
-		});  
-	};
-	
-    $(".nav li.tab_client_resources").addClass("active");       
+    $(".nav li.tab_client_resources").addClass("active");    
+    
+    var getResources = function() {
+    	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+		    .success(function (result) {	                
+		        if (result.success) {	     	            	
+		        	$scope.resources = result.data;	            
+		        	$scope.resources[0].status = "active";	
+		        	$scope.keyResources = result.data[0].details;
+		        	
+		        	$scope.TotalResourceItems = result.data.length;
+		        	$scope.TotalKeyResourceItems = result.data[0].details.length;	            	
+		        	
+		        	sessionStorage.setItem("allResource", JSON.stringify(result.data));	   
+		        }
+		    })
+		    .error(function (error, status){	            	
+		        processCommonExeption(error, ngDialog);
+			}); 
+    };   
 }]);

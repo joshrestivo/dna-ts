@@ -1,10 +1,3 @@
-//
-//  ApiClientUsage.swift
-//  DealARide
-//
-//  Created by PhucDoan on 8/30/15.
-//  Copyright (c) 2015 PhucDoan. All rights reserved.
-//
 
 import Foundation
 import Alamofire
@@ -19,13 +12,16 @@ enum RestUrl: String {
     /// Api Rest string parameters
     ///////////////////////////////////////////////////////
     case postPing = "ping"
-    case getLocalazation = "getLocalazation"
-    // Client log
-    case commonLogs = "common/logs"
+    case postUserAuth = "auth"
+    case getBulletins = "main/%@/bulletins?page=%@&limit=%@"
+    case getBuilding = "main/%@/buildings?page=%@&limit=%@"
+    case getLocations = "locations?page=%@&limit=%@"
+    case getLocationResource = "location/%@"
+    case getStreetAlerts = "main/%@/street-alerts"
+    case getUpcomingEvents = "main/%@/news?page=%@&limit=%@"
 }
 
 class ApiClientUsage {
-    
     var errorHelper: ErrorTypeHelper = ErrorTypeHelper()
     var noErrorParam = ErrorCodeParam(code: ErrorType.NONE, extParam: "", message: "")
     var unknownErrorParam = ErrorCodeParam(code: ErrorType.UNKNOWN, extParam: "", message: "")
@@ -53,39 +49,181 @@ class ApiClientUsage {
     ///////////////////////////////////////////////////////
     func ping(_ callback:@escaping (String?) -> ()) {
         let url = self.Api.getAbsoluteUrl(RestUrl.postPing.value)
-        Api.executeRequest(url, .post) { (isSuccess, resObject) in
+        Api.executeRequest(url, .get) { (resObject, isSuccess) in
             if(isSuccess == true){
-                let validData = resObject as! NSDictionary
-                let json = JSON(validData)                
-                ConstantHelper.cache.setObject("", forKey: ConstantHelper.localizationKey, expires: .never)
+                callback("")
             }else{
                 callback("")
             }
         }
     }
     
-    func getLocalazation(_ latitude:String, longitude:String, callback: @escaping (String,Bool, ErrorCodeParam) -> ()){
-        let url = self.Api.getAbsoluteUrl(RestUrl.getLocalazation.value)
-        
+    func authenticate(longitude: String?, latitude: String?, _ callback: @escaping (LocationInfo, Bool) -> ()) {
+        let url = self.Api.getAbsoluteUrl(RestUrl.postUserAuth.value)
         let params: Parameters = [
-            "latitude" : latitude,
-            "longitude" : longitude
+            "longitude" : longitude! as String,
+            "latitude" : latitude! as String,
+            "client_os" : "IOS",
+            "device_token" : "Test"
         ]
         
-        Api.executeRequest(url, .post, params) { (isSuccess, resObject) in
+        Api.executeRequest(url, .post, params) { (resObject, isSuccess) in
             if(isSuccess == true){
-                let jsonData = resObject as! String
-                callback(jsonData,true, self.noErrorParam)
-            }else{
-                if(resObject != nil) {
-                    let errorData = resObject as! String
-                    let objError = self.errorHelper.getErrorCodeFromString(errorData)
-                    callback("",false, objError)
-                }else {
-                    callback("",false, self.unknownErrorParam)
+                if let dataUser = resObject as? Dictionary<String, AnyObject> {
+                    let json = JSON(dataUser)                    
+                    let location = LocationInfo(json: json)
+                    callback(location, true)
                 }
+                else{
+                    callback(LocationInfo(), false)
+                }
+            }
+            else{
+                callback(LocationInfo(), false)
             }
         }
     }
     
+    func getBulletins(locationId: String?, pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([Bulletins], Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getBulletins.value as NSString, locationId!,String(pageIndex!) ,String(pageSize!)) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        var bulletins = [Bulletins]()
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                
+                if let unwrappedData = resObject as? [NSDictionary] {
+                    for jsonData in unwrappedData{
+                        let json = SwiftyJSON.JSON(jsonData)
+                        bulletins.append( Bulletins(json: json))
+                    }
+                    
+                    callback(bulletins, true)
+                }else{
+                    callback(bulletins, false)
+                }
+            }
+            else{
+                callback(bulletins, false)
+            }
+        }
+    }
+    
+    func getBuildings(locationId: String?, pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([Building], Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getBuilding.value as NSString, locationId!,pageIndex!, pageSize! ) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        var buildings = [Building]()
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                
+                if let unwrappedData = resObject as? [NSDictionary] {
+                    for jsonData in unwrappedData{
+                        let json = SwiftyJSON.JSON(jsonData)
+                        buildings.append( Building(json: json))
+                    }
+                    
+                    callback(buildings, true)
+                }else{
+                    callback(buildings, false)
+                }
+            }
+            else{
+                callback(buildings, false)
+            }
+        }
+    }
+    
+    func getLocations(pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([LocationInfo], Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getLocations.value as NSString, pageIndex!, pageSize! ) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        var locations = [LocationInfo]()
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                
+                if let unwrappedData = resObject as? [NSDictionary] {
+                    for jsonData in unwrappedData{
+                        let json = SwiftyJSON.JSON(jsonData)
+                        locations.append( LocationInfo(json: json))
+                    }
+                    
+                    callback(locations, true)
+                }else{
+                    callback(locations, false)
+                }
+            }
+            else{
+                callback(locations, false)
+            }
+        }
+    }
+
+    func getLocation(id: Int?, _ callback: @escaping (LocationInfo, Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getLocationResource.value as NSString, id!) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                if let unwrappedData = resObject as? NSDictionary {
+                    let json = SwiftyJSON.JSON(unwrappedData)
+                    let location = LocationInfo(json: json)
+                    callback(location, true)
+                }else{
+                    callback(LocationInfo(), false)
+                }
+            }
+            else{
+                callback(LocationInfo(), false)
+            }
+        }
+    }
+    
+    func getStreetAlerts(id: Int?, _ callback: @escaping ([StreetAlert] , Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getStreetAlerts.value as NSString, id! ) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        var streetAlerts = [StreetAlert]()
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                if let unwrappedData = resObject as? [NSDictionary] {
+                    for jsonData in unwrappedData{
+                        let json = SwiftyJSON.JSON(jsonData)
+                        streetAlerts.append(StreetAlert(json: json))
+                    }
+                    
+                    callback(streetAlerts, true)
+                }else{
+                    callback(streetAlerts, false)
+                }
+            }
+            else{
+                callback(streetAlerts, false)
+            }
+        }
+    }
+    
+    func getNewsFeeds(pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([NewsFeed] , Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getUpcomingEvents.value as NSString, pageIndex!, pageSize! ) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        var newsFeeds = [NewsFeed]()
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                if let unwrappedData = resObject as? [NSDictionary] {
+                    for jsonData in unwrappedData{
+                        let json = SwiftyJSON.JSON(jsonData)
+                        newsFeeds.append(NewsFeed(json: json))
+                    }
+                    
+                    callback(newsFeeds, true)
+                }else{
+                    callback(newsFeeds, false)
+                }
+            }
+            else{
+                callback(newsFeeds, false)
+            }
+        }
+    }
 }

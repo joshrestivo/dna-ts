@@ -1,5 +1,6 @@
 // Define global variables
 AUTH_COOKIE_NAME = "TOWNSQUARE_ACCESS_TOKEN";
+USERNAME_LOGIN_COOKIE = "USERNAME_LOGIN";
 //SERVICE_BASE_URL = "http://localhost:9002/api/1.0";
 SERVICE_BASE_URL = "https://townsquare-dev.herokuapp.com/api/1.0";
 SERVER_ERROR_MSG = "Server is error. Please contact site administrator for support.";
@@ -41,21 +42,10 @@ function getUrlParameter(sParam) {
     return "";
 };
 
-function logout() {
-    $.ajax({
-		url: SERVICE_BASE_URL + '/admin/logout',
-		xhrFields: {
-	      withCredentials: true
-	  	},
-		type: 'GET',				  
-		success: function(result){
-			deleteCookie("USERNAME_LOGIN");
-			gotoLoginPage();
-  		},
-  		error: function (request, status, error) {
-        	alert(error);
-    	}
-	});
+function logout() {    
+	deleteCookie(AUTH_COOKIE_NAME);
+	deleteCookie(USERNAME_LOGIN_COOKIE);
+	gotoLoginPage();  		
 };
 
 function gotoLoginPage(){
@@ -77,7 +67,8 @@ function processCommonExeption(errorCode, ngDialog){
 		showErrorDialog(ngDialog, SERVER_ERROR_MSG);        
     } else if (errorCode == "INVALID_SESSION"){
     	showErrorDialog(ngDialog, SESSION_EXPIRE_MSG);  
-    	deleteCookie("USERNAME_LOGIN");
+    	deleteCookie(AUTH_COOKIE_NAME);
+    	deleteCookie(USERNAME_LOGIN_COOKIE);
         gotoLoginPage();
     } else {
     	showErrorDialog(ngDialog, SERVER_ERROR_MSG);    

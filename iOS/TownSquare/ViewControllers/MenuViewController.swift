@@ -11,12 +11,12 @@ import UIKit
 class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    let menuItems = [MenuItem(title: ConstantHelper.cache["menuHome"] as! String,imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
-                     MenuItem(title: ConstantHelper.cache["menuUpComingEvents"] as! String,imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
-                     MenuItem(title: ConstantHelper.cache["menuRequestService"] as! String,imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
-                     MenuItem(title: ConstantHelper.cache["menuLocationInfo"] as! String,imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
-                     MenuItem(title: ConstantHelper.cache["menuStreetAlert"] as! String,imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
-                     MenuItem(title: ConstantHelper.cache["menuSetting"] as! String,imageName: "ic_settings_36pt",type: MenuItemType.leftMenuSetting)]
+    let menuItems = [MenuItem(title: ConstantHelper.cache["menu_Home"] as! String,imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
+                     MenuItem(title: ConstantHelper.cache["menu_UpComingEvents"] as! String,imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
+                     MenuItem(title: ConstantHelper.cache["menu_RequestService"] as! String,imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
+                     MenuItem(title: ConstantHelper.cache["menu_LocationInfo"] as! String,imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
+                     MenuItem(title: ConstantHelper.cache["menu_StreetAlert"] as! String,imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
+                     MenuItem(title: ConstantHelper.cache["menu_HelpResource"] as! String,imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuStreetAlert)]
     
     override func viewDidLoad()
     {
@@ -27,7 +27,6 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return menuItems.count;
     }
@@ -63,6 +62,7 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
         case 2:
             let upcomingVC = self.storyboard?.instantiateViewController(withIdentifier: "RequestServiceViewControllerID") as! RequestServiceViewController
             let revealVC = self.revealViewController()
+            
             let navUpcomingVC = UINavigationController(rootViewController: upcomingVC)
             revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
 

@@ -1,10 +1,3 @@
-//
-//  ApiClient.swift
-//  DealARide
-//
-//  Created by PhucDoan on 8/30/15.
-//  Copyright (c) 2015 PhucDoan. All rights reserved.
-//
 
 import Foundation
 import UIKit
@@ -12,21 +5,15 @@ import Alamofire
 import SwiftyJSON
 
 #if DEBUG
-    let BASE_HOST = "http://hovit-dev.azurewebsites.net"
-    let SignalRURL = "http://devsignalr.hovit.com/"
+    let BASE_HOST = "https://townsquare-dev.herokuapp.com/"
 #else
-    let BASE_HOST = "https://api.hovit.com"
-    let SignalRURL = "https://channel.hovit.com"
+    let BASE_HOST = "https://townsquare-dev.herokuapp.com/"
 #endif
 
-let BASE_URL = "\(BASE_HOST)/api/"
+let BASE_URL = "\(BASE_HOST)api/1.0/"
 
 class ApiClient {
-    var jsonHeaderSession = [
-        "Content-Type": "application/json",
-        "Accept": "application/vnd.lichess.v1+json",
-        "User-Agent": "007"
-    ]
+    var jsonHeaderSession = ["secret-key": "ee9c6aaa512cd328c641d21f13bb2654353d36dc", "content-type": "application/json", "cache-control": "no-cache"]
     
     class var sharedInstance : ApiClient {
         struct Static {
@@ -38,28 +25,62 @@ class ApiClient {
     func  getAbsoluteUrl(_ relativeUrl: String) -> String{
         return BASE_URL + relativeUrl;
     }
-
-    func executeRequest(_ url: String, _ method: HTTPMethod, _ params: Parameters? = nil, callback: @escaping (Bool, AnyObject?) -> ()) {
-        request(url, method: method, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+    
+    func executeRequest(_ url: String, _ method: HTTPMethod, _ params: Parameters? = nil, callback: @escaping (AnyObject?,Bool) -> ()) {
+        request(url, method: method, parameters: params, encoding: JSONEncoding.default, headers: jsonHeaderSession).responseJSON { (response) in
             let result = response.result
-            if result.isSuccess {
-                let resultData = result.value as! NSDictionary
-                self.handleResponseWithData(resultData, callBack: { (dataResponse, isSuccess) in
-                    callback(isSuccess, dataResponse)
-                })
-            }else {
-                callback(false, nil)
+            switch result {
+            case .success(let aData):
+                if let stringData = aData as? String{
+                    let dataResponse: Data = stringData.data(using: String.Encoding.utf8)!
+                    self.handleDataCommond(dataResponse: dataResponse, url: url, callBack: callback)
+                }else if let unwrappedData = aData as? NSDictionary {
+                    if let successAuthent = unwrappedData["success"] as? Bool{
+                        let dataDict = unwrappedData["data"] as Any
+                        callback(dataDict as AnyObject?, successAuthent)
+                    }else{
+                        
+                        callback(nil, false)
+                    }
+                    
+                }else if let dataResponse = aData as? Data{
+                    self.handleDataCommond(dataResponse: dataResponse, url: url, callBack: callback)
+                }else{
+                    
+                    callback(nil, false)
+                }
+                break
+                
+            case .failure(let error):
+                callback(nil, false)
+                break
             }
         }
     }
     
-    func handleResponseWithData(_ aData: NSDictionary, callBack: @escaping (AnyObject?, Bool) -> ()) {
-        if let unwrappedData = aData as? Dictionary<String, AnyObject> {
-            if let successAuthent = unwrappedData["Success"] as? Bool{
-                callBack(unwrappedData["Data"], successAuthent)
+    func handleDataCommond (dataResponse: Data, url:String?, callBack:(AnyObject?, Bool)->())->(){
+        var errorParse:NSError?
+        let json: AnyObject?
+        do
+        {
+            json = try JSONSerialization.jsonObject(with: dataResponse, options: JSONSerialization.ReadingOptions.allowFragments) as? AnyObject
+        }
+        catch let error as NSError
+        {
+            errorParse = error
+            json = nil
+        }
+        
+        if let unwrappedData = json as? NSDictionary {
+            if let successAuthent = unwrappedData["success"] as? Bool{
+                let dataDict = unwrappedData["data"] as AnyObject
+                callBack(dataDict, successAuthent)
             }else{
                 callBack(nil, false)
             }
+            
+        }else{
+            callBack(nil, false)
         }
     }
 }

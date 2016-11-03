@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -55,7 +55,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-notFound.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-jI-5QX">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-notFound.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-jI-5QX" customClass="AsyncImageView">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="140" id="aC2-0T-a6q"/>
                                                                     </constraints>
@@ -91,7 +91,7 @@
                                                         </constraints>
                                                         <connections>
                                                             <outlet property="contentLbl" destination="5Y0-49-npI" id="XNI-L7-2x3"/>
-                                                            <outlet property="newImgView" destination="Nhe-jI-5QX" id="ZaB-YJ-8a4"/>
+                                                            <outlet property="newImgView" destination="Nhe-jI-5QX" id="vLI-dC-kNg"/>
                                                             <outlet property="organizationLbl" destination="kMn-EG-ALx" id="3MX-YT-VNu"/>
                                                             <outlet property="titleLbl" destination="yEw-8B-LZD" id="c28-Ci-dE9"/>
                                                         </connections>
@@ -118,7 +118,17 @@
                                                             <constraint firstAttribute="height" constant="1" id="f2R-ZI-dhd"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sep 30 - public speaking Sep 30 - public speaking Sep 30 - public speaking" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdF-tM-KBC" customClass="MarginLabel" customModule="TownSquare" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sep 30 - public speaking " textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdF-tM-KBC" userLabel="Content Lbl 1" customClass="MarginLabel" customModule="TownSquare" customModuleProvider="target">
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sep 30 - public speaking " textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7l-ld-QH0" userLabel="Content Lbl 2" customClass="MarginLabel" customModule="TownSquare" customModuleProvider="target">
+                                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sep 30 - public speaking " textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbS-8I-3Or" userLabel="Content Lbl 3" customClass="MarginLabel" customModule="TownSquare" customModuleProvider="target">
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -144,13 +154,19 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
+                                                <color key="backgroundColor" red="0.77158717109999997" green="0.0" blue="0.09696237664" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="kdF-tM-KBC" secondAttribute="bottom" constant="5" id="26K-zV-Yzy"/>
+                                                    <constraint firstItem="J7l-ld-QH0" firstAttribute="top" secondItem="kdF-tM-KBC" secondAttribute="bottom" id="2l1-ut-lST"/>
                                                     <constraint firstItem="2YW-FO-3VX" firstAttribute="leading" secondItem="kdF-tM-KBC" secondAttribute="trailing" constant="5" id="3Nd-Zr-35r"/>
+                                                    <constraint firstItem="kbS-8I-3Or" firstAttribute="top" secondItem="J7l-ld-QH0" secondAttribute="bottom" id="3Sv-Xp-b7W"/>
+                                                    <constraint firstItem="kbS-8I-3Or" firstAttribute="trailing" secondItem="J7l-ld-QH0" secondAttribute="trailing" id="8EH-7X-h9U"/>
                                                     <constraint firstItem="xfg-4h-gz7" firstAttribute="top" secondItem="IA8-s7-aB4" secondAttribute="top" id="AKV-52-vya"/>
                                                     <constraint firstAttribute="height" constant="150" id="CVb-Yg-zoc"/>
                                                     <constraint firstItem="b7a-Si-COU" firstAttribute="leading" secondItem="IA8-s7-aB4" secondAttribute="leading" id="EhE-NF-PEt"/>
-                                                    <constraint firstItem="kdF-tM-KBC" firstAttribute="top" secondItem="IA8-s7-aB4" secondAttribute="top" constant="5" id="Mzg-Td-IVg"/>
+                                                    <constraint firstItem="kbS-8I-3Or" firstAttribute="leading" secondItem="J7l-ld-QH0" secondAttribute="leading" id="EiE-qL-q9N"/>
+                                                    <constraint firstItem="J7l-ld-QH0" firstAttribute="trailing" secondItem="kdF-tM-KBC" secondAttribute="trailing" id="ITL-JG-EEo"/>
+                                                    <constraint firstItem="J7l-ld-QH0" firstAttribute="centerY" secondItem="2YW-FO-3VX" secondAttribute="centerY" id="IrM-4r-8IV"/>
+                                                    <constraint firstItem="J7l-ld-QH0" firstAttribute="leading" secondItem="kdF-tM-KBC" secondAttribute="leading" id="NMw-wL-3Rz"/>
                                                     <constraint firstAttribute="trailing" secondItem="xfg-4h-gz7" secondAttribute="trailing" id="Xga-yG-Ghl"/>
                                                     <constraint firstAttribute="trailing" secondItem="2YW-FO-3VX" secondAttribute="trailing" constant="10" id="bgA-ZH-Ny1"/>
                                                     <constraint firstAttribute="bottom" secondItem="b7a-Si-COU" secondAttribute="bottom" id="gaT-Gz-xdj"/>
@@ -193,7 +209,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-notFound.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-b8-zEc">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-notFound.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="oOe-b8-zEc" customClass="AsyncImageView">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="140" id="afN-LK-F3i"/>
                                                                     </constraints>
@@ -294,7 +310,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bulletinCollectionView" destination="zPz-S2-CZU" id="3nM-8r-d8L"/>
-                        <outlet property="contentLbl" destination="kdF-tM-KBC" id="r1T-iI-rf9"/>
+                        <outlet property="lblEntryEvent1" destination="kdF-tM-KBC" id="YbZ-RA-CZl"/>
+                        <outlet property="lblEntryEvent2" destination="J7l-ld-QH0" id="i9Z-e8-Bij"/>
+                        <outlet property="lblEntryEvent3" destination="kbS-8I-3Or" id="V2V-2T-YgP"/>
                         <outlet property="newCollectionView" destination="nJU-bB-8oM" id="Zqw-i7-HXq"/>
                         <outlet property="requestServiceBtn" destination="2YW-FO-3VX" id="rJe-Yd-6UE"/>
                         <outlet property="scrollView" destination="6ck-B2-ZRe" id="L71-Xp-OJw"/>

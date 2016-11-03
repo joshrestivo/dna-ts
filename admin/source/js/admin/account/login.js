@@ -7,7 +7,8 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 		    $http.post(SERVICE_BASE_URL + '/admin/login', $scope.Model,{ withCredentials: true })
 	            .success(function (result) {	                
 	                if (result.success) {	      	                	 
-        	          	createCookie(AUTH_COOKIE_NAME, result.data.access_token, 7);        	          	
+        	          	createCookie(AUTH_COOKIE_NAME, result.data.access_token, 7);   
+        	          	createCookie(USERNAME_LOGIN_COOKIE, result.data.name, 7);     	          	
 	                	var return_url = getUrlParameter("return_url");    
 	                    if (return_url != ""){	                    	
 	                    	window.location.href = return_url;

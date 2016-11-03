@@ -1,12 +1,12 @@
-angular.module('app').controller('addKeyResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
+angular.module('app').controller('addKeyResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {	
 	
-	$scope.Model = {};	
-	$scope.IsUpdate = false;
 	var allResource = JSON.parse(sessionStorage.getItem("allResource"));
 	var keyResourceUniqueName = sessionStorage.getItem("keyResourceUniqueName");
 	sessionStorage.removeItem("keyResourceUniqueName");		
 	
 	$scope.Init = function () {
+		$scope.Model = {};	
+		$scope.IsUpdate = false;
 		$scope.resources = allResource;		
 				
 		if (keyResourceUniqueName != null) {
@@ -40,13 +40,13 @@ angular.module('app').controller('addKeyResourceController',  ['$scope', '$http'
 			});		
 			data.values = JSON.stringify(values);
 			
-			$http.post(SERVICE_BASE_URL + '/admin/resource/key/add',JSON.stringify(data),{ withCredentials: true })
+			$http.post(SERVICE_BASE_URL + '/admin/resource/key/add',JSON.stringify(data),{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
 	            .success(function (result) {	             	              
 	                if (result.success) {	      
 	    	          	window.location.href = "/main/resources/client-resources.html";
 	                } else {       
 	                	if(result.data == "VALUE_MISSING") {                	
-	                		showErrorDialog(ngDialog, "VALUE_MISSING") ;
+	                		showErrorDialog(ngDialog, "Not enought display text for all resources.") ;
 	                	} else {                  	  	
 	                		processCommonExeption(result.data, ngDialog);
 	                	}                	              	                    

@@ -1,11 +1,11 @@
-angular.module('app').controller('updateClientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {
+angular.module('app').controller('updateClientResourceController',  ['$scope', '$http', 'ngDialog', function ($scope, $http, ngDialog) {	
 	
-	$scope.Model = {};	
-	$scope.IsUpdate = false;
 	var resource = sessionStorage.getItem("resource");
 	sessionStorage.removeItem("resource");
 	
 	$scope.Init = function () {
+		$scope.Model = {};	
+		$scope.IsUpdate = false;
 		if (typeof resource !== 'undefined' && resource == null) {		
 			$scope.IsUpdate = false;
 			$scope.Model.id = 0;
@@ -19,23 +19,23 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		}
 	};
 		
-	$scope.createUpdateResource = function (event, resource) {
+	$scope.createUpdateResource = function () {
 		if($scope.updateClientResource.$valid) {
-			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true })
-	        .success(function (result) {	                
-	            if (result.success) {	      
-		          	window.location.href = "/main/resources/client-resources.html";
-	            } else {                	   
-	            	if(result.data == "DUPLICATE") {                	
-                		showErrorDialog(ngDialog, "This resource name is already in used") ;
-                	} else {                  	  	
-                		processCommonExeption(result.data, ngDialog);
-                	}           	  	
-	            }
-	        })
-	        .error(function (error, status){	            	
-		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
-			}); 	
+			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+		        .success(function (result) {	                
+		            if (result.success) {	      
+			          	window.location.href = "/main/resources/client-resources.html";
+		            } else {                	   
+		            	if(result.data == "DUPLICATE") {                	
+	                		showErrorDialog(ngDialog, "This resource name is already in used") ;
+	                	} else {                  	  	
+	                		processCommonExeption(result.data, ngDialog);
+	                	}           	  	
+		            }
+		        })
+		        .error(function (error, status){	            	
+			        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
+				}); 	
 		} 		  
 	};
 		

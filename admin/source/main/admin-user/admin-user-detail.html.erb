@@ -1,0 +1,77 @@
+<div ng-cloak ng-controller="adminUserDetailController" ng-init="Init()">
+	<div class="breakcrumb">
+		<ol class="breadcrumb">
+		  <li><a href="/main/admin-user/admin-user.html">Admin user</a></li>
+		  <li class="active"  ng-bind="IsUpdate?'Update admin user':'Add admin user'"></li>
+		</ol>
+	</div>
+	<form name="adminUserDetail" class="location-detail" >
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row item">
+					<div class="col-md-2">
+						Name:
+					</div>
+					<div class="col-md-10">
+						<input type="text" ng-model="adminUser.name" class="form-control" name="name" required
+						      uib-tooltip="{{(adminUserDetail.name.$error.required)?'This field is required.':''}}"
+						      tooltip-enable="!adminUser.name"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+				<div class="row item" ng-show="!IsUpdate">
+					<div class="col-md-2">
+						Username:
+					</div>
+					<div class="col-md-10">
+						<input type="text" ng-model="adminUser.username" class="form-control" name="username" ng-required"!IsUpdate"
+						      uib-tooltip="{{(adminUserDetail.username.$error.required)?'This field is required.':''}}"
+						      tooltip-enable="!adminUser.username"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+				<div class="row item">
+					<div class="col-md-2">
+						Email:
+					</div>
+					<div class="col-md-10">
+						<input type="email" ng-model="adminUser.email" class="form-control" name="email" required
+						      uib-tooltip="{{(adminUserDetail.email.$error.required)?'This field is required.':adminUserDetail.email.$error.email?'Not valid email':''}}"
+						      tooltip-enable="!adminUser.email"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+				<div class="row item" ng-show="!IsUpdate">
+					<div class="col-md-2">
+						Password:
+					</div>
+					<div class="col-md-10">
+						<input type="password" ng-model="adminUser.password" class="form-control" name="password" ng-required"!IsUpdate"
+						      uib-tooltip="{{(adminUserDetail.password.$error.required)?'This field is required.':''}}"
+						      tooltip-enable="!adminUser.password"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+				<div class="row item" ng-show="!IsUpdate">
+					<div class="col-md-2">
+						Confirm Password:
+					</div>
+					<div class="col-md-10">
+						<input type="password" ng-model="adminUser.confirm_Password" class="form-control" name="confirm_Password" ng-required"!IsUpdate"
+						      uib-tooltip="{{(adminUserDetail.confirm_Password.$error.required)?'This field is required.':''}}"
+						      tooltip-enable="!adminUser.confirm_Password"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottom-action">
+			<button ng-show="!IsUpdate" type="submit" ng-click="save()" class="button-save">Save</button>
+			<button ng-show="IsUpdate"  type="submit" ng-click="update()" class="button-save">Save</button>
+			<button  ng-click="cancel()" class="button-cancel">Cancel</button>
+		</div>
+	</form>
+</div>
+<script language="javascript" src="/js/admin/main/admin-user/adminUserDetailController.js"></script>
+
+	
