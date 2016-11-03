@@ -13,7 +13,7 @@ import SwiftyJSON
 let BASE_URL = "\(BASE_HOST)api/1.0/"
 
 class ApiClient {
-    var jsonHeaderSession = ["secret-key": "ee9c6aaa512cd328c641d21f13bb2654353d36dc"]
+    var jsonHeaderSession = ["secret-key": "ee9c6aaa512cd328c641d21f13bb2654353d36dc", "content-type": "application/json", "cache-control": "no-cache"]
     
     class var sharedInstance : ApiClient {
         struct Static {
@@ -25,9 +25,9 @@ class ApiClient {
     func  getAbsoluteUrl(_ relativeUrl: String) -> String{
         return BASE_URL + relativeUrl;
     }
-
+    
     func executeRequest(_ url: String, _ method: HTTPMethod, _ params: Parameters? = nil, callback: @escaping (AnyObject?,Bool) -> ()) {
-        request(url, method: method, parameters: params, encoding: JSONEncoding.default).responseJSON { (response) in
+        request(url, method: method, parameters: params, encoding: JSONEncoding.default, headers: jsonHeaderSession).responseJSON { (response) in
             let result = response.result
             switch result {
             case .success(let aData):

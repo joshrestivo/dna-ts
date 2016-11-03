@@ -11,9 +11,9 @@ import SwiftyJSON
 
 class LocationInfo: NSObject {
     
-    var id: String?
-    var longitude: String?
-    var latitude: String?
+    var id: Int?
+    var longitude: Float?
+    var latitude: Float?
     var name: String?
     
     var city: String?
@@ -49,36 +49,37 @@ class LocationInfo: NSObject {
     }
     
     func setLocation(_ json:SwiftyJSON.JSON)->() {
-        self.id = json["id"].string!
-        self.longitude = json["longitude"].string!
-        self.latitude = json["latitude"].string!
+        self.id = json["id"].int
+        self.longitude = json["longitude"].float
+        self.latitude = json["latitude"].float
         
-        self.name = json["name"].string!
-        self.city = json["city"].string!
+        self.name = json["name"].string
+        self.city = json["city"].string
         
-        self.state = json["state"].string!
-        self.country_code = json["country_code"].string!
-        self.country = json["country"].string!
+        self.state = json["state"].string
+        self.country_code = json["country_code"].string
+        self.country = json["country"].string
         
-        self.has_upcomming_events = json["has_upcomming_events"].bool!
-        self.has_request_service = json["has_request_service"].bool!
-        self.has_location_info = json["has_location_info"].bool!
-        self.has_street_alerts = json["has_street_alerts"].bool!
+        self.has_upcomming_events = json["has_upcomming_events"].bool
+        self.has_request_service = json["has_request_service"].bool
+        self.has_location_info = json["has_location_info"].bool
+        self.has_street_alerts = json["has_street_alerts"].bool
         
-        self.created_by = json["created_by"].string!
-        self.updated_by = json["updated_by"].string!
-        self.created_at = json["created_at"].string!
-        self.updated_at = json["updated_at"].string!
+        self.created_by = json["created_by"].string
+        self.updated_by = json["updated_by"].string
+        self.created_at = json["created_at"].string
+        self.updated_at = json["updated_at"].string
         
         if let resource = json["client_resource"].dictionary{
-            client_resource = ClientResource(jsonDict: resource as NSDictionary)
+            let json = JSON(resource)
+            client_resource = ClientResource(json: json)
         }
     }
 }
 
 class ClientResource: NSObject {
     
-    var id: String?
+    var id: Int?
     var name: String?
     var is_default: Bool?
     
@@ -106,19 +107,17 @@ class ClientResource: NSObject {
     }
     
     func setClientResource(_ json:SwiftyJSON.JSON)->() {
-        self.id = json["id"].string!
+        self.id = json["id"].int!
         self.name = json["name"].string!
-        self.created_by = json["created_by"].string!
-        self.updated_by = json["updated_by"].string!
-        self.created_at = json["created_at"].string!
-        self.updated_at = json["updated_at"].string!
+        self.created_by = json["created_by"].string
+        self.updated_by = json["updated_by"].string
+        self.created_at = json["created_at"].string
+        self.updated_at = json["updated_at"].string
         
         if let clientResources = json["details"].array{
             for clientResource in clientResources {
-                if let resource = clientResource as? NSDictionary{
-                    let resourceItem = ClientResourceDetail(jsonDict: resource)
-                    details.append(resourceItem)
-                }
+                let resourceItem = ClientResourceDetail(json: clientResource)
+                details.append(resourceItem)
             }
         }
     }
@@ -151,11 +150,11 @@ class ClientResourceDetail: NSObject {
     }
     
     func setResourceDetail(_ json:SwiftyJSON.JSON)->() {
-        self.unique_name = json["unique_name"].string!
-        self.display_text = json["display_text"].string!
-        self.created_by = json["created_by"].string!
-        self.updated_by = json["updated_by"].string!
-        self.created_at = json["created_at"].string!
-        self.updated_at = json["updated_at"].string!
+        self.unique_name = json["unique_name"].string
+        self.display_text = json["display_text"].string
+        self.created_by = json["created_by"].string
+        self.updated_by = json["updated_by"].string
+        self.created_at = json["created_at"].string
+        self.updated_at = json["updated_at"].string
     }
 }

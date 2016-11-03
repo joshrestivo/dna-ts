@@ -84,6 +84,9 @@
 		AA7A4D321DC070C0003B9B38 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D231DC070BF003B9B38 /* SWRevealViewController.m */; };
 		AA7A4D331DC070C0003B9B38 /* UIImageView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */; };
 		AA7A4D351DC070FE003B9B38 /* ConstantHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */; };
+		AACBFAAB1DCAFE2000AD0B03 /* Bulletins.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBFAAA1DCAFE2000AD0B03 /* Bulletins.swift */; };
+		AACBFAC01DCB060700AD0B03 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBFABF1DCB060700AD0B03 /* Building.swift */; };
+		AACBFAC21DCB095800AD0B03 /* NewsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBFAC11DCB095800AD0B03 /* NewsFeed.swift */; };
 		AAEF063E1DC1FCBF00D11C77 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF063D1DC1FCBF00D11C77 /* Localization.swift */; };
 		AAEF06401DC2086200D11C77 /* ApiClientUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */; };
 		AAEF06421DC208B200D11C77 /* ErrorTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */; };
@@ -192,6 +195,9 @@
 		AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Size.m"; sourceTree = "<group>"; };
 		AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHelper.swift; sourceTree = "<group>"; };
 		AA7A4D361DC0747A003B9B38 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "TownSquare/Bridging-Header.h"; sourceTree = "<group>"; };
+		AACBFAAA1DCAFE2000AD0B03 /* Bulletins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulletins.swift; sourceTree = "<group>"; };
+		AACBFABF1DCB060700AD0B03 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		AACBFAC11DCB095800AD0B03 /* NewsFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeed.swift; sourceTree = "<group>"; };
 		AAEF063D1DC1FCBF00D11C77 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientUsage.swift; sourceTree = "<group>"; };
 		AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypeHelper.swift; sourceTree = "<group>"; };
@@ -358,6 +364,9 @@
 		AA7A4CAE1DC06CB1003B9B38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AACBFAC11DCB095800AD0B03 /* NewsFeed.swift */,
+				AACBFABF1DCB060700AD0B03 /* Building.swift */,
+				AACBFAAA1DCAFE2000AD0B03 /* Bulletins.swift */,
 				AAFE53421DC9ED85005B6414 /* Location.swift */,
 				AAEF063D1DC1FCBF00D11C77 /* Localization.swift */,
 				AA7A4CAF1DC06CB1003B9B38 /* BuildingLocation.swift */,
@@ -769,8 +778,10 @@
 			files = (
 				AA7A4D2F1DC070C0003B9B38 /* UIView.swift in Sources */,
 				AA7A4CFB1DC06CB1003B9B38 /* UpComingEvents.swift in Sources */,
+				AACBFAC01DCB060700AD0B03 /* Building.swift in Sources */,
 				AA7A4D2B1DC070C0003B9B38 /* UIColor.swift in Sources */,
 				AAEF06401DC2086200D11C77 /* ApiClientUsage.swift in Sources */,
+				AACBFAAB1DCAFE2000AD0B03 /* Bulletins.swift in Sources */,
 				AA7A4CC91DC06CB1003B9B38 /* AppDelegate.swift in Sources */,
 				AA7A4D051DC06CB2003B9B38 /* SettingsViewController.swift in Sources */,
 				AAEF063E1DC1FCBF00D11C77 /* Localization.swift in Sources */,
@@ -807,6 +818,7 @@
 				AA7A4D001DC06CB2003B9B38 /* HomeViewController.swift in Sources */,
 				AA7A4CF71DC06CB1003B9B38 /* BuildingLocation.swift in Sources */,
 				AA7A4CFC1DC06CB2003B9B38 /* BaseCenterViewController.swift in Sources */,
+				AACBFAC21DCB095800AD0B03 /* NewsFeed.swift in Sources */,
 				AA7A4D081DC06CB2003B9B38 /* LocationInfoCell.swift in Sources */,
 				AA7A4D021DC06CB2003B9B38 /* LocationInfoViewController.swift in Sources */,
 				AA7A4CF81DC06CB1003B9B38 /* MenuItem.swift in Sources */,

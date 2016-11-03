@@ -45,6 +45,8 @@ class BaseViewController: UIViewController {
         switch storyboardId {
             case "sbNewsDetail" :
                 toView = self.sbHome.instantiateViewController(withIdentifier: storyboardId) as! DetailNewViewController
+        case "HomeViewControllerID" :
+            toView = self.sbHome.instantiateViewController(withIdentifier: storyboardId) as! HomeViewController
             
             default: toView = self
         }

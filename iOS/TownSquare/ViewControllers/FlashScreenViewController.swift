@@ -12,12 +12,11 @@ import CoreLocation
 
 class FlashScreenViewController: BaseViewController {
     
-    //var locationManager: CLLocationManager!
+    var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         self.showLoading("")
-        //initLocationService()
-        //test()
+        initLocationService()
         authentication()
         super.viewDidLoad()
     }
@@ -27,39 +26,26 @@ class FlashScreenViewController: BaseViewController {
     }
     
     func initLocationService() {
-        //locationManager = CLLocationManager()
-        //locationManager.pausesLocationUpdatesAutomatically = false
-        //locationManager.distanceFilter = kCLDistanceFilterNone
-        //locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        //locationManager.activityType = .automotiveNavigation
-        //locationManager.requestWhenInUseAuthorization()
-        //locationManager.startUpdatingLocation()
-    }
-    
-    func test(){
-        ApiService.ping( { (isSuccess) in
-            if (isSuccess != nil) {
-                self.hideLoading()
-                            }
-            else{
-                self.hideLoading()
-            }
-        })
-
+        locationManager = CLLocationManager()
+        locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.activityType = .automotiveNavigation
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func authentication(){
-        //let longitude = String(describing: locationManager.location?.coordinate.longitude)
-        //let latitude = String(describing: locationManager.location?.coordinate.latitude)
-        
-        let longitude = "-122.406417"
-        let latitude = "37.785834000000001"
-        
+        let longitude = locationManager.location?.coordinate.longitude.description
+        let latitude = locationManager.location?.coordinate.latitude.description
         ApiService.authenticate(longitude: longitude,latitude: latitude, { (location, isSuccess) in
             if isSuccess {
                 self.hideLoading()
+                self.navigateToView("HomeViewControllerID")
+                /*
                 let secondViewController = self.sbMain.instantiateViewController(withIdentifier: "menuViewController") as! MenuViewController
                 self.navigationController?.pushViewController(secondViewController, animated: true)
+                */
             }
             else{
                 self.hideLoading()
