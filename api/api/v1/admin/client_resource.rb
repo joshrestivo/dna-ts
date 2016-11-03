@@ -19,7 +19,7 @@ module Townsquare
             return JSONResult.new(false, "INVALID_SESSION")
           end
           
-          resources = ClientResource.all
+          resources = ClientResource.all.order("name asc")
           JSONResult.new(true, resources)
         end
 
@@ -44,12 +44,14 @@ module Townsquare
             if params[:name].downcase() != resource.name.downcase()
               if ClientResource.where("LOWER(name) = ?", params[:name].downcase()).first
                 return JSONResult.new(false, "DUPLICATE")
-              else
-                ClientResource.update_all(:is_default => false)
-              end                          
+              end
             end
             
-            resource.name = params[:name]
+            if params[:is_default]
+              ClientResource.update_all(:is_default => false)
+            end
+               
+            resource.name = params[:name]              
             resource.is_default = params[:is_default]
             resource.updated_by = admin_user.username
             resource.save            

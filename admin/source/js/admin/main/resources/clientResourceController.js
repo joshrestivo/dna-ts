@@ -50,9 +50,9 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	$scope.reloadResourceDetail = function(resource, event) {
 		$scope.keyResources = resource.details;
 	
-		$('.list-resource .list-group li[class*="active"]').removeClass("active");
-		angular.element(event.currentTarget).parent().addClass("active");
-	};		
+		$('.list-resource tr[class*="selected"]').removeClass("selected");
+		angular.element(event.currentTarget).parent().parent().addClass("selected");
+	};	
 	
     $(".nav li.tab_client_resources").addClass("active");    
     
