@@ -49,6 +49,7 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
     };
     
     $scope.addNewBuilding = function(){
+    		sessionStorage.setItem("locationId",$scope.location_id);
     		location.href="/main/building/building-detail.html";	
     };
     

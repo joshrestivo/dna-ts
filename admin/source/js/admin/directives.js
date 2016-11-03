@@ -46,6 +46,22 @@ angular.module('app').directive("passwordVerify", function () {
         }
     };
 });
+
+angular.module('app').directive('file', function () {
+    return {
+        scope: {
+            file: '='
+        },
+        link: function (scope, el, attrs) {
+            el.bind('change', function (event) {
+                var file = event.target.files[0];
+                scope.file = file ? file : undefined;
+                scope.$apply();
+            });
+        }
+    };
+});
+
 angular.module('app').filter("trust", ['$sce', function ($sce) {
     return function (htmlCode) {
         return $sce.trustAsHtml(htmlCode);
