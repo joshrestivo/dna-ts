@@ -1,0 +1,77 @@
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/bulletins/bulletins.html">Bulletin</a></li>
+	  <li class="active">Bulletin Detail</li>
+	</ol>
+</div>
+
+<div class="bulletin-detail" ng-cloak ng-controller="bulletinDetailController" ng-init="Init()">
+	<div>
+		<h2>Bulletin Details</h2>		
+	</div>	
+	<form name="updateBulletin" >
+		<div class="detail">
+			<div class="row">
+	            <div class="col-md-2 name">
+	                Title
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Title" name="title" ng-model="Model.title" required
+	                       uib-tooltip="{{(updateBulletin.title.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.title"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	      	<div class="row">
+	            <div class="col-md-2 name">
+	                Description
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Description" name="description" ng-model="Model.description" required
+	                       uib-tooltip="{{(updateBulletin.description.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.description"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-2 name">
+	                Valid From
+	            </div>
+	            <div class="col-md-6">
+	            	<input type="text" ng-click="openValidFrom()" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Model.valid_from " is-open="isOpenValidFrom" name="validFrom" required
+                           show-weeks="false" show-button-bar="false" placeholder="yyyy/mm/dd"
+                           uib-tooltip="{{(updateBulletin.validFrom.$invalid)?'This field is required.':''}}"
+                           tooltip-enable="!Model.valid_from"
+                           tooltip-placement="bottom" tooltip-trigger="mouseenter" />
+            	</div>
+        	</div>
+        	<div class="row">
+        		<div class="col-md-2 name">
+	                Valid To
+	            </div>
+	            <div class="col-md-6">
+	            	<input type="text" ng-click="openValidTo()" class="form-control" uib-datepicker-popup="{{format}}" ng-model="Model.valid_to" is-open="isOpenValidTo" name="validTo" required
+                           show-weeks="false" show-button-bar="false" placeholder="yyyy/mm/dd"
+                           uib-tooltip="{{(updateBulletin.validTo.$invalid)?'This field is required.':''}}"
+                           tooltip-enable="!Model.valid_to"
+                           tooltip-placement="bottom" tooltip-trigger="mouseenter" />
+            	</div>	        	
+        	</div>
+	        <div class="row">
+	        	<div class="col-md-2 name">
+	                File
+	            </div>
+	            <div class="col-md-6">
+	            	<input type="file" file="file"/>
+            	</div>
+	        </div>
+	        <div class="row pnl-button">
+	        	<button ng-click="createUpdateBulletin()" ng-if="!IsUpdate" class="btn btn-primary">Create Bulletin</button>
+        		<button ng-click="createUpdateBulletin()" ng-if="IsUpdate"  class="btn btn-primary">Update Bulletin</button>
+        	</div>         	
+		</div>
+	</form>
+</div>
+<script language="javascript" src="/js/admin/main/bulletins/bulletinDetailController.js"></script>
+
+	
