@@ -84,7 +84,7 @@ module Townsquare
             return JSONResult.new(false, "NOT_EXISTED")
           end
           
-          if user.username.downcase() == admin.username.downcase()
+          if user.username.downcase() == admin_user.username.downcase()
             return JSONResult.new(false, "DELETE_YOURSELF")
           end 
           

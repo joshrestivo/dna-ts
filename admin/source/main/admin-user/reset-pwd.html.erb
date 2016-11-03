@@ -1,0 +1,43 @@
+<div ng-cloak ng-controller="resetUserPasswordController" ng-init="Init()">
+	<div class="breakcrumb">
+		<ol class="breadcrumb">
+		  <li><a href="/main/admin-user/admin-user.html">Admin user</a></li>
+		  <li class="active" >Reset password for user: "{{adminUser.name}}"</li>
+		</ol>
+	</div>
+	<form name="adminUserDetail" class="location-detail" >
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row item">
+					<div class="col-md-2">
+						Password:
+					</div>
+					<div class="col-md-10">
+						<input type="password" ng-model="adminUser.password" class="form-control" name="password" required
+						      uib-tooltip="{{(adminUserDetail.password.$error.required)?'This field is required.':''}}"
+						      tooltip-enable="!adminUser.password"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+				<div class="row item">
+					<div class="col-md-2">
+						Confirm Password:
+					</div>
+					<div class="col-md-10">
+						<input type="password" ng-model="adminUser.confirm_Password" class="form-control" name="confirm_Password" required
+						      uib-tooltip="{{(adminUserDetail.confirm_Password.$error.required)?'This field is required.':''}}"
+						      tooltip-enable="!adminUser.confirm_Password"
+						      tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bottom-action">
+			<button type="submit" ng-click="reset()" class="button-save">Save</button>
+			<button  ng-click="cancel()" class="button-cancel">Cancel</button>
+		</div>
+	</form>
+</div>
+<script language="javascript" src="/js/admin/main/admin-user/resetUserPasswordController.js"></script>
+
+	

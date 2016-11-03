@@ -33,6 +33,11 @@ angular.module('app').controller('adminUserController',  ['$scope', '$http','ngD
 			window.location.href=("/main/admin-user/admin-user-detail.html");
     };
     
+    $scope.resetPasswordAdminUser = function(adminUser){
+    		sessionStorage.setItem("adminUserResetPassword", JSON.stringify(adminUser));
+			window.location.href=("/main/admin-user/reset-pwd.html");
+    };
+    
     $scope.deleteAdminUser=function(adminUser){
     	ngDialog.openConfirm({
 		    template: 'confirm-message',

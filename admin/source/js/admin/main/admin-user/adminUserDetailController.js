@@ -70,6 +70,7 @@ angular.module('app').controller('adminUserDetailController',  ['$scope', '$http
   			});
    		}
    };
+   
    	//active tab
    	$(".nav li.tab_admin_users").addClass("active"); 
 }]);
