@@ -1,10 +1,3 @@
-//
-//  ApiClientUsage.swift
-//  DealARide
-//
-//  Created by PhucDoan on 8/30/15.
-//  Copyright (c) 2015 PhucDoan. All rights reserved.
-//
 
 import Foundation
 import Alamofire
@@ -19,6 +12,7 @@ enum RestUrl: String {
     /// Api Rest string parameters
     ///////////////////////////////////////////////////////
     case postPing = "ping"
+    case postUserAuth = "auth"
     case getLocalazation = "getLocalazation"
     // Client log
     case commonLogs = "common/logs"
@@ -53,7 +47,7 @@ class ApiClientUsage {
     ///////////////////////////////////////////////////////
     func ping(_ callback:@escaping (String?) -> ()) {
         let url = self.Api.getAbsoluteUrl(RestUrl.postPing.value)
-        Api.executeRequest(url, .post) { (isSuccess, resObject) in
+        Api.executeRequest(url, .get) { (resObject, isSuccess) in
             if(isSuccess == true){
                 let validData = resObject as! NSDictionary
                 let json = JSON(validData)                
@@ -64,15 +58,33 @@ class ApiClientUsage {
         }
     }
     
+    func authenticate(longitude: String?, latitude: String?, _ callback: @escaping (LocationInfo, Bool) -> ()) {
+        let url = self.Api.getAbsoluteUrl(RestUrl.postUserAuth.value)
+        let params: Parameters = [
+            "longitude" : longitude,
+            "latitude" : latitude,
+            "client_os" : "IOS",
+            "device_token" : "Test"
+        ]
+        
+        Api.executeRequest(url, .post, params) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                let dataUser = resObject as! NSDictionary
+                let json = JSON(dataUser)
+                let location = LocationInfo(json: json)
+                callback(location, true)
+            }
+            else{
+                callback(LocationInfo(), false)
+            }
+        }
+    }
+    
     func getLocalazation(_ latitude:String, longitude:String, callback: @escaping (String,Bool, ErrorCodeParam) -> ()){
         let url = self.Api.getAbsoluteUrl(RestUrl.getLocalazation.value)
         
-        let params: Parameters = [
-            "latitude" : latitude,
-            "longitude" : longitude
-        ]
-        
-        Api.executeRequest(url, .post, params) { (isSuccess, resObject) in
+        let params: Parameters = ["latitude" : latitude,"longitude" : longitude]
+        Api.executeRequest(url, .post, params) { (resObject, isSuccess) in
             if(isSuccess == true){
                 let jsonData = resObject as! String
                 callback(jsonData,true, self.noErrorParam)

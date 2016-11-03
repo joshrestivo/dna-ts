@@ -10,6 +10,14 @@
 		0B090E224A2364ECD725CB71 /* Pods_DNAMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0942B3003774CEE81F26F70F /* Pods_DNAMobileTests.framework */; };
 		368C7DDD9182D309BE7F1490 /* Pods_TownSquare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D346D441E78E10AE091809C /* Pods_TownSquare.framework */; };
 		7266A1848CD7B8E06D1539E3 /* Pods_TownSquareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 675F1906C182CE2B7B5F1DBB /* Pods_TownSquareTests.framework */; };
+		AA2BAB2B1DC37F970081E80A /* avatar-not-found.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AA2BAB291DC37F970081E80A /* avatar-not-found.jpeg */; };
+		AA2BAB2C1DC37F970081E80A /* icon-notFound.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AA2BAB2A1DC37F970081E80A /* icon-notFound.jpeg */; };
+		AA4FFB711DC9B98100FB8E6B /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4FFB6F1DC9B98100FB8E6B /* LoadingView.xib */; };
+		AA4FFB721DC9B98100FB8E6B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFB701DC9B98100FB8E6B /* LoadingViewController.swift */; };
+		AA4FFB741DC9BA0000FB8E6B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFB731DC9BA0000FB8E6B /* Utils.swift */; };
+		AA4FFB771DC9BDCF00FB8E6B /* loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4FFB751DC9BDCF00FB8E6B /* loading@2x.png */; };
+		AA4FFB7A1DC9D65000FB8E6B /* FlashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFB791DC9D65000FB8E6B /* FlashScreenViewController.swift */; };
+		AA4FFB7F1DC9D83700FB8E6B /* LaunchScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4FFB7D1DC9D83700FB8E6B /* LaunchScreenView.xib */; };
 		AA7A4CC91DC06CB1003B9B38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4C6C1DC06CB1003B9B38 /* AppDelegate.swift */; };
 		AA7A4CCA1DC06CB1003B9B38 /* Lato.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7A4C701DC06CB1003B9B38 /* Lato.ttf */; };
 		AA7A4CCB1DC06CB1003B9B38 /* Muli-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA7A4C721DC06CB1003B9B38 /* Muli-Bold.ttf */; };
@@ -80,6 +88,9 @@
 		AAEF06401DC2086200D11C77 /* ApiClientUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */; };
 		AAEF06421DC208B200D11C77 /* ErrorTypeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */; };
 		AAEF06441DC2094C00D11C77 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF06431DC2094C00D11C77 /* ErrorMessage.swift */; };
+		AAFE533D1DC9E242005B6414 /* FlashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFB791DC9D65000FB8E6B /* FlashScreenViewController.swift */; };
+		AAFE533F1DC9EA3E005B6414 /* BaseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE533E1DC9EA3E005B6414 /* BaseLocationViewController.swift */; };
+		AAFE53431DC9ED85005B6414 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE53421DC9ED85005B6414 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +114,14 @@
 		816ACB8FE0CC3404D29862F7 /* Pods-TownSquare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquare.release.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquare/Pods-TownSquare.release.xcconfig"; sourceTree = "<group>"; };
 		8D175C31C4001E273FFB73C3 /* Pods-TownSquare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquare/Pods-TownSquare.debug.xcconfig"; sourceTree = "<group>"; };
 		932B9FA5523AA274A99E2400 /* Pods-TownSquareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquareTests/Pods-TownSquareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA2BAB291DC37F970081E80A /* avatar-not-found.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "avatar-not-found.jpeg"; sourceTree = "<group>"; };
+		AA2BAB2A1DC37F970081E80A /* icon-notFound.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "icon-notFound.jpeg"; sourceTree = "<group>"; };
+		AA4FFB6F1DC9B98100FB8E6B /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		AA4FFB701DC9B98100FB8E6B /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		AA4FFB731DC9BA0000FB8E6B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AA4FFB751DC9BDCF00FB8E6B /* loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading@2x.png"; sourceTree = "<group>"; };
+		AA4FFB791DC9D65000FB8E6B /* FlashScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashScreenViewController.swift; sourceTree = "<group>"; };
+		AA4FFB7E1DC9D83700FB8E6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = TownSquare/Base.lproj/LaunchScreenView.xib; sourceTree = SOURCE_ROOT; };
 		AA7A4C6C1DC06CB1003B9B38 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = TownSquare/AppDelegate.swift; sourceTree = "<group>"; };
 		AA7A4C701DC06CB1003B9B38 /* Lato.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Lato.ttf; sourceTree = "<group>"; };
 		AA7A4C721DC06CB1003B9B38 /* Muli-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Muli-Bold.ttf"; sourceTree = "<group>"; };
@@ -177,6 +196,8 @@
 		AAEF063F1DC2086200D11C77 /* ApiClientUsage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClientUsage.swift; sourceTree = "<group>"; };
 		AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTypeHelper.swift; sourceTree = "<group>"; };
 		AAEF06431DC2094C00D11C77 /* ErrorMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		AAFE533E1DC9EA3E005B6414 /* BaseLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLocationViewController.swift; sourceTree = "<group>"; };
+		AAFE53421DC9ED85005B6414 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* TownSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TownSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA1A01DA3F4F8000F7819 /* TownSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TownSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9BD5E73CCA9529DBE5587F /* Pods-DNAMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNAMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNAMobileTests/Pods-DNAMobileTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +249,15 @@
 				675F1906C182CE2B7B5F1DBB /* Pods_TownSquareTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA4FFB6E1DC9B98100FB8E6B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FFB6F1DC9B98100FB8E6B /* LoadingView.xib */,
+				AA4FFB701DC9B98100FB8E6B /* LoadingViewController.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		AA7A4C6A1DC06CB1003B9B38 /* TownSquare */ = {
@@ -317,6 +347,9 @@
 		AA7A4C8B1DC06CB1003B9B38 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FFB751DC9BDCF00FB8E6B /* loading@2x.png */,
+				AA2BAB291DC37F970081E80A /* avatar-not-found.jpeg */,
+				AA2BAB2A1DC37F970081E80A /* icon-notFound.jpeg */,
 				AA7A4C8F1DC06CB1003B9B38 /* puletin.png */,
 			);
 			path = Images;
@@ -325,6 +358,7 @@
 		AA7A4CAE1DC06CB1003B9B38 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AAFE53421DC9ED85005B6414 /* Location.swift */,
 				AAEF063D1DC1FCBF00D11C77 /* Localization.swift */,
 				AA7A4CAF1DC06CB1003B9B38 /* BuildingLocation.swift */,
 				AA7A4CB01DC06CB1003B9B38 /* MenuItem.swift */,
@@ -338,6 +372,8 @@
 		AA7A4CB41DC06CB1003B9B38 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AAFE533E1DC9EA3E005B6414 /* BaseLocationViewController.swift */,
+				AA4FFB791DC9D65000FB8E6B /* FlashScreenViewController.swift */,
 				AA7A4CB51DC06CB1003B9B38 /* BaseCenterViewController.swift */,
 				AA7A4CB61DC06CB1003B9B38 /* BaseKeyboardViewController.swift */,
 				AA7A4CB71DC06CB1003B9B38 /* BaseViewController.swift */,
@@ -365,6 +401,7 @@
 		AA7A4D0E1DC06E59003B9B38 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FFB6E1DC9B98100FB8E6B /* CustomViews */,
 				AA7A4CC21DC06CB1003B9B38 /* LocationInfoCell.swift */,
 				AA7A4CC31DC06CB1003B9B38 /* MarginLabel.swift */,
 				AA7A4CC41DC06CB1003B9B38 /* MenuTableViewCell.swift */,
@@ -378,6 +415,7 @@
 		AA7A4D0F1DC06E77003B9B38 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FFB7D1DC9D83700FB8E6B /* LaunchScreenView.xib */,
 				AA7A4C911DC06CB1003B9B38 /* Home.storyboard */,
 				AA7A4C931DC06CB1003B9B38 /* LaunchScreen.storyboard */,
 				AA7A4C951DC06CB1003B9B38 /* Main.storyboard */,
@@ -460,6 +498,7 @@
 		AA7A4D271DC070BF003B9B38 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FFB731DC9BA0000FB8E6B /* Utils.swift */,
 				AAEF06431DC2094C00D11C77 /* ErrorMessage.swift */,
 				AAEF06411DC208B200D11C77 /* ErrorTypeHelper.swift */,
 				AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */,
@@ -592,6 +631,9 @@
 				AA7A4CE01DC06CB1003B9B38 /* Raleway-Italic.ttf in Resources */,
 				AA7A4CD91DC06CB1003B9B38 /* OpenSans-Italic.ttf in Resources */,
 				AA7A4CD11DC06CB1003B9B38 /* Muli-LightItalic.ttf in Resources */,
+				AA4FFB711DC9B98100FB8E6B /* LoadingView.xib in Resources */,
+				AA4FFB7F1DC9D83700FB8E6B /* LaunchScreenView.xib in Resources */,
+				AA2BAB2C1DC37F970081E80A /* icon-notFound.jpeg in Resources */,
 				AA7A4CD51DC06CB1003B9B38 /* SIL Open Font License.txt in Resources */,
 				AA7A4CE61DC06CB1003B9B38 /* Assets.xcassets in Resources */,
 				AA7A4CDC1DC06CB1003B9B38 /* OpenSans-Regular.ttf in Resources */,
@@ -602,6 +644,7 @@
 				AA7A4CE81DC06CB1003B9B38 /* LaunchScreen.storyboard in Resources */,
 				AA7A4CE51DC06CB1003B9B38 /* puletin.png in Resources */,
 				AA7A4CD31DC06CB1003B9B38 /* Muli-SemiBold.ttf in Resources */,
+				AA4FFB771DC9BDCF00FB8E6B /* loading@2x.png in Resources */,
 				AA7A4CD01DC06CB1003B9B38 /* Muli-Light.ttf in Resources */,
 				AA7A4CCF1DC06CB1003B9B38 /* Muli-Italic.ttf in Resources */,
 				AA7A4CD61DC06CB1003B9B38 /* OpenSans-Bold-webfont.ttf in Resources */,
@@ -613,6 +656,7 @@
 				AA7A4CD21DC06CB1003B9B38 /* Muli-Semi-BoldItalic.ttf in Resources */,
 				AA7A4CDD1DC06CB1003B9B38 /* OpenSans-Semibold.ttf in Resources */,
 				AA7A4CCE1DC06CB1003B9B38 /* Muli-ExtraLightItalic.ttf in Resources */,
+				AA2BAB2B1DC37F970081E80A /* avatar-not-found.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,14 +778,18 @@
 				AA7A4D031DC06CB2003B9B38 /* MenuViewController.swift in Sources */,
 				AAEF06421DC208B200D11C77 /* ErrorTypeHelper.swift in Sources */,
 				AA7A4D321DC070C0003B9B38 /* SWRevealViewController.m in Sources */,
+				AAFE533F1DC9EA3E005B6414 /* BaseLocationViewController.swift in Sources */,
 				AA7A4D041DC06CB2003B9B38 /* RequestServiceViewController.swift in Sources */,
 				AA7A4D351DC070FE003B9B38 /* ConstantHelper.swift in Sources */,
 				AA7A4CFA1DC06CB1003B9B38 /* StreetAlert.swift in Sources */,
 				AA7A4D091DC06CB2003B9B38 /* MarginLabel.swift in Sources */,
 				AA7A4D071DC06CB2003B9B38 /* UpcomingEventViewController.swift in Sources */,
 				AA7A4CFF1DC06CB2003B9B38 /* DetailNewViewController.swift in Sources */,
+				AA4FFB7A1DC9D65000FB8E6B /* FlashScreenViewController.swift in Sources */,
+				AA4FFB741DC9BA0000FB8E6B /* Utils.swift in Sources */,
 				AA7A4D281DC070BF003B9B38 /* ApiClient.swift in Sources */,
 				AA7A4CEB1DC06CB1003B9B38 /* DNAMobile.xcdatamodeld in Sources */,
+				AAFE53431DC9ED85005B6414 /* Location.swift in Sources */,
 				AA7A4D301DC070C0003B9B38 /* UIViewController.swift in Sources */,
 				AAEF06441DC2094C00D11C77 /* ErrorMessage.swift in Sources */,
 				AA7A4D0C1DC06CB2003B9B38 /* StreetAlertCell.swift in Sources */,
@@ -762,6 +810,7 @@
 				AA7A4D081DC06CB2003B9B38 /* LocationInfoCell.swift in Sources */,
 				AA7A4D021DC06CB2003B9B38 /* LocationInfoViewController.swift in Sources */,
 				AA7A4CF81DC06CB1003B9B38 /* MenuItem.swift in Sources */,
+				AA4FFB721DC9B98100FB8E6B /* LoadingViewController.swift in Sources */,
 				AA7A4CFE1DC06CB2003B9B38 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,6 +819,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFE533D1DC9E242005B6414 /* FlashScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +834,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		AA4FFB7D1DC9D83700FB8E6B /* LaunchScreenView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AA4FFB7E1DC9D83700FB8E6B /* Base */,
+			);
+			name = LaunchScreenView.xib;
+			sourceTree = "<group>";
+		};
 		AA7A4C911DC06CB1003B9B38 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

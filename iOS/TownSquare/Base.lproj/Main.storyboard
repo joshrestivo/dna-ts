@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -39,7 +39,7 @@
         <!--Menu View Controller-->
         <scene sceneID="Mxx-A0-OEP">
             <objects>
-                <viewController id="XKM-dG-oXo" customClass="MenuViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="menuViewController" id="XKM-dG-oXo" customClass="MenuViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zje-Jm-bMC"/>
                         <viewControllerLayoutGuide type="bottom" id="nz6-le-DH7"/>
@@ -51,7 +51,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="epK-0g-aqr">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="0jt-aq-zxF" userLabel="HeaderView">
-                                    <rect key="frame" x="0.0" y="71" width="1000" height="70"/>
+                                    <rect key="frame" x="0.0" y="71" width="375" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzA-tm-FsL">
@@ -78,10 +78,10 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCellID" id="BHw-eq-nRW" customClass="MenuTableViewCell" customModule="TownSquare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="1000" height="70"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BHw-eq-nRW" id="Zui-XL-6oS">
-                                            <frame key="frameInset" width="1000" height="69"/>
+                                            <frame key="frameInset" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-k9-DYC">
@@ -118,9 +118,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nz6-le-DH7" firstAttribute="top" secondItem="epK-0g-aqr" secondAttribute="bottom" id="FZc-bx-0Eb"/>
+                            <constraint firstItem="nz6-le-DH7" firstAttribute="top" secondItem="epK-0g-aqr" secondAttribute="bottom" constant="40" id="FZc-bx-0Eb"/>
                             <constraint firstItem="epK-0g-aqr" firstAttribute="leading" secondItem="joo-ve-jHs" secondAttribute="leading" id="U8W-oj-pcv"/>
-                            <constraint firstItem="epK-0g-aqr" firstAttribute="top" secondItem="Zje-Jm-bMC" secondAttribute="bottom" id="iSs-LF-8L9"/>
+                            <constraint firstItem="epK-0g-aqr" firstAttribute="top" secondItem="Zje-Jm-bMC" secondAttribute="bottom" constant="-20" id="iSs-LF-8L9"/>
                             <constraint firstAttribute="trailing" secondItem="epK-0g-aqr" secondAttribute="trailing" id="nv6-Wp-4Am"/>
                         </constraints>
                     </view>
@@ -133,7 +133,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ga2-lJ-62A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055.2" y="-474.51274362818594"/>
+            <point key="canvasLocation" x="1111" y="-335"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1QZ-Ht-Jz2">
@@ -380,17 +380,17 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5uE-Ej-bBb" userLabel="Table Detail">
                                 <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Locations" id="IlU-vA-Lul">
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="IlU-vA-Lul">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="buildingLocationCell" rowHeight="100" id="sQQ-kB-qVM" userLabel="Building Location Cell" customClass="LocationInfoCell" customModule="TownSquare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="1000" height="100"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sQQ-kB-qVM" id="Azu-cP-C25">
-                                            <frame key="frameInset" width="1000" height="100"/>
+                                            <frame key="frameInset" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kzn-RF-48i" userLabel="Img " customClass="AsyncImageView">
@@ -522,10 +522,10 @@
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="streetAlertCell" rowHeight="120" id="z4X-oL-5ER" userLabel="Street Alert Cell" customClass="StreetAlertCell" customModule="TownSquare" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="120"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z4X-oL-5ER" id="8JD-AL-pV0">
-                                            <frame key="frameInset" width="1000" height="120"/>
+                                            <frame key="frameInset" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpS-Be-q0K" userLabel="Img " customClass="AsyncImageView">

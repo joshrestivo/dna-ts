@@ -1,10 +1,3 @@
-//
-//  ErrorMessageControl.swift
-//  DealARide
-//
-//  Created by PhucDoan on 10/14/15.
-//  Copyright © 2015 PhucDoan. All rights reserved.
-//
 
 import Foundation
 
