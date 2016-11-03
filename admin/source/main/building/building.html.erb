@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-md-2">Select location</div>
 		<div class="col-md-8">
-			<select class="form-control" ng-model="location_id"  ng-init="location_id" 
+			<select class="form-control" ng-model="location_id"
         			    ng-options="location.id as location.name for location in locations" ng-change="changeLocation(location_id)">
        		 </select>
 		</div>
