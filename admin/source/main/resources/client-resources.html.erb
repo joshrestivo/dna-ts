@@ -2,15 +2,24 @@
 	<div>
 		<div class="list-resource col-md-5">	
 			<button type="submit" ng-click="createUpdateResource(null, null)" class="new-resource btn btn-primary">New</button>
-			<h3>Resources</h3>
-			<ul class="list-group" >				
-			  	<li class="list-group-item" ng-repeat="resource in resources.slice(((currentPageResource-1)*itemPerPage), ((currentPageResource)*itemPerPage))" ng-class="{active: resource.status}">
-			  		<span class="badge" ng-if="resource.is_default">Default</span>
-			  		<a href="#" ng-click="reloadResourceDetail(resource,$event)">				  			
-			  		<span ng-bind="resource.name"></span></a>	
-			  		<a href="#" class="edit-resource" ng-click="createUpdateResource(resource)"><i class="fa fa-pencil-square-o"></i></a>	  				  		
-			  	</li>			  	
-			</ul>
+			
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th width="90px">#</th>			
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-class="{selected: resource.status}" class="resouce-name" ng-repeat="resource in resources.slice(((currentPageResource-1)*itemPerPage), ((currentPageResource)*itemPerPage))">
+	                        <td><a href="#" ng-click="reloadResourceDetail(resource,$event)">{{resource.name}}</a><span style="float: right" class="badge" ng-if="resource.is_default">Default</span></td>	                        
+	                        <td align="center">
+	                        	<a class="td-edit" href="#" ng-click="createUpdateResource(resource)"><i class="fa fa-pencil-square-o"></i></a>   	                        	                	                       	                        	
+	                        </td>                                           
+	                    </tr>
+				</tbody>
+			</table>
+			
 			<div class="paginations">
 	            <div class="col-md-6">
 					<uib-pagination boundary-links="true" total-items="TotalResourceItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPageResource" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>

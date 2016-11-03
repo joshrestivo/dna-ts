@@ -50,8 +50,10 @@ table td{word-break: break-word!important}
 
 /*client resource*/
 .client-resource .new-resource, .add-key-resource {	margin-bottom: 10px;}
+.client-resource .list-resource .table a {text-decoration:none}
 .client-resource .list-resource .edit-resource { margin-left:5px}
-.client-resource li.active{	background-color: #2C3E50;}
+.client-resource .list-resource .selected {background: #18bc9c;}
+.client-resource .list-resource .selected a {color: white;}
 
 /*update client resource*/
 .update-client-resource .title { margin-bottom: 20px}
