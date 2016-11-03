@@ -5,7 +5,7 @@
 </div>
 <div class="locations" ng-cloak ng-controller="locationController" ng-init="Init()">
 	<div>
-		<a class="add-new-location" ng-click="addNewLocation()">New Locaiton</a>
+		<a class="add-key-resource btn btn-primary" ng-click="addNewLocation()">New Locaiton</a>
 		<table class="table table-hover table-bordered">
 			<thead>
 				<tr>
@@ -16,13 +16,11 @@
 					<th>Longitute</th>
 					<th>Latitude</th>
 					<th>Street Alerts RSS Url</th>
-					<th>New RSS Url</th>
-					<th>Has Upcoming Service</th>
-					<th>Has Requset Service</th>
-					<th>Has Loation Info</th>
-					<th>Has Street Alerts</th>
+					<th width="170px">New RSS Url</th>
+					<th width="170px">Rules</th>
 					<th>Resource Name</th>
-										<th>Action</th>
+					<th>Google Calendar</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,17 +32,22 @@
                         <td ng-bind="location.longitude"></td>
                         <td ng-bind="location.latitude"></td>
                         <td ng-bind="location.street_alerts_rss_feed_url"></td>
-                        <td>
+                        <td width="170px">
                         	<p ng-if="location.news_rss_url_1">1. {{location.news_rss_url_1}}</p>
                         	<p ng-if="location.news_rss_url_1">2. {{location.news_rss_url_2}}</p>
                         	<p ng-if="location.news_rss_url_1">3. {{location.news_rss_url_3}}</p>
                         </td>
-                        <td width="50px;" align="center" ng-bind="location.has_upcomming_events?'YES':'NO'"></td>
-                        <td width="50px;" align="center" ng-bind="location.has_request_service?'YES':'NO'"></td>
-                        <td width="50px;" align="center" ng-bind="location.has_location_info?'YES':'NO'"></td>
-                        <td width="50px;" align="center" ng-bind="location.has_street_alerts?'YES':'NO'"></td>
+                        <td width="170px" >
+                        	<p>Upcoming service: <span ng-bind="location.has_upcomming_events?'YES':'NO'"></span></p>
+                        	<p>Request service: <span ng-bind="location.has_request_service?'YES':'NO'"></span></p>
+                        	<p>Location info: <span ng-bind="location.has_location_info?'YES':'NO'"></span></p>
+                        	<p>Street alert: <span ng-bind="location.has_street_alerts?'YES':'NO'"></span></p>
+                        </td>
                         <td ng-bind="location.client_resource_name"></td>
-                            
+                        <td width="100px">
+                        	<p>Id: {{location.google_calendar_id}}</p>
+                        	<p>Api key: {{location.google_calendar_api_key}}</p>
+                        </td>
                         <td width="70px;" align="center">
                         	<a class="td-edit" ng-click="editLocation(location)"><i class="fa fa-pencil-square-o"></i></a>   
                         	<a class="td-delete" ng-click="deleteLocation(location)"><i class="fa fa-times"></i></a>           

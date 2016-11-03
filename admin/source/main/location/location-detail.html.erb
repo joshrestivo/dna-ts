@@ -2,11 +2,10 @@
 	<div class="breakcrumb">
 		<ol class="breadcrumb">
 		  <li><a href="/main/location/location.html">Locations</a></li>
-		  <li class="active">Location detail</li>
+		  <li class="active" ng-bind="IsUpdate?'Update Location':'Add Location'"></li>
 		</ol>
 	</div>
 	<div  class="location-detail-header" >
-		<h2 ng-bind="IsUpdate?'Update Location':'Add Location'"></h2>
 	 <input type="text" gm-places-autocomplete ng-model="autocomplete" class="form-control" placeholder="Input your location"/>
 		 </div>
 	<form name="locationDetail" class="location-detail" >
@@ -32,6 +31,28 @@
 	            			 ng-options="resource.id as resource.name for resource in resources" required>
 	                        		<option value="" disabled selected hidden>Choose a resource...</option>
 	                   		 </select>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			Google calendar Id:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.google_calendar_id" class="form-control" name="google_calendar_id" required
+	                              uib-tooltip="{{(locationDetail.google_calendar_id.$error.required)?'This field is required.':''}}"
+	                              tooltip-enable="!location.google_calendar_id"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            		</div>
+	            	</div>
+	            	<div class="row item">
+	            		<div class="col-md-3">
+	            			Google calerdar Api key:
+	            		</div>
+	            		<div class="col-md-9">
+	            			<input type="text" ng-model="location.google_calendar_api_key" class="form-control" name="google_calendar_api_key" required
+	                              uib-tooltip="{{(locationDetail.google_calendar_api_key.$error.required)?'This field is required.':''}}"
+	                              tooltip-enable="!location.google_calendar_api_key"
+	                              tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
 	            		</div>
 	            	</div>
 	            	<div class="row item">

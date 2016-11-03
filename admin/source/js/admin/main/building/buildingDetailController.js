@@ -1,4 +1,4 @@
-angular.module('app').controller('locationDetailController',  ['$scope', '$http','ngDialog', function ($scope, $http, ngDialog) {
+angular.module('app').controller('buildingDetailController',  ['$scope', '$http','ngDialog', function ($scope, $http, ngDialog) {
     $scope.location = {
     	id:0,
     	city:"",
@@ -13,7 +13,7 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
 	
     $scope.Init = function(){
     	//load all resource
-    	$http.get(SERVICE_BASE_URL+'/admin/resources ',{ withCredentials: true }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/resources ',{ withCredentials: true,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
             if (result.success) {
                 $scope.resources = result.data;
                 
@@ -70,7 +70,7 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
 	   	if($scope.locationDetail.$valid)
 	   	{
 	   		
-   		$http.post(SERVICE_BASE_URL+'/admin/location/save ', $scope.location, { withCredentials: true })
+   		$http.post(SERVICE_BASE_URL+'/admin/location/save ', $scope.location, { withCredentials: true,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
 	   		.success(function (result) {
 	            if (result.success) {
 	            	if($scope.IsUpdate){
@@ -88,5 +88,5 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
    		}
    };
    	//active tab
-   	$(".nav li.tab_locations").addClass("active"); 
+   	$(".nav li.tab_building").addClass("active"); 
 }]);
