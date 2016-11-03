@@ -22,6 +22,7 @@ a:hover,a:focus{cursor: pointer;text-decoration: none}
 .locations, .alert-types, .client-resource, .update-client-resource, .update-key-resource {	padding: 20px;}
 .td-edit{	background-color: #2C3E50;    padding: 4px;    color: white;}
 .td-delete{	background-color: red;    padding: 4px;    color: white;}
+.td-reset{	background-color: #008000;    padding: 4px;    color: white;}
 .paginations {	overflow: auto;}
 .paginations .total{ 	float: right;	text-align:right;}
 table th{	text-align: center}

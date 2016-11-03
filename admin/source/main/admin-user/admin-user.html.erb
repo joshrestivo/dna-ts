@@ -1,0 +1,43 @@
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li class="active">Admin user</li>
+	</ol>
+</div>
+<div class="locations" ng-cloak ng-controller="adminUserController" ng-init="Init()">
+	<a class="add-key-resource btn btn-primary" ng-click="addNewAdminUser()">New User</a>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Username</th>
+					<th>Email</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="adminUser in adminUsers.slice(((currentPage-1)*itemPerPage), ((currentPage)*itemPerPage))">
+                        <td ng-bind="adminUser.name"></td>
+                        <td ng-bind="adminUser.username"></td>
+                        <td ng-bind="adminUser.email"></td>
+                        <td width="100px;" align="center">
+                        	<a class="td-edit" ng-click="editAdminUser(adminUser)" title="Edit"><i class="fa fa-pencil-square-o"></i></a>   
+                        	<a class="td-delete" ng-click="deleteAdminUser(adminUser)" title="Delete"><i class="fa fa-times"></i></a> 
+                        	<a class="td-reset" ng-click="resetPasswordAdminUser(adminUser)" title="Reset password"><i class="fa fa-refresh"></i></a>           
+                    	</td> 
+                    </tr>
+			</tbody>
+		 </table>
+		 <div class="paginations">
+            <div class="col-md-6">
+            	<uib-pagination boundary-links="true" total-items="TotalItems"  max-size="maxSize" items-per-page="itemPerPage" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></uib-pagination>
+            </div>
+            <div class="col-md-6 total">
+                <span>Total:</span>
+                <span ng-bind="TotalItems"></span>                
+            </div>
+        </div>      
+</div>
+
+<script language="javascript" src="/js/admin/main/admin-user/adminUserController.js"></script>
+
+	

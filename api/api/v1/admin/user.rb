@@ -56,8 +56,7 @@ module Townsquare
           
           user = User.find_by(:id => params[:id])
           if user
-            user = User.where("LOWER(email) = ? AND email != ?", params[:email].downcase(), user.email).first
-            if user
+            if User.where("LOWER(email) = ? AND email != ?", params[:email].downcase(), user.email).first
               return JSONResult.new(false, "EMAIL_EXISTED")
             end 
             

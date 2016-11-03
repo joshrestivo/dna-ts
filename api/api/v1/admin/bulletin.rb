@@ -29,13 +29,7 @@ module Townsquare
             if params[:valid_from] >= params[:valid_to]
               return JSONResult.new(false, "FROM_TO_INVALID")
             end
-            
-            image_extensions = ["png", "bmp", "jpg", "jpeg"]
-            filename = File.basename(params[:image].filename)
-            if !image_extensions.any? { |ext| filename.downcase().end_with?(ext) }
-              return JSONResult.new(false, "IMAGE_INVALID")
-            end
-            
+                        
             image_url = nil
             thumbnail_url = nil
             image_width = 0
@@ -43,6 +37,12 @@ module Townsquare
             thumbnail_width = 0
             thumbnail_height = 0
             if params[:image]
+              image_extensions = ["png", "bmp", "jpg", "jpeg"]
+              filename = File.basename(params[:image].filename)
+              if !image_extensions.any? { |ext| filename.downcase().end_with?(ext) }
+                return JSONResult.new(false, "IMAGE_INVALID")
+              end
+              
               image_url = upload(params[:image])
               image_size = FastImage.size(image_url)
               image_width = image_size[0]

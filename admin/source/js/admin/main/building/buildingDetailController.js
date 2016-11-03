@@ -30,7 +30,9 @@ angular.module('app').controller('buildingDetailController',  ['$scope', '$http'
 	               formData.append('name',$scope.building.name);
 	               formData.append('address',$scope.building.address);
 	               formData.append('zipcode',$scope.building.zipcode);
-	               formData.append('image',$scope.file);
+	               if($scope.file){
+	               	formData.append('image',$scope.file);	
+	               }
 	               
    			$http.post(SERVICE_BASE_URL+'/admin/location/'+$scope.building.location_id+'/building/save',formData,{
    				withCredentials: true,

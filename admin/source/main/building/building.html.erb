@@ -21,8 +21,7 @@
 					<th>Name</th>
 					<th>Address</th>
 					<th>Zipcode</th>
-					<th>Image Url </th>
-					<th>Thumbnail Url</th>
+					<th>Image </th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -31,8 +30,7 @@
                         <td ng-bind="building.name"></td>
                         <td ng-bind="building.address"></td>
                         <td ng-bind="building.zipcode"></td>
-                        <td ng-bind="building.image_url"></td>
-                        <td ng-bind="building.thumbnail_url"></td>
+                        <td width="160px"><img ng-src="{{building.thumbnail_url}}"/></td>
                         <td width="70px;" align="center">
                         	<a class="td-edit" ng-click="editBuilding(building)"><i class="fa fa-pencil-square-o"></i></a>   
                         	<a class="td-delete" ng-click="deleteBuilding(building)"><i class="fa fa-times"></i></a>           
