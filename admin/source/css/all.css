@@ -19,7 +19,7 @@ a:hover,a:focus{cursor: pointer;text-decoration: none}
 .main .left-side ul li a {	padding: 15px;}
 .main .right-site {	min-height: 100%;    padding: 0 !important;    position: relative;    margin-left:200px;}
 
-.locations, .alert-types, .client-resource, .update-client-resource, .update-key-resource {	padding: 20px;}
+.locations, .alert-types, .client-resource, .update-client-resource, .update-key-resource, .bulletin-detail {	padding: 20px;}
 .td-edit{	background-color: #2C3E50;    padding: 4px;    color: white;}
 .td-delete{	background-color: red;    padding: 4px;    color: white;}
 .td-reset{	background-color: #008000;    padding: 4px;    color: white;}
@@ -58,10 +58,10 @@ table td{word-break: break-word!important}
 
 /*update client resource*/
 .update-client-resource .title { margin-bottom: 20px}
-.update-client-resource .detail .name {padding-top: 7px}
+.detail .name {padding-top: 7px}
 .update-client-resource .pnl-button { margin-top: 20px; margin-left:5px}
 
 /*update key resource*/
 .update-key-resource .title { margin-bottom: 20px}
 .update-key-resource .detail .name {padding-top: 7px}
-.update-key-resource .pnl-button { margin-top: 20px; margin-left:5px}
+.pnl-button { margin-top: 20px; margin-left:5px}

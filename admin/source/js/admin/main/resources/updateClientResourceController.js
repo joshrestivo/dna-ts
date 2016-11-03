@@ -19,7 +19,7 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		}
 	};
 		
-	$scope.createUpdateResource = function (event, resource) {
+	$scope.createUpdateResource = function () {
 		if($scope.updateClientResource.$valid) {
 			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
 		        .success(function (result) {	                
