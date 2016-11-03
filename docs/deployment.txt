@@ -1,3 +1,11 @@
+Add remote heroku app
+
+	heroku git:remote -a project-name
+
+Rename a git remote
+
+	git remote rename remote-name new-name
+
 Deployement
 
 	git subtree push --prefix api dev master
