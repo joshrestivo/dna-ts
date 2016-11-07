@@ -9,6 +9,7 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
 	};  		
 	
 	$scope.changeLocation=function(locationId){
+		$scope.locationId= locationId;
     	getBulletins(locationId);
     };
     
