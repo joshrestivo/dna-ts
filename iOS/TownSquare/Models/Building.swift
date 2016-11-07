@@ -18,8 +18,8 @@ class Building: NSObject {
     var zipcode: String?
     
     var image_url: String?
-    var image_width: String?
-    var image_height: String?
+    var image_width: Float?
+    var image_height: Float?
     
     var thumbnail_url: String?
     var thumbnail_width: String?
@@ -54,8 +54,8 @@ class Building: NSObject {
         self.zipcode = json["zipcode"].string!
         
         self.image_url = json["image_url"].string!
-        self.image_width = json["image_width"].string!
-        self.image_height = json["image_height"].string!
+        self.image_width = json["image_width"].float!
+        self.image_height = json["image_height"].float!
         
         self.thumbnail_url = json["thumbnail_url"].string!
         self.thumbnail_width = json["thumbnail_width"].string!

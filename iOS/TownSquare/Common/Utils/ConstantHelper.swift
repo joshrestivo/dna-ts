@@ -238,9 +238,9 @@ struct ConstantHelper {
         return false
     }
     
-    static func setCacheValues(_ newCache: [LocalizationKey]){
-        for item in newCache {
-            ConstantHelper.cache.setObject(item.value!, forKey: item.key!, expires: .never)
+    static func setCacheValues(_ resourceDetails: [ClientResourceDetail]){
+        for resource in resourceDetails {
+            ConstantHelper.cache.setObject(resource.unique_name! as NSString, forKey: resource.display_text!, expires: .never)
         }
     }
 }

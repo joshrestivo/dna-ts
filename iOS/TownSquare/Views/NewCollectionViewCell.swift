@@ -10,22 +10,20 @@ import UIKit
 
 class NewCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var organizationLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var newImgView: AsyncImageView!
-    
-    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var contentLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        contentLbl.sizeToFit()
     }
     
-    func setCellValue(txtOrganization: String?, txtTitle:String?, txtContent:String?, imgSrc:String?){
+    func setCellValue(title: String?, txtContent:String?, imgSrc:String?){
         ConstantHelper.addAsyncImage(newImgView, imageUrl: imgSrc, imgNotFound: "icon-notFound")
-        organizationLbl.text = txtOrganization
-        titleLbl.text = txtTitle
+        titleLbl.text = title
         contentLbl.text = txtContent
     }
 }

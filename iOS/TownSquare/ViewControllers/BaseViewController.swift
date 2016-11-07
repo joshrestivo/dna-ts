@@ -40,14 +40,10 @@ class BaseViewController: UIViewController {
     }
     
     func navigateToView(_ storyboardId: String) {
-        
-        let toView: UIViewController!
+        var toView = UIViewController()
         switch storyboardId {
             case "sbNewsDetail" :
                 toView = self.sbHome.instantiateViewController(withIdentifier: storyboardId) as! DetailNewViewController
-        case "HomeViewControllerID" :
-            toView = self.sbHome.instantiateViewController(withIdentifier: storyboardId) as! HomeViewController
-            
             default: toView = self
         }
         

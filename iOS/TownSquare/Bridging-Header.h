@@ -7,6 +7,7 @@
 @import SDWebImage;
 @import AwesomeCache;
 @import EVReflection;
+@import NoOptionalInterpolation;
 
 #import "SWRevealViewController.h"
 #import <XMLDictionary/XMLDictionary.h>

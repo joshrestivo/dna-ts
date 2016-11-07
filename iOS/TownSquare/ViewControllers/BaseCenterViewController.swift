@@ -16,9 +16,7 @@ class BaseCenterViewController: BaseViewController{
             let leftButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named:"ic_menu_black_24dp")!, style: .plain, target: self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)))
             navigationItem.leftBarButtonItem = leftButton
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
             self.revealViewController().delegate = self
-             
         }
     }
 

@@ -15,25 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var ApiService: ApiClientUsage = ApiClientUsage.shareInstance
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        /*
-         self.ApiService.getLocalazation("", longitude: "", callback: { (resObject,isSucces, error) -> () in
-             if isSucces == true  {
-                 let validData = resObject as! NSDictionary
-                 for (key, value) in validData {
-                    ConstantHelper.cache.setObject(value as! NSString, forKey: key as! String, expires: .never)
-                 }
-             }
-         })
-         */
-        
-        let stringListObject:String = "[{\"key\": \"menu_Home\", \"value\": \"Home\"}, {\"key\": \"menu_UpComingEvents\", \"value\": \"Upcoming Events\"},{\"key\": \"menu_RequestService\", \"value\": \"Service Organization\"},{\"key\": \"menu_LocationInfo\", \"value\": \"Location Info\"},{\"key\": \"menu_StreetAlert\", \"value\": \"Street Alerts\"},{\"key\": \"menu_HelpResource\", \"value\": \"Helpful Resources\"},{\"key\": \"menu_Setting\", \"value\": \"Settings\"},{\"key\": \"home_header_title\", \"value\": \"DNA - [Location Name]\"},{\"key\": \"home_middle_request_button_text\", \"value\": \"REQUEST SERVICE\"},{\"key\": \"home_middle_left_content1\", \"value\": \"Sep. 30 - 7:00pm - Public lynching \"},{\"key\": \"home_middle_left_content2\", \"value\": \"Oct 1 - 8:30pm - Town Sq. Clearnup\"},{\"key\": \"home_middle_left_content3\", \"value\": \"Oct 2 - City Council Meeting\"},{\"key\": \"home_news_title\", \"value\": \"Downtown Street Alert\"},{\"key\": \"home_news_short_content\", \"value\": \"Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time.\"},{\"key\": \"upCommingEvents_title\", \"value\": \"Downtown Street Alert\"},{\"key\": \"upCommingEvents_short_content\", \"value\": \"Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time\"},{\"key\": \"upCommingEvents_header_title\", \"value\": \"Up Coming Events\"}, {\"key\": \"street_alert_header_title\", \"value\": \"Street Alert\"}, {\"key\": \"street_alert_title\", \"value\": \"Downtown Street Alert\"},{\"key\": \"street_alert_short_content\", \"value\": \"Downtown streets will be impacted this weekend by the Sista Strut Breast Cancer Walk (10/1).  See the street closure information below.  Plan ahead for an alternative route or added travel time\"}, {\"key\": \"request_service_header_title\", \"value\": \"Request service\"}, {\"key\": \"location_info_header_title\", \"value\": \"Location Info\"}, {\"key\": \"location_title\", \"value\": \"10th St. Lofts\"}, {\"key\": \"location_short_content\", \"value\": \"1010 Saint Charles St, 63101\"}, {\"key\": \"setting_header_title\", \"value\": \"Settings\"}]"
-        
-        let languageKeys = [LocalizationKey](json: stringListObject)        
-        if ConstantHelper.existInCache(languageKeys) == false {
-            ConstantHelper.setCacheValues(languageKeys)
-        }
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {        
         return true
     }
     
@@ -106,5 +88,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     */
+    
+    func setMainVC()  {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "sidMainView") as! SWRevealViewController
+        self.window?.rootViewController = mainVC
+    }
 }
 

@@ -20,12 +20,12 @@ class Bulletins: NSObject {
     var valid_to: String?
     
     var image_url: String?
-    var image_width: String?
-    var image_height: String?
+    var image_width: Float?
+    var image_height: Float?
     
     var thumbnail_url: String?
-    var thumbnail_width: String?
-    var thumbnail_height: String?
+    var thumbnail_width: Float?
+    var thumbnail_height: Float?
     
     var created_by: String?
     var updated_by: String?
@@ -49,24 +49,28 @@ class Bulletins: NSObject {
     }
     
     func setBulletins(_ json:SwiftyJSON.JSON)->() {
-        self.id = json["id"].int!
-        self.location_id = json["location_id"].int!
-        self.title = json["title"].string!
-        self.bulletinDescription = json["description"].string!
+        self.id = json["id"].int
+        self.location_id = json["location_id"].int
+        self.title = json["title"].string
+        self.bulletinDescription = json["description"].string
         
-        self.valid_from = json["valid_from"].string!
-        self.valid_to = json["valid_to"].string!
+        self.valid_from = json["valid_from"].string
+        self.valid_to = json["valid_to"].string
         
-        self.image_url = json["image_url"].string!
-        self.image_width = json["image_width"].string!
-        self.image_height = json["image_height"].string!
+        self.image_url = json["image_url"].string
+        self.image_width = json["image_width"].float
+        self.image_height = json["image_height"].float
         
-        self.created_by = json["created_by"].string!
-        self.updated_by = json["updated_by"].string!
-        self.created_at = json["created_at"].string!
+        self.thumbnail_url = json["thumbnail_url"].string
+        self.thumbnail_width = json["thumbnail_width"].float
+        self.thumbnail_height = json["thumbnail_height"].float
         
-        self.created_by = json["created_by"].string!
-        self.updated_at = json["updated_at"].string!
+        self.created_by = json["created_by"].string
+        self.updated_by = json["updated_by"].string
+        self.created_at = json["created_at"].string
+        
+        self.created_by = json["created_by"].string
+        self.updated_at = json["updated_at"].string
     }
 }
 

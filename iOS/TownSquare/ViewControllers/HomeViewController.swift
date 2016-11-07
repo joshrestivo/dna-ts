@@ -20,16 +20,47 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     @IBOutlet weak var lblEntryEvent1: MarginLabel!
     @IBOutlet weak var lblEntryEvent2: MarginLabel!
     @IBOutlet weak var lblEntryEvent3: MarginLabel!
-
+    var loadingMoreFootView:UIView?
+    
+    var newsIndex: Int = 1
+    var bulletinIndex: Int = 1
     var news = [News]()
+    var hasError = false
+    var bulletins = [Bulletins]()
+    var newsFeed = [NewsFeed]()
+    
+    var errorBulletinCount = 0
+    var errorNewsFeedCount = 0
+    
+    var hasErrorInNewsFeed = false
+    var hasErrorInBullentin = false
+    
+    var isBullentinLoading = false
+    var isNewsFeedLoading = false
+    
+    var hasLoadBullentinMore = true
+    var hasLoadNewsFeedMore = true
     
     override func viewDidLoad() {
         showLoading("")
         super.viewDidLoad()
         ConstantHelper.roundButton(requestServiceBtn, color: ConstantHelper.buttonBorderColor, radius: 5)
         initScreen()
-        initData()
+        requestHomeData()
         setupKeyboardNotifcationListenerForScrollView(scrollView)
+    }
+    
+    func requestHomeData(){
+        self.getNewsFeeds()
+        self.getBullentins()
+        self.getCalendars()
+        if self.hasErrorInNewsFeed == true && self.errorNewsFeedCount < 3 {
+            self.getNewsFeeds()
+        }
+        
+        if self.hasErrorInBullentin == true && errorBulletinCount < 3 {
+            self.getBullentins()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,9 +84,9 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func initScreen(){
-        lblEntryEvent1.text = ConstantHelper.cache["home_middle_left_content1"] as! String
-        lblEntryEvent2.text = ConstantHelper.cache["home_middle_left_content2"] as! String
-        lblEntryEvent3.text = ConstantHelper.cache["home_middle_left_content3"] as! String
+        lblEntryEvent1.text = ConstantHelper.cache["home_middle_left_content1"] as? String
+        lblEntryEvent2.text = ConstantHelper.cache["home_middle_left_content2"] as? String
+        lblEntryEvent3.text = ConstantHelper.cache["home_middle_left_content3"] as? String
         
         self.navigationItem.title = ConstantHelper.cache["home_header_title"] as! String
         requestServiceBtn.setTitle(ConstantHelper.cache["home_middle_request_button_text"] as! String, for: UIControlState.normal)
@@ -79,31 +110,59 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         addDefaultNavUI()
     }
     
-    func initData(){
-        let imgUrl = "http://www.saintlouisdna.org/wp-content/uploads/2016/08/Untitled-design.png"
-        let news1 = News(imageUrl: imgUrl, title: ConstantHelper.cache["home_news_title"] as! String, content: ConstantHelper.cache["home_news_short_content"] as! String)
-        let news2 = News(imageUrl: imgUrl, title: ConstantHelper.cache["home_news_title"] as! String, content: ConstantHelper.cache["home_news_short_content"] as! String)
-        let news3 = News(imageUrl: imgUrl, title: ConstantHelper.cache["home_news_title"] as! String, content: ConstantHelper.cache["home_news_short_content"] as! String)
-        let news4 = News(imageUrl: imgUrl, title: ConstantHelper.cache["home_news_title"] as! String, content: ConstantHelper.cache["home_news_short_content"] as! String)
-        let news5 = News(imageUrl: imgUrl, title: ConstantHelper.cache["home_news_title"] as! String, content: ConstantHelper.cache["home_news_short_content"] as! String)
-        let news6 = News(imageUrl: imgUrl, title: ConstantHelper.cache["home_news_title"] as! String, content: ConstantHelper.cache["home_news_short_content"] as! String)
-        news.append(news1)
-        news.append(news2)
-        news.append(news3)
-        news.append(news4)
-        news.append(news5)
-        news.append(news6)
-        self.newCollectionView.reloadData()
-        self.bulletinCollectionView.reloadData()
+    func getNewsFeeds(){
+        self.showLoading("")
+        self.isNewsFeedLoading = true
+        self.ApiService.getNewsFeeds(pageIndex: self.newsIndex,{ (newsFeedsResult, isSuccess) -> () in
+            if isSuccess {
+                self.filterNewsFeed(newsFeedsResult)
+                self.isNewsFeedLoading = false
+            }
+            else{
+                self.hideLoading()
+                self.errorNewsFeedCount += 1
+                self.hasErrorInNewsFeed = true
+            }
+        })
+    }
+    
+    func getBullentins(){
+        self.showLoading("")
+        self.isBullentinLoading = true
+        self.ApiService.getBulletins(pageIndex: self.newsIndex, { (bulletinsResult, isSuccess) -> () in
+            if isSuccess {
+                self.filterBullentins(bulletinsResult)
+                self.hasErrorInBullentin = false
+                self.isBullentinLoading = false
+            }
+            else{
+                self.hideLoading()
+                self.errorBulletinCount += 1
+                self.hasErrorInBullentin = true
+            }
+        })
+    }
+    
+    func getCalendars(){
+        self.showLoading("")
+        self.ApiService.getCalendars({ (calendar, isSuccess) -> () in
+            if isSuccess {
+                
+                self.hideLoading()
+            }
+            else{
+                self.hideLoading()
+            }
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        
-        if self.news != nil {
-            return self.news.count
+        if collectionView == self.newCollectionView {
+            return newsFeed.count
         }
-        
-        return 10
+        else{
+            return bulletins.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
@@ -116,14 +175,13 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewCollectionViewCellID", for: indexPath) as! NewCollectionViewCell
-        let new = news[indexPath.row]
-        cell.setCellValue(txtOrganization: "", txtTitle : new.title, txtContent : new.content, imgSrc : new.imageUrl)
-        
         if collectionView == self.newCollectionView {
-            cell.organizationLbl.text = "Cas Group - News"
+            let item = newsFeed[indexPath.row]
+            cell.setCellValue(title : item.title, txtContent : item.feedDescription, imgSrc : item.thumbnail_url)
         }
         else{
-            cell.organizationLbl.text = "Cas Group - Buletin"
+            let item = bulletins[indexPath.row]
+            cell.setCellValue(title :item.title, txtContent : item.bulletinDescription, imgSrc : item.thumbnail_url)
         }
         
         cell.layoutIfNeeded()
@@ -132,5 +190,65 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "pushToNewDetail", sender: nil)
+    }
+    
+    func filterBullentins(_ bulletinsParam:[Bulletins]){
+        if(self.bulletinIndex == 1){
+            self.bulletins = [Bulletins]()
+        }
+        
+        if (bulletinsParam.count > 0){
+            for bulletin in bulletinsParam{
+                self.bulletins.append(bulletin)
+            }
+            
+            if(bulletinsParam.count == ConstantHelper.defaultPageSize ){
+                self.bulletinIndex += 1
+                hasLoadBullentinMore = true;
+            }else{
+                hasLoadBullentinMore = false;
+            }
+        }
+        
+        self.hideLoading()
+        self.bulletinCollectionView.reloadData()
+    }
+    
+    func filterNewsFeed(_ news:[NewsFeed]){
+        if(self.newsIndex == 1){
+            self.newsFeed = [NewsFeed]()
+        }
+        
+        if (news.count > 0){
+            for newsItem in news{
+                self.newsFeed.append(newsItem)
+            }
+            
+            if(news.count == ConstantHelper.defaultPageSize ){
+                self.newsIndex += 1
+                hasLoadNewsFeedMore = true;
+            }else{
+                hasLoadNewsFeedMore = false;
+            }
+        }
+        
+        self.hideLoading()
+        self.newCollectionView.reloadData()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if ((isBullentinLoading == false || isNewsFeedLoading == false ) && scrollView.isDragging == false && scrollView.isDecelerating == false){
+            if(hasLoadNewsFeedMore ||  hasLoadBullentinMore){
+                if(scrollView.contentSize.width - scrollView.frame.size.width <= (scrollView.contentOffset.x  + 7)) {
+                    if hasLoadNewsFeedMore && isNewsFeedLoading == false{
+                        self.getNewsFeeds()
+                    }
+                    
+                    if hasLoadBullentinMore && isBullentinLoading == false {
+                        self.getBullentins()
+                    }
+                }
+            }
+        }
     }
 }

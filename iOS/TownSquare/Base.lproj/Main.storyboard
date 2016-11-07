@@ -17,7 +17,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sidMainView" id="BYZ-38-t0r" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -60,6 +60,9 @@
                                                 <constraint firstAttribute="width" constant="40" id="Swh-aF-FUe"/>
                                             </constraints>
                                             <state key="normal" image="twitter"/>
+                                            <connections>
+                                                <action selector="touchTwitterButton:" destination="XKM-dG-oXo" eventType="touchUpInside" id="Rn5-ki-6zr"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcA-jy-iRy">
                                             <constraints>
@@ -67,6 +70,9 @@
                                                 <constraint firstAttribute="width" constant="40" id="CW8-Oe-ZXh"/>
                                             </constraints>
                                             <state key="normal" image="facebook"/>
+                                            <connections>
+                                                <action selector="touchFacebookButton:" destination="XKM-dG-oXo" eventType="touchUpInside" id="XzI-Nm-vgD"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -140,7 +146,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3la-yG-cSf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fzo-RL-gNu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Fzo-RL-gNu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -327,7 +333,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bEi-gI-IX5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NFY-Sd-tEP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="NFY-Sd-tEP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

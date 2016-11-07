@@ -40,16 +40,23 @@ class FlashScreenViewController: BaseViewController {
         let latitude = locationManager.location?.coordinate.latitude.description
         ApiService.authenticate(longitude: longitude,latitude: latitude, { (location, isSuccess) in
             if isSuccess {
+                self.saveResourceValues(location: location)
                 self.hideLoading()
-                self.navigateToView("HomeViewControllerID")
-                /*
-                let secondViewController = self.sbMain.instantiateViewController(withIdentifier: "menuViewController") as! MenuViewController
-                self.navigationController?.pushViewController(secondViewController, animated: true)
-                */
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.setMainVC()
             }
             else{
                 self.hideLoading()
             }
         })
+    }
+    
+    func saveResourceValues(location:LocationInfo){
+        var test1 = String(describing: location.id) as NSString
+        var test2 = NSString(string: (location.id?.description)!)
+        ConstantHelper.cache.setObject(test2, forKey: "location_id", expires: .never)
+        
+        let resourceDetails = location.client_resource?.details
+        ConstantHelper.setCacheValues(resourceDetails!)
     }
 }

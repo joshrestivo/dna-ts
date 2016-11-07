@@ -13,6 +13,7 @@ target 'TownSquare' do
   pod 'MBProgressHUD'
   pod 'XMLDictionary'
   pod 'EVReflection', git:'https://github.com/evermeer/EVReflection.git', :branch => 'Swift3'
+  pod 'NoOptionalInterpolation'
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
