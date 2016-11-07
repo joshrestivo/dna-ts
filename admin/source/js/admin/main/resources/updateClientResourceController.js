@@ -21,7 +21,7 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		
 	$scope.createUpdateResource = function () {
 		if($scope.updateClientResource.$valid) {
-			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
 		        .success(function (result) {	                
 		            if (result.success) {	      
 			          	window.location.href = "/main/resources/client-resources.html";

@@ -38,7 +38,7 @@ angular.module('app').controller('buildingDetailController',  ['$scope', '$http'
    				withCredentials: true,
    				transformRequest: angular.identity,
 	   			headers: {
-		            		'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN'),
+		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME),
 		                	'Content-Type': undefined
 		            		}
 	            }).success(function (result) {

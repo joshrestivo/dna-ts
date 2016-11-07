@@ -28,7 +28,7 @@
    <script src="/js/ngDialog.min.js" language="javascript"></script>
   <script src="/js/admin/app.js" language="javascript"></script>
   <script src="/js/admin/directives.js" language="javascript"></script>  
-  <script src="/js/js.cookie.js" language="javascript"></script>    
+  <script src="/js/jquery.cookie.js" language="javascript"></script>    
   <script src="/js/all.js" language="javascript"></script> 
 </head>
 <body ng-app="app">
@@ -174,7 +174,7 @@
 </script>
 
 <script >
-	var userNameLoginCookie = readCookie("USERNAME_LOGIN"); 
+	var userNameLoginCookie = $.cookie(USERNAME_LOGIN_COOKIE);
 	if (userNameLoginCookie != null) {   	
 		$(".user-name").text(userNameLoginCookie);  
 	}

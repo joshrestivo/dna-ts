@@ -30,7 +30,7 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
 	        data: '{"message":"Are you want to delete building: ' + bulletin.title + '?"}'
 		})
 		.then(function (value) {
-        	$http.get(SERVICE_BASE_URL + '/admin/location/' + $scope.locationId + '/bulletin/' + bulletin.id + '/del',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+        	$http.get(SERVICE_BASE_URL + '/admin/location/' + $scope.locationId + '/bulletin/' + bulletin.id + '/del',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
             .success(function (result) {	             	              
                 if (result.success) {	    
     	          	getBulletins($scope.locationId);          	    	          	
@@ -47,7 +47,7 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
     $(".nav li.tab_bulletins").addClass("active");   
     
     var getLocations = function() {
-    	$http.get(SERVICE_BASE_URL + '/admin/locations',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+    	$http.get(SERVICE_BASE_URL + '/admin/locations',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
             .success(function (result) {	             	              
                 if (result.success) {	     
     	          	$scope.locations = result.data;
@@ -65,7 +65,7 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
     };    
     
     var getBulletins = function(locationId) {
-    	$http.get(SERVICE_BASE_URL + '/admin/location/' + locationId + '/bulletins',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+    	$http.get(SERVICE_BASE_URL + '/admin/location/' + locationId + '/bulletins',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
             .success(function (result) {	             	              
                 if (result.success) {	     
     	          	$scope.bulletins = result.data;    

@@ -42,9 +42,9 @@ function getUrlParameter(sParam) {
     return "";
 };
 
-function logout() {    
-	deleteCookie(AUTH_COOKIE_NAME);
-	deleteCookie(USERNAME_LOGIN_COOKIE);
+function logout() {
+	$.removeCookie(AUTH_COOKIE_NAME, { path: '/' }); 
+	$.removeCookie(USERNAME_LOGIN_COOKIE, { path: '/' }); 
 	gotoLoginPage();  		
 };
 
@@ -66,42 +66,17 @@ function processCommonExeption(errorCode, ngDialog){
 	if (errorCode.indexOf("SYSTEM_ERROR") === 0) {
 		showErrorDialog(ngDialog, SERVER_ERROR_MSG);        
     } else if (errorCode == "INVALID_SESSION"){
-    	showErrorDialog(ngDialog, SESSION_EXPIRE_MSG);  
-    	deleteCookie(AUTH_COOKIE_NAME);
-    	deleteCookie(USERNAME_LOGIN_COOKIE);
+    	alert(SESSION_EXPIRE_MSG);
+    	$.removeCookie(AUTH_COOKIE_NAME, { path: '/' }); 
+		$.removeCookie(USERNAME_LOGIN_COOKIE, { path: '/' }); 
         gotoLoginPage();
     } else {
     	showErrorDialog(ngDialog, SERVER_ERROR_MSG);    
     }
 }
 
-function createCookie(name,value,days) {
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime()+(days*24*60*60*1000));
-        var expires = "; expires="+date.toGMTString();
-    }
-    else var expires = "";
-    document.cookie = name+"="+value+expires+"; path=/";
-}
-
-function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-    }
-    return null;
-}
-
-function deleteCookie(name) {
-    createCookie(name,"",-1);
-}
-
 // Check for authentication cookie
-var cookie = readCookie(AUTH_COOKIE_NAME);
+var cookie = $.cookie(AUTH_COOKIE_NAME);
 var host = window.location.host;
 var current_url = window.location.href;
 

@@ -7,7 +7,7 @@ angular.module('app').controller('adminUserController',  ['$scope', '$http','ngD
 	};
   		
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/admin/users',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/users',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
             if (result.success) {
             	$scope.adminUsers = result.data;
             	$scope.TotalItems = $scope.adminUsers.length;
@@ -44,7 +44,7 @@ angular.module('app').controller('adminUserController',  ['$scope', '$http','ngD
 	        data: '{"message":"Are you want to delete user: ' + adminUser.name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/user/'+adminUser.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')}}).success(function (result) {
+           $http.get(SERVICE_BASE_URL+'/admin/user/'+adminUser.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}}).success(function (result) {
 			            if (result.success) {
 			            getData();
 			            }else {

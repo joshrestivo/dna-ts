@@ -29,14 +29,14 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	        data: '{"message":"Are you want to delete ' + keyResourceUniqueName + '?"}'
 		})
 		.then(function (value) {
-            $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+            $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
 	        .success(function (result) {	                
 	            if (result.success) {	      
 		          	getResources();
 		          	$scope.currentPageResource = 1;
 	   				$scope.currentPageKeyResource = 1;
 	            } else {                	              	  	
-	        		processCommonExeption(result.data, $scope);                	              	                    
+	        		processCommonExeption(result.data, ngDialog);                	              	                    
 	            }
 	        })
 	        .error(function (error, status){	            	
@@ -57,8 +57,8 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
     $(".nav li.tab_client_resources").addClass("active");    
     
     var getResources = function() {
-    	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
-		    .success(function (result) {	                
+    	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
+		    .success(function (result) {	 
 		        if (result.success) {	     	            	
 		        	$scope.resources = result.data;	            
 		        	$scope.resources[0].status = "active";	
@@ -68,10 +68,12 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 		        	$scope.TotalKeyResourceItems = result.data[0].details.length;	            	
 		        	
 		        	sessionStorage.setItem("allResource", JSON.stringify(result.data));	   
-		        }
+		        } else {                	              	  	
+	        		processCommonExeption(result.data, ngDialog);                	              	                    
+	            }
 		    })
 		    .error(function (error, status){	            	
-		        processCommonExeption(error, ngDialog);
+		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
 			}); 
     };   
 }]);
