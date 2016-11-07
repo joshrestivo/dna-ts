@@ -17,8 +17,8 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 	                    	window.location.href = "/";
 	                    }
 	                } else {
-	                	if(result.data == "INCORRECT") {                	
-	                		showErrorDialog(ngDialog, "Invalid login credential") ;
+	                	if(result.data == ErrorCode.INCORRECT) {                	
+	                		showErrorDialog(ngDialog, ErrorMessage.LOGIN_INCORRECT) ;
 	                	} else {                  	  	
 	                		processCommonExeption(result.data, ngDialog);
 	                	}

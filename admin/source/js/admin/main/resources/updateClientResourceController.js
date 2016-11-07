@@ -25,12 +25,8 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 		        .success(function (result) {	                
 		            if (result.success) {	      
 			          	window.location.href = "/main/resources/client-resources.html";
-		            } else {                	   
-		            	if(result.data == "DUPLICATE") {                	
-	                		showErrorDialog(ngDialog, "This resource name is already in used") ;
-	                	} else {                  	  	
-	                		processCommonExeption(result.data, ngDialog);
-	                	}           	  	
+		            } else {                	   		                            	  
+                		processCommonExeption(result.data, ngDialog);                	   	  	
 		            }
 		        })
 		        .error(function (error, status){	            	

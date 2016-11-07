@@ -45,10 +45,10 @@ angular.module('app').controller('bulletinDetailController',  ['$scope', '$http'
 					 if (result.success) {	      
 				          	location.href="/main/bulletins/bulletins.html";
 			            } else {    
-			            	if(result.data == "FROM_TO_INVALID"){
-			            		showErrorDialog(ngDialog, "Please select invalid date for from < to");
-			            	} else if(result.data == "IMAGE_INVALID") {
-			            		showErrorDialog(ngDialog, "Please select image (png, bmp, jpg, jpeg)");
+			            	if(result.data == ErrorCode.FROM_TO_INVALID){
+			            		showErrorDialog(ngDialog, ErrorMessage.CREATE_BULLETIN_FROM_TO_INVALID);
+			            	} else if(result.data == ErrorCode.IMAGE_INVALID) {
+			            		showErrorDialog(ngDialog, ErrorMessage.CREATE_BULLETIN_IMAGE_INVALID);
 			            	} else {
 			            		processCommonExeption(result.data, ngDialog);
 			            	}      	   		            	                 	  

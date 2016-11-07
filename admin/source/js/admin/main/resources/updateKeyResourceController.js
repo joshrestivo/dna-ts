@@ -44,13 +44,11 @@ angular.module('app').controller('addKeyResourceController',  ['$scope', '$http'
 	            .success(function (result) {	             	              
 	                if (result.success) {	      
 	    	          	window.location.href = "/main/resources/client-resources.html";
-	                } else {       
-	                	if(result.data == "VALUE_MISSING") {                	
-	                		showErrorDialog(ngDialog, "Not enought display text for all resources.") ;
-	                	} else {                  	  	
-	                		processCommonExeption(result.data, ngDialog);
-	                	}                	              	                    
-	                }
+	                } else if(ErrorCode.VALUE_MISSING) {
+		            	showErrorDialog(ngDialog, ErrorMessage.ADD_RESOURCE_VALUE_MISSING);
+		            } else {                	              	  	
+						processCommonExeption(result.data, ngDialog);                	              	                    
+					}
 	            })
 	            .error(function (error, status){	            	
 			        processCommonExeption(SERVER_ERROR_MSG, ngDialog);       

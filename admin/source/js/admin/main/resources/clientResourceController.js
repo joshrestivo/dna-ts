@@ -30,18 +30,22 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 		})
 		.then(function (value) {
             $http.post(SERVICE_BASE_URL + '/admin/resource/key/del', {"unique_name": keyResourceUniqueName} ,{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
-	        .success(function (result) {	                
-	            if (result.success) {	      
-		          	getResources();
-		          	$scope.currentPageResource = 1;
-	   				$scope.currentPageKeyResource = 1;
-	            } else {                	              	  	
-	        		processCommonExeption(result.data, ngDialog);                	              	                    
-	            }
-	        })
-	        .error(function (error, status){	            	
-		        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
-			}); 	
+		        .success(function (result) {	                
+		            if (result.success) {	      
+			          	getResources();
+			          	$scope.currentPageResource = 1;
+		   				$scope.currentPageKeyResource = 1;
+		            } else if(ErrorCode.NOT_EXISTED) {
+		            	showErrorDialog(ngDialog, ErrorMessage.RESOURCE_NOT_EXSITED);
+		            } else if(ErrorCode.DUPLICATE) {
+		            	showErrorDialog(ngDialog, ErrorMessage.RESOURCE_DUPLICATE);
+	            	}else {                	              	  	
+						processCommonExeption(result.data, ngDialog);                	              	                    
+					}
+		        })
+		        .error(function (error, status){	            	
+			        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
+				}); 	
         }, function (value) {
             
         });
