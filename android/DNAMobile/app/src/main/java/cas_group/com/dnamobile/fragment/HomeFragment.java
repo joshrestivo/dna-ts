@@ -13,8 +13,14 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import cas_group.com.dnamobile.R;
-import cas_group.com.dnamobile.apdater.NewsAdapter;
-import cas_group.com.dnamobile.models.News;
+import cas_group.com.dnamobile.activity.MainActivity;
+import cas_group.com.dnamobile.apdater.BulletinAdapter;
+import cas_group.com.dnamobile.apdater.NewFeedAdapter;
+import cas_group.com.dnamobile.api.ApiClientUsage;
+import cas_group.com.dnamobile.api.ResponseCallback;
+import cas_group.com.dnamobile.models.BaseModel;
+import cas_group.com.dnamobile.models.Bulletin;
+import cas_group.com.dnamobile.models.NewFeed;
 
 /**
  * Created by kuccu on 10/26/16.
@@ -94,19 +100,9 @@ public class HomeFragment extends Fragment {
 
     protected void onInitData(){
         _news = new ArrayList<>();
-        _bulletin = new ArrayList<>();
+        _bulletins = new ArrayList<>();
 
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _news.add(new News("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-
-//        _uiHomeBulletin
+        //layout property
         LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         _uiHomeNewLvl.setLayoutManager(horizontalLayoutManagaer);
@@ -116,19 +112,71 @@ public class HomeFragment extends Fragment {
 
         _uiHomeBulletin.setLayoutManager(horizontalLayoutManagaerBulletin);
 
-        _newsAdapter = new NewsAdapter(getActivity(), _news);
-        _uiHomeNewLvl.setAdapter(_newsAdapter);
-        _uiHomeBulletin.setAdapter(_newsAdapter);
-        _newsAdapter.notifyDataSetChanged();
+
+        _newFeedAdapter = new NewFeedAdapter(getActivity(), _news);
+        _uiHomeNewLvl.setAdapter(_newFeedAdapter);
+
+        _bulletinAdapter = new BulletinAdapter(getActivity(), _bulletins);
+        _uiHomeBulletin.setAdapter(_bulletinAdapter);
+
+        //
+        ApiClientUsage.getNewFeeds(_currentPageNews,getNewFeedcallback());
+
+        ApiClientUsage.getBulletins(_currentPageBulletin,getBulletincallback());
+    }
+    private ResponseCallback getNewFeedcallback(){
+        return new ResponseCallback((MainActivity)getActivity()){
+            @Override
+            public void endSucceeded(ArrayList<BaseModel> bulletins) {
+                for (int i = 0; i < bulletins.size(); i++) {
+                    Bulletin bulletin = (Bulletin) bulletins.get(i);
+                    _bulletins.add(bulletin);
+                }
+                _newFeedAdapter = new NewFeedAdapter(getActivity(), _news);
+                _uiHomeBulletin.setAdapter(_bulletinAdapter);
+                _newFeedAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void endFailed(String result) {
+                super.endFailed(result);
+            }
+
+        };
+    }
+    private ResponseCallback getBulletincallback(){
+        return new ResponseCallback((MainActivity)getActivity()){
+            @Override
+            public void endSucceeded(ArrayList<BaseModel> bulletins) {
+                for (int i = 0; i < bulletins.size(); i++) {
+                    Bulletin bulletin = (Bulletin) bulletins.get(i);
+                    _bulletins.add(bulletin);
+                }
+                _bulletinAdapter = new BulletinAdapter(getActivity(), _bulletins);
+                _uiHomeBulletin.setAdapter(_bulletinAdapter);
+                _bulletinAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void endFailed(String result) {
+                super.endFailed(result);
+            }
+
+        };
     }
 
     private RecyclerView _uiHomeNewLvl;
     private RecyclerView _uiHomeBulletin;
 
 
-    private ArrayList<News> _news;
-    private ArrayList<News> _bulletin;
+    private ArrayList<NewFeed> _news;
+    private ArrayList<Bulletin> _bulletins;
 
-    private NewsAdapter _newsAdapter;
-    private NewsAdapter _bulletinAdapter;
+    private NewFeedAdapter _newFeedAdapter;
+    private BulletinAdapter _bulletinAdapter;
+
+    private int _currentPageNews = 1;
+    private int _currentPageBulletin = 1;
+
+
 }

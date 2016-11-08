@@ -1,5 +1,7 @@
 package cas_group.com.dnamobile.activity;
 
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import cas_group.com.dnamobile.DNAApplication;
 import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.apdater.LeftMenuAdapter;
 import cas_group.com.dnamobile.fragment.LocationInforFragment;
@@ -26,6 +29,8 @@ import cas_group.com.dnamobile.fragment.StreetAlertFragment;
 import cas_group.com.dnamobile.fragment.UpcomingEventFragment;
 import cas_group.com.dnamobile.fragment.HomeFragment;
 import cas_group.com.dnamobile.models.LeftMenuItem;
+import cas_group.com.dnamobile.service.GPSTracker;
+import cas_group.com.dnamobile.service.LocationService;
 
 public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.DrawerListener{
     @Override
@@ -42,6 +47,14 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
+
+        LocationService.killService();
+
+        /***** For start Service  ****/
+        Intent myIntent = new Intent(DNAApplication.context, LocationService.class);
+        DNAApplication.context.startService(myIntent);
+//        LocationService.instance().startLocationUpdates(this);
+        checkLocation();
     }
     @Override
     protected void onRegisterEvents() {
@@ -197,6 +210,20 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
 
     @Override
     public void onDrawerStateChanged(int arg0) {
+
+    }
+
+    private void checkLocation(){
+        Location location = null;
+        if (LocationService.isServiceRunning() && LocationService.instance() != null) {
+            location = LocationService.instance().getCurrentLocation();
+//            double loc = location.getLongitude();
+//            double lat = location.getLatitude();
+        }
+
+//        if (showToastIfNoLocationRetrieved && location == null) {
+//            ToastHelper.showErrorToast(R.string.error_no_location_service_enabled);
+//        }
 
     }
     // tags used to attach the fragments

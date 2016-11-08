@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import cas_group.com.dnamobile.DNAApplication;
 import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.utils.AlertDialogManager;
 
@@ -28,7 +29,7 @@ public class BaseAppCompatActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		PFApplication.context = getApplicationContext();
+		DNAApplication.context = getApplicationContext();
 		if (_onDefaultFlowOfCreation) {
 			onInitArguments();
 			onInitContentView();

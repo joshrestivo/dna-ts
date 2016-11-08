@@ -95,11 +95,11 @@ public class StreetAlertFragment extends Fragment {
 
 
     protected void onInitData(){
-        _items.add(new StreetAlert("test","test","test"));
-        _items.add(new StreetAlert("test","test","test"));
-        _items.add(new StreetAlert("test","test","test"));
-        _items.add(new StreetAlert("test","test","test"));
-        _items.add(new StreetAlert("test","test","test"));
+//        _items.add(new StreetAlert("test","test","test"));
+//        _items.add(new StreetAlert("test","test","test"));
+//        _items.add(new StreetAlert("test","test","test"));
+//        _items.add(new StreetAlert("test","test","test"));
+//        _items.add(new StreetAlert("test","test","test"));
 
         _adapter = new StreetAlertAdapter(getActivity(), _items);
         _uiListEmail.setAdapter(_adapter);
