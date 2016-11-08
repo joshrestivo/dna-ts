@@ -11,9 +11,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import cas_group.com.dnamobile.R;
-import cas_group.com.dnamobile.models.BuildingLocation;
-import cas_group.com.dnamobile.models.News;
-import cas_group.com.dnamobile.models.UpcomingEvent;
+import cas_group.com.dnamobile.models.Building;
 import cas_group.com.dnamobile.utils.CircularImageView;
 
 /**
@@ -37,7 +35,7 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
 
 
 
-    public LocationInforAdapter(Context context, List<BuildingLocation> horizontalList) {
+    public LocationInforAdapter(Context context, List<Building> horizontalList) {
         _context = context;
         this.items = horizontalList;
     }
@@ -66,6 +64,6 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
         return items.size();
     }
 
-    private List<BuildingLocation> items;
+    private List<Building> items;
     private Context _context;
 }

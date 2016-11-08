@@ -28,7 +28,7 @@ angular.module('app').controller('adminUserDetailController',  ['$scope', '$http
 	   			$http.post(SERVICE_BASE_URL+'/admin/user/create',$scope.adminUser,{
    				withCredentials: true,
    				headers: {
-		            		'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')
+		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME)
 		            		}
 	            }).success(function (result) {
 	            if (result.success) {
@@ -56,7 +56,7 @@ angular.module('app').controller('adminUserDetailController',  ['$scope', '$http
 	   			$http.post(SERVICE_BASE_URL+'/admin/user/update',data,{
    				withCredentials: true,
    				headers: {
-		            		'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')
+		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME)
 		            		}
 	            }).success(function (result) {
 	            if (result.success) {

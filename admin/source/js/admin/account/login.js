@@ -6,9 +6,10 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
    		if ($scope.login.$valid) {   			
 		    $http.post(SERVICE_BASE_URL + '/admin/login', $scope.Model,{ withCredentials: true })
 	            .success(function (result) {	                
-	                if (result.success) {	      	                	 
-        	          	createCookie(AUTH_COOKIE_NAME, result.data.access_token, 7);   
-        	          	createCookie(USERNAME_LOGIN_COOKIE, result.data.name, 7);     	          	
+	                if (result.success) {	
+                	    $.cookie(AUTH_COOKIE_NAME, result.data.access_token, { path: '/' });  
+                	    $.cookie(USERNAME_LOGIN_COOKIE, result.data.name, { path: '/' });	                	 
+        	                 	
 	                	var return_url = getUrlParameter("return_url");    
 	                    if (return_url != ""){	                    	
 	                    	window.location.href = return_url;
@@ -16,8 +17,8 @@ angular.module('app').controller('loginController',  ['$scope', '$http','ngDialo
 	                    	window.location.href = "/";
 	                    }
 	                } else {
-	                	if(result.data == "INCORRECT") {                	
-	                		showErrorDialog(ngDialog, "Invalid login credential") ;
+	                	if(result.data == ErrorCode.INCORRECT) {                	
+	                		showErrorDialog(ngDialog, ErrorMessage.LOGIN_INCORRECT) ;
 	                	} else {                  	  	
 	                		processCommonExeption(result.data, ngDialog);
 	                	}

@@ -7,7 +7,7 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
       };
     
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
             if (result.success) {
             	$scope.locations = result.data;
             	$scope.TotalItems = $scope.locations.length;
@@ -39,7 +39,7 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
 	        data: '{"message":"Are you want to delete location: ' + location.Name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/location/'+location.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')}}).success(function (result) {
+           $http.get(SERVICE_BASE_URL+'/admin/location/'+location.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}}).success(function (result) {
 			            if (result.success) {
 			            getData();
 			            }else {

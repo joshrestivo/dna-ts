@@ -2,6 +2,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import NoOptionalInterpolation
 
 enum RestUrl: String {
     var value: String {
@@ -13,12 +14,13 @@ enum RestUrl: String {
     ///////////////////////////////////////////////////////
     case postPing = "ping"
     case postUserAuth = "auth"
-    case getBulletins = "main/%@/bulletins?page=%@&limit=%@"
-    case getBuilding = "main/%@/buildings?page=%@&limit=%@"
-    case getLocations = "locations?page=%@&limit=%@"
+    case getBulletins = "main/%@/bulletins?page=%d&limit=%d"
+    case getBuilding = "main/%@/buildings?page=%d&limit=%d"
+    case getLocations = "locations?page=%d&limit=%d"
     case getLocationResource = "location/%@"
     case getStreetAlerts = "main/%@/street-alerts"
-    case getUpcomingEvents = "main/%@/news?page=%@&limit=%@"
+    case getUpcomingEvents = "main/%@/news?page=%d&limit=%d"
+    case getCalendar = "main/%@/calendar"
 }
 
 class ApiClientUsage {
@@ -84,8 +86,9 @@ class ApiClientUsage {
         }
     }
     
-    func getBulletins(locationId: String?, pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([Bulletins], Bool) -> ()) {
-        let urlFormat = NSString(format: RestUrl.getBulletins.value as NSString, locationId!,String(pageIndex!) ,String(pageSize!)) as String
+    func getBulletins( pageIndex: Int?,  _ callback: @escaping ([Bulletins], Bool) -> ()) {
+        let locationId:String! = String(ConstantHelper.cache["location_id"]!.description)
+        let urlFormat = NSString(format: RestUrl.getBulletins.value as NSString, locationId,pageIndex! ,ConstantHelper.defaultPageSize) as String
         let url = self.Api.getAbsoluteUrl(urlFormat)
         var bulletins = [Bulletins]()
         
@@ -109,8 +112,10 @@ class ApiClientUsage {
         }
     }
     
-    func getBuildings(locationId: String?, pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([Building], Bool) -> ()) {
-        let urlFormat = NSString(format: RestUrl.getBuilding.value as NSString, locationId!,pageIndex!, pageSize! ) as String
+    func getBuildings(pageIndex: Int?, _ callback: @escaping ([Building], Bool) -> ()) {
+        let locationId = ConstantHelper.cache["location_id"] as! String
+        
+        let urlFormat = NSString(format: RestUrl.getBuilding.value as NSString, locationId,pageIndex!, ConstantHelper.defaultPageSize ) as String
         let url = self.Api.getAbsoluteUrl(urlFormat)
         var buildings = [Building]()
         
@@ -134,8 +139,8 @@ class ApiClientUsage {
         }
     }
     
-    func getLocations(pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([LocationInfo], Bool) -> ()) {
-        let urlFormat = NSString(format: RestUrl.getLocations.value as NSString, pageIndex!, pageSize! ) as String
+    func getLocations(pageIndex: Int?, _ callback: @escaping ([LocationInfo], Bool) -> ()) {
+        let urlFormat = NSString(format: RestUrl.getLocations.value as NSString, pageIndex!, ConstantHelper.defaultPageSize ) as String
         let url = self.Api.getAbsoluteUrl(urlFormat)
         var locations = [LocationInfo]()
         
@@ -203,8 +208,9 @@ class ApiClientUsage {
         }
     }
     
-    func getNewsFeeds(pageIndex: Int?, pageSize: Int?, _ callback: @escaping ([NewsFeed] , Bool) -> ()) {
-        let urlFormat = NSString(format: RestUrl.getUpcomingEvents.value as NSString, pageIndex!, pageSize! ) as String
+    func getNewsFeeds(pageIndex: Int?, _ callback: @escaping ([NewsFeed] , Bool) -> ()) {
+        let locationId:String! = String(ConstantHelper.cache["location_id"]!.description)
+        let urlFormat = NSString(format: RestUrl.getUpcomingEvents.value as NSString, locationId, pageIndex!, ConstantHelper.defaultPageSize) as String
         let url = self.Api.getAbsoluteUrl(urlFormat)
         var newsFeeds = [NewsFeed]()
         
@@ -223,6 +229,26 @@ class ApiClientUsage {
             }
             else{
                 callback(newsFeeds, false)
+            }
+        }
+    }
+    
+    func getCalendars(_ callback: @escaping (Calendar , Bool) -> ()) {
+        let locationId:String! = String(ConstantHelper.cache["location_id"]!.description)
+        let urlFormat = NSString(format: RestUrl.getCalendar.value as NSString, locationId) as String
+        let url = self.Api.getAbsoluteUrl(urlFormat)
+        
+        Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
+            if(isSuccess == true){
+                if let unwrappedData = resObject as? Dictionary<String, AnyObject> {
+                    let json = SwiftyJSON.JSON(unwrappedData)
+                    callback(Calendar(json: json), true)
+                }else{
+                    callback(Calendar(), false)
+                }
+            }
+            else{
+                callback(Calendar(), false)
             }
         }
     }

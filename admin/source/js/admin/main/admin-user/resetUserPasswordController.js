@@ -33,7 +33,7 @@ angular.module('app').controller('resetUserPasswordController',  ['$scope', '$ht
 	   			$http.post(SERVICE_BASE_URL+'/admin/user/pwd/reset',data,{
    				withCredentials: true,
    				headers: {
-		            		'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')
+		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME)
 		            		}
 	            }).success(function (result) {
 	            if (result.success) {

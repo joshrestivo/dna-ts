@@ -14,11 +14,8 @@ import android.widget.SearchView;
 import java.util.ArrayList;
 
 import cas_group.com.dnamobile.R;
-import cas_group.com.dnamobile.activity.MainActivity;
 import cas_group.com.dnamobile.apdater.LocationInforAdapter;
-import cas_group.com.dnamobile.apdater.UpcomingEventAdapter;
-import cas_group.com.dnamobile.models.BuildingLocation;
-import cas_group.com.dnamobile.models.UpcomingEvent;
+import cas_group.com.dnamobile.models.Building;
 
 /**
  * Created by kuccu on 10/26/16.
@@ -113,15 +110,15 @@ public class LocationInforFragment extends Fragment {
 
 
     protected void onInitData(){
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-        _items.add(new BuildingLocation("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
+//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
 
         _adapter = new LocationInforAdapter(getActivity(), _items);
         _uiListEmail.setAdapter(_adapter);
@@ -133,5 +130,5 @@ public class LocationInforFragment extends Fragment {
 
     private LocationInforAdapter _adapter;
 
-    private ArrayList<BuildingLocation> _items = new ArrayList<>();
+    private ArrayList<Building> _items = new ArrayList<>();
 }

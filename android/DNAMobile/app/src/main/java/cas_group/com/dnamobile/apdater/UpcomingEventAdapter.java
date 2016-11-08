@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import cas_group.com.dnamobile.R;
-import cas_group.com.dnamobile.models.News;
 import cas_group.com.dnamobile.models.UpcomingEvent;
 
 /**

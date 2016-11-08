@@ -4,7 +4,7 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
     	$scope.currentPage = 1;
 	    $scope.itemPerPage = ITEM_PER_PAGE;
 	    $scope.maxSize = PAGE_MAX_SIZE;
-	    $http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
+	    $http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
             if (result.success) {
             	$scope.locations = result.data;
             	$scope.location_id=$scope.locations[0].id;
@@ -23,7 +23,7 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
 	};
   		
     var getData = function(location_id){
-    	$http.get(SERVICE_BASE_URL+'/admin/location/'+location_id+'/buildings ',{ withCredentials: true, headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/location/'+location_id+'/buildings ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
             if (result.success) {
             	$scope.buildings = result.data;
             	$scope.TotalItems = $scope.buildings.length;
@@ -60,7 +60,7 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
 	        data: '{"message":"Are you want to delete building: ' + building.name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/location/'+building.location_id+'/building/'+building.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')}}).success(function (result) {
+           $http.get(SERVICE_BASE_URL+'/admin/location/'+building.location_id+'/building/'+building.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}}).success(function (result) {
 			            if (result.success) {
 			            getData(building.location_id);
 			            }else {

@@ -13,7 +13,7 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
 	
     $scope.Init = function(){
     	//load all resource
-    	$http.get(SERVICE_BASE_URL+'/admin/resources ',{ withCredentials: true,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} }).success(function (result) {
+    	$http.get(SERVICE_BASE_URL+'/admin/resources ',{ withCredentials: true,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
             if (result.success) {
                 $scope.resources = result.data;
                 
@@ -70,7 +70,7 @@ angular.module('app').controller('locationDetailController',  ['$scope', '$http'
 	   	if($scope.locationDetail.$valid)
 	   	{
 	   		
-   		$http.post(SERVICE_BASE_URL+'/admin/location/save ', $scope.location, { withCredentials: true,headers: {'Access-Token': readCookie('TOWNSQUARE_ACCESS_TOKEN')} })
+   		$http.post(SERVICE_BASE_URL+'/admin/location/save ', $scope.location, { withCredentials: true,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
 	   		.success(function (result) {
 	            if (result.success) {
 	            	if($scope.IsUpdate){

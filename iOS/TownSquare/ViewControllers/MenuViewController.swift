@@ -27,6 +27,14 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func touchTwitterButton(_ sender: AnyObject) {
+        UIApplication.shared.openURL(NSURL(string: "http://www.twitter.com")! as URL)
+    }
+    
+    @IBAction func touchFacebookButton(_ sender: AnyObject) {
+        UIApplication.shared.openURL(NSURL(string: "http://www.facebook.com")! as URL)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return menuItems.count;
     }

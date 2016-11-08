@@ -3,20 +3,60 @@ package cas_group.com.dnamobile.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import cas_group.com.dnamobile.api.ApiClientUsage;
+import cas_group.com.dnamobile.api.ResponseCallback;
+import cas_group.com.dnamobile.helps.GcmHelper;
 
 
 /**
  * Created by thanhpham on 12/13/14.
  */
-public class PlashScreenActivity extends AppCompatActivity {
+public class PlashScreenActivity extends BaseAppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+        GcmHelper.registerGcm(new ResponseCallback(this) {
+
+            public void endSucceeded(String regId) {
+                checkAuthentication();
+            }
+        });
+
+    }
+
+    private void gotoMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        finish();
+    }
+
+    private void checkAuthentication() {
+
+        showLoading();
+        ApiClientUsage.authentication(new ResponseCallback(this) {
+
+            @Override
+            public void endSucceeded(Object location) {
+                hideLoading();
+                if (location != null) {
+                    //ok
+                } else {
+                    showErrorDialog("missing data");
+                }
+                gotoMainActivity();
+            }
+
+            @Override
+            public void endFailed(String result) {
+                hideLoading();
+
+            }
+
+        });
     }
 
 }
