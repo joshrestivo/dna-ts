@@ -1,8 +1,9 @@
-<div class="client-resource" ng-cloak ng-controller="bulletinsController" ng-init="Init()">
-	<div>
-		<h2>Bulletins</h2>		
-	</div>
-	
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li class="active">Bulletins</li>
+	</ol>
+</div>
+<div class="client-resource" ng-cloak ng-controller="bulletinsController" ng-init="Init()">	
 	<div class="row">
 		<div class="col-md-2">Location:</div>
 		<div class="col-md-8">
@@ -31,8 +32,8 @@
 				<tr ng-repeat="bulletin in bulletins">
                     <td  ng-bind="bulletin.title"></td>
                     <td  ng-bind="bulletin.description"></td>    
-                    <td  ng-bind="bulletin.valid_from | date:'yyyy/MM/dd'"></td>    
-                    <td  ng-bind="bulletin.valid_to | date:'yyyy/MM/dd'"></td> 
+                    <td width="100px;" ng-bind="bulletin.valid_from | date:'yyyy/MM/dd'"></td>    
+                    <td width="100px;" ng-bind="bulletin.valid_to | date:'yyyy/MM/dd'"></td> 
                     <td><img ng-src="{{bulletin.thumbnail_url}}"/></td>   
                     <td width="70px;" align="center">
                     	<a href="#" class="td-edit" ng-click="editBulletin(bulletin)"><i class="fa fa-pencil-square-o"></i></a>   
