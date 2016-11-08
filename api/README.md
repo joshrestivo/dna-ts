@@ -251,7 +251,7 @@ GET: <HOST>/api/1.0/main/{id}/news?page=1&limit=10 (default page = 1, limit=10 i
 ####**11. Get calendar**
 GET: <HOST>/api/1.0/main/{id}/calendar
 ######**Response:**
-- {success=true, data=[Calendar](#calendar) object}
+- {success=true, data=Maximum 3 items of [Calendar](#calendar) object}
 - {success=false, data="SYSTEM_ERROR"}
 - {success=false, data="INVALID_SESSION"}
 

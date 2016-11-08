@@ -128,13 +128,18 @@ module Townsquare
 
           calendars = calendars.sort_by {|calendar| calendar[:start]}
           now = Time.now
+          result = []          
           calendars.each do |calendar|
             if calendar[:start] > now
-              return JSONResult.new(true, calendar)
+              result.push(calendar) 
+            end
+            
+            if result.size == 3
+              break
             end
           end
           
-          JSONResult.new(true, nil)
+          JSONResult.new(true, result)
         end
         
       end      
