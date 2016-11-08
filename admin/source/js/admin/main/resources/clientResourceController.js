@@ -35,9 +35,9 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 			          	getResources();
 			          	$scope.currentPageResource = 1;
 		   				$scope.currentPageKeyResource = 1;
-		            } else if(ErrorCode.NOT_EXISTED) {
+		            } else if(result.data == ErrorCode.NOT_EXISTED) {
 		            	showErrorDialog(ngDialog, ErrorMessage.RESOURCE_NOT_EXSITED);
-		            } else if(ErrorCode.DUPLICATE) {
+		            } else if(result.data == ErrorCode.DUPLICATE) {
 		            	showErrorDialog(ngDialog, ErrorMessage.RESOURCE_DUPLICATE);
 	            	}else {                	              	  	
 						processCommonExeption(result.data, ngDialog);                	              	                    
@@ -54,7 +54,7 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
 	$scope.reloadResourceDetail = function(resource, event) {
 		$scope.keyResources = resource.details;
 	
-		$('.list-resource tr[class*="selected"]').removeClass("selected");
+		$('.list-resource tr[class*="selected"]').removeClass("selected");	
 		angular.element(event.currentTarget).parent().parent().addClass("selected");
 	};	
 	

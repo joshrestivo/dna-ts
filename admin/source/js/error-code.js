@@ -29,5 +29,7 @@ ErrorMessage = {
 	RESET_USER_NOT_EXISTED: "User is not existed",
 	RESET_USER_RESET_SUPER_ADMIN: "You cannot reset password for super admin",
 	UPDATE_CUSTOMER_EMAIL_EXISTED: "Customer with the same email is already existed",
-	CREATE_UPDATE_BUILDING_IMAGE_INVALID: "Please select image (png, bmp, jpg, jpeg)"
+	CREATE_UPDATE_BUILDING_IMAGE_INVALID: "Please select image (png, bmp, jpg, jpeg)",
+	CREATE_UPDATE_CUSTOMER_EMAIL_EXISTED: "Customer with the same email is already existed"
+	
 };

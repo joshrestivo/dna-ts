@@ -44,8 +44,8 @@ angular.module('app').controller('addKeyResourceController',  ['$scope', '$http'
 	            .success(function (result) {	             	              
 	                if (result.success) {	      
 	    	          	window.location.href = "/main/resources/client-resources.html";
-	                } else if(ErrorCode.VALUE_MISSING) {
-		            	showErrorDialog(ngDialog, ErrorMessage.ADD_RESOURCE_VALUE_MISSING);
+	                } else if(result.data == ErrorCode.VALUE_MISSING) {
+		            	showErrorDialog(ngDialog, ErrorMessage.ADD_RESOURCE_KEY_VALUE_MISSING);
 		            } else {                	              	  	
 						processCommonExeption(result.data, ngDialog);                	              	                    
 					}

@@ -25,26 +25,27 @@ module Townsquare
           end
           
           customer = Customer.find_by(:id => params[:id])
+          
           if customer
-            if Customer.where("LOWER(email) = ? AND id != ", params[:email], params[:id]).first
+            if Customer.where("LOWER(email) = ? AND id != ?", params[:email].downcase(), params[:id]).first
               return JSONResult.new(false, "EMAIL_EXISTED")
             end
             
             customer.name = params[:name]
             customer.phone = params[:phone]
             customer.address = params[:address]
-            customer.email = params[:email]
+            customer.email = params[:email].downcase()
             customer.updated_by = admin_user.username
             customer.save
           else
-            if Customer.where("LOWER(email) = ?", params[:email]).first
+            if Customer.where("LOWER(email) = ?", params[:email].downcase()).first
               return JSONResult.new(false, "EMAIL_EXISTED")
             end
             
             customer = Customer.create(:name => params[:name],
                                        :phone => params[:phone],
                                        :address => params[:address],
-                                       :email => params[:email],
+                                       :email => params[:email].downcase(),
                                        :created_by => admin_user.username)
           end
           

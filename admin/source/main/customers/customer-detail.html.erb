@@ -1,0 +1,67 @@
+<div class="breakcrumb">
+	<ol class="breadcrumb">
+	  <li><a href="/main/customers/customers.html">Customers</a></li>
+	  <li class="active">Customer Detail</li>
+	</ol>
+</div>
+
+<div class="customer-detail" ng-cloak ng-controller="customerDetailController" ng-init="Init()">
+	<div>
+		<h2>Customer Details</h2>		
+	</div>	
+	<form name="updateCustomer" >
+		<div class="detail">
+			<div class="row">
+	            <div class="col-md-2 name">
+	                Name
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Name" name="name" ng-model="Model.name" required
+	                       uib-tooltip="{{(updateCustomer.name.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.name"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	      	<div class="row">
+	            <div class="col-md-2 name">
+	                Phone
+	            </div>
+	            <div class="col-md-6">
+	                <input type="number" class="form-control" placeholder="Phone" name="phone" ng-model="Model.phone" required
+	                       uib-tooltip="{{(updateCustomer.phone.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.phone"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-md-2 name">
+	                Address
+	            </div>
+	            <div class="col-md-6">
+	                <input type="text" class="form-control" placeholder="Address" name="address" ng-model="Model.address" required
+	                       uib-tooltip="{{(updateCustomer.address.$error.required)?'This field is required.':''}}"
+	                       tooltip-enable="!Model.address"
+	                       tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>
+        	<div class="row">
+	            <div class="col-md-2 name">
+	                Email
+	            </div>
+	            <div class="col-md-6">
+	                <input type="email" class="form-control" placeholder="Email" name="email" ng-model="Model.email" required
+	                       uib-tooltip="{{(updateCustomer.email.$error.required)?'This field is required.':(updateCustomer.email.$error.email)?'Invalid email address.':''}}"
+               			   tooltip-enable="!Model.email"
+                    	   tooltip-placement="bottom" tooltip-trigger="mouseenter"/>
+	            </div>
+	        </div>	        
+	        <div class="row pnl-button">
+	        	<button ng-click="createUpdateCustomer()" ng-if="!IsUpdate" class="btn btn-primary">Create Customer</button>
+        		<button ng-click="createUpdateCustomer()" ng-if="IsUpdate"  class="btn btn-primary">Update Customer</button>
+        	</div>         	
+		</div>
+	</form>
+</div>
+<script language="javascript" src="/js/admin/main/customers/customerDetailController.js"></script>
+
+	
