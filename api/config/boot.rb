@@ -49,6 +49,10 @@ DB_CONNECTION = ActiveRecord::Base.establish_connection(
 
 I18n.enforce_available_locales = false
 LOG = Logger.new("log/Townsquare.log", 10, 1024000)
+if TOWNSQUARE_ENV == 'staging'
+  LOG = Logger.new(STDOUT)
+end
+
 if TOWNSQUARE_ENV == 'development'
   ActiveRecord::Base.logger = Logger.new(STDOUT)
 end
