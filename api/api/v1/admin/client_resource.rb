@@ -102,6 +102,26 @@ module Townsquare
           
           JSONResult.new(true, nil)
         end
+        
+        params do
+          requires :resource_id, type:Integer, desc: "Id of a resource"
+        end
+        post 'resource/del' do
+          admin_user = login_admin_user
+          if !admin_user
+            return JSONResult.new(false, "INVALID_SESSION")
+          end
+          
+          resource = ClientResource.where("id = ?", params[:resource_id]).first
+          if !resource
+            return JSONResult.new(false, "NOT_EXISTED")
+          end
+            
+          ClientResourceDetail.where("client_resource_id = ?", params[:resource_id]).destroy_all
+          ClientResource.where("id = ?", params[:resource_id]).destroy_all
+          
+          JSONResult.new(true, nil)
+        end
 
         params do
           requires :unique_name, type:String, desc: "Unique name of an UI component"

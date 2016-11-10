@@ -16,6 +16,32 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
  		gotoClientResourceDetailPage();	
 	};
 	
+	$scope.deleteResource = function (resource) {
+		ngDialog.openConfirm({
+		    template: 'confirm-message',
+	        data: '{"message":"Are you want to delete ' + resource.name + '?"}'
+		})
+		.then(function (value) {
+            $http.post(SERVICE_BASE_URL + '/admin/resource/del', {"resource_id": resource.id} ,{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
+		        .success(function (result) {	                
+		            if (result.success) {	      
+			          	getResources();
+			          	$scope.currentPageResource = 1;
+		   				$scope.currentPageKeyResource = 1;
+		            } else if(result.data == ErrorCode.NOT_EXISTED) {
+		            	showErrorDialog(ngDialog, ErrorMessage.RESOURCE_NOT_EXSITED);
+		            } else {                	              	  	
+						processCommonExeption(result.data, ngDialog);                	              	                    
+					}
+		        })
+		        .error(function (error, status){	            	
+			        processCommonExeption(SERVER_ERROR_MSG, ngDialog);
+				}); 	
+        }, function (value) {
+            
+        });
+	};
+	
 	$scope.createUpdateKeyResource = function (keyResourceUniqueName) { 	
 		if(keyResourceUniqueName != null) {			
 			sessionStorage.setItem("keyResourceUniqueName", keyResourceUniqueName);
@@ -64,14 +90,16 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
     	$http.get(SERVICE_BASE_URL + '/admin/resources', { withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
 		    .success(function (result) {	 
 		        if (result.success) {	     	            	
-		        	$scope.resources = result.data;	            
-		        	$scope.resources[0].status = "active";	
-		        	$scope.keyResources = result.data[0].details;
-		        	
-		        	$scope.TotalResourceItems = result.data.length;
-		        	$scope.TotalKeyResourceItems = result.data[0].details.length;	            	
-		        	
-		        	sessionStorage.setItem("allResource", JSON.stringify(result.data));	   
+		        	$scope.resources = result.data;	  
+		        	if($scope.resources.length > 0) {
+		        		$scope.resources[0].status = "active";	
+			        	$scope.keyResources = result.data[0].details;
+			        	
+			        	$scope.TotalResourceItems = result.data.length;
+			        	$scope.TotalKeyResourceItems = result.data[0].details.length;	            	
+			        	
+			        	sessionStorage.setItem("allResource", JSON.stringify(result.data));	 
+		        	}          		        	  
 		        } else {                	              	  	
 	        		processCommonExeption(result.data, ngDialog);                	              	                    
 	            }

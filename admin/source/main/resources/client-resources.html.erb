@@ -19,7 +19,8 @@
 					<tr ng-class="{selected: resource.status}" class="resouce-name" ng-repeat="resource in resources.slice(((currentPageResource-1)*itemPerPage), ((currentPageResource)*itemPerPage))">
 	                        <td><a href="#" ng-click="reloadResourceDetail(resource,$event)">{{resource.name}}</a><span style="float: right" class="badge" ng-if="resource.is_default">Default</span></td>	                        
 	                        <td align="center">
-	                        	<a class="td-edit" href="#" ng-click="createUpdateResource(resource)"><i class="fa fa-pencil-square-o"></i></a>   	                        	                	                       	                        	
+	                        	<a class="td-edit" href="#" ng-click="createUpdateResource(resource)"><i class="fa fa-pencil-square-o"></i></a> 
+	                        	<a class="td-delete" href="#" ng-click="deleteResource(resource)"><i class="fa fa-times"></i></a>  	                        	                	                       	                        	
 	                        </td>                                           
 	                    </tr>
 				</tbody>

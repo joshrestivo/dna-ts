@@ -53,22 +53,22 @@ angular.module('app').controller('adminUserDetailController',  ['$scope', '$http
 	   			name:$scope.adminUser.name,
 	   			email:$scope.adminUser.email
 	   		};
-	   		alert(JSON.stringify(data));
-	   			$http.post(SERVICE_BASE_URL+'/admin/user/update',data,{withCredentials: true,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
-					.success(function (result) {
-					    if (result.success) {
-					    	gotoAdminUserPage();
-						}else {
-							if(result.data == ErrorCode.EMAIL_EXISTED) {
-			            		showErrorDialog(ngDialog, ErrorMessage.UPDATE_USER_EMAIL_EXISTED);
-			            	} else {
-			            		processCommonExeption(result.data, ngDialog);
-			            	}    
-						}
-					 })
-					 .error(function (error, status){
-					       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-					});
+	   		
+   			$http.post(SERVICE_BASE_URL+'/admin/user/update',data,{withCredentials: true,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
+				.success(function (result) {
+				    if (result.success) {
+				    	gotoAdminUserPage();
+					}else {
+						if(result.data == ErrorCode.EMAIL_EXISTED) {
+		            		showErrorDialog(ngDialog, ErrorMessage.UPDATE_USER_EMAIL_EXISTED);
+		            	} else {
+		            		processCommonExeption(result.data, ngDialog);
+		            	}    
+					}
+				 })
+				 .error(function (error, status){
+				       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+				});
    		}
    };
    
