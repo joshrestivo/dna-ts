@@ -7,6 +7,14 @@ import org.json.JSONObject;
  */
 
 public class StreetAlert extends BaseModel {
+    public String getDate() {
+        return _date;
+    }
+
+    public String getLink() {
+        return _link;
+    }
+
     private String _date;
     private String _link;
 

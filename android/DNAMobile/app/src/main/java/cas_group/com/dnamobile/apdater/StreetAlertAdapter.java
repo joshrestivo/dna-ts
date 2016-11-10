@@ -24,12 +24,10 @@ public class StreetAlertAdapter extends RecyclerView.Adapter<StreetAlertAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView uiTxtTitle;
         public TextView uiTxtContent;
-        public ImageView uiImagview;
         public ViewHolder(View view) {
             super(view);
             uiTxtTitle = (TextView) view.findViewById(R.id.uiTxtTitle);
             uiTxtContent = (TextView) view.findViewById(R.id.uiTxtContent);
-            uiImagview = (ImageView) view.findViewById(R.id.uiImageView);
         }
     }
 
@@ -50,15 +48,10 @@ public class StreetAlertAdapter extends RecyclerView.Adapter<StreetAlertAdapter.
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        GraphicsUtil.displayPhoto(_context, "http://www.mappery.com/maps/Poznan-Street-Map.png", holder.uiImagview);
-//        holder.txtView.setText(horizontalList.get(position));
+        StreetAlert streetAlert = items.get(position);
+        holder.uiTxtTitle.setText(streetAlert.getDate());
+        holder.uiTxtContent.setText(streetAlert.getLink());
 
-//        holder.txtView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
     }
 
     @Override

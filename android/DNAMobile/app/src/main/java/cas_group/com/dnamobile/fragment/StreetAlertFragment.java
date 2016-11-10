@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,10 @@ import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.activity.MainActivity;
 import cas_group.com.dnamobile.apdater.StreetAlertAdapter;
 import cas_group.com.dnamobile.apdater.UpcomingEventAdapter;
+import cas_group.com.dnamobile.api.ApiClientUsage;
+import cas_group.com.dnamobile.api.ResponseCallback;
+import cas_group.com.dnamobile.models.BaseModel;
+import cas_group.com.dnamobile.models.Building;
 import cas_group.com.dnamobile.models.StreetAlert;
 import cas_group.com.dnamobile.models.UpcomingEvent;
 
@@ -24,9 +29,6 @@ import cas_group.com.dnamobile.models.UpcomingEvent;
  */
 
 public class StreetAlertFragment extends Fragment {
-
-
-    private OnFragmentInteractionListener mListener;
 
     public StreetAlertFragment() {
         // Required empty public constructor
@@ -42,72 +44,90 @@ public class StreetAlertFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View rootView = inflater.inflate(R.layout.fragment_street_alert, container, false);
 
+        _uiProgressLoading = (ProgressBar) rootView.findViewById(R.id.uiProgressLoading);
         _uiListEmail = (RecyclerView) rootView.findViewById(R.id.uiListEvent);
-        LinearLayoutManager horizontalLayoutManagaer
+
+        final LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         _uiListEmail.setLayoutManager(horizontalLayoutManagaer);
         onInitData();
+
+        _uiListEmail.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int totalItemCount = horizontalLayoutManagaer.getItemCount();
+                int lastVisibleItem = horizontalLayoutManagaer.findLastVisibleItemPosition();
+
+                if (_hasLoadMore && !_isLoading && totalItemCount <= (lastVisibleItem + 1)) {
+                    getStreetAlerts();
+                }
+            }
+        });
         return rootView;
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
 
     protected void onInitData(){
-//        _items.add(new StreetAlert("test","test","test"));
-//        _items.add(new StreetAlert("test","test","test"));
-//        _items.add(new StreetAlert("test","test","test"));
-//        _items.add(new StreetAlert("test","test","test"));
-//        _items.add(new StreetAlert("test","test","test"));
 
         _adapter = new StreetAlertAdapter(getActivity(), _items);
         _uiListEmail.setAdapter(_adapter);
         _adapter.notifyDataSetChanged();
+        getStreetAlerts();
+    }
+
+    private void getStreetAlerts(){
+        _uiProgressLoading.setVisibility(View.VISIBLE);
+        _isLoading = true;
+        ApiClientUsage.getStreetAlerts(_currentPage, getStreetAlertCallback());
+    }
+
+    private ResponseCallback getStreetAlertCallback(){
+        return new ResponseCallback((MainActivity)getActivity()){
+            @Override
+            public void endSucceeded(ArrayList<BaseModel> bulletins) {
+                for (int i = 0; i < bulletins.size(); i++) {
+                    StreetAlert bulletin = (StreetAlert) bulletins.get(i);
+                    _items.add(bulletin);
+                }
+                _hasLoadMore = bulletins.size() == ApiClientUsage.PAGE_SIZE;
+                if (_hasLoadMore){
+                    _currentPage ++;
+                }
+                _adapter.notifyDataSetChanged();
+                hideLoading();
+            }
+
+            @Override
+            public void endFailed(String result) {
+                super.endFailed(result);
+                hideLoading();
+            }
+
+            @Override
+            public void endFailed(Exception ex) {
+                super.endFailed(ex);
+                hideLoading();
+            }
+        };
+    }
+
+    private void hideLoading(){
+        _isLoading = false;
+        _uiProgressLoading.setVisibility(View.GONE);
     }
 
     private RecyclerView _uiListEmail;
     private StreetAlertAdapter _adapter;
+    private ProgressBar _uiProgressLoading;
+
+    private int _currentPage = 1;
+    private boolean _isLoading = true;
+    private boolean _hasLoadMore = true;
 
     private ArrayList<StreetAlert> _items = new ArrayList<>();
 }
