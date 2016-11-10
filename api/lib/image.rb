@@ -17,6 +17,21 @@ module Townsquare
       
       [file_name, "#{THUMBNAIL_SIZE}_#{file_name}"]
     end
+
+    def process_from_url(out_folder, url)
+      image = Dragonfly.app.fetch_url(url)
+      thumbnail_image = image.thumb(THUMBNAIL_SIZE + "#")
+      resize_image = image.convert('-quality 60 -resize 720x', 'format' => 'jpg', 'frame' => 0)
+      
+      file_name = "#{Time.now.to_i}_#{SecureRandom.uuid}.jpg"
+      resize_file_path = "#{out_folder}/#{file_name}"
+      resize_image.to_file(resize_file_path, :mode => 0666, :mkdirs => true)
+      
+      thumbnail_file_path = "#{out_folder}/#{THUMBNAIL_SIZE}_#{file_name}"
+      thumbnail_image.to_file(thumbnail_file_path, :mode => 0666, :mkdirs => true)
+      
+      [file_name, "#{THUMBNAIL_SIZE}_#{file_name}"]
+    end
   
   end
 end
