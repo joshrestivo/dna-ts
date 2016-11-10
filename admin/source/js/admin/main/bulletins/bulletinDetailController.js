@@ -43,7 +43,7 @@ angular.module('app').controller('bulletinDetailController',  ['$scope', '$http'
 				})
 		        .success(function (result) {
 					 if (result.success) {	      
-				          	location.href="/main/bulletins/bulletins.html";
+				          	gotoBulletinPage();
 			            } else {    
 			            	if(result.data == ErrorCode.FROM_TO_INVALID){
 			            		showErrorDialog(ngDialog, ErrorMessage.CREATE_BULLETIN_FROM_TO_INVALID);

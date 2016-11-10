@@ -16,30 +16,31 @@ angular.module('app').controller('adminUserDetailController',  ['$scope', '$http
     };
 
    $scope.cancel=function(){
-   		window.location.href = "/main/building/building.html";
+   		gotoAdminUserPage();
    };
    	
    $scope.save = function(){
-	   	if($scope.adminUserDetail.$valid)
-	   	{
+	   	if($scope.adminUserDetail.$valid) {
 	   		if($scope.adminUser.password!== $scope.adminUser.confirm_Password){
 	   			 showErrorDialog(ngDialog,"Confirm password not match!");
-	   		}else{
-	   			$http.post(SERVICE_BASE_URL+'/admin/user/create',$scope.adminUser,{
-   				withCredentials: true,
-   				headers: {
-		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME)
-		            		}
-	            }).success(function (result) {
-	            if (result.success) {
-            		showInfoDialog(ngDialog,"User admin added.");
-	        	}else {
-	                		processCommonExeption(result.data, ngDialog);
-	        	}
-	         })
-	         .error(function (error, status){
+	   		} else {
+	   			$http.post(SERVICE_BASE_URL+'/admin/user/create',$scope.adminUser,{withCredentials: true,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
+            		.success(function (result) {
+			            if (result.success) {
+		            		gotoAdminUserPage();
+			        	}else {
+                			if(result.data == ErrorCode.USERNAME_EXISTED){
+			            		showErrorDialog(ngDialog, ErrorMessage.CREATE_USER_USERNAME_EXISTED);
+			            	} else if(result.data == ErrorCode.EMAIL_EXISTED) {
+			            		showErrorDialog(ngDialog, ErrorMessage.CREATE_USER_EMAIL_EXISTED);
+			            	} else {
+			            		processCommonExeption(result.data, ngDialog);
+			            	}    
+			        	}
+	        		 })
+	         		.error(function (error, status){
 				       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-  			}); 	
+  					}); 	
 	   		}
    		}
    };
@@ -53,21 +54,21 @@ angular.module('app').controller('adminUserDetailController',  ['$scope', '$http
 	   			email:$scope.adminUser.email
 	   		};
 	   		alert(JSON.stringify(data));
-	   			$http.post(SERVICE_BASE_URL+'/admin/user/update',data,{
-   				withCredentials: true,
-   				headers: {
-		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME)
-		            		}
-	            }).success(function (result) {
-	            if (result.success) {
-	            	showInfoDialog(ngDialog,"User admin updated.");
-	        	}else {
-	                		processCommonExeption(result.data, ngDialog);
-	        	}
-	         })
-	         .error(function (error, status){
-				       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-  			});
+	   			$http.post(SERVICE_BASE_URL+'/admin/user/update',data,{withCredentials: true,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
+					.success(function (result) {
+					    if (result.success) {
+					    	gotoAdminUserPage();
+						}else {
+							if(result.data == ErrorCode.EMAIL_EXISTED) {
+			            		showErrorDialog(ngDialog, ErrorMessage.UPDATE_USER_EMAIL_EXISTED);
+			            	} else {
+			            		processCommonExeption(result.data, ngDialog);
+			            	}    
+						}
+					 })
+					 .error(function (error, status){
+					       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+					});
    		}
    };
    

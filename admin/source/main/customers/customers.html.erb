@@ -21,7 +21,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="customer in customers">
+				<tr ng-repeat="customer in customers.slice(((currentPage-1)*itemPerPage), ((currentPage)*itemPerPage))">
                     <td  ng-bind="customer.name"></td>
                     <td  ng-bind="customer.phone"></td>    
                     <td  ng-bind="customer.address"></td>    

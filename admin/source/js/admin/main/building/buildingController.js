@@ -4,40 +4,34 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
     	$scope.currentPage = 1;
 	    $scope.itemPerPage = ITEM_PER_PAGE;
 	    $scope.maxSize = PAGE_MAX_SIZE;
-	    $http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
-            if (result.success) {
-            	$scope.locations = result.data;
-            	$scope.location_id=$scope.locations[0].id;
-            	getData($scope.location_id);
-            }else {
-	                	if(result.data == "INVALID_SESSION") {                	
-	                		showErrorDialog(ngDialog,"Invalid login credantial");
-	                	} else {                  	  	
-	                		processCommonExeption(result.data, ngDialog);
-	                	}
-	                }
-	            })
-	            .error(function (error, status){
-	            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-	  			});
+	    $http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
+	    	.success(function (result) {
+	            if (result.success) {
+	            	$scope.locations = result.data;
+	            	$scope.location_id=$scope.locations[0].id;
+	            	getData($scope.location_id);
+	            } else {
+            		processCommonExeption(result.data, ngDialog);
+                }
+            })
+            .error(function (error, status){
+            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+  			});
 	};
   		
     var getData = function(location_id){
-    	$http.get(SERVICE_BASE_URL+'/admin/location/'+location_id+'/buildings ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
-            if (result.success) {
-            	$scope.buildings = result.data;
-            	$scope.TotalItems = $scope.buildings.length;
-            }else {
-	                	if(result.data == "INVALID_SESSION") {                	
-	                		showErrorDialog(ngDialog,"Invalid login credantial");
-	                	} else {                  	  	
-	                		processCommonExeption(result.data, ngDialog);
-	                	}
-	                }
-	            })
-	            .error(function (error, status){
-	            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-	  			}); 
+    	$http.get(SERVICE_BASE_URL+'/admin/location/'+location_id+'/buildings ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
+    		.success(function (result) {
+	            if (result.success) {
+	            	$scope.buildings = result.data;
+	            	$scope.TotalItems = $scope.buildings.length;
+	            } else {
+            		processCommonExeption(result.data, ngDialog);
+                }
+            })
+            .error(function (error, status){
+            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+  			}); 
     };
     
     $scope.changeLocation=function(location_id){
@@ -45,13 +39,13 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
     };
     
     $scope.addNewBuilding = function(){
-    		sessionStorage.setItem("locationId",$scope.location_id);
-    		location.href="/main/building/building-detail.html";	
+		sessionStorage.setItem("locationId",$scope.location_id);
+		gotoBuildingDetailPage();
     };
     
     $scope.editBuilding = function(building){
-    		sessionStorage.setItem("building", JSON.stringify(building));
-			window.location.href=("/main/building/building-detail.html");
+		sessionStorage.setItem("building", JSON.stringify(building));
+		gotoBuildingDetailPage();
     };
     
     $scope.deleteBuilding=function(building){
@@ -60,20 +54,17 @@ angular.module('app').controller('buildingController',  ['$scope', '$http','ngDi
 	        data: '{"message":"Are you want to delete building: ' + building.name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/location/'+building.location_id+'/building/'+building.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}}).success(function (result) {
-			            if (result.success) {
-			            getData(building.location_id);
-			            }else {
-				                	if(result.data == "INVALID_SESSION") {                	
-				                		showErrorDialog(ngDialog,"Invalid login credantial");
-				                	} else {                  	  	
-				                		processCommonExeption(result.data, ngDialog);
-				                	}
-				                }
-				            })
-				            .error(function (error, status){
-						       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-				  			}); 
+           $http.get(SERVICE_BASE_URL+'/admin/location/'+building.location_id+'/building/'+building.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
+           		.success(function (result) {
+		            if (result.success) {
+		            	getData(building.location_id);
+		            } else {
+                		processCommonExeption(result.data, ngDialog);
+	                }
+	            })
+	            .error(function (error, status){
+			       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+	  			}); 
 	                    
         }, function (value) {});
 	};

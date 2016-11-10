@@ -19,43 +19,43 @@ angular.module('app').controller('buildingDetailController',  ['$scope', '$http'
     };
 
    $scope.cancel=function(){
-   		window.location.href = "/main/building/building.html";
+   		gotoBuildingPage();
    };
    	
    $scope.save = function(){
-	   	if($scope.buildingDetail.$valid)
-	   	{
-	   		  var formData = new FormData();
-	               formData.append('id',$scope.building.id);
-	               formData.append('name',$scope.building.name);
-	               formData.append('address',$scope.building.address);
-	               formData.append('zipcode',$scope.building.zipcode);
-	               if($scope.file){
-	               	formData.append('image',$scope.file);	
-	               }
-	               
-   			$http.post(SERVICE_BASE_URL+'/admin/location/'+$scope.building.location_id+'/building/save',formData,{
-   				withCredentials: true,
-   				transformRequest: angular.identity,
-	   			headers: {
-		            		'Access-Token': $.cookie(AUTH_COOKIE_NAME),
-		                	'Content-Type': undefined
-		            		}
-	            }).success(function (result) {
-	            if (result.success) {
-	            	if($scope.IsUpdate){
-	            		showInfoDialog(ngDialog,"Building updated.");
-	            	}else{
-	            		showInfoDialog(ngDialog,"Building added.");
-	            	}
-	        	}else {
-	                		processCommonExeption(result.data, ngDialog);
-	        	}
-	         })
-	         .error(function (error, status){
+		if($scope.buildingDetail.$valid) {
+			var formData = new FormData();
+			formData.append('id',$scope.building.id);
+			formData.append('name',$scope.building.name);
+			formData.append('address',$scope.building.address);
+			formData.append('zipcode',$scope.building.zipcode);
+			if($scope.file){
+				formData.append('image',$scope.file);	
+			}
+		           
+			$http.post(SERVICE_BASE_URL+'/admin/location/'+$scope.building.location_id+'/building/save',formData,{
+					withCredentials: true,
+					transformRequest: angular.identity,
+					headers: {
+			            		'Access-Token': $.cookie(AUTH_COOKIE_NAME),
+			                	'Content-Type': undefined
+	            			}
+			        })
+		        .success(function (result) {
+		            if (result.success) {
+		            	gotoBuildingPage();
+		        	}else {
+		        		if(result.data == ErrorCode.IMAGE_INVALID) {
+		            		showErrorDialog(ngDialog, ErrorMessage.CREATE_BULLETIN_IMAGE_INVALID);
+		            	} else {
+		            		processCommonExeption(result.data, ngDialog);
+		            	}    
+		        	}
+		         })
+		     	.error(function (error, status){
 				       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-  			}); 
-   		}
+				}); 
+		}
    };
    	//active tab
    	$(".nav li.tab_building").addClass("active"); 

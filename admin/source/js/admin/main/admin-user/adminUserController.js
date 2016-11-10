@@ -7,35 +7,32 @@ angular.module('app').controller('adminUserController',  ['$scope', '$http','ngD
 	};
   		
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/admin/users',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
-            if (result.success) {
-            	$scope.adminUsers = result.data;
-            	$scope.TotalItems = $scope.adminUsers.length;
-            }else {
-	                	if(result.data == "INVALID_SESSION") {                	
-	                		showErrorDialog(ngDialog,"Invalid login credantial");
-	                	} else {                  	  	
-	                		processCommonExeption(result.data, ngDialog);
-	                	}
-	                }
-	            })
-	            .error(function (error, status){
-	            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-	  			}); 
+    	$http.get(SERVICE_BASE_URL+'/admin/users',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
+			.success(function (result) {
+	            if (result.success) {
+	            	$scope.adminUsers = result.data;
+	            	$scope.TotalItems = $scope.adminUsers.length;
+	            } else {        	  	
+        			processCommonExeption(result.data, ngDialog);
+                }
+            })
+            .error(function (error, status){
+            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+  			}); 
     };
     
     $scope.addNewAdminUser = function(){
-    		location.href="/main/admin-user/admin-user-detail.html";	
+		gotoAdminUserDetailPage();	
     };
     
     $scope.editAdminUser = function(adminUser){
-    		sessionStorage.setItem("adminUser", JSON.stringify(adminUser));
-			window.location.href=("/main/admin-user/admin-user-detail.html");
+		sessionStorage.setItem("adminUser", JSON.stringify(adminUser));
+		gotoAdminUserDetailPage();
     };
     
     $scope.resetPasswordAdminUser = function(adminUser){
-    		sessionStorage.setItem("adminUserResetPassword", JSON.stringify(adminUser));
-			window.location.href=("/main/admin-user/reset-pwd.html");
+		sessionStorage.setItem("adminUserResetPassword", JSON.stringify(adminUser));
+		gotoAdminUserResetPasswordPage();
     };
     
     $scope.deleteAdminUser=function(adminUser){
@@ -44,20 +41,25 @@ angular.module('app').controller('adminUserController',  ['$scope', '$http','ngD
 	        data: '{"message":"Are you want to delete user: ' + adminUser.name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/user/'+adminUser.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}}).success(function (result) {
-			            if (result.success) {
-			            getData();
-			            }else {
-				                	if(result.data == "INVALID_SESSION") {                	
-				                		showErrorDialog(ngDialog,"Invalid login credantial");
-				                	} else {                  	  	
-				                		processCommonExeption(result.data, ngDialog);
-				                	}
-				                }
-				            })
-				            .error(function (error, status){
-						       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-				  			}); 
+           $http.get(SERVICE_BASE_URL+'/admin/user/'+adminUser.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
+       			.success(function (result) {
+		            if (result.success) {
+		            	getData();
+		            } else {	                	                	  	
+                		if(result.data == ErrorCode.NOT_EXISTED){
+		            		showErrorDialog(ngDialog, ErrorMessage.DELETE_USER_NOT_EXISTED);
+		            	} else if(result.data == ErrorCode.DELETE_YOURSELF) {
+		            		showErrorDialog(ngDialog, ErrorMessage.DELETE_USER_DELETE_YOURSELF);
+		            	}else if(result.data == ErrorCode.DELETE_SUPER_ADMIN) {
+		            		showErrorDialog(ngDialog, ErrorMessage.DELETE_USER_DELETE_SUPER_ADMIN);
+		            	} else {
+		            		processCommonExeption(result.data, ngDialog);
+		            	}    	                	
+	                }
+	            })
+	            .error(function (error, status){
+			       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+	  			}); 
 	                    
         }, function (value) {});
 	};

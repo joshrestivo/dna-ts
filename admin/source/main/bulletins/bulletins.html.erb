@@ -29,7 +29,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="bulletin in bulletins">
+				<tr ng-repeat="bulletin in bulletins.slice(((currentPage-1)*itemPerPage), ((currentPage)*itemPerPage))">
                     <td  ng-bind="bulletin.title"></td>
                     <td  ng-bind="bulletin.description"></td>    
                     <td width="100px;" ng-bind="bulletin.valid_from | date:'yyyy/MM/dd'"></td>    

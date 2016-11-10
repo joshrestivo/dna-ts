@@ -9,12 +9,12 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
 	};  		
     
 	$scope.addNewCustomer = function(){
-		location.href="/main/customers/customer-detail.html";	
+		gotoCustomerDetailPage();	
     };
     
     $scope.editCustomer = function(customer){
-		sessionStorage.setItem("customer", JSON.stringify(customer));		
-		location.href="/main/customers/customer-detail.html";
+		sessionStorage.setItem("customer(", JSON.stringify(customer));		
+		gotoCustomerDetailPage();
     };
     
     $scope.deleteCustomer =function(customer){

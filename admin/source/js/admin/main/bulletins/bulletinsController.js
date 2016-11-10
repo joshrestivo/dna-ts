@@ -15,13 +15,13 @@ angular.module('app').controller('bulletinsController',  ['$scope', '$http', 'ng
     
 	$scope.addNewBulletin = function(){
 		sessionStorage.setItem("locationId",$scope.locationId);
-		location.href="/main/bulletins/bulletin-detail.html";	
+		gotoBulletinDetailPage();
     };
     
     $scope.editBulletin = function(bulletin){
 		sessionStorage.setItem("bulletin", JSON.stringify(bulletin));
 		sessionStorage.setItem("locationId",$scope.locationId);
-		location.href="/main/bulletins/bulletin-detail.html";
+		gotoBulletinDetailPage();
     };
     
     $scope.deleteBulletin=function(bulletin){

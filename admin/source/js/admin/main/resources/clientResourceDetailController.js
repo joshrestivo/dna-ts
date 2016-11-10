@@ -24,7 +24,7 @@ angular.module('app').controller('updateClientResourceController',  ['$scope', '
 			$http.post(SERVICE_BASE_URL + '/admin/resource/save',$scope.Model,{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
 		        .success(function (result) {	                
 		            if (result.success) {	      
-			          	window.location.href = "/main/resources/client-resources.html";
+			          	gotoClientResourcePage();
 		            } else {                	   		                            	  
                 		processCommonExeption(result.data, ngDialog);                	   	  	
 		            }

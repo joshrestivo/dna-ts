@@ -24,7 +24,7 @@ angular.module('app').controller('customerDetailController',  ['$scope', '$http'
 			$http.post(SERVICE_BASE_URL + '/admin/customer/save',$scope.Model,{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
 		        .success(function (result) {
 					 if (result.success) {	      
-				          	location.href="/main/customers/customers.html";
+				          	gotoCustomerPage();
 			            } else {    
 			            	if(result.data == ErrorCode.EMAIL_EXISTED){
 			            		showErrorDialog(ngDialog, ErrorMessage.CREATE_UPDATE_CUSTOMER_EMAIL_EXISTED);			            	 

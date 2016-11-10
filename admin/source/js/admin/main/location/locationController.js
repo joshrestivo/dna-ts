@@ -7,30 +7,27 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
       };
     
     var getData = function(){
-    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} }).success(function (result) {
-            if (result.success) {
-            	$scope.locations = result.data;
-            	$scope.TotalItems = $scope.locations.length;
-            }else {
-	                	if(result.data == "INVALID_SESSION") {                	
-	                		showErrorDialog(ngDialog,"Invalid login credantial");
-	                	} else {                  	  	
-	                		processCommonExeption(result.data, ngDialog);
-	                	}
-	                }
-	            })
-	            .error(function (error, status){
-	            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-	  			}); 
+    	$http.get(SERVICE_BASE_URL+'/admin/locations ',{ withCredentials: true, headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)} })
+    		.success(function (result) {
+	            if (result.success) {
+	            	$scope.locations = result.data;
+	            	$scope.TotalItems = $scope.locations.length;
+	            } else {
+            		processCommonExeption(result.data, ngDialog);
+                }
+            })
+            .error(function (error, status){
+            	showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+  			}); 
     };
     
     $scope.addNewLocation = function(){
-    		location.href="/main/location/location-detail.html";	
+		gotoLocationDetailPage();	
     };
     
     $scope.editLocation = function(location){
-    		sessionStorage.setItem("location", JSON.stringify(location));
-			window.location.href=("/main/location/location-detail.html");
+		sessionStorage.setItem("location", JSON.stringify(location));
+		gotoLocationDetailPage();
     };
     
     $scope.deleteLocation=function(location){
@@ -39,20 +36,17 @@ angular.module('app').controller('locationController',  ['$scope', '$http','ngDi
 	        data: '{"message":"Are you want to delete location: ' + location.Name + '?"}'
 		})
 		.then(function (value) {
-           $http.get(SERVICE_BASE_URL+'/admin/location/'+location.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}}).success(function (result) {
-			            if (result.success) {
-			            getData();
-			            }else {
-				                	if(result.data == "INVALID_SESSION") {                	
-				                		showErrorDialog(ngDialog,"Invalid login credantial");
-				                	} else {                  	  	
-				                		processCommonExeption(result.data, ngDialog);
-				                	}
-				                }
-				            })
-				            .error(function (error, status){
-						       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
-				  			}); 
+           $http.get(SERVICE_BASE_URL+'/admin/location/'+location.id+'/del  ',{ withCredentials: true ,headers: {'Access-Token': $.cookie(AUTH_COOKIE_NAME)}})
+       			.success(function (result) {
+		            if (result.success) {
+		            	getData();
+		            } else {
+                		processCommonExeption(result.data, ngDialog);
+	                }
+	            })
+	            .error(function (error, status){
+			       showErrorDialog(ngDialog,SERVER_ERROR_MSG);
+	  			}); 
 	                    
         }, function (value) {});
 	};

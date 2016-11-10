@@ -13,14 +13,14 @@ angular.module('app').controller('clientResourceController',  ['$scope', '$http'
  		if (resource != null) { 	
  			sessionStorage.setItem("resource", JSON.stringify(resource)); 			
  		} 		
- 		window.location.href = ("/main/resources/client-resource-detail.html"); 	
+ 		gotoClientResourceDetailPage();	
 	};
 	
 	$scope.createUpdateKeyResource = function (keyResourceUniqueName) { 	
 		if(keyResourceUniqueName != null) {			
 			sessionStorage.setItem("keyResourceUniqueName", keyResourceUniqueName);
 		} 
- 		window.location.href = ("/main/resources/client-resource-key-detail.html"); 	 		 		
+ 		gotoClientResourceKeyDetailPage(); 	 		 		
 	};
 	
 	$scope.deleteKeyResource = function(keyResourceUniqueName) {
