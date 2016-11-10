@@ -177,7 +177,7 @@ module Townsquare
       end
       
       get 'import-buildings' do
-        stLouisLocation = Location.where("LOWER(name) = 'st. louis'")
+        stLouisLocation = Location.where("LOWER(name) = 'st. louis'").first
         if !stLouisLocation
           return JSONResult.new(true, [])
         end
