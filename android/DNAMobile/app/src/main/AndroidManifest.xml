@@ -52,6 +52,13 @@
 
         </activity>
 
+        <activity
+            android:name=".activity.LocationsActivity"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".activity.MainActivity">
+
+        </activity>
+
         <service
             android:name=".service.LocationService"
             android:stopWithTask="false"

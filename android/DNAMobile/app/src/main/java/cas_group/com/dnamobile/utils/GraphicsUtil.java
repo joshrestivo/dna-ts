@@ -150,6 +150,9 @@ public class GraphicsUtil {
     }
 
     public static void displayPhoto(Context context, String url, ImageView img) {
+        if(url.isEmpty()){
+            return;
+        }
         Picasso.with(context)
                 .load(url)
                 .placeholder(R.drawable.img_not_available)

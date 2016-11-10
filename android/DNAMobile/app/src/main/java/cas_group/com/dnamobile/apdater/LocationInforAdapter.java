@@ -13,6 +13,7 @@ import java.util.List;
 import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.models.Building;
 import cas_group.com.dnamobile.utils.CircularImageView;
+import cas_group.com.dnamobile.utils.GraphicsUtil;
 
 /**
  * Created by kuccu on 10/25/16.
@@ -24,12 +25,12 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtTitle;
         public TextView txtDesc;
-        public CircularImageView imageView;
+        public CircularImageView uiImageView;
         public ViewHolder(View view) {
             super(view);
             txtTitle = (TextView) view.findViewById(R.id.uiLblTitle);
             txtDesc = (TextView) view.findViewById(R.id.uiLblDesc);
-            imageView = (CircularImageView)view.findViewById(R.id.uiImageInfor);
+            uiImageView = (CircularImageView)view.findViewById(R.id.uiImageInfor);
         }
     }
 
@@ -50,6 +51,10 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
+        Building building = items.get(position);
+        holder.txtTitle.setText(building.getName());
+        holder.txtDesc.setText(building.getAddress());
+        GraphicsUtil.displayPhoto(_context, building.getImageUrl(), holder.uiImageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +62,8 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
                 Toast.makeText(_context,"test", Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
     @Override

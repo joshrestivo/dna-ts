@@ -65,13 +65,13 @@ public class BaseAppCompatActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-//        PFApplication.activityPaused();
+        DNAApplication.activityPaused();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        PFApplication.activityResumed();
+		DNAApplication.activityResumed();
     }
 
     // --------------------------------------------
@@ -126,8 +126,8 @@ public class BaseAppCompatActivity extends AppCompatActivity {
 					_progressDialog.setCancelable(false);
 					_progressDialog.setIndeterminate(true);
 					_progressDialog.show();
-//					_progressDialog.setProgressStyle(R.style.DialogTheme);
-//					_progressDialog.setContentView(R.layout.progress_dialog);
+					_progressDialog.setProgressStyle(R.style.DialogTheme);
+					_progressDialog.setContentView(R.layout.progress_dialog);
 					_progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 				} catch (Exception ex){
@@ -184,6 +184,16 @@ public class BaseAppCompatActivity extends AppCompatActivity {
 	 });
 
     }
+	protected void showGeneralServerErrorDialog() {
+
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				AlertDialogManager.showErrorDialog(_context, getString(R.string.server_error_msg));
+			}
+		});
+
+	}
 
     protected void showAlertMessage(String message) {
 		AlertDialogManager.showInfoDialog(_context, message);

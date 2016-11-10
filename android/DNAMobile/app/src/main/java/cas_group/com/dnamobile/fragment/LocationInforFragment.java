@@ -14,8 +14,14 @@ import android.widget.SearchView;
 import java.util.ArrayList;
 
 import cas_group.com.dnamobile.R;
+import cas_group.com.dnamobile.activity.MainActivity;
+import cas_group.com.dnamobile.apdater.BulletinAdapter;
 import cas_group.com.dnamobile.apdater.LocationInforAdapter;
+import cas_group.com.dnamobile.api.ApiClientUsage;
+import cas_group.com.dnamobile.api.ResponseCallback;
+import cas_group.com.dnamobile.models.BaseModel;
 import cas_group.com.dnamobile.models.Building;
+import cas_group.com.dnamobile.models.Bulletin;
 
 /**
  * Created by kuccu on 10/26/16.
@@ -23,9 +29,7 @@ import cas_group.com.dnamobile.models.Building;
 
 public class LocationInforFragment extends Fragment {
 
-
-    private OnFragmentInteractionListener mListener;
-
+    
     public LocationInforFragment() {
         // Required empty public constructor
     }
@@ -67,67 +71,41 @@ public class LocationInforFragment extends Fragment {
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
-
 
 
     protected void onInitData(){
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-//        _items.add(new Building("test","test","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"));
-
         _adapter = new LocationInforAdapter(getActivity(), _items);
         _uiListEmail.setAdapter(_adapter);
         _adapter.notifyDataSetChanged();
+
+        ApiClientUsage.getBuildings(_currentPage, getBuildingcallback());
+    }
+
+    private ResponseCallback getBuildingcallback(){
+        return new ResponseCallback((MainActivity)getActivity()){
+            @Override
+            public void endSucceeded(ArrayList<BaseModel> bulletins) {
+                for (int i = 0; i < bulletins.size(); i++) {
+                    Building bulletin = (Building) bulletins.get(i);
+                    _items.add(bulletin);
+                }
+                _uiListEmail.setAdapter(_adapter);
+                _adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void endFailed(String result) {
+                super.endFailed(result);
+            }
+
+        };
     }
 
     private RecyclerView _uiListEmail;
     private SearchView _uiSearchView;
 
+    private int _currentPage = 1;
+    private boolean _isLoading = true;
     private LocationInforAdapter _adapter;
 
     private ArrayList<Building> _items = new ArrayList<>();

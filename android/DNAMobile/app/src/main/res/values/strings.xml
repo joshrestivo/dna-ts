@@ -109,6 +109,7 @@
     <string name="unlink_key_confirm">Unlinking your key means you will not be able to return to the app using this key for this account on any device. Are you sure you want to continue?</string>
     <string name="unverified_key">Unverified Key</string>
     <string name="general_error_message">Unexpected error. The error has been logged. We apologize for the inconvenience.</string>
+    <string name="server_error_msg">Server is error. Please contact site administrator for support</string>
     <string name="login_failed">Login failed. Try again!</string>
     <string name="account_not_verified">Your account is not activated yet.</string>
     <string name="user_name_in_used">This user name is already taken</string>
@@ -241,14 +242,21 @@
     <string name="GPSAlertDialogTitle">GPS is setting</string>
     <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
 
+    <string name="home_header_title">home_header_title</string>
+    <string name="home_middle_request_button_text">home_middle_request_button_text</string>
+    <string name="upCommingEvents_header_title">upCommingEvents_header_title</string>
+    <string name="street_alert_header_title">street_alert_header_title</string>
+    <string name="request_service_header_title">request_service_header_title</string>
+    <string name="location_info_header_title">location_info_header_title</string>
+    <string name="setting_header_title">setting_header_title</string>
 
     <string-array name="nav_item_activity_titles">
-        <item>Home</item>
-        <item>Upcoming event</item>
-        <item>Request service</item>
-        <item>Location Infor</item>
-        <item>Street Alert</item>
-        <item>Settings</item>
+        <item>home_header_title</item>
+        <item>upCommingEvents_header_title</item>
+        <item>request_service_header_title</item>
+        <item>location_info_header_title</item>
+        <item>street_alert_header_title</item>
+        <item>setting_header_title</item>
     </string-array>
 
 

@@ -1,7 +1,9 @@
 package cas_group.com.dnamobile.fragment;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,17 +11,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import cas_group.com.dnamobile.R;
+import cas_group.com.dnamobile.activity.BaseAppCompatActivity;
 import cas_group.com.dnamobile.activity.MainActivity;
 import cas_group.com.dnamobile.apdater.BulletinAdapter;
 import cas_group.com.dnamobile.apdater.NewFeedAdapter;
 import cas_group.com.dnamobile.api.ApiClientUsage;
 import cas_group.com.dnamobile.api.ResponseCallback;
+import cas_group.com.dnamobile.models.AuthenticationCache;
 import cas_group.com.dnamobile.models.BaseModel;
 import cas_group.com.dnamobile.models.Bulletin;
+import cas_group.com.dnamobile.models.Calendar;
 import cas_group.com.dnamobile.models.NewFeed;
 
 /**
@@ -28,8 +36,6 @@ import cas_group.com.dnamobile.models.NewFeed;
 
 public class HomeFragment extends Fragment {
 
-
-    private OnFragmentInteractionListener mListener;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -50,60 +56,41 @@ public class HomeFragment extends Fragment {
 
         _uiHomeNewLvl = (RecyclerView) rootView.findViewById(R.id.uiLvHomeNew);
         _uiHomeBulletin = (RecyclerView) rootView.findViewById(R.id.uiLvBulletin);
+        _uiLblCalendar = (TextView) rootView.findViewById(R.id.uiLblCalendar);
 
+        _uiProgressLoadingCalendar = (ProgressBar) rootView.findViewById(R.id.uiProgressLoadingCalendar);
+        _uiProgressLoadingNews = (ProgressBar) rootView.findViewById(R.id.uiProgressLoadingNews);
+        _uiProgressLoadingBulletin = (ProgressBar) rootView.findViewById(R.id.uiProgressLoadingBulletin);
+
+        _uiProgressLoadingCalendar.setVisibility(View.VISIBLE);
+        _uiProgressLoadingNews.setVisibility(View.VISIBLE);
+        _uiProgressLoadingBulletin.setVisibility(View.VISIBLE);
+
+        _uiBtnServiceRequest = (Button) rootView.findViewById(R.id.uiBtnServiceRequest);
+
+        _uiBtnServiceRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //
+            }
+        });
         onInitData();
         return rootView;
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
+    public void onResume() {
+        super.onResume();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
-
-
-
+    @TargetApi(Build.VERSION_CODES.M)
     protected void onInitData(){
         _news = new ArrayList<>();
         _bulletins = new ArrayList<>();
 
         //layout property
-        LinearLayoutManager horizontalLayoutManagaer
+        final LinearLayoutManager horizontalLayoutManagaer
                 = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         _uiHomeNewLvl.setLayoutManager(horizontalLayoutManagaer);
 
@@ -119,29 +106,83 @@ public class HomeFragment extends Fragment {
         _bulletinAdapter = new BulletinAdapter(getActivity(), _bulletins);
         _uiHomeBulletin.setAdapter(_bulletinAdapter);
 
-        //
-        ApiClientUsage.getNewFeeds(_currentPageNews,getNewFeedcallback());
+        getNews();
+        getBulletin();
+        getCalendar();
 
+        _uiBtnServiceRequest.setText(AuthenticationCache.getTitleWithKey(getResources().getString(R.string.home_middle_request_button_text)));
+
+        _uiHomeNewLvl.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int totalItemCount = horizontalLayoutManagaer.getItemCount();
+                int lastVisibleItem = horizontalLayoutManagaer.findLastVisibleItemPosition();
+
+                if (_hasLoadMoreNews && !_isLoadingNews && totalItemCount <= (lastVisibleItem + 1)) {
+                    //show loading
+                    _uiProgressLoadingNews.setVisibility(View.VISIBLE);
+                    getNews();
+                }
+            }
+        });
+
+        _uiHomeBulletin.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int totalItemCount = horizontalLayoutManagaer.getItemCount();
+                int lastVisibleItem = horizontalLayoutManagaer.findLastVisibleItemPosition();
+
+                if (_hasLoadMoreBulletin && !_isLoadingBulletin && totalItemCount <= (lastVisibleItem + 1)) {
+                    getBulletin();
+                }
+            }
+        });
+    }
+    private void getNews(){
+        _uiProgressLoadingNews.setVisibility(View.VISIBLE);
+        _isLoadingNews = true;
+        ApiClientUsage.getNewFeeds(_currentPageNews,getNewFeedcallback());
+    }
+    private void getBulletin(){
+        _uiProgressLoadingBulletin.setVisibility(View.VISIBLE);
+        _isLoadingBulletin = true;
         ApiClientUsage.getBulletins(_currentPageBulletin,getBulletincallback());
+
     }
     private ResponseCallback getNewFeedcallback(){
         return new ResponseCallback((MainActivity)getActivity()){
             @Override
             public void endSucceeded(ArrayList<BaseModel> bulletins) {
                 for (int i = 0; i < bulletins.size(); i++) {
-                    Bulletin bulletin = (Bulletin) bulletins.get(i);
-                    _bulletins.add(bulletin);
+                    NewFeed bulletin = (NewFeed) bulletins.get(i);
+                    _news.add(bulletin);
                 }
-                _newFeedAdapter = new NewFeedAdapter(getActivity(), _news);
-                _uiHomeBulletin.setAdapter(_bulletinAdapter);
+
                 _newFeedAdapter.notifyDataSetChanged();
+                _uiProgressLoadingNews.setVisibility(View.GONE);
+                _uiHomeNewLvl.setVisibility(View.VISIBLE);
+                _hasLoadMoreNews = bulletins.size() == ApiClientUsage.PAGE_SIZE;
+                if (_hasLoadMoreNews){
+                    _currentPageNews ++;
+                }
+                _isLoadingNews = false;
             }
 
             @Override
             public void endFailed(String result) {
                 super.endFailed(result);
+                hideLoadingNew();
+                _uiHomeNewLvl.setVisibility(View.VISIBLE);
             }
 
+            @Override
+            public void endFailed(Exception ex) {
+                super.endFailed(ex);
+                hideLoadingNew();
+                _uiHomeNewLvl.setVisibility(View.VISIBLE);
+            }
         };
     }
     private ResponseCallback getBulletincallback(){
@@ -152,22 +193,85 @@ public class HomeFragment extends Fragment {
                     Bulletin bulletin = (Bulletin) bulletins.get(i);
                     _bulletins.add(bulletin);
                 }
-                _bulletinAdapter = new BulletinAdapter(getActivity(), _bulletins);
-                _uiHomeBulletin.setAdapter(_bulletinAdapter);
+
                 _bulletinAdapter.notifyDataSetChanged();
+
+                _uiHomeBulletin.setVisibility(View.VISIBLE);
+                _hasLoadMoreBulletin = bulletins.size() == ApiClientUsage.PAGE_SIZE;
+                if (_hasLoadMoreBulletin){
+                    _currentPageBulletin ++;
+                }
+                hideLoadingBulletin();
             }
 
             @Override
             public void endFailed(String result) {
                 super.endFailed(result);
+                hideLoadingBulletin();
             }
 
+            @Override
+            public void endFailed(Exception ex) {
+                super.endFailed(ex);
+            }
+        };
+    }
+    private void hideLoadingNew(){
+        _isLoadingNews = false;
+        _uiProgressLoadingNews.setVisibility(View.GONE);
+    }
+    private void hideLoadingBulletin(){
+        _isLoadingBulletin = false;
+        _uiProgressLoadingBulletin.setVisibility(View.GONE);
+    }
+    private void getCalendar(){
+        ApiClientUsage.getCalendars(getCalendarCallback());
+    }
+
+    private ResponseCallback getCalendarCallback(){
+        return new ResponseCallback((MainActivity)getActivity()){
+            @Override
+            public void endSucceeded(ArrayList<BaseModel> calendars) {
+                String calendarText = "";
+                for (int i = 0; i < calendars.size() ; i++) {
+                    Calendar calendar = (Calendar) calendars.get(i);
+                    String prefix = "";
+                    if (i > 0) {
+                        prefix = "\n\n";
+                    }
+                    String displayString = calendar.getLocation();
+                    if (displayString.length() > Length_Calendar){
+                        displayString = displayString.substring(0 , Length_Calendar - 1) + "";
+                    }
+
+                    calendarText = calendarText + prefix + displayString;
+
+                }
+                _uiLblCalendar.setText(calendarText);
+                _uiProgressLoadingCalendar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void endFailed(String result) {
+                super.endFailed(result);
+                _uiProgressLoadingCalendar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void endFailed(Exception ex) {
+                super.endFailed(ex);
+                _uiProgressLoadingCalendar.setVisibility(View.GONE);
+            }
         };
     }
 
     private RecyclerView _uiHomeNewLvl;
     private RecyclerView _uiHomeBulletin;
-
+    private Button _uiBtnServiceRequest;
+    private TextView _uiLblCalendar;
+    private ProgressBar _uiProgressLoadingCalendar;
+    private ProgressBar _uiProgressLoadingNews;
+    private ProgressBar _uiProgressLoadingBulletin;
 
     private ArrayList<NewFeed> _news;
     private ArrayList<Bulletin> _bulletins;
@@ -178,5 +282,11 @@ public class HomeFragment extends Fragment {
     private int _currentPageNews = 1;
     private int _currentPageBulletin = 1;
 
+    private boolean _isLoadingNews = false;
+    private boolean _isLoadingBulletin = false;
 
+    private boolean _hasLoadMoreNews = true;
+    private boolean _hasLoadMoreBulletin = true;
+
+    private static int Length_Calendar = 24;
 }

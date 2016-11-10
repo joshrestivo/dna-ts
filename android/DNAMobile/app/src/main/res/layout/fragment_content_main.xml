@@ -15,11 +15,21 @@
         <LinearLayout android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <ProgressBar
+                android:id="@+id/uiProgressLoadingNews"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/uiLvHomeNew"
                 android:layout_width="match_parent"
+                android:layout_margin="10dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp" />
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:id="@+id/uiPnlCenter"
@@ -32,39 +42,55 @@
                 android:layout_margin="10dp">
 
                 <TextView
-                    android:text="Sep 30 - 7:00 pm Public lycing
-                    \nSep 30 - 7:00 pm Public lycing
-                    \nSep 30 - 7:00 pm Public lycing"
+                    android:id="@+id/uiLblCalendar"
+                    android:text="Calendar
+                    \n
+                    \n"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="false"/>
+                <ProgressBar
+                    android:id="@+id/uiProgressLoadingCalendar"
+                    style="@style/Widget.AppCompat.ProgressBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:id="@+id/textView3"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp" />
-
+                    android:layout_centerVertical="true"/>
                 <Button
                     android:text="Service Organization"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="false"
                     android:layout_alignParentEnd="true"
-                    android:id="@+id/button2"
+                    android:id="@+id/uiBtnServiceRequest"
                     android:layout_centerVertical="true"
                     android:background="@color/colorWhite"
                     android:textColor="@color/colorPrimaryDark"
                     android:padding="10dp"
                     android:textStyle="bold"
+                    android:layout_alignEnd="@+id/uiLblCalendar"
                     android:layout_marginEnd="5dp"
                     android:textSize="12sp" />
             </RelativeLayout>
-
+            <ProgressBar
+                android:id="@+id/uiProgressLoadingBulletin"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                android:layout_gravity="center_horizontal"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/uiLvBulletin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scrollIndicators="bottom"
+                android:visibility="gone"
                 android:layout_margin="10dp" />
 
         </LinearLayout>

@@ -8,6 +8,7 @@ import android.util.Log;
 import cas_group.com.dnamobile.api.ApiClientUsage;
 import cas_group.com.dnamobile.api.ResponseCallback;
 import cas_group.com.dnamobile.helps.GcmHelper;
+import cas_group.com.dnamobile.models.AuthenticationCache;
 
 
 /**
@@ -35,28 +36,55 @@ public class PlashScreenActivity extends BaseAppCompatActivity {
     }
 
     private void checkAuthentication() {
+        int idRestore = AuthenticationCache.restoreAuth();
+        idRestore = 0;
+        if(idRestore > 0){
+            ApiClientUsage.getClientResource(idRestore, getLocationcallback());
 
-        showLoading();
-        ApiClientUsage.authentication(new ResponseCallback(this) {
+        }else{
+            showLoading();
+            ApiClientUsage.authentication(new ResponseCallback(this) {
 
-            @Override
-            public void endSucceeded(Object location) {
-                hideLoading();
-                if (location != null) {
-                    //ok
-                } else {
-                    showErrorDialog("missing data");
+                @Override
+                public void endSucceeded(Object location) {
+                    hideLoading();
+                    if (location != null) {
+                        //ok
+                    } else {
+                        showErrorDialog("missing data");
+                    }
+                    gotoMainActivity();
                 }
+
+                @Override
+                public void endFailed(String result) {
+//                    hideLoading();
+                    if (result.equalsIgnoreCase("SYSTEM_ERROR")){
+                        showGeneralServerErrorDialog();
+                    }else {
+                        showGeneralErrorDialog();
+                    }
+
+                }
+
+            });
+        }
+
+    }
+
+    private ResponseCallback getLocationcallback(){
+        return new ResponseCallback((BaseAppCompatActivity)_context){
+            @Override
+            public void endSucceeded(Object object) {
                 gotoMainActivity();
             }
 
             @Override
             public void endFailed(String result) {
-                hideLoading();
-
+                super.endFailed(result);
             }
 
-        });
+        };
     }
 
 }

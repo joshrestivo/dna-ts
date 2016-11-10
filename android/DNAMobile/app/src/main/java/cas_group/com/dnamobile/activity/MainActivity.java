@@ -7,27 +7,32 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.view.Gravity;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
 import cas_group.com.dnamobile.DNAApplication;
 import cas_group.com.dnamobile.R;
 import cas_group.com.dnamobile.apdater.LeftMenuAdapter;
+import cas_group.com.dnamobile.api.ApiClientUsage;
+import cas_group.com.dnamobile.api.ResponseCallback;
 import cas_group.com.dnamobile.fragment.LocationInforFragment;
 import cas_group.com.dnamobile.fragment.RequestServiceFragment;
+import cas_group.com.dnamobile.fragment.SettingsFragment;
 import cas_group.com.dnamobile.fragment.StreetAlertFragment;
 import cas_group.com.dnamobile.fragment.UpcomingEventFragment;
 import cas_group.com.dnamobile.fragment.HomeFragment;
+import cas_group.com.dnamobile.models.AuthenticationCache;
+import cas_group.com.dnamobile.models.ClientResource;
 import cas_group.com.dnamobile.models.LeftMenuItem;
 import cas_group.com.dnamobile.service.GPSTracker;
 import cas_group.com.dnamobile.service.LocationService;
@@ -54,8 +59,9 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
         Intent myIntent = new Intent(DNAApplication.context, LocationService.class);
         DNAApplication.context.startService(myIntent);
 //        LocationService.instance().startLocationUpdates(this);
-        checkLocation();
+        getData();
     }
+
     @Override
     protected void onRegisterEvents() {
         _uiLvLeftMenu.setOnItemClickListener(new ListView.OnItemClickListener() {
@@ -79,21 +85,20 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
     protected void onInitContentView() {
         setContentView(R.layout.activity_main);
 
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
     }
 
     @Override
     protected void onInitData() {
         super.onInitData();
+        ClientResource clientResource = AuthenticationCache.getCurrentLocation().getClientResource();
+        ClientResource.DetailResource []detailResources = clientResource.getDetails();
 
-        _leftMenuItems.add(new LeftMenuItem("Home", ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_home_black_36dp)));
-        _leftMenuItems.add(new LeftMenuItem("Upcoming Events",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_event_black_36dp)));
-        _leftMenuItems.add(new LeftMenuItem("Request Service",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_assignment_black_36dp)));
-        _leftMenuItems.add(new LeftMenuItem("Location Info",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_info_outline_black_36dp)));
-        _leftMenuItems.add(new LeftMenuItem("Street Alerts",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_add_alert_black_36dp)));
-        _leftMenuItems.add(new LeftMenuItem("Settings",ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_settings_black_36dp)));
+        _leftMenuItems.add(new LeftMenuItem(detailResources[0].displayText, ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_home_black_36dp)));
+        _leftMenuItems.add(new LeftMenuItem(detailResources[1].displayText,ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_event_black_36dp)));
+        _leftMenuItems.add(new LeftMenuItem(detailResources[2].displayText,ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_assignment_black_36dp)));
+        _leftMenuItems.add(new LeftMenuItem(detailResources[3].displayText,ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_info_outline_black_36dp)));
+        _leftMenuItems.add(new LeftMenuItem(detailResources[4].displayText,ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_add_alert_black_36dp)));
+        _leftMenuItems.add(new LeftMenuItem(detailResources[5].displayText,ContextCompat.getDrawable(getBaseContext(),R.drawable.ic_settings_black_36dp)));
 
         _leftMenuAdapter = new LeftMenuAdapter(this, _leftMenuItems);
         _uiLvLeftMenu.setAdapter(_leftMenuAdapter);
@@ -131,7 +136,7 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
     private void setToolbarTitle(){
         String []activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-        getSupportActionBar().setTitle(activityTitles[_navItemIndex]);
+        getSupportActionBar().setTitle(AuthenticationCache.getTitleWithKey(activityTitles[_navItemIndex]));
     }
 
     private void loadHomeFragment() {
@@ -185,9 +190,10 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
                 return new RequestServiceFragment();
             case 3:
                 return new LocationInforFragment();
-            case 4:{
+            case 4:
                 return new StreetAlertFragment();
-            }
+            case 5:
+                return new SettingsFragment();
             default:
                 return new HomeFragment();
         }
@@ -226,6 +232,32 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
 //        }
 
     }
+    private void getData(){
+        checkLocation();
+//        getClientResource();
+    }
+    private void getClientResource(){
+        showLoading();
+        ApiClientUsage.getClientResource(AuthenticationCache.getCurrentLocation().getIdLoc(), getClientResourceCallback());
+    }
+
+    private ResponseCallback getClientResourceCallback(){
+        return new ResponseCallback(this){
+            @Override
+            public void endSucceeded(Object object) {
+
+                hideLoading();
+            }
+
+            @Override
+            public void endFailed(String result) {
+                super.endFailed(result);
+            }
+
+        };
+    }
+
+
     // tags used to attach the fragments
     private static final String TAG_HOME = "home";
     private static final String TAG_UPCOMING_EVENT = "upcoming_event";
