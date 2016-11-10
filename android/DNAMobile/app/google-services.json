@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "82578007031",
+    "firebase_url": "https://townsquare-36938.firebaseio.com",
+    "project_id": "townsquare-36938",
+    "storage_bucket": "townsquare-36938.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82578007031:android:205634da421fa4dc",
+        "android_client_info": {
+          "package_name": "com.cagroup.townsquare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82578007031-rn6h6ag0746pe89tn0smrvudq6ohmpu5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoNEhb0yhY6jb7PUOIBgBd9f2rUfUjfcM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
