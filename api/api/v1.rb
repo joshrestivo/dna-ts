@@ -1,3 +1,9 @@
+require 'simple-rss'
+require 'open-uri'
+require 'uri'
+require 'dragonfly'
+require 'rest-client'
+
 module Townsquare
   module API
     class V1 < Grape::API
@@ -168,6 +174,45 @@ module Townsquare
           location.need_client_resource = true
         end
         JSONResult.new(true, location)
+      end
+      
+      get 'import-buildings' do
+        stLouisLocation = Location.where("LOWER(name) = 'st. louis'")
+        if !stLouisLocation
+          return JSONResult.new(true, [])
+        end
+        
+        buildings = []
+        response = RestClient.get('https://dnac.6ceed.com/wp-json/dna/v1/buildings/list', :content_type => :json, :accept => :json)
+        result = JSON.parse(response)
+        result.each do |item|
+          dir = 'dragon_fly'
+          images = Townsquare::Image.process_from_url(dir, item['image']['url'])
+          image_url = Townsquare::CDN.store("#{TOWNSQUARE_ROOT}/#{dir}/#{images[0]}", images[0], :public_read)
+          thumbnail_url = Townsquare::CDN.store("#{TOWNSQUARE_ROOT}/#{dir}/#{images[1]}", images[1], :public_read)
+          File.delete("#{TOWNSQUARE_ROOT}/#{dir}/#{images[0]}")
+          File.delete("#{TOWNSQUARE_ROOT}/#{dir}/#{images[1]}")
+          image_size = FastImage.size(image_url)
+          image_width = image_size[0]
+          image_height = image_size[1]
+          image_size = FastImage.size(thumbnail_url)
+          thumbnail_width = image_size[0]
+          thumbnail_height = image_size[1]
+          building = Building.create(:location_id => stLouisLocation.id,
+                                     :name => item['title'],
+                                     :address => item['address'],
+                                     :zipcode => item['zip'],
+                                     :image_url => image_url,
+                                     :image_width => image_width,
+                                     :image_height => image_height,
+                                     :thumbnail_url => thumbnail_url,
+                                     :thumbnail_width => thumbnail_width,
+                                     :thumbnail_height => thumbnail_height,
+                                     :created_by => 'admin')
+          buildings.push building
+        end
+        
+        JSONResult.new(true, buildings)
       end
       
     end
