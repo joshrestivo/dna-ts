@@ -29,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:background="@drawable/background_button_dark_rounded"/>
 
             <RelativeLayout
                 android:id="@+id/uiPnlCenter"
@@ -43,11 +44,9 @@
 
                 <TextView
                     android:id="@+id/uiLblCalendar"
-                    android:text="Calendar
-                    \n
-                    \n"
+                    android:text=""
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_marginStart="10dp"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
@@ -72,7 +71,6 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:padding="10dp"
                     android:textStyle="bold"
-                    android:layout_alignEnd="@+id/uiLblCalendar"
                     android:layout_marginEnd="5dp"
                     android:textSize="12sp" />
             </RelativeLayout>
@@ -91,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:scrollIndicators="bottom"
                 android:visibility="gone"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                android:background="@drawable/background_button_dark_rounded"/>
 
         </LinearLayout>
 

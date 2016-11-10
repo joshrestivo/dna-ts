@@ -52,6 +52,15 @@ public class DateTimeUtils {
         }
         return "";
     }
+    public static String stringShortFromUTCDate(Date date){
+        String format = "MMM. dd HH:mm aa";
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        sdf.setTimeZone(TimeZone.getDefault());
+        if(date != null){
+            return sdf.format(date);
+        }
+        return "";
+    }
     public static String stringFromUTCDateShortDate(Date date){
         String format = "dd/MM/yyy HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -62,7 +71,8 @@ public class DateTimeUtils {
         return "";
     }
     public static Date dateFromUTCString(String utcString){
-        DateFormat m_ISO8601UTC = new SimpleDateFormat ("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+//        DateFormat m_ISO8601UTC = new SimpleDateFormat ("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        DateFormat m_ISO8601UTC = new SimpleDateFormat ("yyyy-MM-dd'T'HH:mm:ss");
 
         final TimeZone utc = TimeZone.getTimeZone("UTC");
         m_ISO8601UTC.setTimeZone(utc);

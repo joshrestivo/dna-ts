@@ -135,8 +135,24 @@ public class MainActivity extends BaseAppCompatActivity implements DrawerLayout.
     }
     private void setToolbarTitle(){
         String []activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
+        if (_navItemIndex == 4) {
 
-        getSupportActionBar().setTitle(AuthenticationCache.getTitleWithKey(activityTitles[_navItemIndex]));
+        }else{
+
+        }
+        if (CURRENT_TAG == TAG_LOCATION_INFOR){
+            String locationStr = AuthenticationCache.getTitleWithKey(activityTitles[_navItemIndex]);
+            locationStr = "DNA - " + locationStr + " - " + AuthenticationCache.getCurrentLocation().getNameLoc();
+            getSupportActionBar().setTitle(locationStr);
+
+        }else if (CURRENT_TAG == TAG_HOME){
+//            String locationStr = AuthenticationCache.getTitleWithKey(activityTitles[_navItemIndex]);
+            String locationStr = "DNA -" + AuthenticationCache.getCurrentLocation().getNameLoc();
+            getSupportActionBar().setTitle(locationStr);
+        }else{
+            getSupportActionBar().setTitle(AuthenticationCache.getTitleWithKey(activityTitles[_navItemIndex]));
+        }
+
     }
 
     private void loadHomeFragment() {

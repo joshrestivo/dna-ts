@@ -3,6 +3,10 @@ package cas_group.com.dnamobile.models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
+import cas_group.com.dnamobile.utils.DateTimeUtils;
+
 /**
  * Created by kuccu on 11/9/16.
  */
@@ -38,6 +42,17 @@ public class Calendar extends BaseModel {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+    }
+    public String getShortDisplayFormat(){
+        //
+        int maxLengthFormat = 20;
+        Date date = DateTimeUtils.dateFromUTCString(_start.substring(0, 19));
+        if(_location.length() > maxLengthFormat){
+            return DateTimeUtils.stringShortFromUTCDate(date) + " - " + _location.substring(0, maxLengthFormat - 1) + "...";
+        }
+        return DateTimeUtils.stringShortFromUTCDate(date) + " - " + _location;
+
 
     }
 }

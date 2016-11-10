@@ -239,15 +239,16 @@ public class HomeFragment extends Fragment {
                     if (i > 0) {
                         prefix = "\n\n";
                     }
-                    String displayString = calendar.getLocation();
-                    if (displayString.length() > Length_Calendar){
-                        displayString = displayString.substring(0 , Length_Calendar - 1) + "";
-                    }
+                    String displayString = calendar.getShortDisplayFormat();
+//                    if (displayString.length() > Length_Calendar){
+//                        displayString = displayString.substring(0 , Length_Calendar - 1) + "";
+//                    }
 
-                    calendarText = calendarText + prefix + displayString;
+                    calendarText = calendarText + prefix + calendar.getShortDisplayFormat();
 
                 }
                 _uiLblCalendar.setText(calendarText);
+//                _uiLblCalendar.setText("sdlfasdf askdf sdskf ksdf sd asldfa lskdf askdf ");
                 _uiProgressLoadingCalendar.setVisibility(View.GONE);
             }
 
@@ -288,5 +289,5 @@ public class HomeFragment extends Fragment {
     private boolean _hasLoadMoreNews = true;
     private boolean _hasLoadMoreBulletin = true;
 
-    private static int Length_Calendar = 24;
+    private static int Length_Calendar = 35;
 }

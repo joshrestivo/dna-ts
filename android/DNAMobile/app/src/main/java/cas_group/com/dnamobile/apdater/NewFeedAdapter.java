@@ -69,7 +69,13 @@ public class NewFeedAdapter extends RecyclerView.Adapter<NewFeedAdapter.NewsView
 
             }
         });
-        GraphicsUtil.displayPhoto(_context, newFeed.getThumbnail_url(), holder.uiImageView);
+        if(newFeed.getThumbnail_url().isEmpty()){
+            holder.uiImageView.setVisibility(View.GONE);
+        }else {
+            holder.uiImageView.setVisibility(View.VISIBLE);
+            GraphicsUtil.displayPhoto(_context, newFeed.getThumbnail_url(), holder.uiImageView);
+        }
+
         holder.uiTxtTitle.setText(newFeed.getTitle());
         if (newFeed.getDescription().length() > MAX_LENG_CONTENT){
             holder.uiTxtContent.setText(newFeed.getDescription().substring(0, MAX_LENG_CONTENT - 1) + "...");

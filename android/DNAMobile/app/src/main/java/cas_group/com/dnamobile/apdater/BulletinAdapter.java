@@ -72,7 +72,13 @@ public class BulletinAdapter extends RecyclerView.Adapter<BulletinAdapter.NewsVi
 
             }
         });
-        GraphicsUtil.displayPhoto(_context, bulletin.getImageUrl(), holder.uiImageView);
+        if(bulletin.getImageUrl().isEmpty()){
+            holder.uiImageView.setVisibility(View.GONE);
+        }else {
+            holder.uiImageView.setVisibility(View.VISIBLE);
+            GraphicsUtil.displayPhoto(_context, bulletin.getImageUrl(), holder.uiImageView);
+        }
+
 
     }
 
