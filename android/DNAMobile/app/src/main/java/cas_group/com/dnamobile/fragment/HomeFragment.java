@@ -239,16 +239,11 @@ public class HomeFragment extends Fragment {
                     if (i > 0) {
                         prefix = "\n\n";
                     }
-                    String displayString = calendar.getShortDisplayFormat();
-//                    if (displayString.length() > Length_Calendar){
-//                        displayString = displayString.substring(0 , Length_Calendar - 1) + "";
-//                    }
 
                     calendarText = calendarText + prefix + calendar.getShortDisplayFormat();
 
                 }
                 _uiLblCalendar.setText(calendarText);
-//                _uiLblCalendar.setText("sdlfasdf askdf sdskf ksdf sd asldfa lskdf askdf ");
                 _uiProgressLoadingCalendar.setVisibility(View.GONE);
             }
 

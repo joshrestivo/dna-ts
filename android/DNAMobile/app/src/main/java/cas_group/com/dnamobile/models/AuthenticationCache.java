@@ -43,6 +43,13 @@ public class AuthenticationCache {
         clearCache();
         ApiClient.clear();
     }
+    public static android.location.Location getLocation() {
+        return _location;
+    }
+
+    public static void setLocation(android.location.Location _location) {
+        AuthenticationCache._location = _location;
+    }
 
     // --------------------------------------------
     // Helper methods
@@ -93,6 +100,9 @@ public class AuthenticationCache {
     // --------------------------------------------
 
     private static Location _currentLocation;
+
+
+    private static android.location.Location _location;
     private static final String AUTH_LOC = "AUTH_LOCATION";
     private static final String SHARED_PREF_FILE = "TOWNSQUARE";
 }

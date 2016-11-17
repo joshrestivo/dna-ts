@@ -10,6 +10,7 @@ import android.support.multidex.MultiDexApplication;
 
 import java.lang.reflect.Field;
 
+import cas_group.com.dnamobile.service.GPSTracker;
 import cas_group.com.dnamobile.service.LocationService;
 
 
@@ -26,7 +27,6 @@ public class DNAApplication extends MultiDexApplication {
 
         DNAApplication.context = getApplicationContext();
         DNAApplication.overrideFont(getApplicationContext(), "SERIF", "fonts/Muli/Muli.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
-
 
 
     }

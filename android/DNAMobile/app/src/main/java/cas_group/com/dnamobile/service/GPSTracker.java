@@ -20,13 +20,17 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import cas_group.com.dnamobile.R;
+import cas_group.com.dnamobile.activity.BaseAppCompatActivity;
 
 /**
  * Create this Class from tutorial :
@@ -91,21 +95,21 @@ public class GPSTracker extends Service implements LocationListener {
             isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
             // Try to get location if you GPS Service is enabled
-            if (isGPSEnabled) {
-                this.isGPSTrackingEnabled = true;
-
-                Log.d(TAG, "Application use GPS Service");
-
-                /*
-                 * This provider determines location using
-                 * satellites. Depending on conditions, this provider may take a while to return
-                 * a location fix.
-                 */
-
-                provider_info = LocationManager.GPS_PROVIDER;
-
-            } else if (isNetworkEnabled) { // Try to get location if you Network Service is enabled
-                this.isGPSTrackingEnabled = true;
+//            if (isGPSEnabled) {
+//                this.isGPSTrackingEnabled = true;
+//
+//                Log.d(TAG, "Application use GPS Service");
+//
+//                /*
+//                 * This provider determines location using
+//                 * satellites. Depending on conditions, this provider may take a while to return
+//                 * a location fix.
+//                 */
+//
+//                provider_info = LocationManager.GPS_PROVIDER;
+//
+//            } else if (isNetworkEnabled) { // Try to get location if you Network Service is enabled
+                this.isGPSTrackingEnabled = false;
 
                 Log.d(TAG, "Application use Network State to get GPS coordinates");
 
@@ -116,27 +120,44 @@ public class GPSTracker extends Service implements LocationListener {
                  */
                 provider_info = LocationManager.NETWORK_PROVIDER;
 
-            }
+//            }
 
             // Application can use GPS or Network Provider
             if (!provider_info.isEmpty()) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return;
-                }
-                locationManager.requestLocationUpdates(
-                        provider_info,
-                        MIN_TIME_BW_UPDATES,
-                        MIN_DISTANCE_CHANGE_FOR_UPDATES,
-                        this
-                );
+                if (Build.VERSION.SDK_INT >= 23) {
+//                    if (ContextCompat.checkSelfPermission(mContext, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                        ActivityCompat.requestPermissions((BaseAppCompatActivity) mContext, new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION}, 4);
+//                    }
 
+                    if (ContextCompat.checkSelfPermission(mContext, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions((BaseAppCompatActivity) mContext, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 5);
+                    } else {
+//                        ActivityCompat.requestPermissions((BaseAppCompatActivity)mContext, new String[] {
+//                                        Manifest.permission.ACCESS_FINE_LOCATION,
+//                                        Manifest.permission.ACCESS_COARSE_LOCATION },
+//                                5);
+//                        }
+                    }
+                }
+
+//                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+//                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                    // TODO: Consider calling
+//                    //    ActivityCompat#requestPermissions
+//                    // here to request the missing permissions, and then overriding
+//                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                    //                                          int[] grantResults)
+//                    // to handle the case where the user grants the permission. See the documentation
+//                    // for ActivityCompat#requestPermissions for more details.
+//                    return;
+//                }
+//                locationManager.requestLocationUpdates(
+//                        provider_info,
+//                        MIN_TIME_BW_UPDATES,
+//                        MIN_DISTANCE_CHANGE_FOR_UPDATES,
+//                        this
+//                );
+//
                 if (locationManager != null) {
                     location = locationManager.getLastKnownLocation(provider_info);
                     updateGPSCoordinates();
@@ -174,6 +195,9 @@ public class GPSTracker extends Service implements LocationListener {
      * GPSTracker longitude getter and setter
      * @return
      */
+    public Location getCurrentLocation(){
+        return  location;
+    }
     public double getLongitude() {
         if (location != null) {
             longitude = location.getLongitude();
@@ -211,6 +235,35 @@ public class GPSTracker extends Service implements LocationListener {
         }
     }
 
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+        if (requestCode == 5
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            locationManager.requestLocationUpdates(
+                    provider_info,
+                    MIN_TIME_BW_UPDATES,
+                    MIN_DISTANCE_CHANGE_FOR_UPDATES,
+                    this
+            );
+
+            if (locationManager != null) {
+                location = locationManager.getLastKnownLocation(provider_info);
+                updateGPSCoordinates();
+            }
+        }
+
+
+   }
     /**
      * Function to show settings alert dialog
      */
@@ -340,9 +393,10 @@ public class GPSTracker extends Service implements LocationListener {
             return null;
         }
     }
-
     @Override
     public void onLocationChanged(Location location) {
+        this.location = location;
+        updateGPSCoordinates();
     }
 
     @Override

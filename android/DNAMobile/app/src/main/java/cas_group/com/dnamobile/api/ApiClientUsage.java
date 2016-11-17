@@ -32,9 +32,15 @@ public class ApiClientUsage {
     public static void authentication(final ResponseCallback callback) {
         String url = "auth";
         RequestParams params = new RequestParams();
+        android.location.Location location = AuthenticationCache.getLocation();
+        if (location != null){
+            params.put("longitude", location.getLongitude());
+            params.put("latitude", location.getLatitude());
+        }else{
+            params.put("longitude", "10");
+            params.put("latitude", "10");
+        }
 
-        params.put("longitude", "106.640025");
-        params.put("latitude", "106.640025");
         params.put("client_os", "android");
         params.put("device_token", GcmHelper.getRegistrationIdFromCache());
 
@@ -198,7 +204,7 @@ public class ApiClientUsage {
     //region get Street Alert Feed
     public static void getStreetAlerts(int page, final ResponseCallback callback){
         try {
-            final String url = "/main/"+ AuthenticationCache.getCurrentLocation().getIdLoc() +"/buildings";
+            final String url = "/main/"+ AuthenticationCache.getCurrentLocation().getIdLoc() +"/street-alerts";
             RequestParams params = new RequestParams();
             params.put("page", page );
             params.put("limit", PAGE_SIZE);

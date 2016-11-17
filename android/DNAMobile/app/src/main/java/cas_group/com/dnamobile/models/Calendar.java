@@ -46,7 +46,7 @@ public class Calendar extends BaseModel {
     }
     public String getShortDisplayFormat(){
         //
-        int maxLengthFormat = 20;
+        int maxLengthFormat = 15;
         Date date = DateTimeUtils.dateFromUTCString(_start.substring(0, 19));
         if(_location.length() > maxLengthFormat){
             return DateTimeUtils.stringShortFromUTCDate(date) + " - " + _location.substring(0, maxLengthFormat - 1) + "...";
