@@ -10,16 +10,15 @@ import UIKit
 import MBProgressHUD
 import CoreLocation
 
-class FlashScreenViewController: BaseViewController,CLLocationManagerDelegate {
+class FlashScreenViewController: BaseViewController {
     
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         self.showLoading("")
+        
         initLocationService()
-        locationManager.delegate = self
-        locationManager.distanceFilter = 20
-        authentication()
+        
         super.viewDidLoad()
     }
     
@@ -29,12 +28,10 @@ class FlashScreenViewController: BaseViewController,CLLocationManagerDelegate {
     
     func initLocationService() {
         locationManager = CLLocationManager()
-        locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.activityType = .automotiveNavigation
-        locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.delegate = self
         locationManager.startUpdatingLocation()
+        checkStatusLocation()
     }
     
     func authentication(){
@@ -65,4 +62,41 @@ class FlashScreenViewController: BaseViewController,CLLocationManagerDelegate {
         let resourceDetails = location.client_resource?.details
         ConstantHelper.setCacheValues(resourceDetails!)
     }
+    
+    func checkStatusLocation(){
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
+            
+            authentication()
+            break
+        case .notDetermined:
+            locationManager.requestAlwaysAuthorization()
+            break
+        case .authorizedWhenInUse, .restricted, .denied:
+            let alertController = UIAlertController(
+                title: "Background Location Access Disabled",
+                message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
+                preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.shared.openURL(url as URL)
+                }
+            }
+            alertController.addAction(openAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+    }
+}
+
+extension FlashScreenViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkStatusLocation()
+    }
+    
 }
