@@ -96,6 +96,8 @@
 		AAFE533D1DC9E242005B6414 /* FlashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFB791DC9D65000FB8E6B /* FlashScreenViewController.swift */; };
 		AAFE533F1DC9EA3E005B6414 /* BaseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE533E1DC9EA3E005B6414 /* BaseLocationViewController.swift */; };
 		AAFE53431DC9ED85005B6414 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE53421DC9ED85005B6414 /* Location.swift */; };
+		C05F0CAE1DDEEF53009E4DEA /* StreetAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05F0CAC1DDEEF53009E4DEA /* StreetAlert.storyboard */; };
+		C05F0CB01DDEEFBA009E4DEA /* StreetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05F0CAF1DDEEFBA009E4DEA /* StreetDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +212,8 @@
 		AAFE53421DC9ED85005B6414 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C00AA1891DA3F4F8000F7819 /* TownSquare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TownSquare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00AA1A01DA3F4F8000F7819 /* TownSquareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TownSquareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C05F0CAD1DDEEF53009E4DEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TownSquare/Base.lproj/StreetAlert.storyboard; sourceTree = SOURCE_ROOT; };
+		C05F0CAF1DDEEFBA009E4DEA /* StreetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreetDetailViewController.swift; sourceTree = "<group>"; };
 		CA9BD5E73CCA9529DBE5587F /* Pods-DNAMobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNAMobileTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNAMobileTests/Pods-DNAMobileTests.release.xcconfig"; sourceTree = "<group>"; };
 		D59506C7196B7F89BE38D536 /* Pods-TownSquareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquareTests/Pods-TownSquareTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -400,6 +404,7 @@
 				AA7A4CBE1DC06CB1003B9B38 /* SettingsViewController.swift */,
 				AA7A4CBF1DC06CB1003B9B38 /* StreetAlertViewController.swift */,
 				AA7A4CC01DC06CB1003B9B38 /* UpcomingEventViewController.swift */,
+				C05F0CAF1DDEEFBA009E4DEA /* StreetDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				AA7A4C911DC06CB1003B9B38 /* Home.storyboard */,
 				AA7A4C931DC06CB1003B9B38 /* LaunchScreen.storyboard */,
 				AA7A4C951DC06CB1003B9B38 /* Main.storyboard */,
+				C05F0CAC1DDEEF53009E4DEA /* StreetAlert.storyboard */,
 			);
 			name = StoryBoards;
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C05F0CAE1DDEEF53009E4DEA /* StreetAlert.storyboard in Resources */,
 				AA7A4CDE1DC06CB1003B9B38 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				AA7A4CCA1DC06CB1003B9B38 /* Lato.ttf in Resources */,
 				AA7A4CCC1DC06CB1003B9B38 /* Muli-BoldItalic.ttf in Resources */,
@@ -814,6 +821,7 @@
 				AA7A4D0C1DC06CB2003B9B38 /* StreetAlertCell.swift in Sources */,
 				AA7A4D2E1DC070C0003B9B38 /* UITableViewExtension.swift in Sources */,
 				AA7A4D0B1DC06CB2003B9B38 /* NewCollectionViewCell.swift in Sources */,
+				C05F0CB01DDEEFBA009E4DEA /* StreetDetailViewController.swift in Sources */,
 				AA7A4D331DC070C0003B9B38 /* UIImageView+Size.m in Sources */,
 				AA7A4CFD1DC06CB2003B9B38 /* BaseKeyboardViewController.swift in Sources */,
 				AA7A4D2D1DC070C0003B9B38 /* UIImageView.swift in Sources */,
@@ -887,6 +895,14 @@
 			);
 			name = Main.storyboard;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		C05F0CAC1DDEEF53009E4DEA /* StreetAlert.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C05F0CAD1DDEEF53009E4DEA /* Base */,
+			);
+			name = StreetAlert.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

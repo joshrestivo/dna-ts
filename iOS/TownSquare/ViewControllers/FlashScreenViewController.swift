@@ -38,8 +38,15 @@ class FlashScreenViewController: BaseViewController,CLLocationManagerDelegate {
     }
     
     func authentication(){
-        let longitude = locationManager.location?.coordinate.longitude.description
-        let latitude = locationManager.location?.coordinate.latitude.description
+        var longitude = locationManager.location?.coordinate.longitude.description
+        var latitude = locationManager.location?.coordinate.latitude.description
+        if longitude == nil {
+            longitude = "10"
+        }
+        if latitude == nil {
+            latitude = "10"
+        }
+        
         ApiService.authenticate(longitude: longitude,latitude: latitude, { (location, isSuccess) in
             if isSuccess {
                 self.saveResourceValues(location: location)

@@ -25,6 +25,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) using location</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreenView</string>
 	<key>UIMainStoryboardFile</key>
