@@ -300,16 +300,10 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if ((isBullentinLoading == false || isNewsFeedLoading == false ) && scrollView.isDragging == false && scrollView.isDecelerating == false){
-            if(hasLoadNewsFeedMore ||  hasLoadBullentinMore){
+        if (isNewsFeedLoading == false && scrollView.isDragging == false && scrollView.isDecelerating == false){
+            if(hasLoadNewsFeedMore){
                 if(scrollView.contentSize.width - scrollView.frame.size.width <= (scrollView.contentOffset.x  + 7)) {
-                    if hasLoadNewsFeedMore && isNewsFeedLoading == false{
-                        self.getNewsFeeds()
-                    }
-                    
-                    if hasLoadBullentinMore && isBullentinLoading == false {
-                        self.getBullentins()
-                    }
+                    self.getNewsFeeds()
                 }
             }
         }

@@ -12,10 +12,11 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     
     @IBOutlet weak var lblEmptyMessage: UILabel!
     @IBOutlet weak var userTableView: UITableView!
-    var data = [BuildingLocation]()
+    var buildings = [Building]()
     var searchValue = ""
     var pageNumber = 1
     var isSearchMode = false
+    var hasLoadMore = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,21 +33,21 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return buildings.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "buildingLocationCell") as! LocationInfoCell
-        let dataItem = self.data[(indexPath as NSIndexPath).row]
-        ConstantHelper.addAsyncImage((cell.photo)!, imageUrl:dataItem.thumbnailUrl, imgNotFound: ConstantHelper.imgNotFound)
+        let dataItem = self.buildings[(indexPath as NSIndexPath).row]
+        ConstantHelper.addAsyncImage((cell.photo)!, imageUrl:dataItem.thumbnail_url, imgNotFound: ConstantHelper.imgNotFound)
         cell.photo.isCircleImage = true
-        cell.title?.text = dataItem.txtTitle
-        cell.subTitle?.text = dataItem.txtDescription
+        cell.title?.text = dataItem.name
+        cell.subTitle?.text = dataItem.address
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = self.data[(indexPath as NSIndexPath).row]
+        _ = self.buildings[(indexPath as NSIndexPath).row]
         self.navigateToView("sbNewsDetail")
     }
     
@@ -65,7 +66,7 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
         searchValue = ""
         isSearchMode = false
         self.view.endEditing(true)
-        self.data.removeAll(keepingCapacity: false)
+        self.buildings.removeAll(keepingCapacity: false)
         self.getDataSource()
     }
     
@@ -77,32 +78,48 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
         self.userTableView?.estimatedRowHeight = 100
     }
     
-    func getDataSource(){    
-        let imgUrl = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQoNSAIzRg9H-AsYfHjaYw8LF5dRhwAkXh6aBftoxuceT_YRt7-aw"
-        let location1 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location2 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location3 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location4 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location5 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location6 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location7 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location8 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location9 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location10 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location11 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        let location12 = BuildingLocation(thumbnailUrl: imgUrl, title: ConstantHelper.cache["location_title"] as! String, description: ConstantHelper.cache["location_short_content"] as! String)
-        data.append(location1)
-        data.append(location2)
-        data.append(location3)
-        data.append(location4)
-        data.append(location5)
-        data.append(location6)
-        data.append(location7)
-        data.append(location8)
-        data.append(location9)
-        data.append(location10)
-        data.append(location11)
-        data.append(location12)
+    func filterBuildings(_ buildings:[Building]){
+        if(self.pageNumber == 1){
+            self.buildings = [Building]()
+        }
+        
+        if (buildings.count > 0){
+            for item in buildings{
+                self.buildings.append(item)
+            }
+            
+            if(buildings.count == ConstantHelper.defaultPageSize ){
+                self.pageNumber += 1
+                hasLoadMore = true;
+            }else{
+                hasLoadMore = false;
+            }
+        }
+        
+        self.hideLoading()
         self.userTableView.reloadData()
+    }
+    
+    func getDataSource(){
+        self.showLoading("")
+        self.ApiService.getBuildings(pageIndex: self.pageNumber,{ (buildings, isSuccess) -> () in
+            if isSuccess {
+                self.filterBuildings(buildings)
+                self.hasLoadMore = false
+            }
+            else{
+                self.hideLoading()
+            }
+        })
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (hasLoadMore == false && scrollView.isDragging == false && scrollView.isDecelerating == false){
+            if(buildings.count >= ConstantHelper.defaultPageSize * (self.pageNumber - 1) ){
+                if(scrollView.contentSize.height - scrollView.frame.size.height <= scrollView.contentOffset.y){
+                    self.getDataSource()
+                }
+            }
+        }
     }
 }

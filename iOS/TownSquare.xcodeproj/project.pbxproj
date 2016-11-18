@@ -10,6 +10,7 @@
 		0B090E224A2364ECD725CB71 /* Pods_DNAMobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0942B3003774CEE81F26F70F /* Pods_DNAMobileTests.framework */; };
 		368C7DDD9182D309BE7F1490 /* Pods_TownSquare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D346D441E78E10AE091809C /* Pods_TownSquare.framework */; };
 		7266A1848CD7B8E06D1539E3 /* Pods_TownSquareTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 675F1906C182CE2B7B5F1DBB /* Pods_TownSquareTests.framework */; };
+		AA291B721DDEF3DA00BF31F0 /* SettingsLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA291B711DDEF3DA00BF31F0 /* SettingsLocationViewController.swift */; };
 		AA2BAB2B1DC37F970081E80A /* avatar-not-found.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AA2BAB291DC37F970081E80A /* avatar-not-found.jpeg */; };
 		AA2BAB2C1DC37F970081E80A /* icon-notFound.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AA2BAB2A1DC37F970081E80A /* icon-notFound.jpeg */; };
 		AA4FFB711DC9B98100FB8E6B /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA4FFB6F1DC9B98100FB8E6B /* LoadingView.xib */; };
@@ -119,6 +120,7 @@
 		816ACB8FE0CC3404D29862F7 /* Pods-TownSquare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquare.release.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquare/Pods-TownSquare.release.xcconfig"; sourceTree = "<group>"; };
 		8D175C31C4001E273FFB73C3 /* Pods-TownSquare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquare/Pods-TownSquare.debug.xcconfig"; sourceTree = "<group>"; };
 		932B9FA5523AA274A99E2400 /* Pods-TownSquareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TownSquareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TownSquareTests/Pods-TownSquareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA291B711DDEF3DA00BF31F0 /* SettingsLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLocationViewController.swift; sourceTree = "<group>"; };
 		AA2BAB291DC37F970081E80A /* avatar-not-found.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "avatar-not-found.jpeg"; sourceTree = "<group>"; };
 		AA2BAB2A1DC37F970081E80A /* icon-notFound.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "icon-notFound.jpeg"; sourceTree = "<group>"; };
 		AA4FFB6F1DC9B98100FB8E6B /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		AA7A4CB41DC06CB1003B9B38 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA291B711DDEF3DA00BF31F0 /* SettingsLocationViewController.swift */,
 				AAFE533E1DC9EA3E005B6414 /* BaseLocationViewController.swift */,
 				AA4FFB791DC9D65000FB8E6B /* FlashScreenViewController.swift */,
 				AA7A4CB51DC06CB1003B9B38 /* BaseCenterViewController.swift */,
@@ -829,6 +832,7 @@
 				AACBFAC21DCB095800AD0B03 /* NewsFeed.swift in Sources */,
 				AA7A4D081DC06CB2003B9B38 /* LocationInfoCell.swift in Sources */,
 				AA7A4D021DC06CB2003B9B38 /* LocationInfoViewController.swift in Sources */,
+				AA291B721DDEF3DA00BF31F0 /* SettingsLocationViewController.swift in Sources */,
 				AA7A4CF81DC06CB1003B9B38 /* MenuItem.swift in Sources */,
 				AA4FFB721DC9B98100FB8E6B /* LoadingViewController.swift in Sources */,
 				AA7A4CFE1DC06CB2003B9B38 /* BaseViewController.swift in Sources */,

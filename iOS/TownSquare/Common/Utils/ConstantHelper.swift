@@ -243,5 +243,12 @@ struct ConstantHelper {
             ConstantHelper.cache.setObject(resource.display_text! as NSString, forKey: (resource.unique_name! as NSString) as String, expires: .never)
         }
     }
+    
+    static func saveResourceValues(location:LocationInfo){
+        let locationId = NSString(string: (location.id?.description)!)
+        ConstantHelper.cache.setObject(locationId, forKey: "location_id", expires: .never)
+        let resourceDetails = location.client_resource?.details
+        ConstantHelper.setCacheValues(resourceDetails!)
+    }
 }
 

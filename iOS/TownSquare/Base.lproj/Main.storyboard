@@ -92,8 +92,8 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="YBF-k9-DYC">
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="MWR-Wi-XBi"/>
-                                                        <constraint firstAttribute="height" constant="40" id="jP7-WQ-XCl"/>
+                                                        <constraint firstAttribute="width" constant="30" id="MWR-Wi-XBi"/>
+                                                        <constraint firstAttribute="height" constant="30" id="jP7-WQ-XCl"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DNA Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ5-gl-agF">
@@ -103,7 +103,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="sQ5-gl-agF" firstAttribute="leading" secondItem="YBF-k9-DYC" secondAttribute="trailing" constant="6" id="BFH-dK-XKf"/>
+                                                <constraint firstItem="sQ5-gl-agF" firstAttribute="leading" secondItem="YBF-k9-DYC" secondAttribute="trailing" constant="10" id="BFH-dK-XKf"/>
                                                 <constraint firstItem="sQ5-gl-agF" firstAttribute="centerY" secondItem="YBF-k9-DYC" secondAttribute="centerY" id="Mb4-Uc-gzE"/>
                                                 <constraint firstItem="YBF-k9-DYC" firstAttribute="leading" secondItem="Zui-XL-6oS" secondAttribute="leadingMargin" constant="14" id="cqf-A3-gZe"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="sQ5-gl-agF" secondAttribute="trailing" constant="10" id="hdh-zs-v7W"/>
@@ -176,14 +176,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ize-4M-c8g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ize-4M-c8g">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="upCommingEventsCell" rowHeight="120" id="ol8-jg-0QD" userLabel="Street Alert Cell" customClass="UpComingEventsCell" customModule="TownSquare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ol8-jg-0QD" id="Uco-BU-Snc">
-                                            <frame key="frameInset" width="375" height="119"/>
+                                            <frame key="frameInset" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vDP-RP-yy3" userLabel="Img " customClass="AsyncImageView">
@@ -357,12 +357,64 @@
                     <view key="view" contentMode="scaleToFill" id="NDK-CP-h0F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vso-jW-e5r">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellSetting" id="3aa-vc-Kz9" customClass="MenuTableViewCell" customModule="TownSquare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3aa-vc-Kz9" id="abK-TH-FRv">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="dJe-sS-c3G">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="2Oa-Qq-Dub"/>
+                                                        <constraint firstAttribute="height" constant="40" id="SOp-gy-ZPm"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DNA Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NHm-at-Blz">
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="15"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NHm-at-Blz" secondAttribute="trailing" constant="10" id="3R3-LN-h7z"/>
+                                                <constraint firstItem="NHm-at-Blz" firstAttribute="leading" secondItem="dJe-sS-c3G" secondAttribute="trailing" constant="6" id="95W-Xf-Sre"/>
+                                                <constraint firstItem="dJe-sS-c3G" firstAttribute="centerY" secondItem="abK-TH-FRv" secondAttribute="centerY" id="D8T-zM-u6I"/>
+                                                <constraint firstItem="NHm-at-Blz" firstAttribute="centerY" secondItem="dJe-sS-c3G" secondAttribute="centerY" id="lqj-s3-FAf"/>
+                                                <constraint firstItem="dJe-sS-c3G" firstAttribute="leading" secondItem="abK-TH-FRv" secondAttribute="leadingMargin" constant="14" id="m1a-ne-Lhj"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="dJe-sS-c3G" id="dlZ-bD-U5s"/>
+                                            <outlet property="titleLabel" destination="NHm-at-Blz" id="VcV-Ff-XNH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="KhP-CL-Z5f" id="zWy-SR-5fF"/>
+                                    <outlet property="delegate" destination="KhP-CL-Z5f" id="mAX-ft-HcI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vso-jW-e5r" firstAttribute="leading" secondItem="NDK-CP-h0F" secondAttribute="leading" id="1So-43-8Vq"/>
+                            <constraint firstAttribute="trailing" secondItem="Vso-jW-e5r" secondAttribute="trailing" id="3I6-Zm-Wqq"/>
+                            <constraint firstItem="sQI-Oc-yWM" firstAttribute="top" secondItem="Vso-jW-e5r" secondAttribute="bottom" id="hH1-20-Abg"/>
+                            <constraint firstItem="Vso-jW-e5r" firstAttribute="top" secondItem="Jcq-Mi-CfW" secondAttribute="bottom" id="zoI-nZ-SWg"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="settingTableView" destination="Vso-jW-e5r" id="yc8-Dw-52D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mnP-70-Kdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1086" y="433"/>
+            <point key="canvasLocation" x="-1228" y="107"/>
         </scene>
         <!--Location Info View Controller-->
         <scene sceneID="VOo-gn-M69">
@@ -649,6 +701,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wVl-cA-NLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1848.8" y="682.3088455772114"/>
+        </scene>
+        <!--Setting Locations-->
+        <scene sceneID="GoL-j8-bZt">
+            <objects>
+                <viewController storyboardIdentifier="sidLocationSettings" title="Setting Locations" id="D99-Z6-9kC" customClass="SettingsLocationViewController" customModule="TownSquare" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5fC-S9-OuU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Veb-5U-QFh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="206-dJ-G2w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zic-JU-aWG">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellSettingLocation" id="D2q-DD-r2i" customClass="MenuTableViewCell" customModule="TownSquare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D2q-DD-r2i" id="DxF-ed-pN8">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_alert" translatesAutoresizingMaskIntoConstraints="NO" id="G1A-SO-FQh">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="FPy-HI-G2v"/>
+                                                        <constraint firstAttribute="width" constant="30" id="S3B-JD-6g7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DNA Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BjR-M9-3ZS">
+                                                    <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="15"/>
+                                                    <color key="textColor" red="0.80000000000000004" green="0.0" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BjR-M9-3ZS" firstAttribute="centerY" secondItem="G1A-SO-FQh" secondAttribute="centerY" id="3uJ-ZS-Ig6"/>
+                                                <constraint firstItem="G1A-SO-FQh" firstAttribute="centerY" secondItem="DxF-ed-pN8" secondAttribute="centerY" id="5kj-am-BaA"/>
+                                                <constraint firstItem="G1A-SO-FQh" firstAttribute="leading" secondItem="DxF-ed-pN8" secondAttribute="leadingMargin" id="Hrf-Lg-bfD"/>
+                                                <constraint firstItem="BjR-M9-3ZS" firstAttribute="leading" secondItem="G1A-SO-FQh" secondAttribute="trailing" constant="10" id="j1e-02-QAe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="BjR-M9-3ZS" secondAttribute="trailing" constant="10" id="vga-J9-Ykn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="G1A-SO-FQh" id="dhv-Ep-G4p"/>
+                                            <outlet property="titleLabel" destination="BjR-M9-3ZS" id="RPU-yV-f3R"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="D99-Z6-9kC" id="EfN-UZ-9Bk"/>
+                                    <outlet property="delegate" destination="D99-Z6-9kC" id="FO5-tD-nbx"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zic-JU-aWG" firstAttribute="top" secondItem="5fC-S9-OuU" secondAttribute="bottom" id="2Vv-li-A1D"/>
+                            <constraint firstItem="zic-JU-aWG" firstAttribute="leading" secondItem="206-dJ-G2w" secondAttribute="leading" id="BK4-2r-0J7"/>
+                            <constraint firstItem="Veb-5U-QFh" firstAttribute="top" secondItem="zic-JU-aWG" secondAttribute="bottom" id="dyu-wE-zoJ"/>
+                            <constraint firstAttribute="trailing" secondItem="zic-JU-aWG" secondAttribute="trailing" id="qSb-11-UyI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="userTableView" destination="zic-JU-aWG" id="yZG-h8-mOg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k2S-6F-5q6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1228" y="791"/>
         </scene>
     </scenes>
     <resources>

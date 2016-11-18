@@ -22,8 +22,8 @@ class Building: NSObject {
     var image_height: Float?
     
     var thumbnail_url: String?
-    var thumbnail_width: String?
-    var thumbnail_height: String?
+    var thumbnail_width: Float?
+    var thumbnail_height: Float?
     
     var created_by: String?
     var updated_by: String?
@@ -46,24 +46,24 @@ class Building: NSObject {
     }
     
     func setBuilding(_ json:SwiftyJSON.JSON)->() {
-        self.id = json["id"].int!
-        self.location_id = json["location_id"].int!
-        self.name = json["name"].string!
+        self.id = json["id"].int
+        self.location_id = json["location_id"].int
+        self.name = json["name"].string
         
-        self.address = json["address"].string!
-        self.zipcode = json["zipcode"].string!
+        self.address = json["address"].string
+        self.zipcode = json["zipcode"].string
         
-        self.image_url = json["image_url"].string!
-        self.image_width = json["image_width"].float!
-        self.image_height = json["image_height"].float!
+        self.image_url = json["image_url"].string
+        self.image_width = json["image_width"].float
+        self.image_height = json["image_height"].float
         
-        self.thumbnail_url = json["thumbnail_url"].string!
-        self.thumbnail_width = json["thumbnail_width"].string!
-        self.thumbnail_height = json["thumbnail_height"].string!
+        self.thumbnail_url = json["thumbnail_url"].string
+        self.thumbnail_width = json["thumbnail_width"].float
+        self.thumbnail_height = json["thumbnail_height"].float
         
-        self.created_by = json["created_by"].string!
-        self.updated_by = json["updated_by"].string!
-        self.created_at = json["created_at"].string!
-        self.updated_at = json["updated_at"].string!
+        self.created_by = json["created_by"].string
+        self.updated_by = json["updated_by"].string
+        self.created_at = json["created_at"].string
+        self.updated_at = json["updated_at"].string
     }
 }

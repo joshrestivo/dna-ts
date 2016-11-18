@@ -15,13 +15,14 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
     
     let menuItems = [MenuItem(title: ConstantHelper.cache["menu_Home"] as! String,imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
                      MenuItem(title: ConstantHelper.cache["menu_UpComingEvents"] as! String,imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
-                     MenuItem(title: ConstantHelper.cache["menu_RequestService"] as! String,imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),
-                     MenuItem(title: ConstantHelper.cache["menu_LocationInfo"] as! String,imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuLocationInfo),
+                     MenuItem(title: ConstantHelper.cache["menu_RequestService"] as! String,imageName: "ic_request_services",type: MenuItemType.leftMenuRequestServices),
+                     MenuItem(title: ConstantHelper.cache["menu_LocationInfo"] as! String,imageName: "ic_location_36pt",type: MenuItemType.leftMenuLocationInfo),
                      MenuItem(title: ConstantHelper.cache["menu_StreetAlert"] as! String,imageName: "ic_add_alert_36pt",type: MenuItemType.leftMenuStreetAlert),
-                     MenuItem(title: ConstantHelper.cache["menu_HelpResource"] as! String,imageName: "ic_info_outline_36pt",type: MenuItemType.leftMenuStreetAlert)]
+                     MenuItem(title: ConstantHelper.cache["menu_Setting"] as! String,imageName: "ic_settings_36pt",type: MenuItemType.leftMenuStreetAlert)]
     
     override func viewDidLoad()
     {
+        initScreen()
         super.viewDidLoad()
     }
     
@@ -98,6 +99,13 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
         default:
             break
         }       
+    }
+    
+    func initScreen(){
+        self.tableView?.rowHeight=130
+        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.estimatedRowHeight = 100
+        self.tableView.tableFooterView = UIView()
     }
 }
 

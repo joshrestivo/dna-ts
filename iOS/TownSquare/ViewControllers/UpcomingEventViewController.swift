@@ -12,12 +12,15 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
     
     @IBOutlet weak var lblEmptyMessage: UILabel!
     @IBOutlet weak var userTableView: UITableView!
-    var data = [UpComingEvents]()
+    var newsFeed = [NewsFeed]()
+    var newsIndex = 1
+    var hasLoadNewsFeedMore = false
+    var isNewsFeedLoading = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initScreen()
-        getDataSource()
+        getNewsFeeds()
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,21 +32,21 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return newsFeed.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "upCommingEventsCell") as! UpComingEventsCell
-        let dataItem = self.data[(indexPath as NSIndexPath).row]
-        ConstantHelper.addAsyncImage((cell.photo)!, imageUrl:dataItem.thumbnailUrl, imgNotFound: ConstantHelper.imgNotFound)
+        let dataItem = self.newsFeed[(indexPath as NSIndexPath).row]
+        ConstantHelper.addAsyncImage((cell.photo)!, imageUrl:dataItem.thumbnail_url, imgNotFound: ConstantHelper.imgNotFound)
         cell.photo.isCircleImage = false
-        cell.title?.text = dataItem.txtTitle
-        cell.subTitle?.text = dataItem.txtDescription
+        cell.title?.text = dataItem.title
+        cell.subTitle?.text = dataItem.feedDescription
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = self.data[(indexPath as NSIndexPath).row]
+        _ = self.newsFeed[(indexPath as NSIndexPath).row]
         self.navigateToView("sbNewsDetail")
     }
     
@@ -55,33 +58,49 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
         self.userTableView?.estimatedRowHeight = 200
     }
     
-    func getDataSource(){
-        let imgUrl = "https://qconnewyork.com/sites/all/themes/qconbs/images/logo2x.png"
+    func filterNewsFeed(_ news:[NewsFeed]){
+        if(self.newsIndex == 1){
+            self.newsFeed = [NewsFeed]()
+        }
         
-        let location1 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location2 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location3 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location4 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location5 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location6 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location7 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location8 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location9 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location10 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location11 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        let location12 = UpComingEvents(thumbnailUrl: imgUrl, title: ConstantHelper.cache["upCommingEvents_title"] as! String, description: ConstantHelper.cache["upCommingEvents_short_content"] as! String)
-        data.append(location1)
-        data.append(location2)
-        data.append(location3)
-        data.append(location4)
-        data.append(location5)
-        data.append(location6)
-        data.append(location7)
-        data.append(location8)
-        data.append(location9)
-        data.append(location10)
-        data.append(location11)
-        data.append(location12)
+        if (news.count > 0){
+            for newsItem in news{
+                self.newsFeed.append(newsItem)
+            }
+            
+            if(news.count == ConstantHelper.defaultPageSize ){
+                self.newsIndex += 1
+                hasLoadNewsFeedMore = true;
+            }else{
+                hasLoadNewsFeedMore = false;
+            }
+        }
+        
+        self.hideLoading()
         self.userTableView.reloadData()
+    }
+    
+    func getNewsFeeds(){
+        self.showLoading("")
+        self.ApiService.getNewsFeeds(pageIndex: self.newsIndex,{ (newsFeedsResult, isSuccess) -> () in
+            if isSuccess {
+                self.filterNewsFeed(newsFeedsResult)
+                self.isNewsFeedLoading = false
+            }
+            else{
+                self.hideLoading()
+            }
+        })
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if (hasLoadNewsFeedMore == false && scrollView.isDragging == false && scrollView.isDecelerating == false){
+            
+            if(newsFeed.count >= ConstantHelper.defaultPageSize * (self.newsIndex - 1) ){
+                if(scrollView.contentSize.height - scrollView.frame.size.height <= scrollView.contentOffset.y){
+                    self.getNewsFeeds()
+                }
+            }
+        }
     }
 }

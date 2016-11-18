@@ -17,7 +17,7 @@ enum RestUrl: String {
     case getBulletins = "main/%@/bulletins?page=%d&limit=%d"
     case getBuilding = "main/%@/buildings?page=%d&limit=%d"
     case getLocations = "locations?page=%d&limit=%d"
-    case getLocationResource = "location/%@"
+    case getLocationResource = "location/%d"
     case getStreetAlerts = "main/%@/street-alerts"
     case getUpcomingEvents = "main/%@/news?page=%d&limit=%d"
     case getCalendar = "main/%@/calendar"
@@ -170,7 +170,7 @@ class ApiClientUsage {
         
         Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
             if(isSuccess == true){
-                if let unwrappedData = resObject as? NSDictionary {
+                if let unwrappedData = resObject as? Dictionary<String, AnyObject>  {
                     let json = SwiftyJSON.JSON(unwrappedData)
                     let location = LocationInfo(json: json)
                     callback(location, true)
