@@ -37,8 +37,8 @@ class StreetAlert: NSObject {
     }
     
     func setStreetAlert(_ json:SwiftyJSON.JSON)->() {
-        self.thumbnailUrl = json["thumbnailUrl"].string!
-        self.txtTitle = json["title"].string!
-        self.txtDescription = json["description"].string!
+//        self.thumbnailUrl = json["thumbnailUrl"].string!
+        self.txtTitle = json["date"].string!
+        self.txtDescription = json["link"].string!
     }
 }

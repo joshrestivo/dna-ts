@@ -1,6 +1,7 @@
 package cas_group.com.dnamobile.apdater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import cas_group.com.dnamobile.R;
+import cas_group.com.dnamobile.activity.DetailLocationActivity;
+import cas_group.com.dnamobile.activity.DetailStreetAlertActivity;
 import cas_group.com.dnamobile.models.StreetAlert;
 import cas_group.com.dnamobile.utils.GraphicsUtil;
 
@@ -51,6 +54,18 @@ public class StreetAlertAdapter extends RecyclerView.Adapter<StreetAlertAdapter.
         StreetAlert streetAlert = items.get(position);
         holder.uiTxtTitle.setText(streetAlert.getDate());
         holder.uiTxtContent.setText(streetAlert.getLink());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent detailIntent = new Intent(_context, DetailStreetAlertActivity.class);
+//                detailIntent.putExtra("zipCode",building.getZipcode());
+//                detailIntent.putExtra("title",building.getName());
+//                detailIntent.putExtra("desc",building.getAddress());
+//                detailIntent.putExtra("imageUrl",building.getImageUrl());
+                _context.startActivity(detailIntent);
+            }
+        });
 
     }
 

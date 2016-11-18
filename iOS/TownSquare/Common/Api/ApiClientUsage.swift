@@ -184,13 +184,16 @@ class ApiClientUsage {
         }
     }
     
-    func getStreetAlerts(id: Int?, _ callback: @escaping ([StreetAlert] , Bool) -> ()) {
-        let urlFormat = NSString(format: RestUrl.getStreetAlerts.value as NSString, id! ) as String
+    func getStreetAlerts(_ callback: @escaping ([StreetAlert]? , Bool) -> ()) {
+        let locationId = ConstantHelper.cache["location_id"] as! String
+
+        let urlFormat = NSString(format: RestUrl.getStreetAlerts.value as NSString, locationId) as String
         let url = self.Api.getAbsoluteUrl(urlFormat)
-        var streetAlerts = [StreetAlert]()
-        
+
         Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
             if(isSuccess == true){
+                var streetAlerts = [StreetAlert]()
+
                 if let unwrappedData = resObject as? [NSDictionary] {
                     for jsonData in unwrappedData{
                         let json = SwiftyJSON.JSON(jsonData)
@@ -203,7 +206,7 @@ class ApiClientUsage {
                 }
             }
             else{
-                callback(streetAlerts, false)
+                callback(nil, false)
             }
         }
     }
