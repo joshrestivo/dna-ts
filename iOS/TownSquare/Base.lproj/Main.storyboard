@@ -436,6 +436,7 @@
             </objects>
             <point key="canvasLocation" x="-1228" y="107"/>
         </scene>
+
         <!--Location Info View Controller-->
         <scene sceneID="VOo-gn-M69">
             <objects>
@@ -582,6 +583,7 @@
             </objects>
             <point key="canvasLocation" x="692" y="1342"/>
         </scene>
+
         <!--HomeViewControllerID-->
         <scene sceneID="Q9R-qD-50B">
             <objects>
@@ -662,17 +664,18 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2S-6F-5q6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1228" y="791"/>
+    </scene>
 
-        <!--vcStreetAlertView-->
-        <scene sceneID="BYB-hs-IBf">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="vcStreetAlertView" storyboardName="StreetAlert" referencedIdentifier="vcStreetAlertView" id="iqG-1R-aKA" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0sK-hs-drd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1418" y="1341"/>
+    <!--vcStreetAlertView-->
+    <scene sceneID="BYB-hs-IBf">
+        <objects>
+            <viewControllerPlaceholder storyboardIdentifier="vcStreetAlertView" storyboardName="StreetAlert" referencedIdentifier="vcStreetAlertView" id="iqG-1R-aKA" sceneMemberID="viewController"/>
+            <placeholder placeholderIdentifier="IBFirstResponder" id="0sK-hs-drd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+        </objects>
+        <point key="canvasLocation" x="1418" y="1341"/>
 
-        </scene>
-    </scenes>
+    </scene>
+</scenes>
     <resources>
         <image name="facebook" width="234" height="232"/>
         <image name="ic_add_alert" width="24" height="24"/>
