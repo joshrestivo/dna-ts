@@ -1,6 +1,7 @@
 package cas_group.com.dnamobile.apdater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import cas_group.com.dnamobile.R;
+import cas_group.com.dnamobile.activity.DetailLocationActivity;
+import cas_group.com.dnamobile.activity.DetailNewsActivity;
 import cas_group.com.dnamobile.models.Building;
 import cas_group.com.dnamobile.utils.CircularImageView;
 import cas_group.com.dnamobile.utils.GraphicsUtil;
@@ -51,7 +54,7 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        Building building = items.get(position);
+        final Building building = items.get(position);
         holder.txtTitle.setText(building.getName());
         holder.txtDesc.setText(building.getAddress());
         GraphicsUtil.displayPhoto(_context, building.getImageUrl(), holder.uiImageView);
@@ -59,7 +62,12 @@ public class LocationInforAdapter extends RecyclerView.Adapter<LocationInforAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(_context,"test", Toast.LENGTH_LONG).show();
+                Intent detailIntent = new Intent(_context, DetailLocationActivity.class);
+                detailIntent.putExtra("zipCode",building.getZipcode());
+                detailIntent.putExtra("title",building.getName());
+                detailIntent.putExtra("desc",building.getAddress());
+                detailIntent.putExtra("imageUrl",building.getImageUrl());
+                _context.startActivity(detailIntent);
             }
         });
 
