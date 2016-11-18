@@ -233,22 +233,27 @@ class ApiClientUsage {
         }
     }
     
-    func getCalendars(_ callback: @escaping (Calendar , Bool) -> ()) {
+    func getCalendars(_ callback: @escaping ([CalendarModel] , Bool) -> ()) {
         let locationId:String! = String(ConstantHelper.cache["location_id"]!.description)
         let urlFormat = NSString(format: RestUrl.getCalendar.value as NSString, locationId) as String
         let url = self.Api.getAbsoluteUrl(urlFormat)
+        var calendars = [CalendarModel]()
         
         Api.executeRequest(url, .get, nil) { (resObject, isSuccess) in
             if(isSuccess == true){
-                if let unwrappedData = resObject as? Dictionary<String, AnyObject> {
-                    let json = SwiftyJSON.JSON(unwrappedData)
-                    callback(Calendar(json: json), true)
+                if let unwrappedData = resObject as? [NSDictionary] {
+                    for jsonData in unwrappedData{
+                        let json = SwiftyJSON.JSON(jsonData)
+                        calendars.append(CalendarModel(json: json))
+                    }
+                    
+                    callback(calendars, true)
                 }else{
-                    callback(Calendar(), false)
+                    callback(calendars, false)
                 }
             }
             else{
-                callback(Calendar(), false)
+                callback(calendars, false)
             }
         }
     }

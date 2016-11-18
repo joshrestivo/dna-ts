@@ -9,10 +9,10 @@
 import UIKit
 
 class MarginLabel: UILabel {
-    let padding:CGFloat = 8
+    let padding:CGFloat = 0
     
     override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets.init(top: padding, left: padding, bottom: padding, right: padding)
+        let insets = UIEdgeInsets.init(top: padding, left: 0, bottom: padding, right: padding)
         super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
     

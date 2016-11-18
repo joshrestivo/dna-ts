@@ -84,6 +84,7 @@
 		AA7A4D321DC070C0003B9B38 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D231DC070BF003B9B38 /* SWRevealViewController.m */; };
 		AA7A4D331DC070C0003B9B38 /* UIImageView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */; };
 		AA7A4D351DC070FE003B9B38 /* ConstantHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */; };
+		AA7DFA8B1DDEC7C00079E7F2 /* icon-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = AA7DFA8A1DDEC7C00079E7F2 /* icon-dot.png */; };
 		AACBFAAB1DCAFE2000AD0B03 /* Bulletins.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBFAAA1DCAFE2000AD0B03 /* Bulletins.swift */; };
 		AACBFAC01DCB060700AD0B03 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBFABF1DCB060700AD0B03 /* Building.swift */; };
 		AACBFAC21DCB095800AD0B03 /* NewsFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACBFAC11DCB095800AD0B03 /* NewsFeed.swift */; };
@@ -196,6 +197,7 @@
 		AA7A4D261DC070BF003B9B38 /* UIImageView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Size.m"; sourceTree = "<group>"; };
 		AA7A4D341DC070FE003B9B38 /* ConstantHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantHelper.swift; sourceTree = "<group>"; };
 		AA7A4D361DC0747A003B9B38 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "TownSquare/Bridging-Header.h"; sourceTree = "<group>"; };
+		AA7DFA8A1DDEC7C00079E7F2 /* icon-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-dot.png"; sourceTree = "<group>"; };
 		AACBFAAA1DCAFE2000AD0B03 /* Bulletins.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bulletins.swift; sourceTree = "<group>"; };
 		AACBFABF1DCB060700AD0B03 /* Building.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		AACBFAC11DCB095800AD0B03 /* NewsFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeed.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 		AA7A4C8B1DC06CB1003B9B38 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				AA7DFA8A1DDEC7C00079E7F2 /* icon-dot.png */,
 				AA4FFB751DC9BDCF00FB8E6B /* loading@2x.png */,
 				AA2BAB291DC37F970081E80A /* avatar-not-found.jpeg */,
 				AA2BAB2A1DC37F970081E80A /* icon-notFound.jpeg */,
@@ -650,6 +653,7 @@
 				AA7A4CE61DC06CB1003B9B38 /* Assets.xcassets in Resources */,
 				AA7A4CDC1DC06CB1003B9B38 /* OpenSans-Regular.ttf in Resources */,
 				AA7A4CCB1DC06CB1003B9B38 /* Muli-Bold.ttf in Resources */,
+				AA7DFA8B1DDEC7C00079E7F2 /* icon-dot.png in Resources */,
 				AA7A4CF31DC06CB1003B9B38 /* Info.plist in Resources */,
 				AA7A4CD81DC06CB1003B9B38 /* OpenSans-ExtraBold.ttf in Resources */,
 				AA7A4CE71DC06CB1003B9B38 /* Home.storyboard in Resources */,

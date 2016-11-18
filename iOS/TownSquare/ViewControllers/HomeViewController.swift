@@ -26,14 +26,19 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     var bulletinIndex: Int = 1
     var news = [News]()
     var hasError = false
+    
     var bulletins = [Bulletins]()
     var newsFeed = [NewsFeed]()
+    
+    var feedsInARequest = [NewsFeed]()
+    var bullentinsInARequest = [Bulletins]()
     
     var errorBulletinCount = 0
     var errorNewsFeedCount = 0
     
-    var hasErrorInNewsFeed = false
-    var hasErrorInBullentin = false
+    var validNewsFeed = true
+    var validBullentin = true
+    var validCallendar = true
     
     var isBullentinLoading = false
     var isNewsFeedLoading = false
@@ -42,7 +47,7 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     var hasLoadNewsFeedMore = true
     
     override func viewDidLoad() {
-        showLoading("")
+        self.showLoading("")
         super.viewDidLoad()
         ConstantHelper.roundButton(requestServiceBtn, color: ConstantHelper.buttonBorderColor, radius: 5)
         initScreen()
@@ -51,15 +56,12 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func requestHomeData(){
-        self.getNewsFeeds()
-        self.getBullentins()
-        self.getCalendars()
-        if self.hasErrorInNewsFeed == true && self.errorNewsFeedCount < 3 {
-            self.getNewsFeeds()
-        }
-        
-        if self.hasErrorInBullentin == true && errorBulletinCount < 3 {
-            self.getBullentins()
+        getHomeResource { (vailid) -> () in
+            self.hideLoading()
+            if vailid {
+                self.filterNewsFeed(self.feedsInARequest)
+                self.filterBullentins(self.bullentinsInARequest)
+            }
         }
     }
     
@@ -84,10 +86,6 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func initScreen(){
-        lblEntryEvent1.text = ConstantHelper.cache["home_middle_left_content1"] as? String
-        lblEntryEvent2.text = ConstantHelper.cache["home_middle_left_content2"] as? String
-        lblEntryEvent3.text = ConstantHelper.cache["home_middle_left_content3"] as? String
-        
         self.navigationItem.title = ConstantHelper.cache["home_header_title"] as! String
         requestServiceBtn.setTitle(ConstantHelper.cache["home_middle_request_button_text"] as! String, for: UIControlState.normal)
         
@@ -110,6 +108,68 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         addDefaultNavUI()
     }
     
+    func getHomeResource(_ callback:@escaping (Bool) -> ()) {
+        let validateGroup = DispatchGroup()
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async {
+            validateGroup.enter()
+            self.ApiService.getNewsFeeds(pageIndex: self.newsIndex,{ (newsFeedsResult, isSuccess) -> () in
+                if isSuccess {
+                    self.feedsInARequest = newsFeedsResult
+                    self.isNewsFeedLoading = false
+                    self.validNewsFeed = true
+                    validateGroup.leave()
+                }
+                else{
+                    self.validNewsFeed = false
+                    self.isNewsFeedLoading = true
+                    validateGroup.leave()
+                }
+            })
+
+            validateGroup.enter()
+            self.ApiService.getBulletins(pageIndex: self.newsIndex, { (bulletinsResult, isSuccess) -> () in
+                if isSuccess {
+                    self.bullentinsInARequest = bulletinsResult
+                    self.validBullentin = true
+                    self.isBullentinLoading = false
+                    validateGroup.leave()
+                }
+                else{
+                    validateGroup.leave()
+                    self.validBullentin = false
+                    self.isBullentinLoading = true
+                }
+            })
+            
+            validateGroup.enter()
+            self.ApiService.getCalendars({ (calendars, isSuccess) -> () in
+                if isSuccess {
+                    if calendars.count == 3 {
+                        self.lblEntryEvent1.text = calendars[0].calendarDescription == nil ? calendars[0].location : calendars[0].calendarDescription
+                        self.lblEntryEvent2.text = calendars[1].calendarDescription == nil ? calendars[1].location : calendars[1].calendarDescription
+                        self.lblEntryEvent3.text = calendars[2].calendarDescription == nil ? calendars[2].location : calendars[2].calendarDescription
+                        self.validCallendar = true
+                        validateGroup.leave()
+                    }
+                    else{
+                        validateGroup.leave()
+                        self.validCallendar = false
+                    }
+                }
+                else{
+                    validateGroup.leave()
+                    self.validCallendar = false
+                }
+            })
+            
+            validateGroup.wait(timeout: DispatchTime.distantFuture)
+            DispatchQueue.main.async {
+                let isValid = self.validNewsFeed && self.validBullentin && self.validCallendar
+                callback(isValid)
+            }
+        }
+    }
+
     func getNewsFeeds(){
         self.showLoading("")
         self.isNewsFeedLoading = true
@@ -121,7 +181,7 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
             else{
                 self.hideLoading()
                 self.errorNewsFeedCount += 1
-                self.hasErrorInNewsFeed = true
+                self.validNewsFeed = true
             }
         })
     }
@@ -132,21 +192,26 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         self.ApiService.getBulletins(pageIndex: self.newsIndex, { (bulletinsResult, isSuccess) -> () in
             if isSuccess {
                 self.filterBullentins(bulletinsResult)
-                self.hasErrorInBullentin = false
+                self.validBullentin = false
                 self.isBullentinLoading = false
             }
             else{
                 self.hideLoading()
                 self.errorBulletinCount += 1
-                self.hasErrorInBullentin = true
+                self.validBullentin = true
             }
         })
     }
     
     func getCalendars(){
         self.showLoading("")
-        self.ApiService.getCalendars({ (calendar, isSuccess) -> () in
+        self.ApiService.getCalendars({ (calendars, isSuccess) -> () in
             if isSuccess {
+                if calendars.count == 3 {
+                    self.lblEntryEvent1.text = calendars[0].calendarDescription == nil ? calendars[0].location : calendars[0].calendarDescription
+                    self.lblEntryEvent2.text = calendars[1].calendarDescription == nil ? calendars[1].location : calendars[1].calendarDescription
+                    self.lblEntryEvent3.text = calendars[2].calendarDescription == nil ? calendars[2].location : calendars[2].calendarDescription
+                }
                 
                 self.hideLoading()
             }
@@ -210,7 +275,6 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
             }
         }
         
-        self.hideLoading()
         self.bulletinCollectionView.reloadData()
     }
     
@@ -232,7 +296,6 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
             }
         }
         
-        self.hideLoading()
         self.newCollectionView.reloadData()
     }
     

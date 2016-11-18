@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class Calendar: NSObject {
+class CalendarModel: NSObject {
     
     var start: String?
     var end: String?

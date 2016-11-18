@@ -17,8 +17,8 @@ class NewsFeed: NSObject {
     
     var feedDescription: String?
     var thumbnail_url: String?
-    var thumbnail_width: String?
-    var thumbnail_height: String?
+    var thumbnail_width: Float?
+    var thumbnail_height: Float?
     
     override init() {
         super.init()
@@ -42,7 +42,7 @@ class NewsFeed: NSObject {
         
         self.feedDescription = json["description"].string!
         self.thumbnail_url = json["thumbnail_url"].string!
-        self.thumbnail_width = json["thumbnail_width"].string!
-        self.thumbnail_height = json["thumbnail_height"].string!
+        self.thumbnail_width = json["thumbnail_width"].float!
+        self.thumbnail_height = json["thumbnail_height"].float!
     }
 }

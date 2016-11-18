@@ -240,7 +240,7 @@ struct ConstantHelper {
     
     static func setCacheValues(_ resourceDetails: [ClientResourceDetail]){
         for resource in resourceDetails {
-            ConstantHelper.cache.setObject(resource.unique_name! as NSString, forKey: resource.display_text!, expires: .never)
+            ConstantHelper.cache.setObject(resource.display_text! as NSString, forKey: (resource.unique_name! as NSString) as String, expires: .never)
         }
     }
 }

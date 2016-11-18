@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Foundation
 
 class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
     let menuItems = [MenuItem(title: ConstantHelper.cache["menu_Home"] as! String,imageName: "ic_home_36pt",type: MenuItemType.leftMenuHome),
                      MenuItem(title: ConstantHelper.cache["menu_UpComingEvents"] as! String,imageName: "ic_event_36pt",type: MenuItemType.leftMenuUpCommingEvents),
                      MenuItem(title: ConstantHelper.cache["menu_RequestService"] as! String,imageName: "ic_assignment_36pt",type: MenuItemType.leftMenuRequestServices),

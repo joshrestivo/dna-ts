@@ -10,13 +10,15 @@ import UIKit
 import MBProgressHUD
 import CoreLocation
 
-class FlashScreenViewController: BaseViewController {
+class FlashScreenViewController: BaseViewController,CLLocationManagerDelegate {
     
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
         self.showLoading("")
         initLocationService()
+        locationManager.delegate = self
+        locationManager.distanceFilter = 20
         authentication()
         super.viewDidLoad()
     }
@@ -29,7 +31,7 @@ class FlashScreenViewController: BaseViewController {
         locationManager = CLLocationManager()
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.activityType = .automotiveNavigation
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -41,7 +43,6 @@ class FlashScreenViewController: BaseViewController {
         ApiService.authenticate(longitude: longitude,latitude: latitude, { (location, isSuccess) in
             if isSuccess {
                 self.saveResourceValues(location: location)
-                self.hideLoading()
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.setMainVC()
             }
@@ -52,10 +53,8 @@ class FlashScreenViewController: BaseViewController {
     }
     
     func saveResourceValues(location:LocationInfo){
-        var test1 = String(describing: location.id) as NSString
-        var test2 = NSString(string: (location.id?.description)!)
-        ConstantHelper.cache.setObject(test2, forKey: "location_id", expires: .never)
-        
+        var locationId = NSString(string: (location.id?.description)!)
+        ConstantHelper.cache.setObject(locationId, forKey: "location_id", expires: .never)
         let resourceDetails = location.client_resource?.details
         ConstantHelper.setCacheValues(resourceDetails!)
     }
