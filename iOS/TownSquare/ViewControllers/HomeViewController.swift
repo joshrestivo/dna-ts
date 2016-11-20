@@ -21,6 +21,7 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     @IBOutlet weak var lblEntryEvent2: MarginLabel!
     @IBOutlet weak var lblEntryEvent3: MarginLabel!
     var loadingMoreFootView:UIView?
+    @IBOutlet weak var viewFrontLayer: UIView!
     
     var newsIndex: Int = 1
     var bulletinIndex: Int = 1
@@ -61,6 +62,7 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
             if vailid {
                 self.filterNewsFeed(self.feedsInARequest)
                 self.filterBullentins(self.bullentinsInARequest)
+                self.viewFrontLayer.isHidden = true
             }
         }
     }
@@ -231,11 +233,11 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
-        return UIEdgeInsetsMake(0, 0, 0, 0)
+        return UIEdgeInsetsMake(0, 2, 0, 2)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{        
-        return CGSize( width: self.view.bounds.width, height: newCollectionView.bounds.size.height - 5)
+        return CGSize( width: self.view.bounds.width - 4, height: newCollectionView.bounds.size.height - 5)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
@@ -249,6 +251,10 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
             cell.setCellValue(title :item.title, txtContent : item.bulletinDescription, imgSrc : item.thumbnail_url)
         }
         
+        cell.layer.borderWidth=1
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.cornerRadius = 2
+        cell.layer.masksToBounds = true
         cell.layoutIfNeeded()
         return cell
     }
