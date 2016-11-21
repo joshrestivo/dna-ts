@@ -47,8 +47,12 @@ class LocationInfoViewController: BaseCenterViewController, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = self.buildings[(indexPath as NSIndexPath).row]
-        self.navigateToView("sbNewsDetail")
+        let item = self.buildings[(indexPath as NSIndexPath).row]
+        let toView = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
+        toView.titleText = item.name
+        toView.content = item.address
+        toView.imagePath = item.image_url
+        self.navigationController?.pushViewController(toView, animated: true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){

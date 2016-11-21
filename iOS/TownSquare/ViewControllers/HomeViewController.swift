@@ -259,8 +259,25 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "pushToNewDetail", sender: nil)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+        let toView = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
+        
+        if collectionView == self.newCollectionView {
+            let item = self.newsFeed[(indexPath as NSIndexPath).row]
+            
+            toView.link = item.link
+            toView.titleText = item.title
+            toView.content = item.feedDescription
+            toView.imagePath = item.thumbnail_url
+        }
+        else{
+            let item = self.bulletins[(indexPath as NSIndexPath).row]
+            toView.titleText = item.title
+            toView.content = item.bulletinDescription
+            toView.imagePath = item.thumbnail_url
+        }
+        
+        self.navigationController?.pushViewController(toView, animated: true)
     }
     
     func filterBullentins(_ bulletinsParam:[Bulletins]){

@@ -39,20 +39,24 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "upCommingEventsCell") as! UpComingEventsCell
         let dataItem = self.newsFeed[(indexPath as NSIndexPath).row]
         ConstantHelper.addAsyncImage((cell.photo)!, imageUrl:dataItem.thumbnail_url, imgNotFound: ConstantHelper.imgNotFound)
-        cell.photo.isCircleImage = false
+        cell.photo.isCircleImage = true
         cell.title?.text = dataItem.title
         cell.subTitle?.text = dataItem.feedDescription
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = self.newsFeed[(indexPath as NSIndexPath).row]
-        self.navigateToView("sbNewsDetail")
+        let item = self.newsFeed[(indexPath as NSIndexPath).row]
+        let toView = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
+        toView.titleText = item.title
+        toView.content = item.feedDescription
+        toView.imagePath = item.link
+        self.navigationController?.pushViewController(toView, animated: true)
     }
     
     func initScreen(){
         addDefaultNavUI()
-        self.navigationItem.title = ConstantHelper.cache["upCommingEvents_header_title"] as! String
+        self.navigationItem.title = ConstantHelper.cache["upCommingEvents_header_title"] as? String
         self.userTableView?.rowHeight=200
         self.userTableView?.rowHeight = UITableViewAutomaticDimension
         self.userTableView?.estimatedRowHeight = 200

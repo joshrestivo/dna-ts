@@ -11,9 +11,10 @@ import SwiftyJSON
 
 class StreetAlert: NSObject {
     
+    var date_data: Date?
+    var date_in_string: String?
+    var link: String?
     var thumbnailUrl: String?
-    var txtTitle: String?
-    var txtDescription: String?
     
     override init() {
         super.init()
@@ -30,15 +31,19 @@ class StreetAlert: NSObject {
         self.setStreetAlert(json)
     }
    
-    init(thumbnailUrl: String, title: String, description: String)  {
-        self.thumbnailUrl = thumbnailUrl
-        self.txtTitle = title
-        self.txtDescription = description
+    init(title: String, description: String)  {
+        self.date_data = title.toLocalDateTime()
+        self.date_in_string = self.date_data?.formattedWith("MM/dd/yyyy - h:mm a")
+        self.link = description
+        self.thumbnailUrl = ""
     }
     
     func setStreetAlert(_ json:SwiftyJSON.JSON)->() {
-//        self.thumbnailUrl = json["thumbnailUrl"].string!
-        self.txtTitle = json["date"].string!
-        self.txtDescription = json["link"].string!
+        let originalDate = json["date"].string!
+        
+        self.date_data = originalDate.toLocalDateTime()
+        self.date_in_string = self.date_data?.formattedWith("MM/dd/yyyy - h:mm a")
+        self.link = json["link"].string
+        self.thumbnailUrl = ""
     }
 }

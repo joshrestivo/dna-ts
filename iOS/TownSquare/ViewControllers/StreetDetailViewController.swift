@@ -22,13 +22,11 @@ class StreetDetailViewController: BaseViewController {
         btnTitle.backgroundColor = ConstantHelper.redColor
         webview.loadRequest(URLRequest(url: URL(string:"http://www.downtownstl.org/downtown-street-alert-38/")!))
         
-        self.navigationItem.title = streetAlert.txtTitle
-        btnTitle.setTitle(streetAlert.txtTitle, for: .normal)
+        self.navigationItem.title = streetAlert.date_in_string
+        btnTitle.setTitle(streetAlert.date_in_string, for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
 }

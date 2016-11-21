@@ -63,6 +63,8 @@ struct ConstantHelper {
     
     static var languageKeys = [LocalizationKey]()
     
+    static var  defaultDateFormat = "MM/dd/yyyy"
+    
     static func isValidEmail(_ testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let range = testStr.range(of: emailRegEx, options:.regularExpression)
@@ -125,12 +127,17 @@ struct ConstantHelper {
     
     static func addAsyncImage(_ image: AsyncImageView, imageUrl:String?, imgNotFound: String?){
         if(imageUrl != "" && imageUrl != nil){
-            AsyncImageLoader.shared().cancelLoadingImages(forTarget: imageUrl)
-            if let urlImage = URL(string: imageUrl!){
-                image.sd_setImage(with: urlImage, placeholderImage: UIImage(named: imgNotFound!), options: SDWebImageOptions.continueInBackground)
+            if !ConstantHelper.isImagePath(imageUrl!) {
+                image.image = UIImage(named: imgNotFound!)
             }
             else{
-                image.image = UIImage(named:imgNotFound!)
+                AsyncImageLoader.shared().cancelLoadingImages(forTarget: imageUrl)
+                if let urlImage = URL(string: imageUrl!){
+                    image.sd_setImage(with: urlImage, placeholderImage: UIImage(named: imgNotFound!), options: SDWebImageOptions.continueInBackground)
+                }
+                else{
+                    image.image = UIImage(named:imgNotFound!)
+                }
             }
         }
         else{
@@ -140,12 +147,17 @@ struct ConstantHelper {
     
     static func addImage(_ image: UIImageView, imageUrl:String?, imgNotFound: String?){
         if(imageUrl != "" && imageUrl != nil){
-            AsyncImageLoader.shared().cancelLoadingImages(forTarget: imageUrl)
-            if let urlImage = URL(string: imageUrl!){
-                image.sd_setImage(with: urlImage, placeholderImage: UIImage(named: imgNotFound!), options: SDWebImageOptions.continueInBackground)
+            if !ConstantHelper.isImagePath(imageUrl!) {
+                image.image = UIImage(named: imgNotFound!)
             }
             else{
-                image.image = UIImage(named:imgNotFound!)
+                AsyncImageLoader.shared().cancelLoadingImages(forTarget: imageUrl)
+                if let urlImage = URL(string: imageUrl!){
+                    image.sd_setImage(with: urlImage, placeholderImage: UIImage(named: imgNotFound!), options: SDWebImageOptions.continueInBackground)
+                }
+                else{
+                    image.image = UIImage(named:imgNotFound!)
+                }
             }
         }
         else{

@@ -68,7 +68,7 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
             let revealVC = self.revealViewController()
             let navUpcomingVC = UINavigationController(rootViewController: upcomingVC)
             revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
-
+            
             break
         case 2:
             let upcomingVC = self.storyboard?.instantiateViewController(withIdentifier: "RequestServiceViewControllerID") as! RequestServiceViewController
@@ -76,7 +76,7 @@ class MenuViewController: BaseViewController,UITableViewDelegate, UITableViewDat
             
             let navUpcomingVC = UINavigationController(rootViewController: upcomingVC)
             revealVC?.pushFrontViewController(navUpcomingVC, animated: true)
-
+            
             break
         case 3:
             let pusVC = self.storyboard?.instantiateViewController(withIdentifier: "vcLocationInfo") as! LocationInfoViewController
