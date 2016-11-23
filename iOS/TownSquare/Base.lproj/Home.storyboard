@@ -44,7 +44,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="NewCollectionViewCellID" id="KjY-aA-Kx2" customClass="NewCollectionViewCell" customModule="TownSquare" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="25" width="375" height="221"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="375" height="221"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="221"/>
@@ -55,7 +55,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-notFound.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-jI-5QX" customClass="AsyncImageView">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-notFound.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-jI-5QX" customClass="AsyncImageView">
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="140" id="aC2-0T-a6q"/>
                                                                     </constraints>

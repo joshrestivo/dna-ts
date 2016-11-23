@@ -22,7 +22,7 @@ class NewCollectionViewCell: UICollectionViewCell {
     }
     
     func setCellValue(title: String?, txtContent:String?, imgSrc:String?){
-        ConstantHelper.addAsyncImage(newImgView, imageUrl: imgSrc, imgNotFound: "icon-notFound")
+        ConstantHelper.addAsyncImage(newImgView, imageUrl: imgSrc, imgNotFound: ConstantHelper.imgNotFound)
         titleLbl.text = title
         contentLbl.text = txtContent
     }
