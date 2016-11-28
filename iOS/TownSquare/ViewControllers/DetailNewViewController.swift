@@ -38,24 +38,25 @@ class DetailNewViewController: BaseViewController {
         ConstantHelper.addAsyncImage(newImgView, imageUrl: imagePath, imgNotFound: "icon-notFound.jpeg")
         
         let width = UIScreen.main.bounds.size.width
-        let lblContentHeight = self.lblContent.frameSize(forAttributedStringWidth: width - 30).height + 50
-        let totalHeight = lblContentHeight + imgHeight.constant + 80
-        let heightValue =  totalHeight - UIScreen.main.bounds.size.height
+        let height = UIScreen.main.bounds.size.width
         
-        if heightValue > 0 {
-            viewHeight.constant = heightValue + 50
+        let lblContentHeight = self.lblContent.frameSize(forAttributedStringWidth: width - 0).height
+        let totalHeight = lblContentHeight + imgHeight.constant
+        let heightValue =  totalHeight - height
+        
+        if heightValue > 0  {
+            viewHeight.constant = heightValue
+        }
+        
+        if link == nil {
+            btnGotoSource.isHidden = true
         }
         
         setupKeyboardNotifcationListenerForScrollView(scrollView)
     }
     
     @IBAction func gotoOriginalLink(_ sender: AnyObject) {
-        if link != nil {
-            UIApplication.shared.openURL(NSURL(string: link!)! as URL)
-        }
-        else{
-            btnGotoSource.isHidden = true
-        }
+        UIApplication.shared.openURL(NSURL(string: link!)! as URL)
     }
     
     override func didReceiveMemoryWarning() {

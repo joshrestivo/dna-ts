@@ -62,12 +62,17 @@ class ApiClientUsage {
     
     func authenticate(longitude: String?, latitude: String?, _ callback: @escaping (LocationInfo, Bool) -> ()) {
         let url = self.Api.getAbsoluteUrl(RestUrl.postUserAuth.value)
-        let params: Parameters = [
+        var params: Parameters = [
             "longitude" : longitude! as String,
             "latitude" : latitude! as String,
-            "client_os" : "IOS",
-            "device_token" : "Test"
+            "client_os" : "IOS"
         ]
+        
+        let tokenDevice = getTokenDeviceString()
+        if tokenDevice != nil && tokenDevice.isEmpty == false{
+            params.updateValue(tokenDevice, forKey: "device_token")
+        }
+        
         
         Api.executeRequest(url, .post, params) { (resObject, isSuccess) in
             if(isSuccess == true){

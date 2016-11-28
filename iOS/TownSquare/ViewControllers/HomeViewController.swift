@@ -105,6 +105,9 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
         homeEvent3.numberOfTapsRequired = 1
         lblEntryEvent3.addGestureRecognizer(homeEvent3)
         lblEntryEvent3.isUserInteractionEnabled = true
+        lblEntryEvent1.sizeToFit()
+        lblEntryEvent2.sizeToFit()
+        lblEntryEvent3.sizeToFit()
         
         viewRequestService.backgroundColor = ConstantHelper.redColor
         addDefaultNavUI()
