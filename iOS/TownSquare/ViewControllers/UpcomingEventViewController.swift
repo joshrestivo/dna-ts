@@ -50,7 +50,8 @@ class UpcomingEventViewController: BaseCenterViewController,UITableViewDataSourc
         let toView = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
         toView.titleText = item.title
         toView.content = item.feedDescription
-        toView.imagePath = item.link
+        toView.link = item.link
+        toView.imagePath = item.thumbnail_url
         self.navigationController?.pushViewController(toView, animated: true)
     }
     
