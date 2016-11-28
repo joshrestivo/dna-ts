@@ -50,6 +50,7 @@ GEM
     fastimage (2.0.0)
       addressable (~> 2)
     ffi (1.9.14)
+    geocoder (1.4.0)
     grape (0.18.0)
       activesupport
       builder
@@ -207,6 +208,7 @@ DEPENDENCIES
   dragonfly (~> 1.0.7)
   faker
   fastimage
+  geocoder
   grape
   json
   link_thumbnailer

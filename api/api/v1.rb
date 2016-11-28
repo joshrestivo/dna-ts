@@ -124,23 +124,7 @@ module Townsquare
           return JSONResult.new(false, "INVALID_SESSION")          
         end
         
-        page_index = 0        
-        locations = Location.order("id asc").offset(page_index * limit).limit(limit)
-        closest_location = nil
-        closest_distance = -1
-        while locations.size > 0 do
-          locations.each do |location|
-            distance = Townsquare::Geo.distance([params[:latitude], params[:longitude]], [location.latitude, location.longitude])
-            if !closest_location || closest_distance > distance
-              closest_location = location
-              closest_distance = distance
-            end 
-          end
-          
-          page_index = page_index + 1
-          locations = Location.order("id asc").offset(page_index * limit).limit(limit)
-        end
-        
+        closest_location = Location.near([params[:latitude], params[:longitude]], 30000, :unit => :miles).first
         if (params[:client_os] == 'ios' || params[:client_os] == 'android') && (params[:device_token] + '') != ''
           if !Device.where("LOWER(platform) = ? AND LOWER(token) = ?", params[:client_os].downcase(), params[:device_token].downcase()).first
             Device.create(:token => params[:device_token],

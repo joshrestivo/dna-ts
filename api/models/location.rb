@@ -1,3 +1,7 @@
+require 'geocoder'
+require "geocoder/railtie"
+Geocoder::Railtie.insert
+
 class Location < ActiveRecord::Base
   
   belongs_to :client_resource
@@ -6,6 +10,11 @@ class Location < ActiveRecord::Base
   has_many :bulletins
   
   attr_accessor :need_client_resource
+  geocoded_by :full_address
+  
+  def full_address
+    "#{city} #{state} #{country_code}"
+  end
 
   def as_json(*)
             
@@ -33,12 +42,14 @@ class Location < ActiveRecord::Base
       :created_at     => created_at,
       :updated_at     => updated_at,
       :client_resource_id => client_resource_id,
-      :client_resource_name => client_resource.name
+      :client_resource_name => client_resource.name,
+      :distance       => self.has_attribute?('distance') ? distance : 0
     }
     
     if need_client_resource
       ret["client_resource"] = client_resource
     end
+    
     ret
   end
 

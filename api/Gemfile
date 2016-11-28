@@ -23,6 +23,7 @@ gem 'simple-rss'
 gem 'will_paginate', '~> 3.1.0'
 gem 'nokogiri'
 gem 'rest-client'
+gem 'geocoder'
 
 #group :development do #UNCOMMENT when deploy to production
   gem 'faker'

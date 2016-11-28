@@ -1,6 +1,6 @@
 module Townsquare  
   module Geo
-    def distance loc1, loc2
+    def calc_distance loc1, loc2
       rad_per_deg = Math::PI/180  # PI / 180
       rkm = 6371                  # Earth radius in kilometers
       rm = rkm * 1000             # Radius in meters
