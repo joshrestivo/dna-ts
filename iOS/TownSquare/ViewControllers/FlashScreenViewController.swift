@@ -16,9 +16,7 @@ class FlashScreenViewController: BaseViewController {
     
     override func viewDidLoad() {
         self.showLoading("")
-        
-        initLocationService()
-        
+        self.initLocationService()
         super.viewDidLoad()
     }
     
@@ -28,22 +26,14 @@ class FlashScreenViewController: BaseViewController {
     
     func initLocationService() {
         locationManager = CLLocationManager()
-        
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
         checkStatusLocation()
     }
     
     func authentication(){
-        var longitude = locationManager.location?.coordinate.longitude.description
-        var latitude = locationManager.location?.coordinate.latitude.description
-        if longitude == nil {
-            longitude = "10"
-        }
-        if latitude == nil {
-            latitude = "10"
-        }
-        
+        let longitude = locationManager.location?.coordinate.longitude.description
+        let latitude = locationManager.location?.coordinate.latitude.description
         ApiService.authenticate(longitude: longitude,latitude: latitude, { (location, isSuccess) in
             if isSuccess {
                 ConstantHelper.saveResourceValues(location: location)
@@ -57,7 +47,7 @@ class FlashScreenViewController: BaseViewController {
     }
     
     func saveResourceValues(location:LocationInfo){
-        var locationId = NSString(string: (location.id?.description)!)
+        let locationId = NSString(string: (location.id?.description)!)
         ConstantHelper.cache.setObject(locationId, forKey: "location_id", expires: .never)
         let resourceDetails = location.client_resource?.details
         ConstantHelper.setCacheValues(resourceDetails!)
@@ -66,7 +56,6 @@ class FlashScreenViewController: BaseViewController {
     func checkStatusLocation(){
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
-            
             authentication()
             break
         case .notDetermined:
@@ -74,28 +63,25 @@ class FlashScreenViewController: BaseViewController {
             break
         case .authorizedWhenInUse, .restricted, .denied:
             let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
-                message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.",
-                preferredStyle: .alert)
-            
+                title: "Background Location Access Disabled", message: "In order to be notified about adorable kittens near you, please open this app's settings and set location access to 'Always'.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
-            
             let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
                 if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                     UIApplication.shared.openURL(url as URL)
                 }
             }
-            alertController.addAction(openAction)
             
+            alertController.addAction(openAction)
             self.present(alertController, animated: true, completion: nil)
-        }
-        
+        }        
     }
 }
 
 extension FlashScreenViewController:CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkStatusLocation()
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways {
+            authentication()
+        }
     }    
 }
