@@ -33,6 +33,7 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     
     var feedsInARequest = [NewsFeed]()
     var bullentinsInARequest = [Bulletins]()
+    var calendars = [CalendarModel]()
     
     var errorBulletinCount = 0
     var errorNewsFeedCount = 0
@@ -72,19 +73,30 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
     }
     
     @IBAction func requestService(_ sender: AnyObject) {
-        self.navigateToView("sbNewsDetail")
+        //self.navigateToView("sbNewsDetail")
+    }
+    
+    func getDetailValue(index:Int){
+        if self.calendars.count == 3 {
+            let item = self.calendars[index]
+            let toView = self.sbHome.instantiateViewController(withIdentifier: "sbNewsDetail") as! DetailNewViewController
+            toView.titleText = item.location
+            toView.content = item.calendarDescription
+            toView.shorDateString = item.shorDateString!
+            self.navigationController?.pushViewController(toView, animated: true)
+        }
     }
     
     func homeEvent1Touched(_ sender:AnyObject){
-        self.navigateToView("sbNewsDetail")
+        getDetailValue(index: 0)
     }
     
     func homeEvent2Touched(_ sender:AnyObject){
-        self.navigateToView("sbNewsDetail")
+        getDetailValue(index: 1)
     }
     
     func homeEvent3Touched(_ sender:AnyObject){
-        self.navigateToView("sbNewsDetail")
+        getDetailValue(index: 2)
     }
     
     func initScreen(){
@@ -149,7 +161,9 @@ class HomeViewController: BaseCenterViewController,UICollectionViewDelegate, UIC
             validateGroup.enter()
             self.ApiService.getCalendars({ (calendars, isSuccess) -> () in
                 if isSuccess {
+                    
                     if calendars.count == 3 {
+                        self.calendars = calendars
                         self.lblEntryEvent1.text = calendars[0].calendarDescription == nil ? calendars[0].location : calendars[0].calendarDescription
                         self.lblEntryEvent2.text = calendars[1].calendarDescription == nil ? calendars[1].location : calendars[1].calendarDescription
                         self.lblEntryEvent3.text = calendars[2].calendarDescription == nil ? calendars[2].location : calendars[2].calendarDescription

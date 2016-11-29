@@ -11,8 +11,10 @@ import SwiftyJSON
 
 class CalendarModel: NSObject {
     
-    var start: String?
-    var end: String?
+    var start: Date?
+    var end: Date?
+    var shorDateString:String?
+    
     var location: String?
     var calendarDescription: String?
     
@@ -32,8 +34,26 @@ class CalendarModel: NSObject {
     }
     
     func setCalendar(_ json:SwiftyJSON.JSON)->() {
-        self.start = json["id"].string
-        self.end = json["end"].string
+        let startInString = json["start"].string
+        if startInString != nil {
+            start =  startInString?.toLocalDateTime()
+        }
+        
+        let endInString = json["end"].string
+        if endInString != nil {
+            end =  endInString?.toLocalDateTime()
+        }
+        
+        if startInString != nil && endInString != nil {
+            shorDateString = (start?.formattedWith("MM/dd/yyyy - h:mm a"))! + " To " + (end?.formattedWith("MM/dd/yyyy - h:mm a"))!
+        }
+        else if self.start != nil {
+            shorDateString = (start?.formattedWith("MM/dd/yyyy - h:mm a"))!
+        }
+        else if self.end != nil {
+            shorDateString = (end?.formattedWith("MM/dd/yyyy - h:mm a"))!
+        }
+        
         self.location = json["location"].string
         self.calendarDescription = json["description"].string
     }

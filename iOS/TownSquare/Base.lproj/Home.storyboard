@@ -362,6 +362,11 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNM-nL-5DC">
+                                                <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldh-bu-byO" userLabel="Label Content">
                                                 <fontDescription key="fontDescription" name="Muli" family="Muli" pointSize="16"/>
                                                 <nil key="textColor"/>
@@ -387,14 +392,17 @@
                                             <constraint firstItem="bCB-uU-meh" firstAttribute="width" secondItem="x88-a7-hfC" secondAttribute="width" id="6or-MH-zmZ"/>
                                             <constraint firstAttribute="trailing" secondItem="6Cx-99-6o3" secondAttribute="trailing" id="Gtg-1k-nI5"/>
                                             <constraint firstItem="x88-a7-hfC" firstAttribute="top" secondItem="lnj-k1-Fl4" secondAttribute="top" constant="10" id="KkG-iu-gPV"/>
+                                            <constraint firstItem="GNM-nL-5DC" firstAttribute="top" secondItem="bCB-uU-meh" secondAttribute="bottom" constant="10" id="LAL-1C-DW6"/>
                                             <constraint firstItem="Ldh-bu-byO" firstAttribute="leading" secondItem="lnj-k1-Fl4" secondAttribute="leading" constant="10" id="QbL-Kz-bCT"/>
+                                            <constraint firstAttribute="trailing" secondItem="GNM-nL-5DC" secondAttribute="trailing" constant="10" id="Rjj-Tk-W5a"/>
+                                            <constraint firstItem="GNM-nL-5DC" firstAttribute="leading" secondItem="lnj-k1-Fl4" secondAttribute="leading" constant="10" id="VOq-af-71p"/>
                                             <constraint firstAttribute="trailing" secondItem="Ldh-bu-byO" secondAttribute="trailing" constant="10" id="Xkr-go-DYY"/>
                                             <constraint firstItem="6Cx-99-6o3" firstAttribute="leading" secondItem="lnj-k1-Fl4" secondAttribute="leading" id="hRu-0t-BJ3"/>
                                             <constraint firstAttribute="trailing" secondItem="x88-a7-hfC" secondAttribute="trailing" constant="5" id="lTb-tP-j8s"/>
                                             <constraint firstItem="bCB-uU-meh" firstAttribute="top" secondItem="x88-a7-hfC" secondAttribute="bottom" constant="5" id="sLH-Ql-lOY"/>
+                                            <constraint firstItem="Ldh-bu-byO" firstAttribute="top" secondItem="GNM-nL-5DC" secondAttribute="bottom" constant="5" id="shl-cd-553"/>
                                             <constraint firstItem="x88-a7-hfC" firstAttribute="leading" secondItem="lnj-k1-Fl4" secondAttribute="leading" constant="5" id="tOr-cm-aEx"/>
                                             <constraint firstItem="bCB-uU-meh" firstAttribute="centerX" secondItem="x88-a7-hfC" secondAttribute="centerX" id="uWz-6g-4iZ"/>
-                                            <constraint firstItem="Ldh-bu-byO" firstAttribute="top" secondItem="bCB-uU-meh" secondAttribute="bottom" constant="10" id="yxe-aI-ea4"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -423,6 +431,7 @@
                         <outlet property="btnTitle" destination="bCB-uU-meh" id="EVj-VB-QmT"/>
                         <outlet property="imgHeight" destination="2sN-d7-gcL" id="0ie-rf-hSd"/>
                         <outlet property="lblContent" destination="Ldh-bu-byO" id="NMn-xf-zMH"/>
+                        <outlet property="lblTitle" destination="GNM-nL-5DC" id="grP-2t-cae"/>
                         <outlet property="newImgView" destination="x88-a7-hfC" id="Zse-Eu-0GU"/>
                         <outlet property="scrollView" destination="7VH-PQ-yCi" id="Mi3-1H-DGO"/>
                         <outlet property="viewHeight" destination="4RN-yM-NTO" id="fpH-2Y-0ry"/>

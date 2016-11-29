@@ -14,10 +14,12 @@ class DetailNewViewController: BaseViewController {
     var content: String?
     var imagePath: String?
     var link: String?
+    var shorDateString:String?
     
     @IBOutlet weak var btnGotoSource: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var btnTitle: UIButton!
+    @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var btnDataSource: UIButton!
     @IBOutlet weak var lblContent: UILabel!
     @IBOutlet weak var newImgView: AsyncImageView!
@@ -50,6 +52,11 @@ class DetailNewViewController: BaseViewController {
         
         if link == nil {
             btnGotoSource.isHidden = true
+        }
+        
+        if shorDateString != "" {
+            lblTitle.isHidden = false
+            lblTitle.text = shorDateString
         }
         
         setupKeyboardNotifcationListenerForScrollView(scrollView)
